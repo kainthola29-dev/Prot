@@ -11,60 +11,70 @@
       "& Brand Growth Manager.",
       "& Performance Driver."
     ],
-    "bio": "Practical marketing execution backed by strategic and business thinking. 6+ years orchestrating digital campaigns, employer branding, SEO, content architecture, and multi-brand growth across 6 flagship enterprise entities.",
-    "location": "Noida / Delhi NCR, India",
-    "email": "deepanshu@kainthola.com",
-    "linkedin": "https://linkedin.com/in/deepanshukainthola",
+    "bio": "Practical marketing execution backed by strategic and business thinking. 7.7 Years Exp. orchestrating digital campaigns, employer branding, SEO, content architecture, and multi-brand growth across 6 flagship enterprise entities.",
+    "location": "Delhi NCR, India",
+    "email": "kainthola29@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/deepanshu-kainthola/",
     "twitter": "https://twitter.com",
     "instagram": "https://instagram.com",
     "youtube": "https://youtube.com",
     "statusBadge": "Available for Senior Marketing Roles (₹18–25 LPA)",
     "primaryCompany": "Vision India Services Pvt. Ltd.",
     "companyUrl": "https://vispl.co.in",
-    "profilePhoto": "/images/deepanshu.webp"
+    "profilePhoto": "/images/deepanshu.webp",
+    "phone": "+91-9599396969",
+    "experienceYears": "7.7 Years Exp."
   },
   "stats": [
-    { "value": "10M+", "label": "Audience Reach" },
-    { "value": "6+", "label": "Years Experience" },
-    { "value": "6+", "label": "Brands Managed" },
-    { "value": "850+", "label": "Webinar Attendees" }
+    {
+      "value": "10M+",
+      "label": "Audience Reach"
+    },
+    {
+      "value": "7.7",
+      "label": "Years Exp."
+    },
+    {
+      "value": "6+",
+      "label": "Brands Managed"
+    },
+    {
+      "value": "850+",
+      "label": "Webinar Attendees"
+    }
   ],
   "services": [
     {
+      "id": "digital-marketing-strategy",
+      "slug": "digital-marketing-strategy",
       "title": "Digital Marketing & Strategy",
       "category": "PERFORMANCE & GROWTH",
       "description": "End-to-end full-funnel digital strategy, lead generation campaigns, multi-channel distribution, and ROI-focused acquisition.",
       "iconName": "BarChart3"
     },
     {
+      "id": "content-strategy-copywriting",
+      "slug": "content-strategy-copywriting",
       "title": "Content Strategy & Copywriting",
       "category": "BRAND NARRATIVE",
       "description": "Editorial roadmaps, high-converting copy, executive thought leadership, and storytelling that connects audience engagement to bottom-line results.",
       "iconName": "FileText"
     },
     {
-      "title": "SEO & Web Architecture",
-      "category": "ORGANIC VISIBILITY",
-      "description": "Comprehensive on-page, technical SEO, semantic content structuring, and user journey optimization for sustainable organic discovery.",
-      "iconName": "Search"
-    },
-    {
+      "id": "employer-branding-comms",
+      "slug": "employer-branding-comms",
       "title": "Employer Branding & Comms",
       "category": "TALENT & REPUTATION",
       "description": "Corporate positioning, employee advocacy, CSR storytelling, and talent brand transformation across LinkedIn and national media.",
       "iconName": "Users"
     },
     {
+      "id": "video-media-production",
+      "slug": "video-media-production",
       "title": "Video & Media Production",
       "category": "VISUAL STORYTELLING",
       "description": "Hands-on video production, post-production supervision, campaign films, time-lapses, and high-retention short-form digital formats.",
       "iconName": "Video"
-    },
-    {
-      "title": "AI Workflows & MarTech",
-      "category": "INNOVATION & EFFICIENCY",
-      "description": "Deploying generative AI tooling, automated content pipelines, analytics integrations, and next-gen marketing innovation.",
-      "iconName": "Cpu"
     }
   ],
   "projects": [
@@ -267,45 +277,91 @@
   ],
   "timeline": [
     {
+      "id": "vispl",
+      "role": "Digital Marketing Manager",
+      "organization": "Vision India Services Pvt. Ltd.",
+      "period": "May 2025 – Present",
+      "description": "Leading integrated marketing and communications across a multi-brand portfolio spanning skilling, employability, healthcare, sustainability, and social impact (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Directing campaign strategy, internal/external communications, employer branding, executive messaging, content calendars, video production, analytics, and creative-team coordination.",
+      "skills": [
+        "Marketing Strategy",
+        "Multi-Brand Management",
+        "SEO Architecture",
+        "Employer Branding",
+        "Lead Generation",
+        "Executive Comms",
+        "Video Direction"
+      ],
+      "isCurrent": true
+    },
+    {
+      "id": "meena-bazaar",
+      "role": "Video Producer",
+      "organization": "Meena Bazaar",
+      "period": "Feb 2024 – May 2025",
+      "description": "Led branded content production, scripted and planned video shoots, supervised post-production, and worked with marketing and branding teams on seasonal launches and retail campaigns for iconic fashion house.",
+      "skills": [
+        "Video Production",
+        "Creative Direction",
+        "Scripting",
+        "Retail Campaigns",
+        "Post-Production",
+        "Fashion Marketing"
+      ]
+    },
+    {
+      "id": "denvax",
+      "role": "Digital Content Producer & Marketing Outreach",
+      "organization": "Denvax / Helios Educore Pvt. Ltd.",
+      "period": "Jul 2020 – Mar 2023",
+      "description": "Created healthcare awareness and patient education content at Denvax, and managed educational digital content and marketing outreach at Helios Educore. Simplified complex medical communication, coordinated doctor interviews, and built patient trust across digital channels.",
+      "skills": [
+        "Healthcare Marketing",
+        "Educational Video",
+        "Brand Trust",
+        "Digital Outreach",
+        "Patient Education"
+      ]
+    },
+    {
+      "id": "tatsat",
+      "role": "Digital Content Producer",
+      "organization": "Tatsat Chronicle",
+      "period": "Mar 2021 – Oct 2022",
+      "description": "Produced long-form interviews, issue-based documentaries, and multimedia storytelling focused on public narratives and social issues. Managed scripting, field coordination, interview planning, and editorial workflows for a premier social impact media brand.",
+      "skills": [
+        "Digital Content",
+        "Long-form Documentary",
+        "Multimedia Storytelling",
+        "Editorial Workflows",
+        "Social Impact"
+      ]
+    },
+    {
       "id": "sunday-headlines",
       "role": "Production Head & Website Manager",
       "organization": "The Sunday Headlines",
       "period": "Nov 2016 – Nov 2018",
-      "description": "Led end-to-end digital publishing, studio video production, and CMS portal management for a digital news and media platform.",
-      "skills": ["Video Production", "Website Management", "Digital Publishing", "Team Management"]
-    },
-    {
-      "id": "tatsat",
-      "role": "Digital Content Producer & Social Media Manager",
-      "organization": "Tatsat Group",
-      "period": "Mar 2021 – Oct 2022",
-      "description": "Managed cross-platform digital content distribution, audience engagement workflows, and multimedia campaigns.",
-      "skills": ["Social Media Strategy", "Content Architecture", "Audience Growth", "Digital Storytelling"]
-    },
-    {
-      "id": "denvax",
-      "role": "Digital Content Producer",
-      "organization": "Denvax",
-      "period": "Oct 2022 – Mar 2023",
-      "description": "Spearheaded patient education communication, healthcare content simplification, doctor video interviews, and digital compliance.",
-      "skills": ["Healthcare Marketing", "Educational Video", "Brand Trust", "Digital Communication"]
-    },
-    {
-      "id": "vispl",
-      "role": "Digital Marketing Manager",
-      "organization": "Vision India Services Pvt. Ltd.",
-      "period": "2023 – Present",
-      "description": "Leading the core digital marketing and brand presence across 6 corporate brands (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks).",
-      "skills": ["Marketing Strategy", "Multi-Brand Management", "SEO & Web", "Employer Branding", "Lead Generation", "Executive Comms"],
-      "isCurrent": true
+      "description": "Led end-to-end digital publishing, studio video production, and CMS portal management for a digital news and media platform. Built the critical operational foundation in digital content, deadline-driven execution, and CMS administration.",
+      "skills": [
+        "Production Head",
+        "Website Management",
+        "Digital Content",
+        "Digital Publishing",
+        "Video Production"
+      ]
     },
     {
       "id": "mba",
       "role": "MBA in Business Strategy & Marketing",
       "organization": "Jindal Global Business School (Cohort 13)",
       "period": "In Progress",
-      "description": "Augmenting 6+ years of field execution with rigorous corporate strategy, commercial finance, consumer psychology, and executive leadership frameworks.",
-      "skills": ["Corporate Strategy", "Financial Acumen", "Business Leadership", "Marketing Analytics"]
+      "description": "Augmenting 7.7 Years of hands-on execution with rigorous corporate strategy, commercial finance, consumer psychology, and executive leadership frameworks.",
+      "skills": [
+        "Corporate Strategy",
+        "Financial Acumen",
+        "Business Leadership",
+        "Marketing Analytics"
+      ]
     }
   ],
   "articles": [
@@ -351,8 +407,14 @@
         "True marketing leadership bridges creative storytelling with business balance sheets."
       ],
       "glossary": [
-        { "term": "Vanity Metrics", "definition": "Data points like raw impressions, post likes, and pageviews that look impressive on paper but bear no causal relationship to business revenue or customer retention." },
-        { "term": "CAC (Customer Acquisition Cost)", "definition": "The total marketing and sales expense required to secure one paying customer or verified client partner." }
+        {
+          "term": "Vanity Metrics",
+          "definition": "Data points like raw impressions, post likes, and pageviews that look impressive on paper but bear no causal relationship to business revenue or customer retention."
+        },
+        {
+          "term": "CAC (Customer Acquisition Cost)",
+          "definition": "The total marketing and sales expense required to secure one paying customer or verified client partner."
+        }
       ]
     },
     {
@@ -454,6 +516,30 @@
         "Align marketing KPIs with P&L drivers: customer lifetime value, payback period, and gross margin.",
         "Executive credibility comes from speaking the business's financial language."
       ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "ridhi-goel",
+      "name": "Ridhi Goel",
+      "role": "Creative Producer & Brand Director",
+      "organization": "Independent Creative Collaborator",
+      "relation": "Collaborated on end-to-end video production & storytelling",
+      "quote": "Deepanshu brings rare dedication to end-to-end video production and storytelling. From pre-production planning and scripting to final post-production polish, his sharp attention to detail ensures every piece of content directly aligns with core audience engagement and marketing goals. He is exceptionally reliable, proactive, and collaborative to work with.",
+      "rating": 5,
+      "avatar": "/images/testimonials/ridhi-goel.svg",
+      "linkedin": "https://www.linkedin.com/in/deepanshu-kainthola/"
+    },
+    {
+      "id": "sidhi-goel",
+      "name": "Sidhi Goel",
+      "role": "Marketing & Creative Strategist",
+      "organization": "Brand & Media Initiatives",
+      "relation": "Partnered on digital campaigns & multi-platform content strategy",
+      "quote": "Working with Deepanshu demonstrated his sharp understanding of digital platforms and brand narrative. He bridges creative visual execution with structured strategic thinking, always delivering campaigns on time while solving operational bottlenecks effortlessly. A valuable asset to any high-performing marketing and communications team.",
+      "rating": 5,
+      "avatar": "/images/testimonials/sidhi-goel.svg",
+      "linkedin": "https://www.linkedin.com/in/deepanshu-kainthola/"
     }
   ]
 }

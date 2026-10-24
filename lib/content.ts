@@ -9,7 +9,10 @@ import {
   timelineData, 
   articlesData, 
   skillsArchitecture, 
-  skillBars 
+  skillBars,
+  testimonialsData,
+  educationData,
+  certificationsData
 } from "@/data/portfolioData";
 import { 
   ProjectItem, 
@@ -18,7 +21,8 @@ import {
   ServiceItem, 
   TimelineItem, 
   CaseStudyItem, 
-  SkillCategory 
+  SkillCategory,
+  TestimonialItem
 } from "@/types";
 
 export interface PortfolioContent {
@@ -31,6 +35,9 @@ export interface PortfolioContent {
   articles: ArticleItem[];
   skillsArchitecture: SkillCategory[];
   skillBars: typeof skillBars;
+  testimonials: TestimonialItem[];
+  education: typeof educationData;
+  certifications: typeof certificationsData;
 }
 
 export function getContent(): PortfolioContent {
@@ -49,6 +56,9 @@ export function getContent(): PortfolioContent {
         articles: (json.articles || articlesData) as ArticleItem[],
         skillsArchitecture,
         skillBars,
+        testimonials: (json.testimonials || testimonialsData) as TestimonialItem[],
+        education: educationData,
+        certifications: certificationsData,
       };
     }
   } catch (e) {
@@ -65,5 +75,8 @@ export function getContent(): PortfolioContent {
     articles: articlesData,
     skillsArchitecture,
     skillBars,
+    testimonials: testimonialsData,
+    education: educationData,
+    certifications: certificationsData,
   };
 }

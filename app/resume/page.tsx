@@ -1,14 +1,26 @@
 import React from "react";
 import Link from "next/link";
-import { profileData, timelineData, skillsArchitecture } from "@/data/portfolioData";
+import { profileData, timelineData, skillsArchitecture, educationData, certificationsData } from "@/data/portfolioData";
 import { JsonLd } from "@/components/JsonLd";
 import { ResumeActions } from "@/components/ResumeActions";
-import { Briefcase, GraduationCap, Award, Sparkles } from "lucide-react";
+import { Briefcase, GraduationCap, Award, Sparkles, CheckCircle2, ShieldCheck, Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Resume & CV — Deepanshu Kainthola | Digital Marketing Manager",
-  description: "Curriculum Vitae and professional history of Deepanshu Kainthola. 6+ years experience in digital marketing, employer branding, SEO, and content architecture.",
+  description: "Curriculum Vitae and professional history of Deepanshu Kainthola. 7.7 Years Exp. in digital marketing, employer branding, SEO, and content architecture.",
+  openGraph: {
+    title: "Deepanshu Kainthola — Resume & CV",
+    description: "Digital Marketing Manager with 7.7 Years Exp. in digital campaigns, video production, employer branding, and corporate communication.",
+    type: "profile",
+    images: ["/images/deepanshu.webp"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deepanshu Kainthola — Resume & CV",
+    description: "Digital Marketing Manager with 7.7 Years Exp. in digital marketing and multi-brand strategy.",
+    images: ["/images/deepanshu.webp"],
+  },
 };
 
 export default function ResumePage() {
@@ -36,9 +48,25 @@ export default function ResumePage() {
           <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white mt-1">
             {profileData.name}
           </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-            {profileData.roleH1} • {profileData.location}
+          <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-1">
+            Marketing and Communications | Employer Branding | Brand and Content Strategy
           </p>
+          <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-gray-400 mt-2">
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5 text-primary-600" />
+              <span>{profileData.location}</span>
+            </span>
+            <span>•</span>
+            <span className="flex items-center gap-1">
+              <Mail className="w-3.5 h-3.5 text-primary-600" />
+              <span>{profileData.email}</span>
+            </span>
+            <span>•</span>
+            <span className="flex items-center gap-1">
+              <Phone className="w-3.5 h-3.5 text-primary-600" />
+              <span>{profileData.phone}</span>
+            </span>
+          </div>
         </div>
 
         <ResumeActions />
@@ -51,7 +79,7 @@ export default function ResumePage() {
           <span>Executive Summary</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-          Results-oriented Marketing Professional with 6+ years of practical execution combined with strategic and business acumen. Proven record of managing multi-channel digital campaigns, content architecture, SEO visibility, employer branding, and corporate communication across 6 enterprise brands. Currently pursuing an MBA from Jindal Global Business School to bridge hands-on marketing delivery with commercial leadership.
+          Results-oriented Marketing Professional with <strong>7.7 Years Exp.</strong> of hands-on execution combined with strategic and business acumen. Proven record of managing multi-channel digital campaigns, content architecture, SEO visibility, employer branding, and corporate communication across 6 enterprise brands (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Background in journalism and video production, currently completing an MBA from Jindal Global Business School to bridge creative storytelling with commercial leadership.
         </p>
       </section>
 
@@ -59,7 +87,7 @@ export default function ResumePage() {
       <section className="space-y-6">
         <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white flex items-center gap-2">
           <Briefcase className="w-5 h-5 text-primary-600" />
-          <span>Work Experience</span>
+          <span>Verified Work Experience</span>
         </h2>
 
         <div className="space-y-6">
@@ -82,7 +110,7 @@ export default function ResumePage() {
                 <div className="flex items-center gap-2">
                   {exp.isCurrent && (
                     <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold uppercase">
-                      Current
+                      Current Role
                     </span>
                   )}
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
@@ -114,39 +142,61 @@ export default function ResumePage() {
       <section className="space-y-6">
         <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white flex items-center gap-2">
           <GraduationCap className="w-5 h-5 text-primary-600" />
-          <span>Education</span>
+          <span>Education &amp; Academic Credentials</span>
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {educationData.map((edu) => (
+            <div key={edu.id} className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+                {edu.period}
+              </span>
+              <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                {edu.degree}
+              </h3>
+              <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                {edu.institution}
+              </p>
+              <p className="text-xs text-primary-600 font-medium">
+                {edu.field}
+              </p>
+              <p className="text-xs text-gray-500 pt-1 leading-relaxed">
+                {edu.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Professional Certifications */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white flex items-center gap-2">
+          <ShieldCheck className="w-5 h-5 text-primary-600" />
+          <span>Verified Certifications</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-              In Progress
-            </span>
-            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
-              MBA in Business Strategy &amp; Marketing
-            </h3>
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Jindal Global Business School (Cohort 13)
-            </p>
-            <p className="text-xs text-gray-500">
-              Core curriculum: Corporate Strategy, Consumer Psychology, Commercial Thinking, Brand Equity.
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
-              Undergraduate Degree
-            </span>
-            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
-              Higher Education / Undergraduate
-            </h3>
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              University Degree
-            </p>
-            <p className="text-xs text-gray-500">
-              Foundational coursework in communication, digital media research, and analytical problem-solving.
-            </p>
-          </div>
+          {certificationsData.map((cert) => (
+            <div
+              key={cert.id}
+              className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio space-y-2"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+                  {cert.issuer}
+                </span>
+                <span className="text-xs text-gray-400 font-medium">
+                  {cert.date}
+                </span>
+              </div>
+              <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                {cert.name}
+              </h3>
+              <p className="text-xs text-gray-500">
+                Core competencies: {cert.skills}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

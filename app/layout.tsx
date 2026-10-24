@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Deepanshu Kainthola",
   },
   description:
-    "Portfolio of Deepanshu Kainthola — Marketing professional combining 6+ years hands-on execution across digital marketing, content strategy, SEO, employer branding, and corporate communication with strategic business thinking.",
+    "Portfolio of Deepanshu Kainthola — Marketing professional combining 7.7 Years Exp. across digital marketing, content strategy, SEO, employer branding, and corporate communication with strategic business thinking.",
   keywords: [
     "Deepanshu Kainthola",
     "Digital Marketing Manager",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: "https://deepanshu.kainthola.com",
     title: "Deepanshu Kainthola — Digital Marketing Manager & Marketing Strategist",
     description:
-      "6+ years driving digital campaigns, content architecture, SEO, and employer branding across 6 corporate brands.",
+      "7.7 Years Exp. driving digital campaigns, content architecture, SEO, and employer branding across 6 corporate brands.",
     siteName: "Deepanshu Kainthola Portfolio",
     images: [
       {
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Deepanshu Kainthola — Digital Marketing Manager",
-    description: "Marketing professional with 6+ years execution & strategic leadership.",
+    description: "Marketing professional with 7.7 Years Exp. execution & strategic leadership.",
     images: ["/images/deepanshu.webp"],
   },
   icons: {

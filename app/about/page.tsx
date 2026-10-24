@@ -8,7 +8,19 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Deepanshu Kainthola — Career Journey & Strategic Marketing",
-  description: "Learn about Deepanshu Kainthola's progression across digital publishing, content production, multi-brand digital marketing, and strategic MBA leadership.",
+  description: "Learn about Deepanshu Kainthola's 7.7 Years Exp. across video production, multi-brand digital marketing, and strategic MBA leadership.",
+  openGraph: {
+    title: "About Deepanshu Kainthola — Digital Marketing Manager",
+    description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership.",
+    type: "profile",
+    images: ["/images/deepanshu.webp"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Deepanshu Kainthola",
+    description: "7.7 Years Exp. in digital marketing and brand strategy.",
+    images: ["/images/deepanshu.webp"],
+  },
 };
 
 export default function AboutPage() {
@@ -46,7 +58,7 @@ export default function AboutPage() {
                   <p className="text-sm font-bold text-gray-900 dark:text-white">Vision India Services</p>
                 </div>
                 <div className="px-2.5 py-1 rounded-md bg-primary-100 dark:bg-primary-950/80 text-primary-700 dark:text-primary-300 text-xs font-bold">
-                  2023 – Present
+                  May 2025 – Present
                 </div>
               </div>
             </div>
@@ -66,10 +78,10 @@ export default function AboutPage() {
 
           <div className="space-y-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
             <p>
-              I am a marketing professional who combines <strong>hands-on execution with strategic business thinking</strong>. My journey did not start as a conventional corporate theorist; it began on the front lines of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
+              I am a marketing professional who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not start as a conventional corporate theorist; it began on the front lines of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
             </p>
             <p>
-              Beginning at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I mastered editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation subsequently evolved through high-growth digital content roles at Tatsat Group and Denvax, before stepping into full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
+              Beginning at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I mastered editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation subsequently evolved through high-impact content roles at Tatsat Chronicle, Denvax / Helios Educore, and as Video Producer at Meena Bazaar, before stepping into full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
             </p>
             <p>
               Today, I oversee integrated digital marketing, corporate communication, SEO architecture, employer branding, and multi-channel campaigns across <strong>6 flagship corporate brands</strong>. To deepen my financial and commercial decision-making, I am pursuing my <strong>MBA at Jindal Global Business School (Cohort 13)</strong>.

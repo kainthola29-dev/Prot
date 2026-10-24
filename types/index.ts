@@ -9,10 +9,30 @@ export interface StatItem {
 }
 
 export interface ServiceItem {
+  id?: string;
+  slug: string;
   title: string;
   category: string;
   description: string;
   iconName: string;
+  fullDescription?: string;
+  deliverables?: string[];
+  methodology?: { step: string; title: string; desc: string }[];
+  metrics?: { label: string; value: string }[];
+  tools?: string[];
+  featuredProjects?: string[];
+}
+
+export interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  organization: string;
+  relation: string;
+  quote: string;
+  avatar?: string;
+  rating?: number;
+  linkedin?: string;
 }
 
 export interface ProjectSection {

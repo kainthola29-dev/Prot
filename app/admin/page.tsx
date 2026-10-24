@@ -23,14 +23,15 @@ import {
   Sparkles,
   ExternalLink,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Star
 } from "lucide-react";
 
 export default function AdminPage() {
   const [passcode, setPasscode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState("");
-  const [activeTab, setActiveTab] = useState<"profile" | "stats" | "resume" | "projects" | "insights" | "services">("projects");
+  const [activeTab, setActiveTab] = useState<"profile" | "stats" | "resume" | "projects" | "insights" | "services" | "testimonials">("projects");
 
   const [loading, setLoading] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
@@ -318,6 +319,18 @@ export default function AdminPage() {
             >
               <Layers className="w-4 h-4" />
               <span>Services &amp; Capabilities</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab("testimonials")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                activeTab === "testimonials"
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <Star className="w-4 h-4" />
+              <span>Client &amp; Peer Testimonials</span>
             </button>
           </div>
 
@@ -1477,6 +1490,215 @@ export default function AdminPage() {
                       }}
                       className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
                     />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: TESTIMONIALS */}
+          {activeTab === "testimonials" && (
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
+                <div>
+                  <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+                    Client &amp; Leader Recommendations
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    Manage authentic endorsements from colleagues, clients, and leaders (e.g. Ridhi Goel, Sidhi Goel).
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newTestimonials = [
+                      ...(formData.testimonials || []),
+                      {
+                        id: `testimonial-${Date.now()}`,
+                        name: "New Recommender",
+                        role: "Marketing Director",
+                        organization: "Enterprise Partner",
+                        relation: "Worked together on digital growth initiatives",
+                        quote: "Deepanshu delivered exceptional results, combining strategic vision with hands-on campaign execution.",
+                        rating: 5,
+                        avatar: "/images/deepanshu.webp",
+                        linkedin: "https://www.linkedin.com/in/deepanshu-kainthola/",
+                      },
+                    ];
+                    setFormData({ ...formData, testimonials: newTestimonials });
+                  }}
+                  className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add Recommendation</span>
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {(formData.testimonials || []).map((t: any, idx: number) => (
+                  <div
+                    key={t.id || idx}
+                    className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 shadow-sm space-y-4"
+                  >
+                    <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        <span className="text-xs font-bold uppercase text-primary-600">
+                          Recommendation #{idx + 1}: {t.name}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (confirm(`Delete recommendation from "${t.name}"?`)) {
+                            const updated = formData.testimonials.filter((_: any, i: number) => i !== idx);
+                            setFormData({ ...formData, testimonials: updated });
+                          }
+                        }}
+                        className="text-gray-400 hover:text-red-600 p-1 cursor-pointer"
+                        title="Delete recommendation"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          value={t.name}
+                          onChange={(e) => {
+                            const updated = [...formData.testimonials];
+                            updated[idx].name = e.target.value;
+                            setFormData({ ...formData, testimonials: updated });
+                          }}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-bold"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                          Job Title / Role
+                        </label>
+                        <input
+                          type="text"
+                          value={t.role}
+                          onChange={(e) => {
+                            const updated = [...formData.testimonials];
+                            updated[idx].role = e.target.value;
+                            setFormData({ ...formData, testimonials: updated });
+                          }}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                          Organization / Company
+                        </label>
+                        <input
+                          type="text"
+                          value={t.organization}
+                          onChange={(e) => {
+                            const updated = [...formData.testimonials];
+                            updated[idx].organization = e.target.value;
+                            setFormData({ ...formData, testimonials: updated });
+                          }}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                          Working Relationship
+                        </label>
+                        <input
+                          type="text"
+                          value={t.relation}
+                          onChange={(e) => {
+                            const updated = [...formData.testimonials];
+                            updated[idx].relation = e.target.value;
+                            setFormData({ ...formData, testimonials: updated });
+                          }}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                        Endorsement Quote
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={t.quote}
+                        onChange={(e) => {
+                          const updated = [...formData.testimonials];
+                          updated[idx].quote = e.target.value;
+                          setFormData({ ...formData, testimonials: updated });
+                        }}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs leading-relaxed"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                          Avatar Photo / URL
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="text"
+                            value={t.avatar || ""}
+                            onChange={(e) => {
+                              const updated = [...formData.testimonials];
+                              updated[idx].avatar = e.target.value;
+                              setFormData({ ...formData, testimonials: updated });
+                            }}
+                            className="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                          />
+                          <label className="px-3 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-semibold cursor-pointer flex-shrink-0">
+                            <Upload className="w-3.5 h-3.5 inline mr-1" />
+                            <span>Upload</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={async (e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  const url = await handleFileUpload(file);
+                                  if (url) {
+                                    const updated = [...formData.testimonials];
+                                    updated[idx].avatar = url;
+                                    setFormData({ ...formData, testimonials: updated });
+                                  }
+                                }
+                              }}
+                            />
+                          </label>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                          LinkedIn Profile URL
+                        </label>
+                        <input
+                          type="text"
+                          value={t.linkedin || ""}
+                          onChange={(e) => {
+                            const updated = [...formData.testimonials];
+                            updated[idx].linkedin = e.target.value;
+                            setFormData({ ...formData, testimonials: updated });
+                          }}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                        />
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

@@ -6,7 +6,17 @@ import { HeroTyped } from "@/components/HeroTyped";
 import { SocialLinks } from "@/components/SocialIcons";
 import { IconRenderer } from "@/components/IconRenderer";
 import { JsonLd } from "@/components/JsonLd";
-import { ArrowRight, ArrowUpRight, Download, CheckCircle, Sparkles } from "lucide-react";
+import { 
+  ArrowRight, 
+  ArrowUpRight, 
+  Download, 
+  CheckCircle, 
+  Sparkles, 
+  Star, 
+  Quote, 
+  Linkedin,
+  ChevronRight 
+} from "lucide-react";
 
 export default function HomePage() {
   const content = getContent();
@@ -16,6 +26,8 @@ export default function HomePage() {
   const projectsData = content.projects;
   const caseStudiesData = content.caseStudies;
   const articlesData = content.articles;
+  const testimonialsData = content.testimonials;
+
   const personSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -127,10 +139,10 @@ export default function HomePage() {
                     Core Capabilities
                   </p>
                   <div className="flex flex-wrap gap-2 text-xs font-medium text-gray-700 dark:text-gray-300">
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">SEO</span>
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Content</span>
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Brand</span>
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Strategy</span>
+                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Digital Strategy</span>
+                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Content Architecture</span>
+                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Employer Branding</span>
+                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Video Production</span>
                   </div>
                 </div>
               </div>
@@ -171,7 +183,7 @@ export default function HomePage() {
 
                   {/* Experience Tag */}
                   <div className="absolute -top-3 -right-3 bg-primary-600 text-white rounded-xl px-3.5 py-1.5 shadow-md text-xs font-bold font-heading">
-                    6+ Years Exp
+                    7.7 Years Exp.
                   </div>
 
                 </div>
@@ -202,7 +214,7 @@ export default function HomePage() {
       </section>
 
       {/* EXPERTISE / SERVICES */}
-      <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="expertise" className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
             EXPERTISE
@@ -211,15 +223,16 @@ export default function HomePage() {
             What I Bring to the Table
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-            Bridging operational execution with commercial strategy across every modern marketing touchpoint.
+            Bridging operational execution with commercial strategy across 4 core marketing capabilities. Click any area to explore the full methodology.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {servicesData.map((service: any) => (
-            <div
+            <Link
               key={service.title}
-              className="group p-8 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover dark:hover:shadow-inbio-dark-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
+              href={`/expertise/${service.slug}`}
+              className="group p-8 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover dark:hover:shadow-inbio-dark-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between block"
             >
               <div>
                 <div className="w-14 h-14 rounded-xl bg-primary-50 dark:bg-primary-950/60 border border-primary-200 dark:border-primary-800 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
@@ -228,7 +241,7 @@ export default function HomePage() {
                 <span className="text-[11px] font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
                   {service.category}
                 </span>
-                <h3 className="text-xl font-bold font-heading text-gray-900 dark:text-white mt-1 mb-3">
+                <h3 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1 mb-3 group-hover:text-primary-600 transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -236,11 +249,11 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800/60 flex items-center text-xs font-semibold text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform">
-                <span>Explore Capabilities</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1" />
+              <div className="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800/60 flex items-center justify-between text-xs font-semibold text-primary-600 dark:text-primary-400">
+                <span>View Dedicated Page &amp; Deliverables</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -261,16 +274,17 @@ export default function HomePage() {
               href="/portfolio"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700"
             >
-              <span>View All 6 Projects</span>
+              <span>View All Projects</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {projectsData.slice(0, 3).map((project: any) => (
-              <div
+              <Link
                 key={project.id}
-                className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+                href={`/portfolio/${project.slug}`}
+                className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between block cursor-pointer"
               >
                 <div>
                   <div className="w-full h-48 rounded-xl overflow-hidden relative mb-5 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
@@ -317,15 +331,12 @@ export default function HomePage() {
 
                 <div className="pt-4 mt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs font-semibold">
                   <span className="text-gray-400">{project.period}</span>
-                  <Link
-                    href={`/portfolio/${project.slug}`}
-                    className="text-primary-600 dark:text-primary-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
-                  >
+                  <span className="text-primary-600 dark:text-primary-400 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     <span>View Project</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -333,16 +344,25 @@ export default function HomePage() {
 
       {/* FEATURED CASE STUDIES STRIP */}
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-            CASE STUDIES
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white">
-            Work That Drove Measurable Results
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-            Detailed breakdowns of campaigns with verifiable metrics, execution blueprints, and commercial impact.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+              CASE STUDIES
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white mt-1">
+              Work That Drove Measurable Results
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mt-2 max-w-2xl">
+              Detailed breakdowns of campaigns with verifiable metrics, execution blueprints, and commercial impact.
+            </p>
+          </div>
+          <Link
+            href="/case-studies"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 flex-shrink-0"
+          >
+            <span>View All Case Studies</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -393,86 +413,173 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+
+        {/* View All Case Studies Center CTA */}
+        <div className="text-center pt-10">
+          <Link
+            href="/case-studies"
+            className="px-8 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-primary-500 bg-white dark:bg-[#212428] text-gray-800 dark:text-gray-200 font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-sm"
+          >
+            <span>Explore All In-Depth Case Studies</span>
+            <ArrowRight className="w-4 h-4 text-primary-600" />
+          </Link>
+        </div>
       </section>
 
-      {/* STRATEGIC INSIGHTS / BLOG */}
-      <section className="py-20 bg-gray-50/70 dark:bg-[#1A1D21]/50 border-t border-gray-200 dark:border-gray-800">
+      {/* TESTIMONIALS & ENDORSEMENTS SECTION */}
+      <section className="py-20 bg-gray-50/70 dark:bg-[#1A1D21]/50 border-y border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-                INSIGHTS
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white mt-1">
-                Strategic Marketing Thoughts
-              </h2>
-            </div>
-            <Link
-              href="/insights"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700"
-            >
-              <span>Explore All Articles</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+              RECOMMENDATIONS &amp; CREDIBILITY
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white">
+              What Collaborators &amp; Leaders Say
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              Third-party testimonials and endorsements from colleagues, clients, and partners who have worked alongside me.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {articlesData.slice(0, 3).map((art: any) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonialsData.map((t) => (
               <div
-                key={art.id}
-                className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+                key={t.id}
+                className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark flex flex-col justify-between space-y-6 relative"
               >
-                <div>
-                  <div className="w-full h-48 rounded-xl overflow-hidden relative mb-5 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
-                    {art.image ? (
-                      <Image
-                        src={art.image}
-                        alt={art.title}
-                        width={800}
-                        height={480}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className={`w-full h-full bg-gradient-to-tr ${art.gradient} p-4 flex flex-col justify-between text-white`}>
-                        <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md w-fit">
-                          {art.category}
-                        </span>
-                        <span className="text-xs text-gray-200">{art.readTime}</span>
-                      </div>
-                    )}
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
-                        {art.category}
-                      </span>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      {[...Array(t.rating || 5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
                     </div>
-                    <div className="absolute top-3 right-3 z-10">
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-black/60 text-gray-200 backdrop-blur-md">
-                        {art.readTime}
-                      </span>
-                    </div>
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                      Verified Recommendation
+                    </span>
                   </div>
 
-                  <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors line-clamp-2 mb-2">
-                    {art.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-                    {art.excerpt}
+                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed italic">
+                    &ldquo;{t.quote}&rdquo;
                   </p>
                 </div>
 
-                <div className="pt-4 mt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs">
-                  <span className="text-gray-400">{art.date}</span>
-                  <Link
-                    href={`/insights/${art.slug}`}
-                    className="font-semibold text-primary-600 dark:text-primary-400 inline-flex items-center gap-1"
-                  >
-                    <span>Read Article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                <div className="pt-6 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full overflow-hidden relative border border-gray-200 dark:border-gray-700 bg-primary-100">
+                      {t.avatar ? (
+                        <Image src={t.avatar} alt={t.name} fill className="object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center font-bold text-primary-700">
+                          {t.name.slice(0, 2)}
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                        {t.name}
+                      </h3>
+                      <p className="text-xs font-medium text-primary-600 dark:text-primary-400">
+                        {t.role}
+                      </p>
+                      <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                        {t.relation}
+                      </p>
+                    </div>
+                  </div>
+
+                  {t.linkedin && (
+                    <a
+                      href={t.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-primary-600 transition-colors p-2"
+                      aria-label={`${t.name} LinkedIn`}
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* STRATEGIC INSIGHTS / BLOG */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+              INSIGHTS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white mt-1">
+              Strategic Marketing Thoughts
+            </h2>
+          </div>
+          <Link
+            href="/insights"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700"
+          >
+            <span>Explore All Articles</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {articlesData.slice(0, 3).map((art: any) => (
+            <Link
+              key={art.id}
+              href={`/insights/${art.slug}`}
+              className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between block cursor-pointer"
+            >
+              <div>
+                <div className="w-full h-48 rounded-xl overflow-hidden relative mb-5 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                  {art.image ? (
+                    <Image
+                      src={art.image}
+                      alt={art.title}
+                      width={800}
+                      height={480}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className={`w-full h-full bg-gradient-to-tr ${art.gradient} p-4 flex flex-col justify-between text-white`}>
+                      <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md w-fit">
+                        {art.category}
+                      </span>
+                      <span className="text-xs text-gray-200">{art.readTime}</span>
+                    </div>
+                  )}
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
+                      {art.category}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-black/60 text-gray-200 backdrop-blur-md">
+                      {art.readTime}
+                    </span>
+                  </div>
+                </div>
+
+                <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors line-clamp-2 mb-2">
+                  {art.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+                  {art.excerpt}
+                </p>
+              </div>
+
+              <div className="pt-4 mt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs">
+                <span className="text-gray-400">{art.date}</span>
+                <span className="font-semibold text-primary-600 dark:text-primary-400 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <span>Read Article</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 

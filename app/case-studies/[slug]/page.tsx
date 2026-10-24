@@ -20,9 +20,31 @@ export function generateMetadata({ params }: Props): Metadata {
   const cs = caseStudiesData.find((c) => c.slug === params.slug);
   if (!cs) return { title: "Case Study Not Found" };
 
+  const imageUrl = "/images/deepanshu.webp";
+
   return {
     title: `${cs.title} — Detailed Case Study`,
     description: cs.subtitle,
+    openGraph: {
+      title: cs.title,
+      description: cs.subtitle,
+      type: "website",
+      url: `https://deepanshu.kainthola.com/case-studies/${cs.slug}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: cs.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: cs.title,
+      description: cs.subtitle,
+      images: [imageUrl],
+    },
   };
 }
 

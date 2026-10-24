@@ -25,9 +25,31 @@ export function generateMetadata({ params }: Props): Metadata {
   const art = content.articles.find((a: any) => a.slug === params.slug);
   if (!art) return { title: "Article Not Found" };
 
+  const imageUrl = art.image || "/images/deepanshu.webp";
+
   return {
     title: `${art.title} — Strategic Marketing Essay`,
     description: art.excerpt,
+    openGraph: {
+      title: art.title,
+      description: art.excerpt,
+      type: "article",
+      url: `https://deepanshu.kainthola.com/insights/${art.slug}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: art.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: art.title,
+      description: art.excerpt,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -209,15 +231,18 @@ export default function ArticleDetailPage({ params }: Props) {
 
             {/* Key Takeaways Box */}
             {art.takeaways && art.takeaways.length > 0 && (
-              <section id="takeaways" className="rounded-2xl p-6 bg-gradient-to-tr from-emerald-950/30 to-teal-950/20 border border-emerald-800/40 space-y-3">
-                <h3 className="text-lg font-bold font-heading text-emerald-400">
-                  Key Strategic Takeaways
-                </h3>
-                <ul className="space-y-2.5 text-sm text-gray-300">
+              <section id="takeaways" className="rounded-2xl p-6 sm:p-8 bg-emerald-50 dark:bg-emerald-950/50 border-2 border-emerald-300 dark:border-emerald-700/80 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300">
+                  <Bookmark className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  <h3 className="text-xl font-bold font-heading">
+                    Key Strategic Takeaways
+                  </h3>
+                </div>
+                <ul className="space-y-3 text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
                   {art.takeaways.map((point: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-2.5">
-                      <span className="text-emerald-400 font-bold">•</span>
-                      <span>{point}</span>
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 mt-2 flex-shrink-0" />
+                      <span className="leading-relaxed">{point}</span>
                     </li>
                   ))}
                 </ul>

@@ -3,7 +3,7 @@ import { profileData } from "@/data/portfolioData";
 import { ContactForm } from "@/components/ContactForm";
 import { SocialLinks } from "@/components/SocialIcons";
 import { JsonLd } from "@/components/JsonLd";
-import { Mail, MapPin, CheckCircle2, Sparkles, Building, Briefcase } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, Sparkles, Building, Briefcase } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -49,7 +49,7 @@ export default function ContactPage() {
 
             <div className="space-y-4">
               <a
-                href="mailto:deepanshu@kainthola.com"
+                href={`mailto:${profileData.email}`}
                 className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/80 dark:border-gray-800 hover:border-primary-500/60 transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 flex items-center justify-center flex-shrink-0">
@@ -58,7 +58,22 @@ export default function ContactPage() {
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block">Email Directly</span>
                   <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
-                    deepanshu@kainthola.com
+                    {profileData.email}
+                  </span>
+                </div>
+              </a>
+
+              <a
+                href={`tel:${profileData.phone}`}
+                className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/80 dark:border-gray-800 hover:border-primary-500/60 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block">Direct Phone</span>
+                  <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                    {profileData.phone}
                   </span>
                 </div>
               </a>
