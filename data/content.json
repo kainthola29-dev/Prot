@@ -1,0 +1,229 @@
+{
+  "profile": {
+    "name": "Deepanshu Kainthola",
+    "shortName": "D. Kainthola",
+    "monogram": "DK",
+    "tagline": "WELCOME TO MY WORLD",
+    "roleH1": "Digital Marketing Manager",
+    "typedRoles": [
+      "& Marketing Strategist.",
+      "& Content Architect.",
+      "& Brand Growth Manager.",
+      "& Performance Driver."
+    ],
+    "bio": "Practical marketing execution backed by strategic and business thinking. 6+ years orchestrating digital campaigns, employer branding, SEO, content architecture, and multi-brand growth across 6 flagship enterprise entities.",
+    "location": "Noida / Delhi NCR, India",
+    "email": "deepanshu@kainthola.com",
+    "linkedin": "https://linkedin.com/in/deepanshukainthola",
+    "twitter": "https://twitter.com",
+    "instagram": "https://instagram.com",
+    "youtube": "https://youtube.com",
+    "statusBadge": "Available for Senior Marketing Roles (₹18–25 LPA)",
+    "primaryCompany": "Vision India Services Pvt. Ltd.",
+    "companyUrl": "https://vispl.co.in",
+    "profilePhoto": "/images/deepanshu.webp"
+  },
+  "stats": [
+    { "value": "10M+", "label": "Audience Reach" },
+    { "value": "6+", "label": "Years Experience" },
+    { "value": "6+", "label": "Brands Managed" },
+    { "value": "850+", "label": "Webinar Attendees" }
+  ],
+  "services": [
+    {
+      "title": "Digital Marketing & Strategy",
+      "category": "PERFORMANCE & GROWTH",
+      "description": "End-to-end full-funnel digital strategy, lead generation campaigns, multi-channel distribution, and ROI-focused acquisition.",
+      "iconName": "BarChart3"
+    },
+    {
+      "title": "Content Strategy & Copywriting",
+      "category": "BRAND NARRATIVE",
+      "description": "Editorial roadmaps, high-converting copy, executive thought leadership, and storytelling that connects audience engagement to bottom-line results.",
+      "iconName": "FileText"
+    },
+    {
+      "title": "SEO & Web Architecture",
+      "category": "ORGANIC VISIBILITY",
+      "description": "Comprehensive on-page, technical SEO, semantic content structuring, and user journey optimization for sustainable organic discovery.",
+      "iconName": "Search"
+    },
+    {
+      "title": "Employer Branding & Comms",
+      "category": "TALENT & REPUTATION",
+      "description": "Corporate positioning, employee advocacy, CSR storytelling, and talent brand transformation across LinkedIn and national media.",
+      "iconName": "Users"
+    },
+    {
+      "title": "Video & Media Production",
+      "category": "VISUAL STORYTELLING",
+      "description": "Hands-on video production, post-production supervision, campaign films, time-lapses, and high-retention short-form digital formats.",
+      "iconName": "Video"
+    },
+    {
+      "title": "AI Workflows & MarTech",
+      "category": "INNOVATION & EFFICIENCY",
+      "description": "Deploying generative AI tooling, automated content pipelines, analytics integrations, and next-gen marketing innovation.",
+      "iconName": "Cpu"
+    }
+  ],
+  "projects": [
+    {
+      "id": "employ-india",
+      "slug": "employ-india",
+      "title": "Employ India Campaign",
+      "category": "Digital Marketing",
+      "organization": "Vision India Services",
+      "period": "2024 – 2025",
+      "description": "Nationwide youth employment drive bridging aspirational jobseekers with corporate opportunities through integrated digital marketing.",
+      "gradient": "from-blue-600 to-indigo-900",
+      "image": "/images/projects/employ-india.svg",
+      "badge": "Flagship Initiative"
+    },
+    {
+      "id": "just-job",
+      "slug": "just-job",
+      "title": "Just Job Recruitment Marketing",
+      "category": "Social Media",
+      "organization": "Just Job",
+      "period": "2023 – 2024",
+      "description": "Data-driven social media growth and candidate acquisition campaign for a high-volume entry-level job portal.",
+      "gradient": "from-purple-600 to-blue-900",
+      "image": "/images/projects/just-job.svg",
+      "badge": "Growth Engine"
+    },
+    {
+      "id": "liveskills",
+      "slug": "liveskills",
+      "title": "LiveSkills E-Skilling Content",
+      "category": "Content Strategy",
+      "organization": "LiveSkills",
+      "period": "2023 – 2024",
+      "description": "Curriculum narrative, explainer modules, and digital skill certification campaigns targeting students and upskillers.",
+      "gradient": "from-emerald-600 to-teal-900",
+      "image": "/images/projects/liveskills.svg",
+      "badge": "EdTech"
+    },
+    {
+      "id": "vispl-employer-branding",
+      "slug": "vispl-employer-branding",
+      "title": "Vision India Employer Branding",
+      "category": "Employer Branding",
+      "organization": "Vision India Services",
+      "period": "2023 – Present",
+      "description": "Elevating internal employee stories, leadership credibility, culture highlights, and Great Place to Work communications.",
+      "gradient": "from-amber-600 to-rose-900",
+      "image": "/images/projects/vispl-employer-branding.svg",
+      "badge": "Corporate Rep"
+    },
+    {
+      "id": "greencall-seo",
+      "slug": "greencall-seo",
+      "title": "GreenCall HRMS SEO & Web",
+      "category": "SEO & Web",
+      "organization": "GreenCall",
+      "period": "2024",
+      "description": "Full technical SEO audit, metadata overhaul, and B2B SaaS informational content pillars for enterprise HRMS product.",
+      "gradient": "from-teal-600 to-cyan-900",
+      "image": "/images/projects/greencall-seo.svg",
+      "badge": "B2B SaaS"
+    },
+    {
+      "id": "niyukti-shakti",
+      "slug": "niyukti-shakti",
+      "title": "Niyukti Shakti Women Campaign",
+      "category": "Video Production",
+      "organization": "Talent Foundation",
+      "period": "2024",
+      "description": "Docu-style video series highlighting women empowerment, skill training triumphs, and workplace inclusivity.",
+      "gradient": "from-orange-600 to-red-900",
+      "image": "/images/projects/niyukti-shakti.svg",
+      "badge": "Impact Film"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "sunday-headlines",
+      "role": "Production Head & Website Manager",
+      "organization": "The Sunday Headlines",
+      "period": "Nov 2016 – Nov 2018",
+      "description": "Led end-to-end digital publishing, studio video production, and CMS portal management for a digital news and media platform.",
+      "skills": ["Video Production", "Website Management", "Digital Publishing", "Team Management"]
+    },
+    {
+      "id": "tatsat",
+      "role": "Digital Content Producer & Social Media Manager",
+      "organization": "Tatsat Group",
+      "period": "Mar 2021 – Oct 2022",
+      "description": "Managed cross-platform digital content distribution, audience engagement workflows, and multimedia campaigns.",
+      "skills": ["Social Media Strategy", "Content Architecture", "Audience Growth", "Digital Storytelling"]
+    },
+    {
+      "id": "denvax",
+      "role": "Digital Content Producer",
+      "organization": "Denvax",
+      "period": "Oct 2022 – Mar 2023",
+      "description": "Spearheaded patient education communication, healthcare content simplification, doctor video interviews, and digital compliance.",
+      "skills": ["Healthcare Marketing", "Educational Video", "Brand Trust", "Digital Communication"]
+    },
+    {
+      "id": "vispl",
+      "role": "Digital Marketing Manager",
+      "organization": "Vision India Services Pvt. Ltd.",
+      "period": "2023 – Present",
+      "description": "Leading the core digital marketing and brand presence across 6 corporate brands (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks).",
+      "skills": ["Marketing Strategy", "Multi-Brand Management", "SEO & Web", "Employer Branding", "Lead Generation", "Executive Comms"],
+      "isCurrent": true
+    },
+    {
+      "id": "mba",
+      "role": "MBA in Business Strategy & Marketing",
+      "organization": "Jindal Global Business School (Cohort 13)",
+      "period": "In Progress",
+      "description": "Augmenting 6+ years of field execution with rigorous corporate strategy, commercial finance, consumer psychology, and executive leadership frameworks.",
+      "skills": ["Corporate Strategy", "Financial Acumen", "Business Leadership", "Marketing Analytics"]
+    }
+  ],
+  "articles": [
+    {
+      "id": "activity-vs-strategy",
+      "slug": "why-marketing-teams-confuse-activity-with-strategy",
+      "title": "Why Most Marketing Teams Confuse Activity With Strategy",
+      "category": "Marketing Strategy",
+      "readTime": "6 min read",
+      "date": "Oct 2026",
+      "excerpt": "Posting five times a week and pumping ad dollars into top-of-funnel clicks is not a marketing strategy. Here is how high-growth teams distinguish frenetic motion from calculated business progress.",
+      "image": "/images/insights/activity-vs-strategy.svg"
+    },
+    {
+      "id": "content-seo-2026",
+      "slug": "content-seo-in-2026",
+      "title": "Content SEO in 2026: Why Experience Beats Keywords",
+      "category": "SEO & Web",
+      "readTime": "7 min read",
+      "date": "Sep 2026",
+      "excerpt": "With search engines flooded by synthetic content, algorithmic ranking now disproportionately rewards demonstrated first-hand experience (E-E-A-T) over programmatic keyword density.",
+      "image": "/images/insights/content-seo-2026.svg"
+    },
+    {
+      "id": "ai-in-daily-workflow",
+      "slug": "how-i-use-ai-in-daily-marketing-workflow",
+      "title": "How I Actually Use AI in My Daily Marketing Workflow",
+      "category": "AI & Innovation",
+      "readTime": "5 min read",
+      "date": "Aug 2026",
+      "excerpt": "Beyond prompt engineering clichés: how practical marketers use custom LLM workflows for audience sentiment mapping, rapid campaign testing, and editorial velocity.",
+      "image": "/images/insights/ai-workflow.svg"
+    },
+    {
+      "id": "mba-marketing-lessons",
+      "slug": "what-my-mba-taught-me-about-marketing",
+      "title": "What My MBA Taught Me About Marketing That Work Didn't",
+      "category": "Business & Leadership",
+      "readTime": "5 min read",
+      "date": "Jul 2026",
+      "excerpt": "How pairing 6 years of hands-on media production and social growth with formal corporate strategy transformed my perspective on brand equity and commercial negotiation.",
+      "image": "/images/insights/mba-lessons.svg"
+    }
+  ]
+}
