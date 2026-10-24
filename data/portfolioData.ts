@@ -99,6 +99,7 @@ export const projectsData: ProjectItem[] = [
     period: "2024 – 2025",
     description: "Nationwide youth employment drive bridging aspirational jobseekers with corporate opportunities through integrated digital marketing.",
     gradient: "from-blue-600 to-indigo-900",
+    image: "/images/projects/employ-india.svg",
     badge: "Flagship Initiative",
     stats: [
       { label: "Target Audience", value: "Pan-India" },
@@ -138,6 +139,7 @@ export const projectsData: ProjectItem[] = [
     period: "2023 – 2024",
     description: "Data-driven social media growth and candidate acquisition campaign for a high-volume entry-level job portal.",
     gradient: "from-purple-600 to-blue-900",
+    image: "/images/projects/just-job.svg",
     badge: "Growth Engine",
     stats: [
       { label: "Platform", value: "Social & App" },
@@ -153,6 +155,7 @@ export const projectsData: ProjectItem[] = [
     period: "2023 – 2024",
     description: "Curriculum narrative, explainer modules, and digital skill certification campaigns targeting students and upskillers.",
     gradient: "from-emerald-600 to-teal-900",
+    image: "/images/projects/liveskills.svg",
     badge: "EdTech",
     stats: [
       { label: "Format", value: "Video & Editorial" },
@@ -168,6 +171,7 @@ export const projectsData: ProjectItem[] = [
     period: "2023 – Present",
     description: "Elevating internal employee stories, leadership credibility, culture highlights, and Great Place to Work communications.",
     gradient: "from-amber-600 to-rose-900",
+    image: "/images/projects/vispl-employer-branding.svg",
     badge: "Corporate Rep",
     stats: [
       { label: "Medium", value: "LinkedIn & Video" },
@@ -183,6 +187,7 @@ export const projectsData: ProjectItem[] = [
     period: "2024",
     description: "Full technical SEO audit, metadata overhaul, and B2B SaaS informational content pillars for enterprise HRMS product.",
     gradient: "from-teal-600 to-cyan-900",
+    image: "/images/projects/greencall-seo.svg",
     badge: "B2B SaaS",
     stats: [
       { label: "Focus", value: "Organic Search" },
@@ -198,6 +203,7 @@ export const projectsData: ProjectItem[] = [
     period: "2024",
     description: "Docu-style video series highlighting women empowerment, skill training triumphs, and workplace inclusivity.",
     gradient: "from-orange-600 to-red-900",
+    image: "/images/projects/niyukti-shakti.svg",
     badge: "Impact Film",
     stats: [
       { label: "Type", value: "Docu-series" },
@@ -375,6 +381,7 @@ export const articlesData: ArticleItem[] = [
     date: "Oct 2026",
     excerpt: "Posting five times a week and pumping ad dollars into top-of-funnel clicks is not a marketing strategy. Here is how high-growth teams distinguish frenetic motion from calculated business progress.",
     gradient: "from-emerald-600 to-teal-900",
+    image: "/images/insights/activity-vs-strategy.svg",
     toc: [
       { id: "problem", label: "1. The Trap of The 'Busy' Marketing Team" },
       { id: "activity-driven", label: "2. The Anatomy of Activity-Driven Marketing" },
@@ -409,7 +416,8 @@ export const articlesData: ArticleItem[] = [
     readTime: "7 min read",
     date: "Sep 2026",
     excerpt: "With search engines flooded by synthetic content, algorithmic ranking now disproportionately rewards demonstrated first-hand experience (E-E-A-T) over programmatic keyword density.",
-    gradient: "from-blue-600 to-indigo-900"
+    gradient: "from-blue-600 to-indigo-900",
+    image: "/images/insights/content-seo-2026.svg"
   },
   {
     id: "ai-in-daily-workflow",
@@ -419,7 +427,8 @@ export const articlesData: ArticleItem[] = [
     readTime: "5 min read",
     date: "Aug 2026",
     excerpt: "Beyond prompt engineering clichés: how practical marketers use custom LLM workflows for audience sentiment mapping, rapid campaign testing, and editorial velocity.",
-    gradient: "from-purple-600 to-slate-900"
+    gradient: "from-purple-600 to-slate-900",
+    image: "/images/insights/ai-workflow.svg"
   },
   {
     id: "mba-marketing-lessons",
@@ -429,7 +438,8 @@ export const articlesData: ArticleItem[] = [
     readTime: "5 min read",
     date: "Jul 2026",
     excerpt: "How pairing 6 years of hands-on media production and social growth with formal corporate strategy transformed my perspective on brand equity and commercial negotiation.",
-    gradient: "from-amber-600 to-zinc-900"
+    gradient: "from-amber-600 to-zinc-900",
+    image: "/images/insights/mba-lessons.svg"
   }
 ];
 

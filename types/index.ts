@@ -24,6 +24,7 @@ export interface ProjectItem {
   period: string;
   description: string;
   gradient: string;
+  image?: string;
   badge?: string;
   stats?: { label: string; value: string }[];
   overview?: {
@@ -79,6 +80,7 @@ export interface ArticleItem {
   date: string;
   excerpt: string;
   gradient: string;
+  image?: string;
   toc?: { id: string; label: string }[];
   content?: string[];
   takeaways?: string[];

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { articlesData } from "@/data/portfolioData";
 import { JsonLd } from "@/components/JsonLd";
 import { ArrowRight, Clock, Calendar, Sparkles } from "lucide-react";
@@ -45,18 +46,41 @@ export default function InsightsPage() {
             className="group rounded-3xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              <div className={`w-full h-48 rounded-2xl bg-gradient-to-tr ${art.gradient} p-6 flex flex-col justify-between text-white mb-6 relative overflow-hidden shadow-inner`}>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/40 backdrop-blur-md">
+              <div className="w-full h-48 rounded-2xl overflow-hidden relative mb-6 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                {art.image ? (
+                  <Image
+                    src={art.image}
+                    alt={art.title}
+                    width={800}
+                    height={480}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className={`w-full h-48 rounded-2xl bg-gradient-to-tr ${art.gradient} p-6 flex flex-col justify-between text-white relative overflow-hidden shadow-inner`}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/40 backdrop-blur-md">
+                        {art.category}
+                      </span>
+                      <span className="text-xs font-medium text-gray-200 flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{art.readTime}</span>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-xs text-gray-300 font-semibold">{art.date}</span>
+                    </div>
+                  </div>
+                )}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
                     {art.category}
                   </span>
-                  <span className="text-xs font-medium text-gray-200 flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5" />
+                </div>
+                <div className="absolute top-3 right-3 z-10">
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-black/60 text-gray-200 backdrop-blur-md flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
                     <span>{art.readTime}</span>
                   </span>
-                </div>
-                <div>
-                  <span className="text-xs text-gray-300 font-semibold">{art.date}</span>
                 </div>
               </div>
 

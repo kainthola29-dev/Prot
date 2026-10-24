@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="art-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="card-art-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#art-grad-2)" />
+
+  <g transform="translate(140, 60)">
+    <rect width="520" height="340" rx="24" fill="url(#card-art-2)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="30" y="28" width="110" height="26" rx="13" fill="rgba(59, 130, 246, 0.3)" stroke="#60A5FA" stroke-width="1" />
+    <text x="85" y="45" fill="#BFDBFE" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">SEO &amp; WEB</text>
+
+    <text x="30" y="95" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">CONTENT SEO IN 2026</text>
+    <text x="30" y="122" fill="#93C5FD" font-family="system-ui, sans-serif" font-size="14" font-weight="500">Why First-Hand Experience Beats Keyword Density</text>
+
+    <g transform="translate(30, 150)">
+      <rect width="460" height="130" rx="12" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="32" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="12" font-weight="700">GOOGLE E-E-A-T ALGORITHM PARADIGM</text>
+      <text x="24" y="58" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Experience • Expertise • Authoritativeness • Trust</text>
+      <text x="24" y="82" fill="#DBEAFE" font-family="system-ui, sans-serif" font-size="12">Moving beyond algorithmic keyword stuffing into proprietary domain depth</text>
+    </g>
+  </g>
+</svg>

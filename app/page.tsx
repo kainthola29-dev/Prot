@@ -273,19 +273,43 @@ export default function HomePage() {
                 className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className={`w-full h-44 rounded-xl bg-gradient-to-tr ${project.gradient} p-5 flex flex-col justify-between text-white relative overflow-hidden mb-5`}>
-                    <span className="text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-md w-fit">
-                      {project.organization}
-                    </span>
-                    <div>
-                      <span className="text-xs font-medium text-emerald-200 uppercase tracking-wider">
-                        {project.category}
+                  <div className="w-full h-48 rounded-xl overflow-hidden relative mb-5 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={800}
+                        height={480}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className={`w-full h-full bg-gradient-to-tr ${project.gradient} p-5 flex flex-col justify-between text-white`}>
+                        <span className="text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-md w-fit">
+                          {project.organization}
+                        </span>
+                        <div>
+                          <span className="text-xs font-medium text-emerald-200 uppercase tracking-wider">
+                            {project.category}
+                          </span>
+                          <h3 className="text-lg font-bold font-heading text-white">
+                            {project.title}
+                          </h3>
+                        </div>
+                      </div>
+                    )}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
+                        {project.organization}
                       </span>
-                      <h3 className="text-lg font-bold font-heading text-white">
-                        {project.title}
-                      </h3>
                     </div>
                   </div>
+
+                  <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
+                    {project.category}
+                  </span>
+                  <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white mt-1 mb-2 group-hover:text-primary-600 transition-colors">
+                    {project.title}
+                  </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
                     {project.description}
                   </p>
@@ -399,12 +423,35 @@ export default function HomePage() {
                 className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className={`w-full h-40 rounded-xl bg-gradient-to-tr ${art.gradient} p-4 flex flex-col justify-between text-white mb-5`}>
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md w-fit">
-                      {art.category}
-                    </span>
-                    <span className="text-xs text-gray-200">{art.readTime}</span>
+                  <div className="w-full h-48 rounded-xl overflow-hidden relative mb-5 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                    {art.image ? (
+                      <Image
+                        src={art.image}
+                        alt={art.title}
+                        width={800}
+                        height={480}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className={`w-full h-full bg-gradient-to-tr ${art.gradient} p-4 flex flex-col justify-between text-white`}>
+                        <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md w-fit">
+                          {art.category}
+                        </span>
+                        <span className="text-xs text-gray-200">{art.readTime}</span>
+                      </div>
+                    )}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
+                        {art.category}
+                      </span>
+                    </div>
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-black/60 text-gray-200 backdrop-blur-md">
+                        {art.readTime}
+                      </span>
+                    </div>
                   </div>
+
                   <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors line-clamp-2 mb-2">
                     {art.title}
                   </h3>
@@ -437,8 +484,11 @@ export default function HomePage() {
             <span>Target Roles: ₹18–25 LPA</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading tracking-tight max-w-2xl mx-auto">
-            Ready to Accelerate Your Marketing &amp; Brand Growth?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading tracking-tight max-w-2xl mx-auto text-white">
+            Ready to Accelerate Your{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">
+              Marketing &amp; Brand Growth?
+            </span>
           </h2>
 
           <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">

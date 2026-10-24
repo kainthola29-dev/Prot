@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ProjectItem } from "@/types";
 import { ArrowUpRight } from "lucide-react";
 
@@ -54,29 +55,55 @@ export function PortfolioFilter({ projects }: PortfolioFilterProps) {
           >
             <div>
               {/* Thumbnail Area */}
-              <div className={`w-full h-48 rounded-xl bg-gradient-to-tr ${project.gradient} p-6 flex flex-col justify-between text-white relative overflow-hidden mb-6 shadow-inner`}>
-                <div className="flex items-center justify-between z-10">
-                  <span className="text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-md border border-white/20">
+              <div className="w-full h-48 rounded-xl overflow-hidden relative mb-6 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={800}
+                    height={480}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-tr ${project.gradient} p-6 flex flex-col justify-between text-white relative overflow-hidden shadow-inner`}>
+                    <div className="flex items-center justify-between z-10">
+                      <span className="text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-md border border-white/20">
+                        {project.organization}
+                      </span>
+                      {project.badge && (
+                        <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-md">
+                          {project.badge}
+                        </span>
+                      )}
+                    </div>
+                    <div className="z-10">
+                      <span className="text-xs font-medium text-emerald-200 uppercase tracking-wider">
+                        {project.category}
+                      </span>
+                      <h3 className="text-lg font-bold font-heading text-white mt-1 group-hover:translate-x-0.5 transition-transform">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </div>
+                )}
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
+                  <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
                     {project.organization}
                   </span>
                   {project.badge && (
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-md">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/80 text-white backdrop-blur-md">
                       {project.badge}
                     </span>
                   )}
                 </div>
-                <div className="z-10">
-                  <span className="text-xs font-medium text-emerald-200 uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                  <h3 className="text-lg font-bold font-heading text-white mt-1 group-hover:translate-x-0.5 transition-transform">
-                    {project.title}
-                  </h3>
-                </div>
-
-                {/* Decorative blob in thumb */}
-                <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-white/10 blur-xl pointer-events-none" />
               </div>
+
+              <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
+                {project.category}
+              </span>
+              <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white mt-1 mb-2 group-hover:text-primary-600 transition-colors">
+                {project.title}
+              </h3>
 
               {/* Description */}
               <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 mb-6">

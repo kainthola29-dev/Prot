@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="art-grad-4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#451A03" />
+      <stop offset="50%" stop-color="#92400E" />
+      <stop offset="100%" stop-color="#18181B" />
+    </linearGradient>
+    <linearGradient id="card-art-4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#art-grad-4)" />
+
+  <g transform="translate(140, 60)">
+    <rect width="520" height="340" rx="24" fill="url(#card-art-4)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="30" y="28" width="170" height="26" rx="13" fill="rgba(245, 158, 11, 0.3)" stroke="#FBBF24" stroke-width="1" />
+    <text x="115" y="45" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">BUSINESS LEADERSHIP</text>
+
+    <text x="30" y="95" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">WHAT MY MBA TAUGHT ME</text>
+    <text x="30" y="122" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="14" font-weight="500">Bridging 6 Years of Media Execution with Corporate Strategy</text>
+
+    <g transform="translate(30, 150)">
+      <rect width="460" height="130" rx="12" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="32" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="12" font-weight="700">JINDAL GLOBAL BUSINESS SCHOOL (COHORT 13)</text>
+      <text x="24" y="58" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Commercial Finance • Consumer Behaviour • Executive Alignment</text>
+      <text x="24" y="82" fill="#FEF3C7" font-family="system-ui, sans-serif" font-size="12">Transforming marketing from a cost center into a strategic P&amp;L growth engine</text>
+    </g>
+  </g>
+</svg>
