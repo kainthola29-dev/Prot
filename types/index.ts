@@ -1,0 +1,91 @@
+export interface NavItem {
+  name: string;
+  href: string;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
+export interface ServiceItem {
+  title: string;
+  category: string;
+  description: string;
+  iconName: string;
+}
+
+export interface ProjectItem {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  organization: string;
+  period: string;
+  description: string;
+  gradient: string;
+  badge?: string;
+  stats?: { label: string; value: string }[];
+  overview?: {
+    context: string;
+    objective: string;
+    role: string;
+    strategy: string[];
+    execution: string[];
+    results: string[];
+    lessons: string[];
+  };
+}
+
+export interface CaseStudyItem {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  organization: string;
+  date: string;
+  heroGradient: string;
+  metrics: { label: string; value: string }[];
+  sections: {
+    challenge: string;
+    context: string;
+    strategy: string[];
+    execution: string[];
+    results: string[];
+    lessons: string[];
+    businessImpact: string;
+  };
+}
+
+export interface TimelineItem {
+  id: string;
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
+  skills: string[];
+  isCurrent?: boolean;
+  isFuture?: boolean;
+  isPlaceholder?: boolean;
+}
+
+export interface ArticleItem {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  readTime: string;
+  date: string;
+  excerpt: string;
+  gradient: string;
+  toc?: { id: string; label: string }[];
+  content?: string[];
+  takeaways?: string[];
+  glossary?: { term: string; definition: string }[];
+}
+
+export interface SkillCategory {
+  title: string;
+  skills: string[];
+}
