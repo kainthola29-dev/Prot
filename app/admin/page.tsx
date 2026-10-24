@@ -18,20 +18,29 @@ import {
   FolderKanban, 
   BookOpen, 
   Layers,
-  ArrowRight
+  ArrowRight,
+  FileText,
+  Sparkles,
+  ExternalLink,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 
 export default function AdminPage() {
   const [passcode, setPasscode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState("");
-  const [activeTab, setActiveTab] = useState<"profile" | "stats" | "resume" | "projects" | "insights" | "services">("profile");
+  const [activeTab, setActiveTab] = useState<"profile" | "stats" | "resume" | "projects" | "insights" | "services">("projects");
 
   const [loading, setLoading] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
 
   const [formData, setFormData] = useState<any>(null);
+
+  // Expanded accordion states
+  const [expandedProject, setExpandedProject] = useState<number | null>(0);
+  const [expandedArticle, setExpandedArticle] = useState<number | null>(0);
 
   // Load content
   const loadContent = async () => {
@@ -50,7 +59,6 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    // Check local session
     const savedPin = sessionStorage.getItem("admin_passcode");
     if (savedPin) {
       setPasscode(savedPin);
@@ -98,11 +106,8 @@ export default function AdminPage() {
     }
   };
 
-  // Upload handler for photos
-  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>, targetField: string) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
+  // Upload handler for photos & featured images
+  const handleFileUpload = async (file: File): Promise<string | null> => {
     const data = new FormData();
     data.append("file", file);
 
@@ -111,22 +116,24 @@ export default function AdminPage() {
         method: "POST",
         body: data,
       });
-
       const result = await res.json();
       if (res.ok && result.url) {
-        if (targetField === "profilePhoto") {
-          setFormData({
-            ...formData,
-            profile: { ...formData.profile, profilePhoto: result.url }
-          });
-        }
-        alert(`Photo uploaded successfully! URL: ${result.url}`);
-      } else {
-        alert(result.error || "Upload failed");
+        return result.url;
       }
+      alert(result.error || "Upload failed");
+      return null;
     } catch (err) {
       alert("Error uploading file");
+      return null;
     }
+  };
+
+  // Helper to generate slug from title
+  const slugify = (text: string) => {
+    return text
+      .toLowerCase()
+      .replace(/[^\w ]+/g, "")
+      .replace(/ +/g, "-");
   };
 
   if (!isAuthenticated) {
@@ -142,7 +149,7 @@ export default function AdminPage() {
               Admin Portal
             </h1>
             <p className="text-xs text-gray-500 mt-1">
-              Enter admin passcode to customize portfolio content and photos
+              Enter admin passcode to customize portfolio content and articles
             </p>
           </div>
 
@@ -193,10 +200,10 @@ export default function AdminPage() {
             </span>
           </div>
           <h1 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mt-0.5">
-            Customize Website Content
+            Website Content &amp; Article Manager
           </h1>
           <p className="text-xs text-gray-500">
-            Edit text, stats, resume timeline, projects, and photos like a form. Click &quot;Save Changes&quot; to apply.
+            Publish new projects, compose full blog essays, and customize media like WordPress.
           </p>
         </div>
 
@@ -242,6 +249,30 @@ export default function AdminPage() {
         <div className="lg:col-span-3 space-y-2">
           <div className="p-2 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm space-y-1">
             <button
+              onClick={() => setActiveTab("projects")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                activeTab === "projects"
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <FolderKanban className="w-4 h-4" />
+              <span>Projects &amp; Case Studies</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab("insights")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                activeTab === "insights"
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Blog Posts &amp; Insights</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab("profile")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "profile"
@@ -278,30 +309,6 @@ export default function AdminPage() {
             </button>
 
             <button
-              onClick={() => setActiveTab("projects")}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
-                activeTab === "projects"
-                  ? "bg-primary-600 text-white shadow-sm"
-                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <FolderKanban className="w-4 h-4" />
-              <span>Projects &amp; Portfolio</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab("insights")}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
-                activeTab === "insights"
-                  ? "bg-primary-600 text-white shadow-sm"
-                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>Strategic Thoughts (Blog)</span>
-            </button>
-
-            <button
               onClick={() => setActiveTab("services")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "services"
@@ -315,15 +322,836 @@ export default function AdminPage() {
           </div>
 
           <div className="p-4 rounded-2xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 text-xs text-gray-500 space-y-1">
-            <p className="font-semibold text-gray-700 dark:text-gray-300">💡 Quick Tip:</p>
-            <p>Koi bhi text change karne ke baad upar &quot;Save Changes&quot; button dabayein, live site automatically update ho jayegi.</p>
+            <p className="font-semibold text-gray-700 dark:text-gray-300">💡 WordPress Style:</p>
+            <p>Aap naye projects ya articles add kar sakte hain, featured images upload kar sakte hain aur pura detail section likh sakte hain.</p>
           </div>
         </div>
 
         {/* Content Editor Panels (9 Cols) */}
         <div className="lg:col-span-9">
           
-          {/* TAB 1: PROFILE & HERO */}
+          {/* TAB: PROJECTS & CASE STUDIES */}
+          {activeTab === "projects" && (
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
+                <div>
+                  <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+                    Projects &amp; Case Studies
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    Add new projects with featured images, challenge, strategy, execution, and results.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newId = `project-${Date.now()}`;
+                    const newProj = {
+                      id: newId,
+                      slug: `new-campaign-${Date.now()}`,
+                      title: "New Strategic Campaign",
+                      category: "Digital Marketing",
+                      organization: "Vision India Services",
+                      period: "2026",
+                      description: "Brief summary of the campaign and business objective.",
+                      image: "/images/projects/employ-india.svg",
+                      badge: "New Project",
+                      overview: {
+                        context: "Business context and challenge addressed.",
+                        objective: "Key objectives and targets to achieve.",
+                        role: "Lead Marketing Strategist & Campaign Manager.",
+                        strategy: ["Targeted audience segmentation", "Multi-channel distribution"],
+                        execution: ["Deployed landing pages", "Automated email sequences"],
+                        results: ["Achieved campaign milestone registrations"],
+                        lessons: ["Iterative creative testing improves conversion"]
+                      }
+                    };
+                    const updated = [newProj, ...(formData.projects || [])];
+                    setFormData({ ...formData, projects: updated });
+                    setExpandedProject(0);
+                  }}
+                  className="px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New Project</span>
+                </button>
+              </div>
+
+              {/* Projects List with Expandable Article-Style Editor */}
+              <div className="space-y-6">
+                {formData.projects?.map((proj: any, idx: number) => {
+                  const isExpanded = expandedProject === idx;
+                  const overview = proj.overview || {};
+
+                  return (
+                    <div
+                      key={proj.id || idx}
+                      className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden"
+                    >
+                      {/* Accordion Header */}
+                      <div
+                        onClick={() => setExpandedProject(isExpanded ? null : idx)}
+                        className="p-5 flex items-center justify-between cursor-pointer hover:bg-gray-50/50 dark:hover:bg-gray-800/40 transition-colors border-b border-gray-100 dark:border-gray-800"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="relative w-16 h-12 rounded-lg overflow-hidden bg-gray-900 border border-gray-200 dark:border-gray-700 flex-shrink-0">
+                            {proj.image ? (
+                              <Image src={proj.image} alt={proj.title} fill className="object-cover" />
+                            ) : (
+                              <div className="w-full h-full bg-primary-600" />
+                            )}
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-primary-600">
+                              {proj.category}
+                            </span>
+                            <h3 className="text-base font-bold text-gray-900 dark:text-white">
+                              {proj.title}
+                            </h3>
+                            <p className="text-xs text-gray-500">
+                              URL: <code>/portfolio/{proj.slug}</code> • {proj.organization}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <Link
+                            href={`/portfolio/${proj.slug}`}
+                            target="_blank"
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            title="View Project Detail Page"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (confirm(`Delete project "${proj.title}"?`)) {
+                                const updated = formData.projects.filter((_: any, i: number) => i !== idx);
+                                setFormData({ ...formData, projects: updated });
+                              }
+                            }}
+                            className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40"
+                            title="Delete Project"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                          {isExpanded ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+                        </div>
+                      </div>
+
+                      {/* Accordion Body: WordPress-style Rich Section Editor */}
+                      {isExpanded && (
+                        <div className="p-6 sm:p-8 space-y-6 bg-gray-50/50 dark:bg-[#1A1D21]/50">
+                          
+                          {/* Basic Metadata */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Project Title
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.title}
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].title = e.target.value;
+                                  if (!updated[idx].slug || updated[idx].slug.startsWith("new-campaign")) {
+                                    updated[idx].slug = slugify(e.target.value);
+                                  }
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-sm font-bold"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                URL Slug (e.g. /portfolio/your-slug)
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.slug}
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].slug = slugify(e.target.value);
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Category
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.category}
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].category = e.target.value;
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Organization / Client
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.organization}
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].organization = e.target.value;
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Timeline / Period
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.period}
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].period = e.target.value;
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Featured Image Uploader */}
+                          <div className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-3">
+                            <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                              Featured Image (Cover Photo)
+                            </label>
+                            <div className="flex flex-col sm:flex-row items-center gap-4">
+                              <div className="relative w-32 h-20 rounded-lg overflow-hidden bg-gray-900 border border-gray-300 dark:border-gray-700 flex-shrink-0">
+                                {proj.image ? (
+                                  <Image src={proj.image} alt={proj.title} fill className="object-cover" />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center text-xs text-gray-500">No Image</div>
+                                )}
+                              </div>
+                              <div className="flex-grow space-y-2 w-full">
+                                <input
+                                  type="text"
+                                  value={proj.image || ""}
+                                  placeholder="/images/projects/your-photo.svg"
+                                  onChange={(e) => {
+                                    const updated = [...formData.projects];
+                                    updated[idx].image = e.target.value;
+                                    setFormData({ ...formData, projects: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                />
+                                <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-xs font-semibold cursor-pointer shadow-sm">
+                                  <Upload className="w-3.5 h-3.5" />
+                                  <span>Upload Photo File</span>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={async (e) => {
+                                      const file = e.target.files?.[0];
+                                      if (file) {
+                                        const url = await handleFileUpload(file);
+                                        if (url) {
+                                          const updated = [...formData.projects];
+                                          updated[idx].image = url;
+                                          setFormData({ ...formData, projects: updated });
+                                        }
+                                      }
+                                    }}
+                                    className="hidden"
+                                  />
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Excerpt */}
+                          <div>
+                            <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                              Card Short Summary / Excerpt
+                            </label>
+                            <textarea
+                              rows={2}
+                              value={proj.description}
+                              onChange={(e) => {
+                                const updated = [...formData.projects];
+                                updated[idx].description = e.target.value;
+                                setFormData({ ...formData, projects: updated });
+                              }}
+                              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                            />
+                          </div>
+
+                          {/* ARTICLE-STYLE CASE STUDY SECTIONS */}
+                          <div className="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-4">
+                            <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
+                              <FileText className="w-4 h-4" />
+                              <span>Full Case Study Article Sections (Detail Page Layout)</span>
+                            </div>
+
+                            {/* Section 1: Business Challenge & Context */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Section 1: Business Context &amp; Challenge
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={overview.context || ""}
+                                placeholder="Describe the market environment, corporate challenge, or recruitment constraints..."
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].overview = { ...overview, context: e.target.value };
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+
+                            {/* Section 2: Objective & Role */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              <div>
+                                <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                  Section 2: Primary Objective
+                                </label>
+                                <textarea
+                                  rows={2}
+                                  value={overview.objective || ""}
+                                  placeholder="What was the measurable goal?"
+                                  onChange={(e) => {
+                                    const updated = [...formData.projects];
+                                    updated[idx].overview = { ...overview, objective: e.target.value };
+                                    setFormData({ ...formData, projects: updated });
+                                  }}
+                                  className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                  Section 2: My Direct Role
+                                </label>
+                                <textarea
+                                  rows={2}
+                                  value={overview.role || ""}
+                                  placeholder="Digital Marketing Manager leading..."
+                                  onChange={(e) => {
+                                    const updated = [...formData.projects];
+                                    updated[idx].overview = { ...overview, role: e.target.value };
+                                    setFormData({ ...formData, projects: updated });
+                                  }}
+                                  className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Section 3: Strategic Approach (Multi-line) */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Section 3: Strategic Approach (1 bullet point per line)
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={overview.strategy ? overview.strategy.join("\n") : ""}
+                                placeholder="Targeted tier-2 regional audience&#10;Zero-friction landing experience&#10;Keynote authority positioning"
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  const points = e.target.value.split("\n").filter((p) => p.trim().length > 0);
+                                  updated[idx].overview = { ...overview, strategy: points };
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+
+                            {/* Section 4: Tactical Execution Steps (Multi-line) */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Section 4: Tactical Execution Steps (1 step per line)
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={overview.execution ? overview.execution.join("\n") : ""}
+                                placeholder="Coordinated multi-channel social campaign&#10;Integrated automated registration drip sequences&#10;Tracked live analytics and engagement"
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  const points = e.target.value.split("\n").filter((p) => p.trim().length > 0);
+                                  updated[idx].overview = { ...overview, execution: points };
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+
+                            {/* Section 5: Key Results & Metrics */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Section 5: Key Results Delivered (1 result per line)
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={overview.results ? overview.results.join("\n") : ""}
+                                placeholder="850+ live attendees with 78% retention&#10;Generated enterprise inbound leads"
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  const points = e.target.value.split("\n").filter((p) => p.trim().length > 0);
+                                  updated[idx].overview = { ...overview, results: points };
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+
+                            {/* Section 6: Lessons Learned */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Section 6: Strategic Takeaways &amp; Lessons (1 lesson per line)
+                              </label>
+                              <textarea
+                                rows={2}
+                                value={overview.lessons ? overview.lessons.join("\n") : ""}
+                                placeholder="Localized storytelling out-converts corporate ads"
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  const points = e.target.value.split("\n").filter((p) => p.trim().length > 0);
+                                  updated[idx].overview = { ...overview, lessons: points };
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+
+                          </div>
+
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: BLOG POSTS & STRATEGIC THOUGHTS */}
+          {activeTab === "insights" && (
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
+                <div>
+                  <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+                    Blog Posts &amp; Editorial Essays
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    Write and compose complete blog posts with H2 headings, paragraphs, quotes, and key takeaways.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newId = `article-${Date.now()}`;
+                    const newArt = {
+                      id: newId,
+                      slug: `new-insight-${Date.now()}`,
+                      title: "New Strategic Marketing Essay",
+                      category: "Marketing Strategy",
+                      readTime: "5 min read",
+                      date: "Oct 2026",
+                      excerpt: "Summary excerpt introducing the core strategic premise of this article.",
+                      image: "/images/insights/activity-vs-strategy.svg",
+                      quote: "A memorable thought-leadership quote summarizing the central insight.",
+                      sections: [
+                        {
+                          id: "intro",
+                          heading: "1. The Industry Challenge",
+                          paragraphs: [
+                            "Write your first paragraph exploring the problem and market context...",
+                            "Provide concrete observations from hands-on marketing execution."
+                          ]
+                        },
+                        {
+                          id: "solution",
+                          heading: "2. Strategic Framework & Action Plan",
+                          paragraphs: [
+                            "Explain your proposed strategic methodology and why it delivers results."
+                          ]
+                        }
+                      ],
+                      takeaways: [
+                        "Actionable strategic takeaway for marketing leaders.",
+                        "Commercial alignment between marketing and revenue."
+                      ]
+                    };
+                    const updated = [newArt, ...(formData.articles || [])];
+                    setFormData({ ...formData, articles: updated });
+                    setExpandedArticle(0);
+                  }}
+                  className="px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Write New Blog Post</span>
+                </button>
+              </div>
+
+              {/* Articles List with WordPress-Style Block Composer */}
+              <div className="space-y-6">
+                {formData.articles?.map((art: any, idx: number) => {
+                  const isExpanded = expandedArticle === idx;
+                  const sections = art.sections || [];
+
+                  return (
+                    <div
+                      key={art.id || idx}
+                      className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden"
+                    >
+                      {/* Accordion Header */}
+                      <div
+                        onClick={() => setExpandedArticle(isExpanded ? null : idx)}
+                        className="p-5 flex items-center justify-between cursor-pointer hover:bg-gray-50/50 dark:hover:bg-gray-800/40 transition-colors border-b border-gray-100 dark:border-gray-800"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="relative w-16 h-12 rounded-lg overflow-hidden bg-gray-900 border border-gray-200 dark:border-gray-700 flex-shrink-0">
+                            {art.image ? (
+                              <Image src={art.image} alt={art.title} fill className="object-cover" />
+                            ) : (
+                              <div className="w-full h-full bg-primary-600" />
+                            )}
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-primary-600">
+                              {art.category}
+                            </span>
+                            <h3 className="text-base font-bold text-gray-900 dark:text-white">
+                              {art.title}
+                            </h3>
+                            <p className="text-xs text-gray-500">
+                              URL: <code>/insights/{art.slug}</code> • {art.readTime}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <Link
+                            href={`/insights/${art.slug}`}
+                            target="_blank"
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            title="View Live Article Page"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (confirm(`Delete article "${art.title}"?`)) {
+                                const updated = formData.articles.filter((_: any, i: number) => i !== idx);
+                                setFormData({ ...formData, articles: updated });
+                              }
+                            }}
+                            className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40"
+                            title="Delete Article"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                          {isExpanded ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+                        </div>
+                      </div>
+
+                      {/* Accordion Body: WordPress-Style Article Composer */}
+                      {isExpanded && (
+                        <div className="p-6 sm:p-8 space-y-6 bg-gray-50/50 dark:bg-[#1A1D21]/50">
+                          
+                          {/* Article Meta */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Article Title
+                              </label>
+                              <input
+                                type="text"
+                                value={art.title}
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  updated[idx].title = e.target.value;
+                                  if (!updated[idx].slug || updated[idx].slug.startsWith("new-insight")) {
+                                    updated[idx].slug = slugify(e.target.value);
+                                  }
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-sm font-bold"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                URL Slug (e.g. /insights/your-slug)
+                              </label>
+                              <input
+                                type="text"
+                                value={art.slug}
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  updated[idx].slug = slugify(e.target.value);
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Category
+                              </label>
+                              <input
+                                type="text"
+                                value={art.category}
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  updated[idx].category = e.target.value;
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Read Time
+                              </label>
+                              <input
+                                type="text"
+                                value={art.readTime}
+                                placeholder="e.g. 6 min read"
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  updated[idx].readTime = e.target.value;
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Published Date
+                              </label>
+                              <input
+                                type="text"
+                                value={art.date}
+                                placeholder="e.g. Oct 2026"
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  updated[idx].date = e.target.value;
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Featured Image Uploader */}
+                          <div className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-3">
+                            <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                              Featured Image (Cover Artwork)
+                            </label>
+                            <div className="flex flex-col sm:flex-row items-center gap-4">
+                              <div className="relative w-32 h-20 rounded-lg overflow-hidden bg-gray-900 border border-gray-300 dark:border-gray-700 flex-shrink-0">
+                                {art.image ? (
+                                  <Image src={art.image} alt={art.title} fill className="object-cover" />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center text-xs text-gray-500">No Image</div>
+                                )}
+                              </div>
+                              <div className="flex-grow space-y-2 w-full">
+                                <input
+                                  type="text"
+                                  value={art.image || ""}
+                                  placeholder="/images/insights/your-artwork.svg"
+                                  onChange={(e) => {
+                                    const updated = [...formData.articles];
+                                    updated[idx].image = e.target.value;
+                                    setFormData({ ...formData, articles: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                />
+                                <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-xs font-semibold cursor-pointer shadow-sm">
+                                  <Upload className="w-3.5 h-3.5" />
+                                  <span>Upload Photo File</span>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={async (e) => {
+                                      const file = e.target.files?.[0];
+                                      if (file) {
+                                        const url = await handleFileUpload(file);
+                                        if (url) {
+                                          const updated = [...formData.articles];
+                                          updated[idx].image = url;
+                                          setFormData({ ...formData, articles: updated });
+                                        }
+                                      }
+                                    }}
+                                    className="hidden"
+                                  />
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Excerpt */}
+                          <div>
+                            <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                              Article Excerpt (Archive summary)
+                            </label>
+                            <textarea
+                              rows={2}
+                              value={art.excerpt}
+                              onChange={(e) => {
+                                const updated = [...formData.articles];
+                                updated[idx].excerpt = e.target.value;
+                                setFormData({ ...formData, articles: updated });
+                              }}
+                              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                            />
+                          </div>
+
+                          {/* Callout Quote */}
+                          <div>
+                            <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                              Featured Blockquote / Callout Quote
+                            </label>
+                            <input
+                              type="text"
+                              value={art.quote || ""}
+                              placeholder="e.g. Activity is easy to measure; strategy requires answering hard trade-offs."
+                              onChange={(e) => {
+                                const updated = [...formData.articles];
+                                updated[idx].quote = e.target.value;
+                                setFormData({ ...formData, articles: updated });
+                              }}
+                              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs italic"
+                            />
+                          </div>
+
+                          {/* WORDPRESS-STYLE FULL ARTICLE SECTIONS BUILDER */}
+                          <div className="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
+                                <BookOpen className="w-4 h-4" />
+                                <span>Article Body &amp; Sections (WordPress Composer)</span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = [...formData.articles];
+                                  const currentSections = updated[idx].sections || [];
+                                  const newSection = {
+                                    id: `sec-${Date.now()}`,
+                                    heading: `${currentSections.length + 1}. New Subheading H2`,
+                                    paragraphs: ["Write the paragraphs for this section here..."]
+                                  };
+                                  updated[idx].sections = [...currentSections, newSection];
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="px-3 py-1 rounded-lg bg-primary-50 dark:bg-primary-950 text-primary-600 dark:text-primary-400 text-xs font-bold flex items-center gap-1"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Add Section (H2)</span>
+                              </button>
+                            </div>
+
+                            <div className="space-y-4">
+                              {sections.map((sec: any, secIdx: number) => (
+                                <div key={sec.id || secIdx} className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-[10px] font-bold uppercase text-gray-400">
+                                      Section Block #{secIdx + 1}
+                                    </span>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        const updated = [...formData.articles];
+                                        updated[idx].sections = updated[idx].sections.filter((_: any, sI: number) => sI !== secIdx);
+                                        setFormData({ ...formData, articles: updated });
+                                      }}
+                                      className="text-red-500 hover:text-red-700 p-1"
+                                    >
+                                      <Trash2 className="w-3.5 h-3.5" />
+                                    </button>
+                                  </div>
+
+                                  <input
+                                    type="text"
+                                    value={sec.heading}
+                                    placeholder="Section Heading (H2)"
+                                    onChange={(e) => {
+                                      const updated = [...formData.articles];
+                                      updated[idx].sections[secIdx].heading = e.target.value;
+                                      setFormData({ ...formData, articles: updated });
+                                    }}
+                                    className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-sm font-bold"
+                                  />
+
+                                  <textarea
+                                    rows={4}
+                                    value={sec.paragraphs ? sec.paragraphs.join("\n\n") : ""}
+                                    placeholder="Type your paragraphs here. Separate paragraphs with a blank line (double Enter)..."
+                                    onChange={(e) => {
+                                      const updated = [...formData.articles];
+                                      const paras = e.target.value.split("\n\n").filter((p) => p.trim().length > 0);
+                                      updated[idx].sections[secIdx].paragraphs = paras;
+                                      setFormData({ ...formData, articles: updated });
+                                    }}
+                                    className="w-full px-3 py-2.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs leading-relaxed"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Key Takeaways */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Key Takeaways (1 takeaway per line)
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={art.takeaways ? art.takeaways.join("\n") : ""}
+                                placeholder="Strategy is fundamentally about choosing what not to do.&#10;Every initiative must lower CAC or boost LTV."
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  const points = e.target.value.split("\n").filter((p) => p.trim().length > 0);
+                                  updated[idx].takeaways = points;
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+
+                          </div>
+
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: PROFILE & HERO */}
           {activeTab === "profile" && (
             <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm space-y-6">
               <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -351,7 +1179,18 @@ export default function AdminPage() {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={(e) => handlePhotoUpload(e, "profilePhoto")}
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          const url = await handleFileUpload(file);
+                          if (url) {
+                            setFormData({
+                              ...formData,
+                              profile: { ...formData.profile, profilePhoto: url }
+                            });
+                          }
+                        }
+                      }}
                       className="hidden"
                     />
                   </label>
@@ -465,7 +1304,7 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* TAB 2: STATS */}
+          {/* TAB: STATS STRIP */}
           {activeTab === "stats" && (
             <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm space-y-6">
               <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -506,7 +1345,7 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* TAB 3: RESUME & TIMELINE */}
+          {/* TAB: RESUME & TIMELINE */}
           {activeTab === "resume" && (
             <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -606,152 +1445,7 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* TAB 4: PROJECTS */}
-          {activeTab === "projects" && (
-            <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm space-y-6">
-              <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
-                Projects &amp; Case Studies
-              </h2>
-
-              <div className="space-y-4">
-                {formData.projects?.map((proj: any, idx: number) => (
-                  <div key={proj.id || idx} className="p-5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 space-y-3">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-[11px] font-bold text-gray-500 mb-1">Title</label>
-                        <input
-                          type="text"
-                          value={proj.title}
-                          onChange={(e) => {
-                            const newProjects = [...formData.projects];
-                            newProjects[idx].title = e.target.value;
-                            setFormData({ ...formData, projects: newProjects });
-                          }}
-                          className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-sm font-bold"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-bold text-gray-500 mb-1">Category</label>
-                        <input
-                          type="text"
-                          value={proj.category}
-                          onChange={(e) => {
-                            const newProjects = [...formData.projects];
-                            newProjects[idx].category = e.target.value;
-                            setFormData({ ...formData, projects: newProjects });
-                          }}
-                          className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-semibold"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-500 mb-1">Cover Image Path</label>
-                      <input
-                        type="text"
-                        value={proj.image || ""}
-                        placeholder="/images/projects/your-photo.svg"
-                        onChange={(e) => {
-                          const newProjects = [...formData.projects];
-                          newProjects[idx].image = e.target.value;
-                          setFormData({ ...formData, projects: newProjects });
-                        }}
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-mono"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-500 mb-1">Description</label>
-                      <textarea
-                        rows={2}
-                        value={proj.description}
-                        onChange={(e) => {
-                          const newProjects = [...formData.projects];
-                          newProjects[idx].description = e.target.value;
-                          setFormData({ ...formData, projects: newProjects });
-                        }}
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* TAB 5: INSIGHTS */}
-          {activeTab === "insights" && (
-            <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm space-y-6">
-              <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
-                Strategic Thoughts &amp; Blog Posts
-              </h2>
-
-              <div className="space-y-4">
-                {formData.articles?.map((art: any, idx: number) => (
-                  <div key={art.id || idx} className="p-5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 space-y-3">
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-500 mb-1">Article Title</label>
-                      <input
-                        type="text"
-                        value={art.title}
-                        onChange={(e) => {
-                          const newArticles = [...formData.articles];
-                          newArticles[idx].title = e.target.value;
-                          setFormData({ ...formData, articles: newArticles });
-                        }}
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-sm font-bold"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-[11px] font-bold text-gray-500 mb-1">Category</label>
-                        <input
-                          type="text"
-                          value={art.category}
-                          onChange={(e) => {
-                            const newArticles = [...formData.articles];
-                            newArticles[idx].category = e.target.value;
-                            setFormData({ ...formData, articles: newArticles });
-                          }}
-                          className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-semibold"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-bold text-gray-500 mb-1">Read Time / Date</label>
-                        <input
-                          type="text"
-                          value={art.readTime}
-                          onChange={(e) => {
-                            const newArticles = [...formData.articles];
-                            newArticles[idx].readTime = e.target.value;
-                            setFormData({ ...formData, articles: newArticles });
-                          }}
-                          className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-500 mb-1">Excerpt</label>
-                      <textarea
-                        rows={2}
-                        value={art.excerpt}
-                        onChange={(e) => {
-                          const newArticles = [...formData.articles];
-                          newArticles[idx].excerpt = e.target.value;
-                          setFormData({ ...formData, articles: newArticles });
-                        }}
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* TAB 6: SERVICES */}
+          {/* TAB: SERVICES */}
           {activeTab === "services" && (
             <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm space-y-6">
               <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">

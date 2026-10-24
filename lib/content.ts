@@ -11,8 +11,29 @@ import {
   skillsArchitecture, 
   skillBars 
 } from "@/data/portfolioData";
+import { 
+  ProjectItem, 
+  ArticleItem, 
+  StatItem, 
+  ServiceItem, 
+  TimelineItem, 
+  CaseStudyItem, 
+  SkillCategory 
+} from "@/types";
 
-export function getContent() {
+export interface PortfolioContent {
+  profile: typeof profileData;
+  stats: StatItem[];
+  services: ServiceItem[];
+  projects: ProjectItem[];
+  caseStudies: CaseStudyItem[];
+  timeline: TimelineItem[];
+  articles: ArticleItem[];
+  skillsArchitecture: SkillCategory[];
+  skillBars: typeof skillBars;
+}
+
+export function getContent(): PortfolioContent {
   const dataFilePath = path.join(process.cwd(), "data", "content.json");
   try {
     if (fs.existsSync(dataFilePath)) {
@@ -20,12 +41,12 @@ export function getContent() {
       const json = JSON.parse(fileData);
       return {
         profile: { ...profileData, ...json.profile },
-        stats: json.stats || statsData,
-        services: json.services || servicesData,
-        projects: json.projects || projectsData,
+        stats: (json.stats || statsData) as StatItem[],
+        services: (json.services || servicesData) as ServiceItem[],
+        projects: (json.projects || projectsData) as ProjectItem[],
         caseStudies: caseStudiesData,
-        timeline: json.timeline || timelineData,
-        articles: json.articles || articlesData,
+        timeline: (json.timeline || timelineData) as TimelineItem[],
+        articles: (json.articles || articlesData) as ArticleItem[],
         skillsArchitecture,
         skillBars,
       };

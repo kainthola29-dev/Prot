@@ -15,6 +15,11 @@ export interface ServiceItem {
   iconName: string;
 }
 
+export interface ProjectSection {
+  title: string;
+  content: string;
+}
+
 export interface ProjectItem {
   id: string;
   slug: string;
@@ -23,18 +28,20 @@ export interface ProjectItem {
   organization: string;
   period: string;
   description: string;
-  gradient: string;
+  gradient?: string;
   image?: string;
   badge?: string;
   stats?: { label: string; value: string }[];
   overview?: {
-    context: string;
-    objective: string;
-    role: string;
-    strategy: string[];
-    execution: string[];
-    results: string[];
-    lessons: string[];
+    context?: string;
+    objective?: string;
+    role?: string;
+    strategy?: string[];
+    execution?: string[];
+    results?: string[];
+    lessons?: string[];
+    sections?: ProjectSection[];
+    fullContent?: string;
   };
 }
 
@@ -71,6 +78,12 @@ export interface TimelineItem {
   isPlaceholder?: boolean;
 }
 
+export interface ArticleSection {
+  id?: string;
+  heading: string;
+  paragraphs: string[];
+}
+
 export interface ArticleItem {
   id: string;
   slug: string;
@@ -79,10 +92,12 @@ export interface ArticleItem {
   readTime: string;
   date: string;
   excerpt: string;
-  gradient: string;
+  gradient?: string;
   image?: string;
+  quote?: string;
   toc?: { id: string; label: string }[];
   content?: string[];
+  sections?: ArticleSection[];
   takeaways?: string[];
   glossary?: { term: string; definition: string }[];
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { articlesData } from "@/data/portfolioData";
+import { getContent } from "@/lib/content";
 import { JsonLd } from "@/components/JsonLd";
 import { ArrowRight, Clock, Calendar, Sparkles } from "lucide-react";
 import { Metadata } from "next";
@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function InsightsPage() {
+  const content = getContent();
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -40,7 +42,7 @@ export default function InsightsPage() {
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        {articlesData.map((art) => (
+        {content.articles.map((art: any) => (
           <article
             key={art.id}
             className="group rounded-3xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"

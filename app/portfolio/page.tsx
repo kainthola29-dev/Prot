@@ -1,5 +1,5 @@
 import React from "react";
-import { projectsData } from "@/data/portfolioData";
+import { getContent } from "@/lib/content";
 import { PortfolioFilter } from "@/components/PortfolioFilter";
 import { JsonLd } from "@/components/JsonLd";
 import { Metadata } from "next";
@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
+  const content = getContent();
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -37,7 +39,7 @@ export default function PortfolioPage() {
       </div>
 
       {/* Interactive Filter Grid */}
-      <PortfolioFilter projects={projectsData} />
+      <PortfolioFilter projects={content.projects} />
     </div>
   );
 }

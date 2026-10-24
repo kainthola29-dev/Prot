@@ -41,6 +41,7 @@ export const profileData = {
   statusBadge: "Available for Senior Marketing Roles (₹18–25 LPA)",
   primaryCompany: "Vision India Services Pvt. Ltd.",
   companyUrl: "https://vispl.co.in",
+  profilePhoto: "/images/deepanshu.webp",
 };
 
 export const statsData: StatItem[] = [

@@ -1,14 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  profileData, 
-  statsData, 
-  servicesData, 
-  projectsData, 
-  caseStudiesData, 
-  articlesData 
-} from "@/data/portfolioData";
+import { getContent } from "@/lib/content";
 import { HeroTyped } from "@/components/HeroTyped";
 import { SocialLinks } from "@/components/SocialIcons";
 import { IconRenderer } from "@/components/IconRenderer";
@@ -16,6 +9,13 @@ import { JsonLd } from "@/components/JsonLd";
 import { ArrowRight, ArrowUpRight, Download, CheckCircle, Sparkles } from "lucide-react";
 
 export default function HomePage() {
+  const content = getContent();
+  const profileData = content.profile;
+  const statsData = content.stats;
+  const servicesData = content.services;
+  const projectsData = content.projects;
+  const caseStudiesData = content.caseStudies;
+  const articlesData = content.articles;
   const personSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -187,7 +187,7 @@ export default function HomePage() {
       <section className="border-y border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-[#1A1D21]/60 backdrop-blur-sm py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-800">
-            {statsData.map((stat, i) => (
+            {statsData.map((stat: any, i: number) => (
               <div key={stat.label} className={`text-center ${i > 1 ? "pt-6 md:pt-0" : ""}`}>
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-primary-700 dark:text-primary-400 tracking-tight">
                   {stat.value}
@@ -216,7 +216,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {servicesData.map((service) => (
+          {servicesData.map((service: any) => (
             <div
               key={service.title}
               className="group p-8 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover dark:hover:shadow-inbio-dark-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
@@ -267,7 +267,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projectsData.slice(0, 3).map((project) => (
+            {projectsData.slice(0, 3).map((project: any) => (
               <div
                 key={project.id}
                 className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
@@ -346,7 +346,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {caseStudiesData.map((cs) => (
+          {caseStudiesData.map((cs: any) => (
             <div
               key={cs.id}
               className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"
@@ -367,7 +367,7 @@ export default function HomePage() {
 
                 {/* 2x2 Metrics Badges */}
                 <div className="grid grid-cols-2 gap-3 pt-2">
-                  {cs.metrics.map((m) => (
+                  {cs.metrics.map((m: any) => (
                     <div key={m.label} className="p-3 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/80 dark:border-gray-800">
                       <div className="text-lg font-bold font-heading text-primary-600 dark:text-primary-400">
                         {m.value}
@@ -417,7 +417,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {articlesData.slice(0, 3).map((art) => (
+            {articlesData.slice(0, 3).map((art: any) => (
               <div
                 key={art.id}
                 className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
