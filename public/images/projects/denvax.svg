@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-denvax" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042F2E" />
+      <stop offset="50%" stop-color="#0F766E" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+    <linearGradient id="card-denvax" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bg-denvax)" />
+
+  <g transform="translate(180, 75)">
+    <rect width="440" height="280" rx="20" fill="url(#card-denvax)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="24" y="24" width="165" height="24" rx="12" fill="rgba(20, 184, 166, 0.3)" stroke="#2DD4BF" stroke-width="1" />
+    <text x="106" y="40" fill="#CCFBF1" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">HEALTHCARE MEDIA</text>
+
+    <text x="24" y="90" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.5">DENVAX CLINICAL MEDIA</text>
+    <text x="24" y="114" fill="#99F6E4" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Cancer Immunotherapy Storytelling &amp; Doctor Interviews</text>
+
+    <g transform="translate(24, 140)">
+      <rect width="392" height="100" rx="12" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="34" fill="#5EEAD4" font-family="system-ui, sans-serif" font-size="12" font-weight="700">PATIENT EDUCATION &amp; TRUST</text>
+      <text x="24" y="58" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Oncologist Dialogues • Recovery Stories • YouTube Growth</text>
+      <text x="24" y="80" fill="#E6FFFA" font-family="system-ui, sans-serif" font-size="11">Simplifying advanced oncology science into compassionate narratives</text>
+    </g>
+  </g>
+</svg>

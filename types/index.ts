@@ -40,6 +40,15 @@ export interface ProjectSection {
   content: string;
 }
 
+export interface ProjectMediaPlaceholder {
+  type: "video" | "image";
+  title: string;
+  caption?: string;
+  aspectRatio?: "16:9" | "4:3" | "1:1" | "9:16";
+  src?: string;
+  videoUrl?: string;
+}
+
 export interface ProjectItem {
   id: string;
   slug: string;
@@ -52,6 +61,8 @@ export interface ProjectItem {
   image?: string;
   badge?: string;
   stats?: { label: string; value: string }[];
+  videoUrl?: string;
+  mediaPlaceholders?: ProjectMediaPlaceholder[];
   overview?: {
     context?: string;
     objective?: string;

@@ -15,12 +15,12 @@ export function PortfolioFilter({ projects }: PortfolioFilterProps) {
 
   const categories = [
     "All",
+    "Video Production",
     "Digital Marketing",
     "Content Strategy",
-    "SEO & Web",
-    "Social Media",
     "Employer Branding",
-    "Video Production",
+    "Social Impact & CSR",
+    "Web & Platforms",
   ];
 
   const filteredProjects = activeCategory === "All"

@@ -175,246 +175,951 @@ export const servicesData: ServiceItem[] = [
 
 export const projectsData: ProjectItem[] = [
   {
-    id: "employ-india",
-    slug: "employ-india",
-    title: "Employ India Campaign",
-    category: "Digital Marketing",
-    organization: "Vision India Services",
-    period: "2024 – 2025",
-    description: "National workforce enablement and employment campaign bridging youth aspiration with enterprise hiring mandates across India.",
-    gradient: "from-blue-700 to-indigo-900",
-    image: "/images/projects/employ-india.svg",
-    badge: "Flagship Initiative",
-    stats: [
-      { label: "Audience Reach", value: "10M+" },
-      { label: "Multi-Brand Scale", value: "12+ Brands" },
-      { label: "Hiring Pipeline", value: "Nationwide" }
+    "id": "meena-bazaar-fashion-films",
+    "slug": "meena-bazaar-fashion-films",
+    "title": "Meena Bazaar Ethnic Couture & Festive Campaigns",
+    "category": "Video Production",
+    "organization": "Meena Bazaar",
+    "period": "Feb 2024 – May 2025 · 1 yr 4 mos",
+    "description": "End-to-end video shoots, model direction, store walkthroughs, and high-retention social reels showcasing luxury Indian female ethnic wear.",
+    "gradient": "from-rose-900 via-pink-950 to-neutral-950",
+    "image": "/images/projects/meena-bazaar.svg",
+    "badge": "Luxury Retail",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Video Producer"
+      },
+      {
+        "label": "Assets Shot",
+        "value": "120+ Shoots"
+      },
+      {
+        "label": "Channels",
+        "value": "Reels & Web"
+      },
+      {
+        "label": "Editing",
+        "value": "Premiere Pro"
+      }
     ],
-    overview: {
-      context: "Vision India Services required a cohesive digital campaign identity to unify various skilling, placement, and staffing initiatives under one authoritative umbrella.",
-      objective: "Position VISPL as the leading catalyst for national workforce employability and drive qualified job registrations across Tier-2 and Tier-3 youth.",
-      role: "Digital Marketing Manager — led campaign branding, creative direction, performance marketing, content calendars, and cross-channel distribution.",
-      strategy: [
-        "Created an overarching 'Employ India' brand identity across social channels, microsites, and offline collateral.",
-        "Engineered targeted lead funnels utilizing Meta Lead Ads, Google Search Ads, and WhatsApp automated candidate onboarding.",
-        "Orchestrated regional-language video testimonials showcasing successfully placed youth in manufacturing, logistics, and retail."
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Meena Bazaar Festive & Bridal Ethnic Wear Campaign Reel",
+        "caption": "16:9 4K Video Slot — Embed your campaign showcase reel, YouTube link, or MP4 here.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Store Walkthrough & Saree Draping Tutorial",
+        "caption": "9:16 Instagram Reel Slot — Showcase store ambiance, real fabric drapes, and styling tips.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "type": "image",
+        "title": "Studio Flatlays & Handcrafted Embroidery Close-ups",
+        "caption": "High-resolution product flatlay photography highlighting zari, silk, and sequence craft.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Behind-The-Scenes: Model Direction & Studio Lighting",
+        "caption": "Production stills showing lighting setup, camera rig, and on-set creative coordination.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Meena Bazaar needed a continuous flow of premium visual content across major festive and wedding seasons to engage online shoppers and drive store footfalls. Capturing the authentic luster of silk, delicate sequence work, and rich bridal colors required careful lighting and specialized fashion framing.",
+      "objective": "Translate high-end Indian ethnic couture into scroll-stopping product videos, relatable store walkthroughs, and clean e-commerce flatlays that accelerate digital engagement and retail sales.",
+      "role": "Video Producer — headed shoot logistics, operated DSLR camera rigs, managed three-point lighting, directed models on set, filmed flagship store tours, and edited all final reels in Adobe Premiere Pro.",
+      "strategy": [
+        "Calibrated diffusion and softbox lighting setups to eliminate synthetic glare and accurately capture fabric sheen, zari threads, and rich hues.",
+        "Created a dual-format shoot workflow: filmed wide 16:9 campaign sequences alongside vertical 9:16 reels in the same studio block.",
+        "Produced authentic customer and store staff walkthroughs to humanize the shopping experience and demystify bridal draping styles."
       ],
-      execution: [
-        "Coordinated with in-house video editors, graphic designers, and recruitment heads to produce weekly content sprints.",
-        "Launched dedicated campaign landing pages with optimized mobile-first registration forms.",
-        "Integrated CRM lead routing to ensure candidate applications were processed within 24 hours by hiring teams."
+      "execution": [
+        "Directed scheduled model shoots with multi-outfit quick changes, maintaining strict styling checklists and shot counts.",
+        "Captured macro detail b-roll of hand-embroidery, borders, and silhouettes to provide online buyers with tangible visual confidence.",
+        "Cut and edited all footage in Premiere Pro, pacing transitions to trending music beats, color grading skin tones and fabrics, and exporting mobile-optimized reels."
       ],
-      results: [
-        "Generated multi-million organic and paid impressions across LinkedIn, YouTube, and Facebook.",
-        "Successfully registered thousands of certified candidates into enterprise placement pipelines.",
-        "Significantly enhanced corporate brand equity with enterprise staffing clients and government partners."
+      "results": [
+        "Delivered over 120+ finished video and photo assets across wedding, festive, and everyday prêt collections.",
+        "Significantly improved social media watch-through rates and comments inquiring about specific catalog SKU codes.",
+        "Provided the e-commerce department with accurate product visuals that helped reduce return rates from mismatched expectations."
       ],
-      lessons: [
-        "Localized video storytelling outperformed generic text ads by over 240% in Tier-2/3 geographies.",
-        "Frictionless WhatsApp integration drastically reduced application abandonment rates."
+      "lessons": [
+        "In ethnic fashion, truthful lighting that shows fabric movement and drape converts far better than heavy artificial filters.",
+        "Preparing precise shot checklists before the model steps on set saves at least 40% of studio rental time."
       ]
     }
   },
   {
-    id: "just-job",
-    slug: "just-job",
-    title: "Just Job Recruitment Marketing",
-    category: "Social Media & Growth",
-    organization: "Just Job",
-    period: "2024",
-    description: "Multi-lingual social media and candidate acquisition engine targeting ITI and diploma holders across industrial clusters.",
-    gradient: "from-violet-600 to-purple-950",
-    image: "/images/projects/just-job.svg",
-    badge: "Candidate Acquisition",
-    stats: [
-      { label: "Target Segment", value: "ITI & Diploma" },
-      { label: "Languages", value: "6 Regional" },
-      { label: "Speed", value: "24h Response" }
+    "id": "denvax-healthcare-storytelling",
+    "slug": "denvax-healthcare-storytelling",
+    "title": "Denvax Cancer Immunotherapy Patient & Doctor Series",
+    "category": "Video Production",
+    "organization": "Denvax",
+    "period": "Oct 2022 – Mar 2023 · 6 mos",
+    "description": "Doctor interview series, patient recovery documentaries, and cancer immunotherapy educational media across digital channels.",
+    "gradient": "from-teal-900 via-emerald-950 to-neutral-950",
+    "image": "/images/projects/denvax.svg",
+    "badge": "Clinical Media",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Content Producer"
+      },
+      {
+        "label": "Focus",
+        "value": "Oncology & Trust"
+      },
+      {
+        "label": "Channel",
+        "value": "YouTube & Web"
+      },
+      {
+        "label": "Format",
+        "value": "Docu-Series"
+      }
     ],
-    overview: {
-      context: "Just Job operates as India's premier exclusive job portal for ITI, diploma, and technical candidates requiring dedicated industrial placement.",
-      objective: "Drive candidate app downloads, website registrations, and employer trust through hyper-targeted regional marketing.",
-      role: "Digital Marketing Manager — oversaw content strategy, vernacular video campaigns, social media management, and job-alert automation.",
-      strategy: [
-        "Engineered regional-language video campaigns featuring native speakers across Hindi, Bengali, Odia, Malayalam, and Telugu.",
-        "Designed daily high-urgency job post creatives segmented by technical trade (fitter, electrician, machinist, CNC operator).",
-        "Established automated candidate nurture sequences on WhatsApp and social platforms."
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Senior Oncologist Educational Brief: Understanding Dendritic Cell Therapy",
+        "caption": "16:9 Video Slot — Embed clinical explainer video, YouTube doctor interview, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Patient Recovery Journey: Hope & Real Clinical Testimonial",
+        "caption": "16:9 Video Slot — Embed patient survivor story and clinical journey documentary.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Doctor Interview Clinic Studio Setup & Audio Rig",
+        "caption": "Behind-the-scenes photograph of quiet consultation room recording and softbox placement.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Medical Infographic Overlays & YouTube Thumbnail System",
+        "caption": "Visual breakdown showing clear medical graphics and patient-friendly thumbnail design.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Navigating cancer treatment options is an emotionally exhausting experience for patients and families. Denvax, a pioneer in dendritic cell-based cellular immunotherapy, needed clear, compassionate, and scientifically accurate video content to explain treatment mechanisms and restore hope.",
+      "objective": "Demystify complex cellular oncology concepts, coordinate authentic doctor dialogues, and document real patient recovery journeys without sensationalism or medical exaggeration.",
+      "role": "Digital Content Producer — planned medical interview scripts, operated camera and wireless lavalier microphones in clinic rooms, directed doctor interviews, and managed Denvax's official YouTube channel.",
+      "strategy": [
+        "Structured physician interviews as reassuring, plain-language conversations answering the most common queries families bring to consultations.",
+        "Designed clear visual illustrations explaining how a patient's own immune cells are trained in the laboratory to target tumor antigens.",
+        "Maintained strict ethical standards: every script and video claim was verified directly with senior medical practitioners."
       ],
-      execution: [
-        "Published 60+ targeted social posts and 20+ short-form instructional videos monthly.",
-        "Created campus recruitment campaign toolkits for trade institutes and polytechnics.",
-        "Monitored cost per candidate lead, optimizing copy and imagery for high click-through rates."
+      "execution": [
+        "Set up portable lighting and dual-mic audio kits in clinic consultation rooms between patient appointment windows.",
+        "Conducted respectful, gentle interviews with recovering patients and caregivers, letting them share their recovery timelines at their own comfort level.",
+        "Edited in Adobe Premiere Pro with subtitle tracks, medical lower-thirds, and empathetic background scores; optimized YouTube metadata for patient search queries."
       ],
-      results: [
-        "Expanded active candidate talent pool to over 96+ lakh industrial job-seekers.",
-        "Maintained sub-24-hour candidate acknowledgment workflows through digital channels.",
-        "Positioned Just Job as the go-to technical hiring platform for MSME and multinational manufacturing units."
+      "results": [
+        "Built steady organic subscriber growth and high average watch time on Denvax's official YouTube channel.",
+        "Families frequently reported feeling informed and calm after watching the doctor explanation videos before their first visit.",
+        "Established Denvax's digital presence as an authoritative, transparent center for advanced cellular immunotherapy."
       ],
-      lessons: [
-        "Technical job-seekers respond best to transparent salary ranges and clear location tags on the primary thumbnail.",
-        "Regional dialect variations substantially impact conversion in industrial hubs."
+      "lessons": [
+        "Healthcare video production requires deep empathy and patience. A calm, well-lit interview with clear audio builds more patient trust than any advertising campaign."
       ]
     }
   },
   {
-    id: "liveskills",
-    slug: "liveskills",
-    title: "LiveSkills E-Learning Platform",
-    category: "Content Strategy",
-    organization: "LiveSkills",
-    period: "2024",
-    description: "Positioning digital learning, POSH certifications, and professional upskilling programs for early-career professionals.",
-    gradient: "from-emerald-600 to-teal-950",
-    image: "/images/projects/liveskills.svg",
-    badge: "EdTech Growth",
-    stats: [
-      { label: "Vertical", value: "E-Skilling" },
-      { label: "Programs", value: "NSDC Aligned" },
-      { label: "Focus", value: "Career Acceleration" }
+    "id": "tatsat-impact-documentaries",
+    "slug": "tatsat-impact-documentaries",
+    "title": "Tatsat Chronicle Social & Corporate CSR Media",
+    "category": "Social Impact & CSR",
+    "organization": "Tatsat Chronicle",
+    "period": "Mar 2021 – Oct 2022 · 1 yr 8 mos",
+    "description": "On-ground documentary reporting, environmental features, and social sector storytelling for India's leading CSR and development magazine.",
+    "gradient": "from-green-900 via-slate-900 to-neutral-950",
+    "image": "/images/projects/tatsat.svg",
+    "badge": "Social Journalism",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Digital Producer"
+      },
+      {
+        "label": "Focus",
+        "value": "CSR & Ecology"
+      },
+      {
+        "label": "Medium",
+        "value": "Print & Video"
+      },
+      {
+        "label": "Reach",
+        "value": "National NGO/CSR"
+      }
     ],
-    overview: {
-      context: "LiveSkills required an authoritative content strategy to market professional certification programs including POSH, Sustainability Mastery, and Workplace Well-Being.",
-      objective: "Establish course credibility, drive learner enrollment, and partner with corporate clients for group enterprise skilling.",
-      role: "Digital Marketing Manager — designed curriculum promotional collateral, social marketing sprints, and flash campaign funnels.",
-      strategy: [
-        "Developed informative micro-content highlighting career ROI, regulatory compliance (POSH), and industry certifications.",
-        "Executed high-urgency limited-time certification campaigns with clear educational value propositions.",
-        "Produced facilitator spotlight videos demonstrating course pedagogy and practical application."
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Grassroots Water Conservation & Lake Rejuvenation Mini-Doc",
+        "caption": "16:9 Video Slot — Embed ground-level environmental reporting documentary or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Corporate CSR Leadership Roundtable & ESG Dialogue",
+        "caption": "16:9 Video Slot — Embed sustainability leader discussions and corporate panels.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Field Reporting Stills: Capturing Rural Changemakers",
+        "caption": "Production photographs of ground-level interviews, village workshops, and camera rigs.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Magazine Editorial Spread vs. Digital Video Formats",
+        "caption": "Visual showing how print investigative reporting was repurposed into interactive digital carousels.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Tatsat Chronicle covers India's social sector, ESG investments, and corporate CSR projects. As a pioneer magazine in this space, it needed engaging digital video content to accompany its in-depth print editions and reach online audiences on LinkedIn and Twitter/X.",
+      "objective": "Produce authentic field video features, cover sustainability roundtables, and build a consistent multimedia presence that engages corporate CSR heads and NGO leaders.",
+      "role": "Digital Content Producer — supervised digital content creation, directed on-location field video shoots, interviewed grassroots leaders, and coordinated digital media marketing.",
+      "strategy": [
+        "Traveled directly to project sites to show real on-ground challenges rather than accepting staged corporate promotional handouts.",
+        "Repurposed 4,000-word investigative magazine articles into punchy, 2-minute video briefs with key data callouts.",
+        "Connected corporate ESG goals with measurable ground outcomes: liters of water saved, saplings nurtured, and rural livelihoods created."
       ],
-      execution: [
-        "Crafted structured content calendars combining educational carousels, trainer interviews, and student success stories.",
-        "Managed multi-platform digital distribution across LinkedIn and Meta business assets.",
-        "Monitored learner feedback and optimized course landing page descriptions."
+      "execution": [
+        "Operated cameras and directional shotgun mics in demanding field conditions including village farm fields and riverbanks.",
+        "Assembled narrative documentaries in Adobe Premiere Pro, combining field b-roll, expert soundbites, and animated data infographics.",
+        "Managed weekly social media publishing schedules, crafting informative copy and engaging relevant development stakeholders."
       ],
-      results: [
-        "Demonstrated consistent learner acquisition across flagship certification tracks.",
-        "Enhanced organic social engagement by 40% through actionable career skill infographics.",
-        "Built enterprise awareness for corporate POSH compliance training mandates."
+      "results": [
+        "Produced multiple video series on water management, rural education, and healthcare that earned widespread acclaim across the CSR community.",
+        "Grew Tatsat Chronicle's digital readership among foundation directors, sustainability officers, and academic researchers.",
+        "Strengthened the magazine's authority as the definitive multimedia bridge between corporate funders and grassroots implementers."
       ],
-      lessons: [
-        "Compliance-driven topics require trust and authority markers (NSDC alignment, legal frameworks).",
-        "Clear module breakdowns prevent prospective learner overwhelm."
+      "lessons": [
+        "The best social sector stories focus on the perseverance of local community members rather than just the corporate funding logo."
       ]
     }
   },
   {
-    id: "vispl-branding",
-    slug: "vispl-branding",
-    title: "VISPL Employer Branding & #BharatAtWork",
-    category: "Employer Branding",
-    organization: "Vision India Services",
-    period: "May 2025 – Present",
-    description: "Elevating internal employee stories, leadership credibility, culture highlights, and corporate reputation across national media.",
-    gradient: "from-amber-600 to-rose-900",
-    image: "/images/projects/vispl-employer-branding.svg",
-    badge: "Corporate Rep",
-    stats: [
-      { label: "Medium", value: "LinkedIn & Video" },
-      { label: "Focus", value: "Culture & Talent" },
-      { label: "Initiative", value: "#BharatAtWork" }
+    "id": "sunday-headlines-production",
+    "slug": "sunday-headlines-production",
+    "title": "The Sunday Headlines Newsroom & Field Media",
+    "category": "Video Production",
+    "organization": "The Sunday Headlines",
+    "period": "Nov 2016 – Nov 2018 · 2 yrs 1 mo",
+    "description": "Directing daily newsroom video bulletins, on-ground field reporting, multi-camera operations, and rapid turnaround editing for web news portal.",
+    "gradient": "from-indigo-950 via-slate-900 to-neutral-950",
+    "image": "/images/projects/sunday-headlines.svg",
+    "badge": "Broadcast Media",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Head of Media"
+      },
+      {
+        "label": "Tenure",
+        "value": "2 Yrs 1 Mo"
+      },
+      {
+        "label": "Workflow",
+        "value": "Daily News Desk"
+      },
+      {
+        "label": "Promotion",
+        "value": "Editor to Head"
+      }
     ],
-    overview: {
-      context: "With over 32,000 associate employees across India, Vision India Services required an executive-grade employer branding program.",
-      objective: "Position VISPL as an employer of choice, highlight frontline workforce triumphs, and attract senior talent.",
-      role: "Digital Marketing Manager — architected #BharatAtWork series, executive messaging, culture storytelling, and corporate video films.",
-      strategy: [
-        "Launched the #BharatAtWork storytelling campaign highlighting associate workers driving India's infrastructure and manufacturing sectors.",
-        "Executed festive and cultural engagement initiatives including Rojgar Wali Diwali and Job Wali Chhath.",
-        "Curated thought leadership commentary for CXOs on workforce formalization, ESG, and skilling trends."
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Daily Web News Bulletin & Primetime Lead Package",
+        "caption": "16:9 Video Slot — Embed web news broadcast package, anchor bulletin, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "On-Ground Investigative Field Report & Public Vox-Pop",
+        "caption": "16:9 Video Slot — Embed ground reporting snippet, civic issue package, or field camera clip.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Newsroom PCR Desk & Multi-Track Audio Mixing",
+        "caption": "Studio control room photo showing timeline editing, teleprompter control, and monitor feeds.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Field Reporting & Live Street Camera Setup",
+        "caption": "Location photograph of DSLR rig, handheld mic, and on-the-go news capture across Delhi NCR.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Producing independent web journalism during the rise of digital news portals meant operating with speed, journalistic precision, and tight budgets. Every story needed fast editorial verification, crisp shooting, and rapid publication.",
+      "objective": "Deliver regular, high-credibility news bulletins and on-the-ground civic packages that grew portal readership across the NCR region.",
+      "role": "Head of Media Production (promoted from Video Editor) — supervised studio teleprompter shoots, field camerawork, audio balancing, and post-production turnaround under daily newsroom deadlines.",
+      "strategy": [
+        "Created an organized newsroom schedule: morning topic selection, midday filming/reporting, afternoon editorial cutting, and evening release.",
+        "Trained camera operators and junior editors on standardized framing, clean lapel mic placement, and rapid keyboard editing shortcuts.",
+        "Emphasized verified regional facts and citizen voices over noisy sensationalism."
       ],
-      execution: [
-        "Interviewed frontline associates and produced cinematic mini-documentaries for LinkedIn.",
-        "Coordinated Townhall video broadcasts and employee recognition campaigns.",
-        "Maintained brand voice consistency across all corporate touchpoints and annual stakeholder reports."
+      "execution": [
+        "Covered on-ground public events, press briefings, and civic issues across Delhi NCR with DSLR kits and mobile audio gear.",
+        "Operated green-screen studio backgrounds, three-point lighting grids, and teleprompters for news anchors.",
+        "Supervised editing in Adobe Premiere Pro, ensuring clean audio levels, accurate lower-thirds, and zero copyright issues before publishing."
       ],
-      results: [
-        "Grew corporate LinkedIn audience reach to over 70,000+ targeted corporate professionals.",
-        "Significantly improved Glassdoor and LinkedIn corporate sentiment ratings.",
-        "Solidified strategic partnerships with state skill missions and enterprise corporations."
+      "results": [
+        "Produced hundreds of video news bulletins and investigative field reports across a 2-year period.",
+        "Steadily expanded digital readership through timely coverage of civic infrastructure, education, and regional developments.",
+        "Earned promotion from Video Editor to Head of Media Production overseeing the entire media production department."
       ],
-      lessons: [
-        "Authentic human stories create 10x more employer brand trust than corporate press releases.",
-        "Frontline employee pride translates directly into stronger enterprise client loyalty."
+      "lessons": [
+        "Newsroom deadlines teach you unbeatable production discipline. When a broadcast is scheduled, you learn to resolve technical challenges immediately without excuses."
       ]
     }
   },
   {
-    id: "greencall-seo",
-    slug: "greencall-seo",
-    title: "GreenCall HRMS SEO & Web Architecture",
-    category: "SEO & Web",
-    organization: "GreenCall",
-    period: "2024",
-    description: "Full technical SEO audit, metadata overhaul, and B2B SaaS informational content pillars for enterprise HRMS platform.",
-    gradient: "from-teal-600 to-cyan-900",
-    image: "/images/projects/greencall-seo.svg",
-    badge: "B2B SaaS",
-    stats: [
-      { label: "Focus", value: "Organic Search" },
-      { label: "Target", value: "HR Decision Makers" },
-      { label: "Product", value: "GreenHR Platform" }
+    "id": "helios-educational-media",
+    "slug": "helios-educational-media",
+    "title": "Helios Educore Digital Content & Web Management",
+    "category": "Content Strategy",
+    "organization": "Helios Educore",
+    "period": "Jul 2020 – Feb 2021 · 8 mos",
+    "description": "Structuring digital educational video channels, website management, and student acquisition campaigns for competitive exam preparation.",
+    "gradient": "from-purple-950 via-indigo-950 to-neutral-950",
+    "image": "/images/projects/helios.svg",
+    "badge": "EdTech & Web",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Content Manager"
+      },
+      {
+        "label": "Focus",
+        "value": "EdTech Channels"
+      },
+      {
+        "label": "Platform",
+        "value": "Web & YouTube"
+      },
+      {
+        "label": "Impact",
+        "value": "Student Inbound"
+      }
     ],
-    overview: {
-      context: "GreenCall provides enterprise HRMS software (GreenHR) managing hire-to-retire, attendance, payroll, and compliance.",
-      objective: "Capture organic search intent from HR heads and founders searching for scalable HR automation solutions in India.",
-      role: "Digital Marketing Manager — conducted competitor benchmarking, technical SEO audit, and keyword-to-page architecture.",
-      strategy: [
-        "Audited core competitors (Keka, greytHR, Pocket HRMS, factoHR) to uncover high-intent B2B keyword gaps.",
-        "Structured comprehensive product feature pages (Payroll Automation, Geo-attendance, Statutory Compliance, PF/ESI).",
-        "Wrote benefit-driven B2B website copy translating complex HR tech into clear commercial ROI."
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Competitive Exam Strategy & Faculty Masterclass Series",
+        "caption": "16:9 Video Slot — Embed recorded faculty lecture snippet, strategy explainer, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Student Success Testimonial & Learning Portal Walkthrough",
+        "caption": "16:9 Video Slot — Embed student journey video and interactive course platform demo.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Portal Information Architecture & Course Landing Page",
+        "caption": "Visual layout showing structured exam syllabus, batch dates, and registration funnels.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Educational Carousels & Problem-Solving Social Creatives",
+        "caption": "Key concept infographics and cheat sheets designed for student social channels.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "As education transitioned online in 2020, Helios Educore needed structured digital channels, seamless web portal maintenance, and engaging educational video modules to support students preparing for competitive entrance examinations.",
+      "objective": "Build consistent digital content workflows, optimize the official website for student inquiries, and produce high-retention video study sessions.",
+      "role": "Digital Content Manager — managed official digital portals, created educational video modules, handled digital marketing creatives, and tracked student engagement metrics.",
+      "strategy": [
+        "Organized course materials into clear, topic-wise video playlists and modular guides, making self-study intuitive for students.",
+        "Optimized landing page conversion paths with visible batch schedules, course syllabi, and direct inquiry forms.",
+        "Designed social micro-content focusing on shortcut formulas, memory tips, and exam preparation checklists."
       ],
-      execution: [
-        "Rebuilt metadata, heading hierarchy (H1-H4), internal link clusters, and Schema markup.",
-        "Created an informational HR knowledge hub targeting compliance queries (PF, TDS, PT regulations).",
-        "Optimized mobile responsiveness and core web vitals for frictionless lead form submission."
+      "execution": [
+        "Collaborated with subject matter faculty to record, edit, and optimize lecture videos with crisp audio and clean slides.",
+        "Maintained and updated the official website, ensuring smooth form submissions and up-to-date course materials.",
+        "Monitored video watch times and search query impressions to identify topics requiring additional explanatory videos."
       ],
-      results: [
-        "Doubled organic search impressions for critical enterprise HR software queries.",
-        "Established GreenCall as a trusted contender in the competitive Indian HR tech landscape.",
-        "Consistently generated inbound enterprise demo requests through organic discovery."
+      "results": [
+        "Built a robust digital library of recorded lectures that enhanced student retention and course satisfaction.",
+        "Increased organic website traffic and student enrollment inquiries through educational content discovery.",
+        "Ensured seamless digital operations and rapid updates during peak entrance exam counseling windows."
       ],
-      lessons: [
-        "In B2B SaaS, educational content addressing compliance rules captures qualified buyers far faster than feature checklists."
+      "lessons": [
+        "In educational content, clean audio and legible graphics are far more important than complex visual effects. Students value clear teaching above all else."
       ]
     }
   },
   {
-    id: "niyukti-shakti",
-    slug: "niyukti-shakti",
-    title: "Niyukti Shakti Women Campaign",
-    category: "Video Production",
-    organization: "Talent Foundation",
-    period: "2024",
-    description: "Docu-style video series highlighting women empowerment, skill training triumphs, and workplace inclusivity.",
-    gradient: "from-orange-600 to-red-900",
-    image: "/images/projects/niyukti-shakti.svg",
-    badge: "Impact Film",
-    stats: [
-      { label: "Type", value: "Docu-series" },
-      { label: "Theme", value: "Women In Workforce" },
-      { label: "Impact", value: "Social Skilling" }
+    "id": "vispl-employer-branding",
+    "slug": "vispl-employer-branding",
+    "title": "Vision India Employer Branding & #BharatAtWork",
+    "category": "Employer Branding",
+    "organization": "Vision India Services",
+    "period": "May 2025 – Present · 1 yr 6 mos",
+    "description": "Directing the #BharatAtWork series, executive thought leadership, employee recognition films, and multi-brand corporate communications.",
+    "gradient": "from-amber-600 to-rose-900",
+    "image": "/images/projects/vispl-employer-branding.svg",
+    "badge": "Corporate Rep",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Marketing Manager"
+      },
+      {
+        "label": "Scale",
+        "value": "32,000+ Associates"
+      },
+      {
+        "label": "Initiative",
+        "value": "#BharatAtWork"
+      },
+      {
+        "label": "Audience",
+        "value": "70k+ Corporate"
+      }
     ],
-    overview: {
-      context: "Talent Foundation runs transformative CSR and skill development programs empowering rural women with technical and digital literacy.",
-      objective: "Highlight the personal journeys of rural women breaking barriers and entering the formal workforce.",
-      role: "Video Producer & Digital Strategist — managed end-to-end video scripting, on-ground shoot coordination, and video post-production.",
-      strategy: [
-        "Structured candid, emotional documentary formats focusing on candidate backgrounds, family support, and financial independence.",
-        "Designed promotional video teasers optimized for LinkedIn, Instagram, and government partner presentations.",
-        "Crafted narrative captions highlighting SDG-5 (Gender Equality) and corporate CSR impact."
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "#BharatAtWork: Associate Worker Journey in Logistics & Manufacturing",
+        "caption": "16:9 Video Slot — Embed employee documentary, warehouse associate story, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Annual Corporate Leadership Townhall & Foundation Day Recap",
+        "caption": "16:9 Video Slot — Embed executive address, leadership milestones, or corporate event film.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Frontline Workforce Portrait Series & Workplace Moments",
+        "caption": "Photography collection showing associate technicians, logistics workers, and office culture.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "LinkedIn Thought Leadership Carousels & Culture Highlights",
+        "caption": "Visual layout of executive LinkedIn carousels on labor formalization and Great Place to Work.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "With over 32,000 associate employees deployed across India's supply chains and factories, Vision India Services required an authentic employer branding program that celebrated everyday frontline workers while strengthening corporate credibility with enterprise clients.",
+      "objective": "Build employer pride, highlight workforce formalization, and position VISPL as a leading people-centric staffing institution.",
+      "role": "Digital Marketing Manager — architected the #BharatAtWork storytelling series, directed culture films, managed executive LinkedIn communications, and coordinated corporate brand messaging.",
+      "strategy": [
+        "Created the '#BharatAtWork' initiative to tell the real, dignified stories of warehouse pickers, assembly technicians, and retail associates.",
+        "Positioned senior leadership through grounded commentary on labor formalization, apprenticeships, and skilling trends.",
+        "Aligned festive and cultural milestones (Rojgar Wali Diwali, Job Wali Chhath) with employee appreciation campaigns."
       ],
-      execution: [
-        "Traveled to regional skill centers to record live classroom sessions, practical lab work, and personal interviews.",
-        "Supervised color grading, sound design, and vernacular subtitle synchronization in Adobe Premiere Pro.",
-        "Packaged complete campaign assets for corporate reporting and digital social distribution."
+      "execution": [
+        "Visited client operational hubs to interview associate employees and record authentic working conditions.",
+        "Produced documentary video shorts for LinkedIn, pairing raw footage with candid employee voiceovers.",
+        "Supervised executive messaging, townhall broadcasts, and corporate presentations for government and enterprise partners."
       ],
-      results: [
-        "Produced impactful video assets featured in annual CSR reviews and corporate investor decks.",
-        "Achieved widespread viral engagement across LinkedIn, earning commendations from industry and CSR leaders.",
-        "Directly inspired higher female enrollment in subsequent rural skilling batches."
+      "results": [
+        "Elevated corporate LinkedIn reach, generating genuine engagement from enterprise HR heads and industry peers.",
+        "Strengthened company reputation as a transparent, employee-first workforce partner.",
+        "Built a reusable archive of authentic brand stories that serve client pitches and annual stakeholder reports."
       ],
-      lessons: [
-        "Authentic audio and unfiltered regional voices create irresistible emotional resonance that no scripted studio ad can match."
+      "lessons": [
+        "Genuine employee pride cannot be fabricated in a boardroom. Showing actual people on the factory floor creates ten times more credibility than generic corporate buzzwords."
+      ]
+    }
+  },
+  {
+    "id": "employ-india",
+    "slug": "employ-india",
+    "title": "Employ India Workforce Enablement Campaign",
+    "category": "Digital Marketing",
+    "organization": "Vision India Services",
+    "period": "May 2025 – Present · 1 yr 6 mos",
+    "description": "Integrated digital marketing and candidate acquisition campaign connecting youth in Tier-2/3 towns with enterprise hiring pipelines.",
+    "gradient": "from-blue-700 to-indigo-900",
+    "image": "/images/projects/employ-india.svg",
+    "badge": "Flagship Initiative",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Campaign Lead"
+      },
+      {
+        "label": "Reach",
+        "value": "10M+ Pan-India"
+      },
+      {
+        "label": "Funnels",
+        "value": "Meta & WhatsApp"
+      },
+      {
+        "label": "Outcome",
+        "value": "Hiring Pipeline"
+      }
+    ],
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Employ India National Campaign Launch Film",
+        "caption": "16:9 Video Slot — Embed campaign launch film, brand film, or YouTube video link.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Youth Placement Success Stories (Vernacular Reels)",
+        "caption": "9:16 Video Slot — Short-form testimonial reels from candidates placed in manufacturing and retail.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "type": "image",
+        "title": "Campaign Microsite UI & Mobile Candidate Funnel",
+        "caption": "Visual breakdown of high-conversion mobile-first candidate application pages.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Offline Skilling Center Walk-in Posters & Banners",
+        "caption": "Visual display collateral used across regional skill centers and job fair drives.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Connecting aspirational youth in non-metro towns with large-scale hiring mandates in manufacturing, logistics, and retail required a structured digital campaign that simplified job search and eliminated candidate skepticism.",
+      "objective": "Unify skilling and placement drives under the 'Employ India' banner and drive verified job candidate registrations across Tier-2 and Tier-3 regions.",
+      "role": "Digital Marketing Manager — oversaw digital campaign strategy, creative asset production, ad targeting, and applicant routing.",
+      "strategy": [
+        "Structured a multi-stage funnel: inspiring vernacular awareness video -> streamlined mobile landing page -> instant WhatsApp confirmation.",
+        "Addressed core candidate doubts upfront: zero registration fee, verified company names, transparent salary ranges, and free skill training.",
+        "Segmented campaigns geographically to align with active client hiring drives in specific industrial belts."
+      ],
+      "execution": [
+        "Collaborated with recruitment heads and regional teams to map weekly vacancy requirements.",
+        "Built and deployed Meta Lead Ads, localized Google Search campaigns, and conversational WhatsApp onboarding sequences.",
+        "Reviewed cost-per-registration daily, reallocating ad spend toward regional creatives with the highest interview show-up rates."
+      ],
+      "results": [
+        "Generated millions of targeted impressions across regional youth cohorts.",
+        "Delivered a consistent flow of qualified candidates into enterprise placement pipelines within 24-48 hours.",
+        "Significantly lowered applicant acquisition cost compared to traditional print advertisements."
+      ],
+      "lessons": [
+        "Tier-2/3 candidates value transparency above all. Explicitly showing salary ranges and company logos on thumbnails triples click-through rates."
+      ]
+    }
+  },
+  {
+    "id": "just-job",
+    "slug": "just-job",
+    "title": "Just Job Vernacular Recruitment Marketing",
+    "category": "Digital Marketing",
+    "organization": "Just Job",
+    "period": "2024 – 2025",
+    "description": "Multi-lingual social media marketing and candidate pipeline generation targeting ITI and diploma holders across industrial clusters.",
+    "gradient": "from-violet-600 to-purple-950",
+    "image": "/images/projects/just-job.svg",
+    "badge": "Candidate Acquisition",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Marketing Lead"
+      },
+      {
+        "label": "Focus",
+        "value": "ITI & Diploma"
+      },
+      {
+        "label": "Languages",
+        "value": "6 Regional"
+      },
+      {
+        "label": "Turnaround",
+        "value": "<24h Routing"
+      }
+    ],
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Vernacular Guide: How Industrial Technicians Find Verified Jobs",
+        "caption": "16:9 Video Slot — Embed candidate instructional video, Hindi tutorial, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Urgent Walk-in Hiring Drive Snippets",
+        "caption": "9:16 Video Slot — Fast-turnaround walk-in recruitment reels filmed at industrial estates.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "type": "image",
+        "title": "Trade-Specific Social Creative Cards (Fitter, CNC, Electrician)",
+        "caption": "High-contrast social cards with transparent wage brackets, location pins, and company names.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "WhatsApp Automated Candidate Onboarding Flow",
+        "caption": "Step-by-step schematic of frictionless conversational job-matching chatbot.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "India's manufacturing sector faces an acute shortage of skilled technicians, while ITI and polytechnic graduates struggle to find verified, non-exploitative openings near their hometowns. Just Job serves this specialized industrial segment.",
+      "objective": "Establish Just Job as the trusted platform for blue-collar and technical hiring, driving app downloads and job applications across major industrial hubs.",
+      "role": "Digital Marketing Manager — planned social campaigns, coordinated regional video guides, ran paid acquisition, and built applicant nurture workflows.",
+      "strategy": [
+        "Produced hyper-localized content segmented by technical trade: CNC operators, fitters, electricians, welders, and warehouse staff.",
+        "Deployed short video tutorials in Hindi, Bengali, Odia, Telugu, and Malayalam showing exactly how to register without complex paperwork.",
+        "Integrated instant WhatsApp job alerts to reduce reliance on emails, which blue-collar candidates rarely check."
+      ],
+      "execution": [
+        "Created daily job opportunity cards with clear location pins, shift timings, and starting salaries.",
+        "Collaborated with regional field recruiters to capture quick testimonial clips from candidates during walk-in interview days.",
+        "Optimized Meta and Google campaign targeting toward technical training clusters and industrial corridors."
+      ],
+      "results": [
+        "Substantially expanded candidate registrations across Northern and Eastern industrial zones.",
+        "Maintained high response rates by connecting applicants directly with recruitment desks within hours of submission.",
+        "Established Just Job's brand equity as a genuine, fee-free platform among trade apprentice groups."
+      ],
+      "lessons": [
+        "For technical candidates, SMS and WhatsApp automation beats email by a ratio of 20 to 1. Mobile immediacy is everything."
+      ]
+    }
+  },
+  {
+    "id": "liveskills",
+    "slug": "liveskills",
+    "title": "LiveSkills E-Learning & Professional Certifications",
+    "category": "Content Strategy",
+    "organization": "LiveSkills",
+    "period": "2024 – 2025",
+    "description": "Course positioning, syllabus explainer modules, and digital certification campaigns for POSH compliance and professional upskilling.",
+    "gradient": "from-emerald-600 to-teal-950",
+    "image": "/images/projects/liveskills.svg",
+    "badge": "EdTech Growth",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Content Strategist"
+      },
+      {
+        "label": "Courses",
+        "value": "POSH & Skills"
+      },
+      {
+        "label": "Alignment",
+        "value": "NSDC Aligned"
+      },
+      {
+        "label": "Audience",
+        "value": "HRs & Learners"
+      }
+    ],
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "POSH Compliance: Corporate Responsibility & Legal Frameworks",
+        "caption": "16:9 Video Slot — Embed trainer explainer, corporate compliance preview, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "LiveSkills Professional Certification Walkthrough",
+        "caption": "16:9 Video Slot — Embed course curriculum walkthrough and student LMS orientation.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Course Syllabus Infographics & Student LMS Interface",
+        "caption": "Modular breakdowns explaining legal mandates, POSH committee roles, and timelines.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Certification Authority Badges & Corporate Batch One-Pagers",
+        "caption": "Marketing collateral built for enterprise HR heads and compliance audit teams.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Modern workplaces require mandatory compliance certifications (such as Prevention of Sexual Harassment - POSH) alongside vocational upskilling. LiveSkills needed an authoritative content strategy to reach individual professionals and corporate HR heads.",
+      "objective": "Position LiveSkills' courses as authoritative, practical, and career-enhancing, driving individual enrollments and corporate group training inquiries.",
+      "role": "Digital Marketing Manager — developed course value propositions, designed promotional collateral, managed digital distribution, and ran lead campaigns.",
+      "strategy": [
+        "Framed POSH and workplace safety not just as dry statutory obligations, but as vital pillars of healthy company culture and legal protection.",
+        "Created bite-sized carousels explaining real-world workplace scenarios, POSH committee roles, and investigation guidelines.",
+        "Produced instructor introduction videos establishing trainer credentials and interactive workshop formats."
+      ],
+      "execution": [
+        "Built clear curriculum landing pages detailing learning hours, evaluation criteria, and certificate validity.",
+        "Managed targeted LinkedIn campaigns directed at HR managers, compliance officers, and department heads.",
+        "Automated digital inquiry responses, providing downloadable course brochures and syllabus previews immediately."
+      ],
+      "results": [
+        "Generated steady corporate inquiries for bulk team compliance certifications.",
+        "Improved organic social engagement on LinkedIn through informative compliance explainer carousels.",
+        "Enhanced course completion rates by providing clear onboarding orientations for enrolled students."
+      ],
+      "lessons": [
+        "Compliance courses need credibility markers: reference government acts, legal precedents, and official accreditation to earn corporate trust."
+      ]
+    }
+  },
+  {
+    "id": "greencall-seo",
+    "slug": "greencall-seo",
+    "title": "GreenCall HRMS Platform Architecture & Demo Growth",
+    "category": "Web & Platforms",
+    "organization": "GreenCall",
+    "period": "2024",
+    "description": "B2B SaaS website architecture, informational compliance pillars, and landing page conversion optimization for enterprise HRMS.",
+    "gradient": "from-teal-600 to-cyan-900",
+    "image": "/images/projects/greencall-seo.svg",
+    "badge": "B2B SaaS",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Web & Marketing"
+      },
+      {
+        "label": "Product",
+        "value": "GreenHR Platform"
+      },
+      {
+        "label": "Focus",
+        "value": "Demo Inbound"
+      },
+      {
+        "label": "Impact",
+        "value": "Rankings & Leads"
+      }
+    ],
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "GreenHR Platform Overview: Attendance & Automated Payroll",
+        "caption": "16:9 Video Slot — Embed software product demo video, feature overview, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Enterprise Onboarding & Statutory Compliance Module",
+        "caption": "16:9 Video Slot — Embed walkthrough of PF, ESI, TDS, and attendance rules in GreenHR.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Technical SEO Hierarchy & Search Console Performance Dashboard",
+        "caption": "Keyword ranking graphs and organic search growth snapshots for Indian HR queries.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Enterprise Demo Landing Page High-Converting Layout",
+        "caption": "UI layout showing value proposition, feature comparison matrix, and instant demo booking.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "GreenCall's HRMS solution (GreenHR) offers end-to-end employee lifecycle management, geo-attendance, automated payroll, and statutory compliance. Competing in a crowded Indian HR tech space required targeted web presence and high-intent inbound acquisition.",
+      "objective": "Improve organic search visibility for Indian payroll and compliance terms, streamline website messaging, and increase qualified demo requests from HR leaders.",
+      "role": "Digital Marketing Manager — conducted competitor benchmarking, overhauled website copy and structure, and optimized inbound demo funnels.",
+      "strategy": [
+        "Audited core competitor websites to uncover high-intent B2B search topics: PF calculation rules, ESI compliance, biometric attendance integration, and automated salary slip generation.",
+        "Structured modular product feature pages that clearly addressed HR pain points (payroll errors, compliance penalties, attendance fraud).",
+        "Simplified the demo request process from a cumbersome questionnaire to a frictionless, calendar-linked form."
+      ],
+      "execution": [
+        "Restructured website metadata, heading tags (H1-H3), and internal linking to establish clear topical relevance.",
+        "Created informational compliance guides explaining Indian statutory deductions (PF, ESI, TDS, PT) that attract organic HR search traffic.",
+        "Optimized page load speed and mobile responsiveness for decision-makers browsing on smartphones."
+      ],
+      "results": [
+        "Doubled organic impressions across key HRMS and payroll compliance keywords in Google Search Console.",
+        "Generated a consistent stream of qualified inbound enterprise demo requests without relying solely on paid ads.",
+        "Strengthened GreenCall's market perception as a robust, compliant HR software solution for Indian enterprises."
+      ],
+      "lessons": [
+        "In B2B HR tech, buyers search for solutions to urgent regulatory headaches (like PF revisions or tax changes). Solving their questions builds immediate software trust."
+      ]
+    }
+  },
+  {
+    "id": "niyukti-shakti",
+    "slug": "niyukti-shakti",
+    "title": "Niyukti Shakti Women Skilling Documentary Series",
+    "category": "Social Impact & CSR",
+    "organization": "Talent Foundation",
+    "period": "2024",
+    "description": "Documentary video series capturing rural women mastering technical trades and renewable energy assembly under SECI-backed CSR programs.",
+    "gradient": "from-orange-600 to-red-900",
+    "image": "/images/projects/niyukti-shakti.svg",
+    "badge": "Impact Film",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Video Director"
+      },
+      {
+        "label": "Client",
+        "value": "SECI CSR / Talent"
+      },
+      {
+        "label": "Format",
+        "value": "Documentary Reel"
+      },
+      {
+        "label": "Subject",
+        "value": "Women in Green Jobs"
+      }
+    ],
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Niyukti Shakti: Women Powering India's Green Energy Workforce",
+        "caption": "16:9 Video Slot — Embed flagship CSR documentary, YouTube feature, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Classroom to Workshop: Hands-On Technical Training Reel",
+        "caption": "16:9 Video Slot — Embed solar assembly lab work, practical tool handling, or candidate interview.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Rural Training Center Photography & Assembly Line Stills",
+        "caption": "On-site photos showing female trainees assembling solar circuits and safety gear.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Graduation & Certificate Distribution Stakeholder Deck",
+        "caption": "Official presentation images featuring government officials and certified graduates.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Talent Foundation partnered on CSR initiatives backed by Solar Energy Corporation of India (SECI) to train rural women in solar equipment assembly, electrical wiring, and technical trades. High-impact video storytelling was needed to showcase program outcomes to public stakeholders.",
+      "objective": "Document the transformation of rural women from homemakers into certified technical workers, preserving their authentic dignity while demonstrating measurable CSR impact.",
+      "role": "Video Producer & Creative Director — traveled on location, handled interviews, recorded workshop footage, directed editorial post-production, and packaged final films for corporate reviews.",
+      "strategy": [
+        "Steered clear of staged corporate promotional tropes; let candidates speak candidly about family skepticism, personal perseverance, and first earnings.",
+        "Captured detailed b-roll of hands-on technical work: circuit testing, soldering, solar panel assembly, and safety equipment handling.",
+        "Paced the documentary series to highlight candidate progress from day one in class to certification day."
+      ],
+      "execution": [
+        "Conducted multi-day filming across rural training centers, recording clean ambient audio and natural lighting inside workshops.",
+        "Edited in Adobe Premiere Pro with sensitive musical score, color-graded footage, and accurate English/Hindi subtitles.",
+        "Produced both full-length impact films for corporate stakeholder reviews and short teaser clips for social media."
+      ],
+      "results": [
+        "Delivered marquee documentary films featured in annual CSR review meetings and government partner presentations.",
+        "Achieved strong organic reach on LinkedIn, generating widespread praise from sustainability and skill development leaders.",
+        "Encouraged higher female participation in subsequent skill development cohorts across participating districts."
+      ],
+      "lessons": [
+        "When documenting social impact, respect for the subject is paramount. Let real human grit shine through rather than forcing artificial emotional drama."
+      ]
+    }
+  },
+  {
+    "id": "community-environmental-drives",
+    "slug": "community-environmental-drives",
+    "title": "Yamuna Cleanliness & Lake Rejuvenation Drives",
+    "category": "Social Impact & CSR",
+    "organization": "Vrikshit Foundation & Talent Foundation",
+    "period": "2022 – Present",
+    "description": "Ground-level volunteer leadership on Yamuna riverbank cleanup drives, local waterbody restoration, and community tree plantation across Delhi NCR.",
+    "gradient": "from-emerald-800 via-teal-950 to-neutral-950",
+    "image": "/images/projects/vrikshit-cleanups.svg",
+    "badge": "Community Action",
+    "stats": [
+      {
+        "label": "Role",
+        "value": "Volunteer Leader"
+      },
+      {
+        "label": "Initiative",
+        "value": "Yamuna Cleanup"
+      },
+      {
+        "label": "CSR Partner",
+        "value": "Talent Foundation"
+      },
+      {
+        "label": "Action",
+        "value": "500+ Trees Planted"
+      }
+    ],
+    "mediaPlaceholders": [
+      {
+        "type": "video",
+        "title": "Yamuna Riverbank Cleanliness Drive: Youth Volunteer Reel",
+        "caption": "16:9 Video Slot — Embed ground cleanup video, volunteer action reel, or MP4.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "video",
+        "title": "Talent Foundation Lake Cleanup & 500-Sapling Plantation Recap",
+        "caption": "16:9 Video Slot — Embed waterbody restoration and community tree planting summary film.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Ground Action Stills: Riverbank Waste Segregation & Hauling",
+        "caption": "Unvarnished photography of volunteer squads hauling non-biodegradable plastics from riverbanks.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "type": "image",
+        "title": "Community Plantation Drive & Sapling Care Session",
+        "caption": "Photographs showing indigenous sapling planting and soil conditioning around restored water bodies.",
+        "aspectRatio": "16:9"
+      }
+    ],
+    "overview": {
+      "context": "Environmental degradation in Delhi NCR calls for urgent citizen action beyond theoretical awareness. From heavily polluted Yamuna riverbanks to neglected neighborhood waterbodies, direct physical cleanups make an immediate difference.",
+      "objective": "Mobilize young volunteers for weekly riverbank cleanup drives with Vrikshit Foundation, and organize corporate CSR lake cleanup and sapling plantation drives with Talent Foundation.",
+      "role": "Volunteer Coordinator & Media Documenter — participated on the ground with gloves and boots, coordinated volunteer squads, documented before-and-after transformations, and engaged local communities.",
+      "strategy": [
+        "Organized early morning volunteer shifts, providing clear waste segregation protocols (plastics, glass, ceremonial waste, bio-degradable matter).",
+        "Coordinated logistics: safety gloves, heavy-duty collection sacks, local municipal pickup coordination, and first aid readiness.",
+        "Partnered with Talent Foundation to run CSR lake cleanup drives combined with native tree plantation to prevent post-cleanup soil erosion."
+      ],
+      "execution": [
+        "Participated in grueling on-ground cleanup drives along the Yamuna ghats, clearing metric tons of non-biodegradable waste.",
+        "Led volunteer groups in digging pits, conditioning soil, and planting over 500 indigenous saplings around restored water bodies.",
+        "Captured unvarnished photos and video reels documenting volunteer energy and the tangible difference made in local public spaces."
+      ],
+      "results": [
+        "Helped divert significant volumes of plastic and hazardous waste from polluting local waterways.",
+        "Restored public lake boundaries with native greenery, creating community pride in local neighborhood ecology.",
+        "Inspired corporate colleagues and youth volunteers to make environmental stewardship a regular weekend commitment."
+      ],
+      "lessons": [
+        "Real change happens when you show up with a pair of boots and a trash bag. Theory inspires conversations, but on-ground sweat inspires lasting community action."
       ]
     }
   }

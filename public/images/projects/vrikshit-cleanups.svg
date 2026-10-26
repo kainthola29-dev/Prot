@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-eco" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="50%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#0F766E" />
+    </linearGradient>
+    <linearGradient id="card-eco" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bg-eco)" />
+
+  <g transform="translate(180, 75)">
+    <rect width="440" height="280" rx="20" fill="url(#card-eco)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="24" y="24" width="180" height="24" rx="12" fill="rgba(52, 211, 153, 0.3)" stroke="#34D399" stroke-width="1" />
+    <text x="114" y="40" fill="#D1FAE5" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">COMMUNITY &amp; ECOLOGY</text>
+
+    <text x="24" y="90" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.5">CLEANLINESS &amp; CSR DRIVES</text>
+    <text x="24" y="114" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Yamuna Cleanups, Lake Rejuvenation &amp; Tree Plantation</text>
+
+    <g transform="translate(24, 140)">
+      <rect width="392" height="100" rx="12" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="34" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="12" font-weight="700">GROUND VOLUNTEERING LEADERSHIP</text>
+      <text x="24" y="58" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Vrikshit Foundation • Talent Foundation CSR • Eco Action</text>
+      <text x="24" y="80" fill="#ECFDF5" font-family="system-ui, sans-serif" font-size="11">Mobilizing community youth for tangible environmental preservation</text>
+    </g>
+  </g>
+</svg>
