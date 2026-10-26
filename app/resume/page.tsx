@@ -79,7 +79,7 @@ export default function ResumePage() {
           <span>Executive Summary</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-          Results-oriented Marketing Professional with <strong>7.7 Years Exp.</strong> of hands-on execution combined with strategic and business acumen. Proven record of managing multi-channel digital campaigns, content architecture, SEO visibility, employer branding, and corporate communication across 6 enterprise brands (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Background in journalism and video production, currently completing an MBA from Jindal Global Business School to bridge creative storytelling with commercial leadership.
+          Results-oriented Marketing Professional with <strong>7.7 Years Exp.</strong> of hands-on execution combined with strategic and business acumen. Proven record of managing multi-channel digital campaigns, content architecture, SEO visibility, employer branding, and corporate communication across 12+ enterprise brands (including Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Background in journalism and video production, currently completing an MBA from Jindal Global Business School to bridge creative storytelling with commercial leadership.
         </p>
       </section>
 

@@ -32,7 +32,7 @@ export const profileData = {
     "& Brand Growth Manager.",
     "& Performance Driver."
   ],
-  bio: "Practical marketing execution backed by strategic and business thinking. 7.7 Years Exp. orchestrating digital campaigns, employer branding, SEO, content architecture, and multi-brand growth across 6 flagship enterprise entities.",
+  bio: "Practical marketing execution backed by strategic and business thinking. 7.7 Years Exp. orchestrating digital campaigns, employer branding, SEO, content architecture, and multi-brand growth across 12+ flagship enterprise entities.",
   location: "Delhi NCR, India",
   email: "kainthola29@gmail.com",
   phone: "+91-9599396969",
@@ -50,8 +50,8 @@ export const profileData = {
 export const statsData: StatItem[] = [
   { value: "10M+", label: "Audience Reach" },
   { value: "7.7", label: "Years Exp." },
-  { value: "6+", label: "Brands Managed" },
-  { value: "850+", label: "Webinar Attendees" },
+  { value: "12+", label: "Brands Managed" },
+  { value: "100+", label: "Campaigns Delivered" },
 ];
 
 export const servicesData: ServiceItem[] = [
@@ -65,7 +65,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: "Architecting high-conversion digital ecosystems that bridge brand awareness, inbound demand generation, and bottom-line revenue. From customer persona discovery to omnichannel paid and organic funnels, I engineer data-informed campaigns that eliminate marketing wastage.",
     deliverables: [
       "Full-Funnel Digital Acquisition & Growth Roadmaps",
-      "Omnichannel Campaign Strategy across LinkedIn, Meta, and Search",
+      "Omnichannel Campaign Strategy across Meta, Search, and Owned Media",
       "High-Converting Lead Generation Funnels & Landing Page CRO",
       "Multi-Brand Audience Segmentation & Persona Mapping",
       "Real-Time Analytics Dashboards, Attribution & ROI Reporting"
@@ -78,10 +78,10 @@ export const servicesData: ServiceItem[] = [
     ],
     metrics: [
       { label: "Audience Reach", value: "10M+" },
-      { label: "Webinar Turnout", value: "850+" },
-      { label: "Multi-Brand Scale", value: "6 Brands" }
+      { label: "Campaigns Executed", value: "100+" },
+      { label: "Multi-Brand Scale", value: "12+ Brands" }
     ],
-    tools: ["Meta Business Suite", "LinkedIn Campaign Manager", "Google Analytics 4", "Microsoft Excel", "Zapier", "WordPress"],
+    tools: ["Meta Business Suite", "Google Analytics 4", "Google Search Console", "Microsoft Excel", "WordPress", "Adobe Premiere Pro"],
     featuredProjects: ["employ-india", "just-job", "employ-india-connect-webinar"]
   },
   {
@@ -187,7 +187,7 @@ export const projectsData: ProjectItem[] = [
     badge: "Flagship Initiative",
     stats: [
       { label: "Audience Reach", value: "10M+" },
-      { label: "Multi-Brand Scale", value: "6 Brands" },
+      { label: "Multi-Brand Scale", value: "12+ Brands" },
       { label: "Hiring Pipeline", value: "Nationwide" }
     ],
     overview: {
@@ -584,14 +584,14 @@ export const timelineData: TimelineItem[] = [
     role: "Digital Marketing Manager",
     organization: "Vision India Services Pvt. Ltd.",
     period: "May 2025 – Present",
-    description: "Leading integrated marketing and communications across a multi-brand portfolio spanning skilling, employability, healthcare, sustainability, and social impact (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Directing campaign strategy, internal/external communications, employer branding, executive messaging, content calendars, video production, analytics, and creative-team coordination.",
+    description: "Leading integrated marketing and communications across a multi-brand portfolio of 12+ brands spanning skilling, employability, healthcare, sustainability, and social impact (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Directing campaign strategy, internal/external communications, employer branding, executive messaging, content calendars, video production, analytics, and creative-team coordination.",
     skills: ["Marketing Strategy", "Multi-Brand Management", "SEO Architecture", "Employer Branding", "Lead Generation", "Executive Comms", "Video Direction"],
     isCurrent: true
   },
   {
     id: "mba",
     role: "MBA in Business Strategy & Marketing",
-    organization: "Jindal Global Business School (Cohort 13)",
+    organization: "Jindal Global Business School",
     period: "In Progress",
     description: "Augmenting 7.7 Years of hands-on execution with rigorous corporate strategy, commercial finance, consumer psychology, and executive leadership frameworks.",
     skills: ["Corporate Strategy", "Financial Acumen", "Business Leadership", "Marketing Analytics"]
@@ -612,7 +612,7 @@ export const educationData = [
     id: "mba",
     degree: "Master of Business Administration (MBA)",
     field: "Business Strategy & Marketing",
-    institution: "Jindal Global Business School (Cohort 13)",
+    institution: "Jindal Global Business School",
     period: "In Progress",
     description: "Focus on corporate strategy, consumer psychology, commercial thinking, brand equity, and executive decision-making."
   },
@@ -628,9 +628,9 @@ export const educationData = [
     id: "ba-mass-comm",
     degree: "Bachelor of Arts (BA)",
     field: "Journalism and Mass Communication",
-    institution: "Sharda University",
+    institution: "Chaudhary Charan Singh University (CCSU)",
     period: "2015 – 2018",
-    description: "Foundational training in print, broadcast, digital journalism, camera techniques, audio-visual editing, and media psychology."
+    description: "Foundational training in print, broadcast, digital journalism, camera techniques, audio-visual editing, and media ethics."
   }
 ];
 
@@ -890,7 +890,7 @@ export const articlesData: ArticleItem[] = [
         id: "commercial-language",
         heading: "Speaking the Language of the C-Suite",
         paragraphs: [
-          "Pursuing my MBA at Jindal Global Business School (Cohort 13) reframed how I perceive my entire profession.",
+          "Pursuing my MBA at Jindal Global Business School reframed how I perceive my entire profession.",
           "The Chief Financial Officer does not care how clever your slogan is or whether your video has cinematic grain; they care about Customer Acquisition Cost (CAC), Payback Period, and Customer Lifetime Value (LTV).",
           "When you align creative execution with financial reality, marketing transforms from an easily cut cost center into an indispensable growth engine."
         ]
@@ -923,7 +923,7 @@ export const skillsArchitecture: SkillCategory[] = [
   },
   {
     title: "Web, SEO & Analytics",
-    skills: ["Technical SEO", "Information Architecture", "WordPress CMS Management", "Google Analytics 4", "Meta Business Suite", "LinkedIn Campaign Manager"]
+    skills: ["Technical SEO", "Information Architecture", "WordPress CMS Management", "Google Analytics 4", "Meta Business Suite", "Google Search Console"]
   },
   {
     title: "Strategic & Business Thinking",

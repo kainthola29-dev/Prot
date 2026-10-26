@@ -11,12 +11,10 @@ import {
 import { JsonLd } from "@/components/JsonLd";
 import { 
   ArrowRight, 
-  CheckCircle2, 
   Sparkles, 
   Award, 
   Briefcase, 
   GraduationCap, 
-  Compass, 
   Target, 
   TrendingUp, 
   FileText, 
@@ -27,7 +25,6 @@ import {
   Mail, 
   MessageCircle,
   Building2,
-  Quote,
   ShieldCheck,
   Zap,
   Globe2
@@ -36,10 +33,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Deepanshu Kainthola — Career Journey & Strategic Marketing",
-  description: "Learn about Deepanshu Kainthola's 7.7 Years Exp. combining hands-on digital marketing execution with strategic MBA leadership across 6 enterprise brands.",
+  description: "Learn about Deepanshu Kainthola's 7.7 Years Exp. combining hands-on digital marketing execution with strategic MBA leadership across 12+ enterprise brands.",
   openGraph: {
     title: "About Deepanshu Kainthola — Digital Marketing Manager",
-    description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership.",
+    description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership across 12+ brands.",
     type: "profile",
     images: ["/images/deepanshu.webp"],
   },
@@ -85,32 +82,31 @@ export default function AboutPage() {
     }
   };
 
-  // Primary tech tools strip
+  // Verified tools stack
   const toolsStack = [
     "Google Analytics 4",
     "Meta Business Suite",
-    "LinkedIn Campaign Manager",
+    "Google Search Console",
     "Adobe Premiere Pro",
     "Adobe Photoshop",
     "WordPress CMS",
-    "SEMrush / Ahrefs",
     "Canva Pro",
-    "Zapier",
-    "Microsoft Excel (Advanced)"
+    "Microsoft Excel"
   ];
 
   return (
-    <div className="py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+    <div className="pt-2 sm:pt-4 pb-16 lg:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-24">
       <JsonLd data={breadcrumbSchema} />
 
-      {/* 1. HERO & BIO SECTION */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Photo & Status */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="relative w-full max-w-sm">
+      {/* 1. HERO SECTION WITH STICKY PHOTO & EMBEDDED OPERATING PHILOSOPHY */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        
+        {/* Left Column: Sticky Photo & Status Tag */}
+        <div className="lg:col-span-5 lg:sticky lg:top-24 self-start flex justify-center">
+          <div className="relative w-full max-w-sm sm:max-w-md">
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary-600/20 to-teal-400/20 rounded-3xl blur-2xl -z-10" />
             <div className="rounded-2xl p-3 bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-inbio dark:shadow-inbio-dark">
-              <div className="relative w-full h-[400px] sm:h-[450px] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+              <div className="relative w-full h-[380px] sm:h-[430px] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <Image
                   src="/images/deepanshu.webp"
                   alt="Deepanshu Kainthola — Digital Marketing Manager"
@@ -134,110 +130,121 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Right Column: Bio Narrative & High-Impact Stat Strip */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300 border border-primary-200/60 dark:border-primary-800/60">
-            <Sparkles className="w-3.5 h-3.5 text-primary-600" />
-            <span>EXECUTIVE BACKGROUND &amp; VISION</span>
+        {/* Right Column: Bio Narrative, At-A-Glance Strip & How I Think & Lead */}
+        <div className="lg:col-span-7 space-y-12">
+          
+          {/* Bio Narrative */}
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300 border border-primary-200/60 dark:border-primary-800/60">
+              <Sparkles className="w-3.5 h-3.5 text-primary-600" />
+              <span>EXECUTIVE BACKGROUND &amp; VISION</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight leading-tight">
+              Connecting Content, Brand Narrative, and Measurable Business Growth
+            </h1>
+
+            {/* Executive Pull-Quote */}
+            <div className="p-4 rounded-xl bg-primary-50/70 dark:bg-primary-950/30 border-l-4 border-primary-600 text-sm italic text-gray-800 dark:text-gray-200">
+              &ldquo;Marketing execution without business literacy is just tactical delivery. I bridge creative production with commercial frameworks to turn brand visibility into bottom-line revenue.&rdquo;
+            </div>
+
+            <div className="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p>
+                I am a marketing leader who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not begin as an ivory-tower corporate theorist; it began in the trenches of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
+              </p>
+              <p>
+                Starting at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I developed ruthless discipline around editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation evolved through high-impact content roles at Tatsat Chronicle, Denvax / Helios Educore, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
+              </p>
+              <p>
+                Today, I oversee integrated digital marketing, corporate communications, SEO architecture, employer branding, and multi-channel campaigns across <strong>12+ corporate brands</strong>. To deepen my commercial decision-making and P&amp;L literacy, I am pursuing my <strong>MBA at Jindal Global Business School</strong>.
+              </p>
+            </div>
+
+            {/* Executive At-A-Glance Stat Strip (12+ Brands, 7.7 Years, MBA, 10M+ Reach) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+                <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">7.7</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Years Exp.</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+                <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">12+</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Brands Managed</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+                <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">MBA</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Jindal Global BS</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+                <span className="text-xl sm:text-2xl font-extrabold font-heading text-emerald-600 dark:text-emerald-400 block">10M+</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Audience Reach</span>
+              </div>
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight leading-tight">
-            Connecting Content, Brand Narrative, and Measurable Business Growth
-          </h1>
+          {/* Embedded HOW I THINK & LEAD Section (Floats cleanly alongside sticky photo) */}
+          <div className="pt-6 border-t border-gray-200/80 dark:border-gray-800 space-y-6">
+            <div className="space-y-1.5">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+                HOW I THINK &amp; LEAD
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
+                Core Operating Philosophy
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                Three guiding principles that govern every campaign, brand narrative, and strategic initiative I lead.
+              </p>
+            </div>
 
-          {/* Executive Pull-Quote */}
-          <div className="p-4 rounded-xl bg-primary-50/70 dark:bg-primary-950/30 border-l-4 border-primary-600 text-sm italic text-gray-800 dark:text-gray-200">
-            &ldquo;Marketing execution without business literacy is just tactical delivery. I bridge creative production with commercial frameworks to turn brand visibility into bottom-line revenue.&rdquo;
+            <div className="space-y-4">
+              <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark space-y-2.5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                    Tactile Execution Over Pure Theory
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Having spent years editing raw footage, running CMS portals, and crafting copy on deadline, I manage creative and marketing teams with practical empathy. I know what is feasible, how long it takes, and how to eliminate production bottlenecks.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark space-y-2.5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                    <Target className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                    Commercial Value Over Vanity Metrics
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Likes and impressions mean nothing if they don&apos;t build pipeline, lower CAC, or elevate enterprise brand authority. My MBA grounding at Jindal Global Business School ensures every marketing rupee spent connects to business health.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark space-y-2.5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0">
+                    <Globe2 className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                    Multi-Brand Agility &amp; Scalability
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Concurrently managing 12+ brands across skilling, B2B SaaS, CSR, and employer branding requires modular, repeatable frameworks. I build centralized editorial engines and distribution systems that deliver consistent quality across diverse market segments.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-            <p>
-              I am a marketing leader who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not begin as an ivory-tower corporate theorist; it began in the trenches of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
-            </p>
-            <p>
-              Starting at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I developed ruthless discipline around editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation evolved through high-impact content roles at Tatsat Chronicle, Denvax / Helios Educore, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
-            </p>
-            <p>
-              Today, I oversee integrated digital marketing, corporate communications, SEO architecture, employer branding, and multi-channel campaigns across <strong>6 flagship corporate brands</strong>. To deepen my commercial decision-making and P&amp;L literacy, I am pursuing my <strong>MBA at Jindal Global Business School (Cohort 13)</strong>.
-            </p>
-          </div>
-
-          {/* Executive At-A-Glance Stat Strip (Replaces dated percentage bars) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
-              <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">7.7</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Years Exp.</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
-              <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">6+</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Brands Managed</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
-              <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">MBA</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">JGBS Cohort 13</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
-              <span className="text-xl sm:text-2xl font-extrabold font-heading text-emerald-600 dark:text-emerald-400 block">850+</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Webinar Attendees</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* 2. CORE OPERATING PHILOSOPHY (3 PILLARS) */}
-      <section className="space-y-10">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-            HOW I THINK &amp; LEAD
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
-            Core Operating Philosophy
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            Three guiding principles that govern every campaign, brand narrative, and strategic initiative I lead.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark space-y-4 hover:-translate-y-1 transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 flex items-center justify-center">
-              <Zap className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
-              Tactile Execution Over Pure Theory
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Having spent years editing raw footage, running CMS portals, and crafting copy on deadline, I manage creative and marketing teams with practical empathy. I know what is feasible, how long it takes, and how to eliminate production bottlenecks.
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark space-y-4 hover:-translate-y-1 transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-              <Target className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
-              Commercial Value Over Vanity Metrics
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Likes and impressions mean nothing if they don&apos;t build pipeline, lower CAC, or elevate enterprise brand authority. My MBA grounding at Jindal Global Business School ensures every marketing rupee spent connects to business health.
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark space-y-4 hover:-translate-y-1 transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-              <Globe2 className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
-              Multi-Brand Agility &amp; Scalability
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Concurrently managing skilling, B2B SaaS, CSR, and employer branding requires modular, repeatable frameworks. I build centralized editorial engines and distribution systems that deliver consistent quality across diverse market segments.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. STRUCTURED CAREER PROGRESSION TIMELINE */}
+      {/* 2. STRUCTURED CAREER PROGRESSION TIMELINE */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
@@ -311,27 +318,30 @@ export default function AboutPage() {
             </div>
           ))}
 
-          {/* Concluding Milestone: Executive Vision */}
+          {/* STRATEGIC HORIZON Section (Fixed visibility in both light & dark modes) */}
           {futureVision && (
             <div className="relative group">
-              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 border-primary-500 bg-primary-500/20 flex items-center justify-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
+              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 border-primary-500 bg-primary-500 flex items-center justify-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
 
-              <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-primary-900/40 via-[#1E242C] to-slate-900 border border-primary-500/30 text-white shadow-xl space-y-3">
-                <div className="flex items-center justify-between gap-2">
+              <div className="rounded-2xl p-6 sm:p-8 bg-[#181B20] text-white border-2 border-primary-500/80 shadow-2xl space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-                      STRATEGIC HORIZON
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>STRATEGIC HORIZON</span>
                     </span>
-                    <span className="px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-300 border border-primary-500/30 text-[10px] font-bold uppercase">
-                      Target Mandate
+                    <span className="px-2.5 py-0.5 rounded-full bg-primary-600/30 text-primary-300 border border-primary-500/40 text-[10px] font-bold uppercase tracking-wider">
+                      Next Leadership Mandate
                     </span>
                   </div>
-                  <span className="text-xs text-gray-400 font-semibold">{futureVision.period}</span>
+                  <span className="text-xs text-gray-300 font-semibold px-2.5 py-1 rounded-md bg-white/10">
+                    {futureVision.period}
+                  </span>
                 </div>
 
-                <h3 className="text-xl font-bold font-heading text-white">
+                <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
                   {futureVision.role}
                 </h3>
 
@@ -339,9 +349,9 @@ export default function AboutPage() {
                   {futureVision.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 pt-1">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {futureVision.skills.map((s) => (
-                    <span key={s} className="px-2.5 py-1 rounded-lg bg-black/40 border border-white/10 text-xs font-medium text-emerald-300">
+                    <span key={s} className="px-3 py-1 rounded-lg bg-black/60 border border-white/20 text-xs font-medium text-emerald-300">
                       {s}
                     </span>
                   ))}
@@ -352,7 +362,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. ACADEMIC PEDIGREE & ACCREDITATIONS (Previously Missing) */}
+      {/* 3. ACADEMIC PEDIGREE & ACCREDITATIONS */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
@@ -368,7 +378,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left: Formal University Education (6 cols) */}
+          {/* Left: Formal University Degrees (6 cols) */}
           <div className="lg:col-span-6 space-y-5">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400 pb-1">
               <GraduationCap className="w-4 h-4" />
@@ -448,7 +458,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. SKILLS ARCHITECTURE & TECH STACK */}
+      {/* 4. SKILLS ARCHITECTURE & TECH STACK */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
@@ -494,7 +504,7 @@ export default function AboutPage() {
           ))}
         </div>
 
-        {/* Tools & Technology Stack Strip */}
+        {/* Tools & Technology Stack Strip (Honest stack: GA4, Meta, GSC, Premiere, Photoshop, WordPress, Canva, Excel) */}
         <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-8 shadow-inbio space-y-4">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500">
             <ShieldCheck className="w-4 h-4 text-primary-600" />
@@ -513,7 +523,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. EXECUTIVE OUTREACH CTA (Matching Homepage & Contact standards) */}
+      {/* 5. EXECUTIVE OUTREACH CTA */}
       <section className="rounded-3xl bg-gradient-to-r from-gray-900 via-[#1E242C] to-slate-900 text-white p-10 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden border border-gray-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />

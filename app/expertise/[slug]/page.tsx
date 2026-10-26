@@ -216,7 +216,7 @@ export default function ExpertiseDetailPage({ params }: Props) {
             </p>
 
             <div className="flex flex-wrap gap-2.5 pt-2">
-              {(service.tools || ["Google Analytics 4", "Meta Business Suite", "LinkedIn Campaign Manager", "Canva", "WordPress"]).map((tool) => (
+              {(service.tools || ["Google Analytics 4", "Meta Business Suite", "Google Search Console", "Canva", "WordPress"]).map((tool) => (
                 <span
                   key={tool}
                   className="px-3.5 py-1.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200"

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     url: "https://deepanshu.kainthola.com",
     title: "Deepanshu Kainthola — Digital Marketing Manager & Marketing Strategist",
     description:
-      "7.7 Years Exp. driving digital campaigns, content architecture, SEO, and employer branding across 6 corporate brands.",
+      "7.7 Years Exp. driving digital campaigns, content architecture, SEO, and employer branding across 12+ corporate brands.",
     siteName: "Deepanshu Kainthola Portfolio",
     images: [
       {
