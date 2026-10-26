@@ -79,7 +79,7 @@ export default function ResumePage() {
           <span>Executive Summary</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-          Results-oriented Marketing Professional with <strong>7.7 Years Exp.</strong> of hands-on execution combined with strategic and business acumen. Proven record of managing multi-channel digital campaigns, content architecture, SEO visibility, employer branding, and corporate communication across 12+ enterprise brands (including Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Background in journalism and video production, currently completing an MBA from Jindal Global Business School to bridge creative storytelling with commercial leadership.
+          Results-oriented Marketing Professional with <strong>7.7 Years Exp.</strong> of hands-on execution combined with strategic and business acumen. Proven record of managing multi-channel digital campaigns, content architecture, employer branding, video production, and corporate communication across 12+ enterprise brands (including Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Background in journalism and video production, currently completing an MBA from Jindal Global Business School to bridge creative storytelling with commercial leadership.
         </p>
       </section>
 
@@ -226,6 +226,23 @@ export default function ResumePage() {
               </ul>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Community Leadership & Volunteering */}
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white flex items-center gap-2">
+          <Sparkles className="w-5 h-5 text-emerald-600" />
+          <span>Community Leadership &amp; CSR Initiatives</span>
+        </h2>
+        <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-sm font-bold text-gray-900 dark:text-white">Environmental Restoration &amp; Yamuna Cleanliness Drives</span>
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Volunteer &amp; Organizer</span>
+          </div>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            Active volunteer with <strong>Vrikshit Foundation</strong> across urban cleanliness and Yamuna river cleanup operations in Delhi. Conducted and managed on-ground community lake cleanup and mass plantation drives with <strong>Talent Foundation</strong> (CSR arm of Vision India Services). Personal passion for high-altitude Himalayan trekking and endurance hiking.
+          </p>
         </div>
       </section>
     </div>

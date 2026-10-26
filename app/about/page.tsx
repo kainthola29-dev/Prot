@@ -27,7 +27,12 @@ import {
   Building2,
   ShieldCheck,
   Zap,
-  Globe2
+  Globe2,
+  Compass,
+  HeartHandshake,
+  Bot,
+  Mountain,
+  Trees
 } from "lucide-react";
 import { Metadata } from "next";
 
@@ -62,6 +67,15 @@ export default function AboutPage() {
   const workHistory = timelineData.filter((item) => !item.isFuture && item.id !== "mba");
   const futureVision = timelineData.find((item) => item.isFuture);
 
+  // Industry & Scale context map for each milestone
+  const companyContextMap: Record<string, string> = {
+    "vispl": "Workforce Solutions & Skilling (32,000+ Associates across India)",
+    "meena-bazaar": "Iconic Indian Luxury Ethnic Fashion & Retail",
+    "denvax": "Cellular Immunotherapy & Healthcare Communications",
+    "tatsat": "Social Impact Journalism & Public Policy Media",
+    "sunday-headlines": "Digital News Publishing & Video Broadcast",
+  };
+
   // Icon mapping for competency categories
   const getCategoryIcon = (index: number) => {
     switch (index) {
@@ -82,8 +96,8 @@ export default function AboutPage() {
     }
   };
 
-  // Verified tools stack
-  const toolsStack = [
+  // Core verified marketing tools
+  const coreTools = [
     "Google Analytics 4",
     "Meta Business Suite",
     "Google Search Console",
@@ -94,6 +108,28 @@ export default function AboutPage() {
     "Microsoft Excel"
   ];
 
+  // AI & Augmented workflows
+  const aiTools = [
+    "Claude",
+    "ChatGPT",
+    "Google Gemini",
+    "Google Antigravity"
+  ];
+
+  // 12+ Brands Managed
+  const brandsList = [
+    "Vision India Services",
+    "Just Job",
+    "LiveSkills",
+    "GreenCall HRMS",
+    "Talent Foundation",
+    "Meena Bazaar",
+    "Tatsat Chronicle",
+    "Denvax",
+    "Bihar Talks",
+    "The Sunday Headlines"
+  ];
+
   return (
     <div className="pt-2 sm:pt-4 pb-16 lg:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-24">
       <JsonLd data={breadcrumbSchema} />
@@ -101,7 +137,7 @@ export default function AboutPage() {
       {/* 1. HERO SECTION WITH STICKY PHOTO & EMBEDDED OPERATING PHILOSOPHY */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        {/* Left Column: Sticky Photo & Status Tag */}
+        {/* Left Column: Sticky Photo & Current Role Card */}
         <div className="lg:col-span-5 lg:sticky lg:top-24 self-start flex justify-center">
           <div className="relative w-full max-w-sm sm:max-w-md">
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary-600/20 to-teal-400/20 rounded-3xl blur-2xl -z-10" />
@@ -130,8 +166,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Right Column: Bio Narrative, At-A-Glance Strip & How I Think & Lead */}
-        <div className="lg:col-span-7 space-y-12">
+        {/* Right Column: Bio Narrative, Brands, & How I Think & Lead */}
+        <div className="lg:col-span-7 space-y-10">
           
           {/* Bio Narrative */}
           <div className="space-y-5">
@@ -154,14 +190,14 @@ export default function AboutPage() {
                 I am a marketing leader who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not begin as an ivory-tower corporate theorist; it began in the trenches of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
               </p>
               <p>
-                Starting at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I developed ruthless discipline around editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation evolved through high-impact content roles at Tatsat Chronicle, Denvax / Helios Educore, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
+                Starting at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I developed ruthless discipline around editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation evolved through high-impact content roles at Tatsat Chronicle, Denvax, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
               </p>
               <p>
-                Today, I oversee integrated digital marketing, corporate communications, SEO architecture, employer branding, and multi-channel campaigns across <strong>12+ corporate brands</strong>. To deepen my commercial decision-making and P&amp;L literacy, I am pursuing my <strong>MBA at Jindal Global Business School</strong>.
+                Today, I oversee integrated digital marketing, corporate communications, employer branding, video direction, and multi-channel campaigns across <strong>12+ corporate brands</strong>. To deepen my commercial decision-making and P&amp;L literacy, I am pursuing my <strong>MBA at Jindal Global Business School</strong>.
               </p>
             </div>
 
-            {/* Executive At-A-Glance Stat Strip (12+ Brands, 7.7 Years, MBA, 10M+ Reach) */}
+            {/* Executive At-A-Glance Stat Strip */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
               <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
                 <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">7.7</span>
@@ -180,6 +216,26 @@ export default function AboutPage() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Audience Reach</span>
               </div>
             </div>
+
+            {/* 12+ Brands Managed Showcase */}
+            <div className="pt-2">
+              <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/70 dark:border-gray-800 space-y-2.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 block">
+                  12+ Portfolio Brands &amp; Flagship Ventures Scaled:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {brandsList.map((brand) => (
+                    <span
+                      key={brand}
+                      className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#212428] border border-gray-200/80 dark:border-gray-700/80 text-xs font-semibold text-gray-800 dark:text-gray-200 shadow-xs"
+                    >
+                      {brand}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* Embedded HOW I THINK & LEAD Section (Floats cleanly alongside sticky photo) */}
@@ -254,7 +310,7 @@ export default function AboutPage() {
             The Professional Journey
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            A continuous progression from media publishing and documentary production to multi-brand enterprise marketing leadership.
+            A continuous progression from media publishing and video documentary production to multi-brand enterprise marketing leadership.
           </p>
         </div>
 
@@ -279,10 +335,15 @@ export default function AboutPage() {
                   : "bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-inbio dark:shadow-inbio-dark"
               }`}>
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
                       {item.organization}
                     </span>
+                    {companyContextMap[item.id] && (
+                      <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400 border-l border-gray-300 dark:border-gray-700 pl-2">
+                        {companyContextMap[item.id]}
+                      </span>
+                    )}
                     {item.isCurrent && (
                       <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -458,17 +519,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. SKILLS ARCHITECTURE & TECH STACK */}
+      {/* 4. COMPETENCY MATRIX & MARKETING TECH / AI STACK */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
             COMPETENCY MATRIX
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
-            Skills Architecture
+            Skills Architecture &amp; Tooling
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            Categorized overview of strategic, technical, and operational marketing capabilities.
+            Categorized overview of strategic, creative, and operational marketing capabilities.
           </p>
         </div>
 
@@ -504,26 +565,116 @@ export default function AboutPage() {
           ))}
         </div>
 
-        {/* Tools & Technology Stack Strip (Honest stack: GA4, Meta, GSC, Premiere, Photoshop, WordPress, Canva, Excel) */}
-        <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-8 shadow-inbio space-y-4">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500">
-            <ShieldCheck className="w-4 h-4 text-primary-600" />
-            <span>Core Tooling &amp; Marketing Technology Stack</span>
+        {/* Tools & AI Stack Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          
+          {/* Core Marketing & Creative Tools */}
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-7 shadow-inbio space-y-4">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500">
+              <ShieldCheck className="w-4 h-4 text-primary-600" />
+              <span>Core Marketing &amp; Creative Tools</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {coreTools.map((tool) => (
+                <span
+                  key={tool}
+                  className="px-3.5 py-1.5 rounded-xl bg-gray-100 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 text-xs font-semibold text-gray-800 dark:text-gray-200 shadow-xs"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400">
+              Daily execution suite for video editing, social management, web content administration, and traffic analytics.
+            </p>
           </div>
-          <div className="flex flex-wrap gap-2.5">
-            {toolsStack.map((tool) => (
-              <span
-                key={tool}
-                className="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 text-xs font-semibold text-gray-800 dark:text-gray-200 shadow-xs"
-              >
-                {tool}
-              </span>
-            ))}
+
+          {/* AI & Augmented Workflows */}
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-7 shadow-inbio space-y-4">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <Bot className="w-4 h-4 text-emerald-500" />
+              <span>AI &amp; Augmented Workflow Suite</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {aiTools.map((ai) => (
+                <span
+                  key={ai}
+                  className="px-3.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 text-xs font-semibold text-emerald-800 dark:text-emerald-300 shadow-xs"
+                >
+                  {ai}
+                </span>
+              ))}
+            </div>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400">
+              Deployed for rapid competitor synthesis, multi-angle campaign framing, audience research, and eliminating operational drag.
+            </p>
           </div>
+
         </div>
       </section>
 
-      {/* 5. EXECUTIVE OUTREACH CTA */}
+      {/* 5. BEYOND THE SCREEN / PURPOSE, COMMUNITY & PASSIONS */}
+      <section className="space-y-8">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+            BEYOND THE BOARDROOM
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
+            Purpose, Community &amp; Passions
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            Leadership extends beyond digital campaigns. Grounded in grassroots environmental action, CSR execution, and outdoor endurance.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          {/* Card 1: Cleanliness & CSR Drives */}
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-7 sm:p-8 shadow-inbio dark:shadow-inbio-dark space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <Trees className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block">
+                Grassroots Stewardship
+              </span>
+              <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+                Environmental &amp; Yamuna River Cleanups
+              </h3>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Volunteered actively with <strong>Vrikshit Foundation</strong> across urban cleanliness drives and riverbank restoration initiatives, including Yamuna river cleanup operations in Delhi.
+            </p>
+            <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 text-xs text-gray-700 dark:text-gray-300">
+              <strong>Talent Foundation CSR Mandate:</strong> Personally organized and managed a community lake cleanup drive and mass tree plantation initiative as part of Vision India&apos;s corporate social responsibility arm.
+            </div>
+          </div>
+
+          {/* Card 2: Trekking & High-Altitude Adventure */}
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-7 sm:p-8 shadow-inbio dark:shadow-inbio-dark space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <Mountain className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
+                Personal Passion
+              </span>
+              <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+                High-Altitude Trekking &amp; Himalayan Hiking
+              </h3>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              An avid trekker and hiker who frequently heads to Himalayan trails. High-altitude trekking demands endurance, meticulous preparation, and resilience when weather conditions shift unexpectedly—traits that translate directly into agile marketing leadership and crisis management.
+            </p>
+            <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 text-xs text-gray-700 dark:text-gray-300">
+              <strong>Mindset:</strong> Reconnecting with untamed mountain trails provides the mental clarity and perseverance required to solve high-stakes commercial challenges.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. EXECUTIVE OUTREACH CTA */}
       <section className="rounded-3xl bg-gradient-to-r from-gray-900 via-[#1E242C] to-slate-900 text-white p-10 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden border border-gray-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />

@@ -32,7 +32,7 @@ export const profileData = {
     "& Brand Growth Manager.",
     "& Performance Driver."
   ],
-  bio: "Practical marketing execution backed by strategic and business thinking. 7.7 Years Exp. orchestrating digital campaigns, employer branding, SEO, content architecture, and multi-brand growth across 12+ flagship enterprise entities.",
+  bio: "Practical marketing execution backed by strategic and business thinking. 7.7 Years Exp. orchestrating digital campaigns, employer branding, content architecture, video production, and multi-brand growth across 12+ flagship enterprise entities.",
   location: "Delhi NCR, India",
   email: "kainthola29@gmail.com",
   phone: "+91-9599396969",
@@ -556,14 +556,6 @@ export const timelineData: TimelineItem[] = [
     skills: ["Production Head", "Website Management", "Digital Content", "Digital Publishing", "Video Production"]
   },
   {
-    id: "denvax",
-    role: "Digital Content Producer & Marketing Outreach",
-    organization: "Denvax / Helios Educore Pvt. Ltd.",
-    period: "Jul 2020 – Mar 2023",
-    description: "Created healthcare awareness and patient education content at Denvax, and managed educational digital content and marketing outreach at Helios Educore. Simplified complex medical communication, coordinated doctor interviews, and built patient trust across digital channels.",
-    skills: ["Healthcare Marketing", "Educational Video", "Brand Trust", "Digital Outreach", "Patient Education"]
-  },
-  {
     id: "tatsat",
     role: "Digital Content Producer",
     organization: "Tatsat Chronicle",
@@ -572,10 +564,18 @@ export const timelineData: TimelineItem[] = [
     skills: ["Digital Content", "Long-form Documentary", "Multimedia Storytelling", "Editorial Workflows", "Social Impact"]
   },
   {
+    id: "denvax",
+    role: "Digital Content Producer",
+    organization: "Denvax",
+    period: "Oct 2022 – Mar 2023 · 6 mos",
+    description: "Produced patient education video content, simplified complex medical communication, coordinated doctor interviews, and built patient trust across digital channels for cancer immunotherapy clinic.",
+    skills: ["Digital Content", "Healthcare Marketing", "Educational Video", "Brand Trust", "Patient Education"]
+  },
+  {
     id: "meena-bazaar",
     role: "Video Producer",
     organization: "Meena Bazaar",
-    period: "Feb 2024 – May 2025",
+    period: "Feb 2024 – May 2025 · 1 yr 4 mos",
     description: "Led branded content production, scripted and planned video shoots, supervised post-production, and worked with marketing and branding teams on seasonal launches and retail campaigns for iconic fashion house.",
     skills: ["Video Production", "Creative Direction", "Scripting", "Retail Campaigns", "Post-Production", "Fashion Marketing"]
   },
@@ -583,9 +583,9 @@ export const timelineData: TimelineItem[] = [
     id: "vispl",
     role: "Digital Marketing Manager",
     organization: "Vision India Services Pvt. Ltd.",
-    period: "May 2025 – Present",
+    period: "May 2025 – Present · Full-time",
     description: "Leading integrated marketing and communications across a multi-brand portfolio of 12+ brands spanning skilling, employability, healthcare, sustainability, and social impact (Vision India, Just Job, LiveSkills, Talent Foundation, GreenCall, Bihar Talks). Directing campaign strategy, internal/external communications, employer branding, executive messaging, content calendars, video production, analytics, and creative-team coordination.",
-    skills: ["Marketing Strategy", "Multi-Brand Management", "SEO Architecture", "Employer Branding", "Lead Generation", "Executive Comms", "Video Direction"],
+    skills: ["Marketing Strategy", "Multi-Brand Management", "Employer Branding", "Content Architecture", "Lead Generation", "Executive Comms", "Video Direction"],
     isCurrent: true
   },
   {
@@ -922,8 +922,8 @@ export const skillsArchitecture: SkillCategory[] = [
     skills: ["End-to-End Video Production", "Adobe Premiere Pro", "Creative Direction", "Time-lapse & Shoots", "Short-Form Video (Reels/Shorts)", "Canva & Photoshop"]
   },
   {
-    title: "Web, SEO & Analytics",
-    skills: ["Technical SEO", "Information Architecture", "WordPress CMS Management", "Google Analytics 4", "Meta Business Suite", "Google Search Console"]
+    title: "Web & Analytics Architecture",
+    skills: ["WordPress CMS Management", "Information Architecture", "Google Analytics 4", "Meta Business Suite", "Google Search Console", "On-Page Optimization"]
   },
   {
     title: "Strategic & Business Thinking",
