@@ -66,9 +66,19 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} {profileData.name}. All Rights Reserved.</p>
-          <p className="flex items-center gap-2">
-            <span>Built with Next.js, TypeScript & Tailwind CSS</span>
-          </p>
+          <div className="flex items-center gap-4 text-xs">
+            <Link href="/contact" className="hover:text-primary-400 transition-colors">
+              Contact
+            </Link>
+            <span>•</span>
+            <Link href="/resume" className="hover:text-primary-400 transition-colors">
+              Resume
+            </Link>
+            <span>•</span>
+            <Link href="/admin" className="hover:text-primary-400 transition-colors">
+              Portal
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

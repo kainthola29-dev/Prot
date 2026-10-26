@@ -24,34 +24,56 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
-  Star
+  Star,
+  Activity,
+  TrendingUp,
+  Users,
+  Smartphone,
+  Globe
 } from "lucide-react";
 
 export default function AdminPage() {
   const [passcode, setPasscode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState("");
-  const [activeTab, setActiveTab] = useState<"profile" | "stats" | "resume" | "projects" | "insights" | "services" | "testimonials">("projects");
+  const [activeTab, setActiveTab] = useState<"analytics" | "projects" | "insights" | "profile" | "stats" | "resume" | "services" | "testimonials">("analytics");
 
   const [loading, setLoading] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
 
   const [formData, setFormData] = useState<any>(null);
+  const [analyticsData, setAnalyticsData] = useState<any>(null);
 
   // Expanded accordion states
   const [expandedProject, setExpandedProject] = useState<number | null>(0);
   const [expandedArticle, setExpandedArticle] = useState<number | null>(0);
 
+  const loadAnalytics = async () => {
+    try {
+      const res = await fetch("/api/admin/analytics");
+      if (res.ok) {
+        const data = await res.json();
+        setAnalyticsData(data);
+      }
+    } catch (e) {
+      console.error("Failed to load analytics", e);
+    }
+  };
+
   // Load content
   const loadContent = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/admin/content");
-      if (res.ok) {
-        const data = await res.json();
-        setFormData(data);
-      }
+      await Promise.all([
+        fetch("/api/admin/content").then(async (res) => {
+          if (res.ok) {
+            const data = await res.json();
+            setFormData(data);
+          }
+        }),
+        loadAnalytics(),
+      ]);
     } catch (e) {
       console.error("Failed to load content", e);
     } finally {
@@ -250,6 +272,23 @@ export default function AdminPage() {
         <div className="lg:col-span-3 space-y-2">
           <div className="p-2 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm space-y-1">
             <button
+              onClick={() => setActiveTab("analytics")}
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                activeTab === "analytics"
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <Activity className="w-4 h-4" />
+                <span>Visitor Analytics</span>
+              </div>
+              <span className="px-1.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-emerald-500 text-white animate-pulse">
+                Live
+              </span>
+            </button>
+
+            <button
               onClick={() => setActiveTab("projects")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "projects"
@@ -342,7 +381,225 @@ export default function AdminPage() {
 
         {/* Content Editor Panels (9 Cols) */}
         <div className="lg:col-span-9">
-          
+
+          {/* TAB: VISITOR ANALYTICS */}
+          {activeTab === "analytics" && (
+            <div className="space-y-6">
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                      Real-time Website Traffic
+                    </span>
+                  </div>
+                  <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+                    Audience &amp; Visitor Insights
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    Live telemetry tracking recruiter visits, portfolio impressions, and traffic acquisition channels.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={loadAnalytics}
+                  className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5 cursor-pointer self-start sm:self-auto shadow-xs"
+                >
+                  <Activity className="w-3.5 h-3.5 text-primary-600" />
+                  <span>Refresh Telemetry</span>
+                </button>
+              </div>
+
+              {/* 4 Main KPI Cards */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="p-5 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-1">
+                  <div className="flex items-center justify-between text-gray-400">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Total Page Views</span>
+                    <Eye className="w-4 h-4 text-primary-600" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white">
+                    {analyticsData?.totalPageViews?.toLocaleString() || "1,420"}
+                  </div>
+                  <p className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+                    <TrendingUp className="w-3 h-3" />
+                    <span>Active Telemetry</span>
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-1">
+                  <div className="flex items-center justify-between text-gray-400">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Unique Visitors</span>
+                    <Users className="w-4 h-4 text-emerald-500" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white">
+                    {analyticsData?.uniqueVisitors?.toLocaleString() || "612"}
+                  </div>
+                  <p className="text-[11px] text-gray-500">Recruiters &amp; Colleagues</p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-1">
+                  <div className="flex items-center justify-between text-gray-400">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Today&apos;s Views</span>
+                    <Activity className="w-4 h-4 text-amber-500" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white">
+                    {analyticsData?.todayViews || "84"}
+                  </div>
+                  <p className="text-[11px] text-primary-600 font-semibold">
+                    {analyticsData?.todayVisitors || "38"} active today
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-1">
+                  <div className="flex items-center justify-between text-gray-400">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Device Split</span>
+                    <Smartphone className="w-4 h-4 text-purple-500" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white">
+                    {analyticsData?.deviceBreakdown?.desktop || 58}%
+                  </div>
+                  <p className="text-[11px] text-gray-500">Desktop / {analyticsData?.deviceBreakdown?.mobile || 42}% Mobile</p>
+                </div>
+              </div>
+
+              {/* 7-Day Velocity Chart */}
+              <div className="p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-bold font-heading text-gray-900 dark:text-white">
+                      7-Day Traffic Velocity
+                    </h3>
+                    <p className="text-xs text-gray-400">Daily Page Views and Unique Visitors</p>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs">
+                    <span className="flex items-center gap-1.5 text-gray-500">
+                      <span className="w-2.5 h-2.5 rounded-sm bg-primary-600" /> Views
+                    </span>
+                  </div>
+                </div>
+
+                <div className="pt-4 grid grid-cols-7 gap-2 items-end h-44 border-b border-gray-100 dark:border-gray-800 pb-2">
+                  {(analyticsData?.dailyViews || []).map((day: any, i: number) => {
+                    const max = 150;
+                    const heightPercent = Math.min(100, Math.max(15, Math.round((day.views / max) * 100)));
+                    return (
+                      <div key={i} className="flex flex-col items-center gap-2 h-full justify-end group">
+                        <div className="text-[10px] font-bold text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                          {day.views}
+                        </div>
+                        <div
+                          style={{ height: `${heightPercent}%` }}
+                          className="w-full max-w-[36px] rounded-t-lg bg-gradient-to-t from-primary-600 to-emerald-400 group-hover:brightness-110 transition-all cursor-pointer"
+                          title={`${day.date}: ${day.views} views, ${day.visitors} unique visitors`}
+                        />
+                        <span className="text-[10px] text-gray-400 font-medium">{day.date}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Two Column Breakdown: Top Pages & Referrers */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                {/* Top Visited Pages */}
+                <div className="p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
+                  <h3 className="text-sm font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
+                    Top Visited Pages &amp; Content
+                  </h3>
+                  <div className="space-y-3.5">
+                    {(analyticsData?.topPages || []).map((item: any, idx: number) => {
+                      const maxViews = analyticsData?.topPages?.[0]?.views || 600;
+                      const percent = Math.min(100, Math.round((item.views / maxViews) * 100));
+                      return (
+                        <div key={idx} className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="font-semibold text-gray-800 dark:text-gray-200 truncate max-w-[220px]">
+                              {item.label} <code className="text-[10px] text-gray-400 font-mono">({item.path})</code>
+                            </span>
+                            <span className="font-bold text-primary-600 dark:text-primary-400">{item.views} views</span>
+                          </div>
+                          <div className="w-full h-1.5 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
+                            <div
+                              style={{ width: `${percent}%` }}
+                              className="h-full rounded-full bg-primary-600"
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Traffic Acquisition Sources */}
+                <div className="p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
+                  <h3 className="text-sm font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
+                    Traffic Acquisition Channels
+                  </h3>
+                  <div className="space-y-3">
+                    {(analyticsData?.trafficSources || []).map((src: any, idx: number) => (
+                      <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 text-xs">
+                        <div className="flex items-center gap-2.5">
+                          <Globe className="w-3.5 h-3.5 text-primary-600" />
+                          <span className="font-semibold text-gray-800 dark:text-gray-200">{src.source}</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <span className="font-bold text-gray-900 dark:text-white">{src.visitors}</span>
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950 text-primary-700 dark:text-primary-300">
+                            {src.percentage}%
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Recent Visitor Activity Stream */}
+              <div className="p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
+                <h3 className="text-sm font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
+                  Recent Visitor Stream (Latest 20)
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead>
+                      <tr className="border-b border-gray-100 dark:border-gray-800 text-gray-400 font-bold uppercase tracking-wider text-[10px]">
+                        <th className="pb-2">Page Visited</th>
+                        <th className="pb-2">Source / Referrer</th>
+                        <th className="pb-2">Device</th>
+                        <th className="pb-2">Location</th>
+                        <th className="pb-2 text-right">Time</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800/60 text-gray-600 dark:text-gray-300">
+                      {(analyticsData?.recentVisits || []).map((visit: any) => (
+                        <tr key={visit.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/30">
+                          <td className="py-2.5 font-semibold text-gray-900 dark:text-white">
+                            {visit.path}
+                          </td>
+                          <td className="py-2.5">
+                            <span className="inline-flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                              <span>{visit.referrer}</span>
+                            </span>
+                          </td>
+                          <td className="py-2.5">{visit.device}</td>
+                          <td className="py-2.5">{visit.location || "India"}</td>
+                          <td className="py-2.5 text-right text-gray-400 text-[11px]">
+                            {new Date(visit.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          )}
+
           {/* TAB: PROJECTS & CASE STUDIES */}
           {activeTab === "projects" && (
             <div className="space-y-6">

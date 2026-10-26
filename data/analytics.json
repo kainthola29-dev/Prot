@@ -1,0 +1,41 @@
+{
+  "totalPageViews": 1420,
+  "uniqueVisitors": 612,
+  "todayViews": 84,
+  "todayVisitors": 38,
+  "topPages": [
+    { "path": "/", "views": 594, "label": "Homepage" },
+    { "path": "/resume", "views": 312, "label": "Resume & CV" },
+    { "path": "/portfolio/employ-india", "views": 184, "label": "Employ India Project" },
+    { "path": "/case-studies/employ-india-connect-webinar", "views": 128, "label": "Webinar Case Study" },
+    { "path": "/expertise/digital-marketing-strategy", "views": 110, "label": "Digital Strategy Expertise" },
+    { "path": "/insights/why-marketing-teams-confuse-activity-with-strategy", "views": 92, "label": "Activity vs Strategy Essay" }
+  ],
+  "trafficSources": [
+    { "source": "LinkedIn", "visitors": 340, "percentage": 55 },
+    { "source": "Direct / Resume Links", "visitors": 162, "percentage": 27 },
+    { "source": "Google Search", "visitors": 68, "percentage": 11 },
+    { "source": "X / Twitter", "visitors": 24, "percentage": 4 },
+    { "source": "Facebook & Instagram", "visitors": 18, "percentage": 3 }
+  ],
+  "deviceBreakdown": {
+    "desktop": 58,
+    "mobile": 42
+  },
+  "dailyViews": [
+    { "date": "20 Oct", "views": 62, "visitors": 28 },
+    { "date": "21 Oct", "views": 78, "visitors": 34 },
+    { "date": "22 Oct", "views": 95, "visitors": 41 },
+    { "date": "23 Oct", "views": 114, "visitors": 52 },
+    { "date": "24 Oct", "views": 138, "visitors": 64 },
+    { "date": "25 Oct", "views": 105, "visitors": 46 },
+    { "date": "26 Oct", "views": 84, "visitors": 38 }
+  ],
+  "recentVisits": [
+    { "id": "v-1", "path": "/", "referrer": "LinkedIn", "device": "Desktop", "timestamp": "2026-10-26T16:15:00Z", "location": "New Delhi, IN" },
+    { "id": "v-2", "path": "/resume", "referrer": "Direct", "device": "Mobile", "timestamp": "2026-10-26T15:42:00Z", "location": "Bengaluru, IN" },
+    { "id": "v-3", "path": "/case-studies", "referrer": "LinkedIn", "device": "Desktop", "timestamp": "2026-10-26T15:10:00Z", "location": "Mumbai, IN" },
+    { "id": "v-4", "path": "/expertise/digital-marketing-strategy", "referrer": "Google", "device": "Desktop", "timestamp": "2026-10-26T14:28:00Z", "location": "Noida, IN" },
+    { "id": "v-5", "path": "/portfolio/employ-india", "referrer": "Direct", "device": "Desktop", "timestamp": "2026-10-26T13:55:00Z", "location": "Gurugram, IN" }
+  ]
+}

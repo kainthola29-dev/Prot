@@ -6,13 +6,14 @@ interface SocialLinksProps {
 }
 
 export function SocialLinks({ 
-  className = "flex items-center gap-3", 
-  itemClassName = "w-10 h-10 rounded-lg bg-gray-100 dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-white hover:bg-primary-600 dark:hover:bg-primary-600 transition-all duration-300 shadow-sm"
+  className = "flex items-center gap-2.5", 
+  itemClassName = "w-9 h-9 rounded-lg bg-gray-100 dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-white hover:bg-primary-600 dark:hover:bg-primary-600 transition-all duration-300 shadow-sm"
 }: SocialLinksProps) {
   return (
     <div className={className}>
+      {/* LinkedIn */}
       <a 
-        href="https://linkedin.com/in/deepanshukainthola" 
+        href="https://www.linkedin.com/in/deepanshu-kainthola/" 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="LinkedIn"
@@ -23,20 +24,35 @@ export function SocialLinks({
         </svg>
       </a>
 
+      {/* X / Twitter */}
       <a 
-        href="https://twitter.com" 
+        href="https://x.com/kainthola_DK" 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="X (Twitter)"
         className={itemClassName}
       >
-        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
       </a>
 
+      {/* Facebook */}
       <a 
-        href="https://instagram.com" 
+        href="https://www.facebook.com/deepanshu.kainthola.79" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Facebook"
+        className={itemClassName}
+      >
+        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+
+      {/* Instagram */}
+      <a 
+        href="https://www.instagram.com/deepanshukainthola/" 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="Instagram"
@@ -46,18 +62,6 @@ export function SocialLinks({
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <circle cx="12" cy="12" r="5"/>
           <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
-      </a>
-
-      <a 
-        href="https://youtube.com" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        aria-label="YouTube"
-        className={itemClassName}
-      >
-        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
         </svg>
       </a>
     </div>

@@ -126,23 +126,43 @@ export default function HomePage() {
               </div>
 
               {/* Social and Skills Row */}
-              <div className="pt-8 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
-                    Connect With Me
+              <div className="pt-6 border-t border-gray-200/80 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                <div className="space-y-2.5">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Connect On Social
                   </p>
                   <SocialLinks />
                 </div>
 
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
+                <div className="space-y-2.5">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     Core Capabilities
                   </p>
-                  <div className="flex flex-wrap gap-2 text-xs font-medium text-gray-700 dark:text-gray-300">
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Digital Strategy</span>
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Content Architecture</span>
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Employer Branding</span>
-                    <span className="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Video Production</span>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <Link
+                      href="/expertise/digital-marketing-strategy"
+                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
+                    >
+                      Digital Strategy
+                    </Link>
+                    <Link
+                      href="/expertise/content-strategy-copywriting"
+                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
+                    >
+                      Content &amp; Copy
+                    </Link>
+                    <Link
+                      href="/expertise/employer-branding-comms"
+                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
+                    >
+                      Employer Brand
+                    </Link>
+                    <Link
+                      href="/expertise/video-media-production"
+                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
+                    >
+                      Video Production
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -343,86 +363,66 @@ export default function HomePage() {
       </section>
 
       {/* FEATURED CASE STUDIES STRIP */}
-      <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+      <section className="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
               CASE STUDIES
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white mt-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight text-gray-900 dark:text-white mt-1">
               Work That Drove Measurable Results
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mt-2 max-w-2xl">
-              Detailed breakdowns of campaigns with verifiable metrics, execution blueprints, and commercial impact.
-            </p>
           </div>
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 flex-shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 hover:text-primary-700 flex-shrink-0"
           >
-            <span>View All Case Studies</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>View All Case Studies ({caseStudiesData.length})</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {caseStudiesData.map((cs: any) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {caseStudiesData.slice(0, 3).map((cs: any) => (
+            <Link
               key={cs.id}
-              className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"
+              href={`/case-studies/${cs.slug}`}
+              className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between block cursor-pointer"
             >
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-                    {cs.category}
-                  </span>
-                  <span className="text-xs font-medium text-gray-400">{cs.date}</span>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider">
+                  <span className="text-primary-600 dark:text-primary-400 truncate max-w-[65%]">{cs.category}</span>
+                  <span className="text-gray-400 font-normal">{cs.date}</span>
                 </div>
-                <h3 className="text-2xl font-bold font-heading text-gray-900 dark:text-white">
+
+                <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors leading-snug line-clamp-2">
                   {cs.title}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {cs.sections.challenge}
+
+                <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
+                  {cs.subtitle || cs.sections.challenge}
                 </p>
 
-                {/* 2x2 Metrics Badges */}
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  {cs.metrics.map((m: any) => (
-                    <div key={m.label} className="p-3 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/80 dark:border-gray-800">
-                      <div className="text-lg font-bold font-heading text-primary-600 dark:text-primary-400">
-                        {m.value}
-                      </div>
-                      <div className="text-[11px] uppercase tracking-wider font-semibold text-gray-500">
-                        {m.label}
-                      </div>
+                {/* Sleek Inline Key Metrics */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {cs.metrics.slice(0, 2).map((m: any) => (
+                    <div key={m.label} className="px-2.5 py-1 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 flex items-center gap-1.5">
+                      <span className="text-xs font-bold text-primary-600 dark:text-primary-400">{m.value}</span>
+                      <span className="text-[10px] text-gray-500 truncate max-w-[90px]">{m.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
-                <span className="text-xs font-medium text-gray-500">{cs.organization}</span>
-                <Link
-                  href={`/case-studies/${cs.slug}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-600 hover:text-primary-700"
-                >
-                  <span>Read Full Case Study</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+              <div className="pt-4 mt-5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs font-semibold">
+                <span className="text-gray-500 text-[11px]">{cs.organization}</span>
+                <span className="text-primary-600 dark:text-primary-400 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <span>Read Study</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
-        </div>
-
-        {/* View All Case Studies Center CTA */}
-        <div className="text-center pt-10">
-          <Link
-            href="/case-studies"
-            className="px-8 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-primary-500 bg-white dark:bg-[#212428] text-gray-800 dark:text-gray-200 font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-sm"
-          >
-            <span>Explore All In-Depth Case Studies</span>
-            <ArrowRight className="w-4 h-4 text-primary-600" />
-          </Link>
         </div>
       </section>
 

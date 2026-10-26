@@ -3,6 +3,7 @@ import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { profileData } from "@/data/portfolioData";
 
 const montserrat = Montserrat({
@@ -76,6 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${montserrat.variable} ${poppins.variable} antialiased min-h-screen flex flex-col bg-[#F3F4F6] dark:bg-[#16181C] text-[#374151] dark:text-[#C4CFDE] transition-colors duration-300`}>
+        <AnalyticsTracker />
         <Navbar />
         <main className="flex-grow pt-20">
           {children}
