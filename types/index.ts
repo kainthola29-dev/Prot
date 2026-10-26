@@ -116,6 +116,17 @@ export interface ArticleSection {
   paragraphs: string[];
 }
 
+export interface AffiliateCard {
+  productName: string;
+  badge?: string;
+  verdict: string;
+  priceRange?: string;
+  pros: string[];
+  cons: string[];
+  affiliateUrl?: string;
+  buttonText?: string;
+}
+
 export interface ArticleItem {
   id: string;
   slug: string;
@@ -132,6 +143,7 @@ export interface ArticleItem {
   sections?: ArticleSection[];
   takeaways?: string[];
   glossary?: { term: string; definition: string }[];
+  affiliateCard?: AffiliateCard;
 }
 
 export interface SkillCategory {

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-p3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="card-p3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#bg-p3)" />
+  <g transform="translate(140, 60)">
+    <rect width="520" height="340" rx="24" fill="url(#card-p3)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="30" y="28" width="150" height="26" rx="13" fill="rgba(2, 132, 199, 0.3)" stroke="#38BDF8" stroke-width="1" />
+    <text x="105" y="45" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">FIELD GEAR LAB</text>
+    <text x="30" y="95" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">DJI OSMO POCKET 3</text>
+    <text x="30" y="122" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="14" font-weight="500">Retail Walkthroughs, Gimbal Stability &amp; 1-Inch Sensor</text>
+    <g transform="translate(30, 150)">
+      <rect width="460" height="130" rx="12" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="34" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">STORE PRODUCTION FIELD TEST</text>
+      <text x="24" y="62" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Discreet 4K60p • D-Log M • Fast 2-Second Turnaround</text>
+      <text x="24" y="86" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="12">Why it replaced my heavy mirrorless rig for crowded fashion floors</text>
+    </g>
+  </g>
+</svg>

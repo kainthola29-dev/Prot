@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-nr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B" />
+      <stop offset="50%" stop-color="#312E81" />
+      <stop offset="100%" stop-color="#4338CA" />
+    </linearGradient>
+    <linearGradient id="card-nr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#bg-nr)" />
+  <g transform="translate(140, 60)">
+    <rect width="520" height="340" rx="24" fill="url(#card-nr)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="30" y="28" width="165" height="26" rx="13" fill="rgba(99, 102, 241, 0.3)" stroke="#818CF8" stroke-width="1" />
+    <text x="112" y="45" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">CREATIVE DIRECTION</text>
+    <text x="30" y="95" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">NEWSROOM PRODUCTION</text>
+    <text x="30" y="122" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="14" font-weight="500">Fast Turnarounds, Multi-Cam Shoots &amp; Strict Broadcast Deadlines</text>
+    <g transform="translate(30, 150)">
+      <rect width="460" height="130" rx="12" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="34" fill="#818CF8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">HIGH-VELOCITY EDITORIAL DESK</text>
+      <text x="24" y="62" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Daily Video Bulletins • Teleprompter Pacing • Audio Mixing</text>
+      <text x="24" y="86" fill="#EEF2FF" font-family="system-ui, sans-serif" font-size="12">Hard lessons from 2 years leading media production at The Sunday Headlines</text>
+    </g>
+  </g>
+</svg>

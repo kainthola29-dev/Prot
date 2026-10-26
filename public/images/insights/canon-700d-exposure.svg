@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-canon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1C1917" />
+      <stop offset="50%" stop-color="#292524" />
+      <stop offset="100%" stop-color="#DC2626" />
+    </linearGradient>
+    <linearGradient id="card-canon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#bg-canon)" />
+  <g transform="translate(140, 60)">
+    <rect width="520" height="340" rx="24" fill="url(#card-canon)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <rect x="30" y="28" width="165" height="26" rx="13" fill="rgba(220, 38, 38, 0.3)" stroke="#F87171" stroke-width="1" />
+    <text x="112" y="45" fill="#FEE2E2" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">CRAFT RETROSPECTIVE</text>
+    <text x="30" y="95" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">CANON 700D &amp; EXPOSURE</text>
+    <text x="30" y="122" fill="#FCA5A5" font-family="system-ui, sans-serif" font-size="14" font-weight="500">Why Budget DSLRs Teach Better Fundamentals Than Phones</text>
+    <g transform="translate(30, 150)">
+      <rect width="460" height="130" rx="12" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.08)" />
+      <text x="24" y="34" fill="#F87171" font-family="system-ui, sans-serif" font-size="12" font-weight="700">FOUNDATIONS OF VISUAL CRAFT</text>
+      <text x="24" y="62" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Manual Aperture • Optical Viewfinders • 50mm f/1.8 Primers</text>
+      <text x="24" y="86" fill="#FEE2E2" font-family="system-ui, sans-serif" font-size="12">Lessons from my Journalism &amp; Mass Comm days before computational photography</text>
+    </g>
+  </g>
+</svg>

@@ -4,7 +4,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getContent } from "@/lib/content";
 import { JsonLd } from "@/components/JsonLd";
-import { ArrowLeft, Clock, Calendar, Bookmark, Share2, ArrowRight, Quote } from "lucide-react";
+import { 
+  ArrowLeft, 
+  Clock, 
+  Calendar, 
+  Bookmark, 
+  Share2, 
+  ArrowRight, 
+  Quote, 
+  CheckCircle2, 
+  AlertCircle, 
+  ExternalLink,
+  ShoppingBag
+} from "lucide-react";
 import { Metadata } from "next";
 
 export const dynamicParams = true;
@@ -246,6 +258,77 @@ export default function ArticleDetailPage({ params }: Props) {
                     </li>
                   ))}
                 </ul>
+              </section>
+            )}
+
+            {/* Field Tested Gear & Affiliate Card */}
+            {art.affiliateCard && (
+              <section className="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-amber-500/10 via-primary-500/5 to-transparent border-2 border-amber-500/30 dark:border-amber-500/20 shadow-md space-y-5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-amber-500/20 pb-4">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+                      {art.affiliateCard.badge || "Field-Tested Gear Recommendation"}
+                    </span>
+                    <h3 className="text-xl font-bold font-heading text-gray-900 dark:text-white mt-2">
+                      {art.affiliateCard.productName}
+                    </h3>
+                  </div>
+                  {art.affiliateCard.priceRange && (
+                    <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">
+                      Estimated: <span className="font-bold text-gray-900 dark:text-white">{art.affiliateCard.priceRange}</span>
+                    </span>
+                  )}
+                </div>
+
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                  <span className="font-bold text-gray-900 dark:text-white">Field Verdict: </span>
+                  {art.affiliateCard.verdict}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+                  <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-2">
+                    <span className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" /> What Works In Real Production
+                    </span>
+                    <ul className="space-y-1.5 text-gray-700 dark:text-gray-300">
+                      {art.affiliateCard.pros.map((pro: string, i: number) => (
+                        <li key={i} className="flex items-start gap-1.5">
+                          <span className="text-emerald-600 font-bold">•</span>
+                          <span>{pro}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 space-y-2">
+                    <span className="font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1.5">
+                      <AlertCircle className="w-4 h-4 text-rose-600" /> Field Quirks &amp; Limitations
+                    </span>
+                    <ul className="space-y-1.5 text-gray-700 dark:text-gray-300">
+                      {art.affiliateCard.cons.map((con: string, i: number) => (
+                        <li key={i} className="flex items-start gap-1.5">
+                          <span className="text-rose-600 font-bold">•</span>
+                          <span>{con}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <a
+                    href={art.affiliateCard.affiliateUrl || "https://amazon.in"}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
+                  >
+                    <span>{art.affiliateCard.buttonText || "Check Price & Availability"}</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <p className="text-[11px] text-gray-500 italic max-w-md text-center sm:text-right">
+                    *Affiliate Note: When you buy through links on this site, I may earn an affiliate commission at no extra charge to you. I only write about gear I personally own and deploy on commercial client productions.
+                  </p>
+                </div>
               </section>
             )}
 
