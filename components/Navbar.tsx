@@ -76,13 +76,13 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
 
-          <Link
-            href="/contact"
+          <a
+            href="mailto:kainthola29@gmail.com?subject=Strategic%20Marketing%20Inquiry%20%E2%80%94%20Deepanshu%20Kainthola"
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-primary-600 hover:bg-primary-700 text-white transition-all duration-300 shadow-sm hover:shadow-primary-600/30 hover:-translate-y-0.5"
           >
             <span>Let&apos;s Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
+          </a>
 
           {/* Mobile menu toggle */}
           <button
@@ -117,13 +117,13 @@ export function Navbar() {
             })}
 
             <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
-              <Link
-                href="/contact"
+              <a
+                href="mailto:kainthola29@gmail.com?subject=Strategic%20Marketing%20Inquiry%20%E2%80%94%20Deepanshu%20Kainthola"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-primary-600 text-white font-medium text-sm shadow-md"
               >
-                <span>Hire Me / Get in Touch</span>
+                <span>Email: kainthola29@gmail.com</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { caseStudiesData } from "@/data/portfolioData";
 import { JsonLd } from "@/components/JsonLd";
 import { ArrowRight, CheckCircle2, TrendingUp, Sparkles } from "lucide-react";
@@ -81,7 +82,18 @@ export default function CaseStudiesPage() {
               </div>
 
               {/* Right Metrics Grid (5 cols) */}
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-5 space-y-4">
+                {cs.image && (
+                  <div className="w-full h-44 rounded-2xl overflow-hidden relative border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                    <Image
+                      src={cs.image}
+                      alt={cs.title}
+                      width={600}
+                      height={320}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
                 <div className="p-6 rounded-2xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/80 dark:border-gray-800 space-y-4">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 pb-2 border-b border-gray-200 dark:border-gray-800">
                     Key Performance Indicators

@@ -13,11 +13,11 @@ export function ResumeActions() {
   return (
     <div className="flex items-center gap-3">
       <a
-        href="mailto:deepanshu@kainthola.com"
+        href="mailto:kainthola29@gmail.com?subject=Marketing%20Resume%20Inquiry%20%E2%80%94%20Deepanshu%20Kainthola"
         className="px-5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#212428] text-gray-800 dark:text-gray-200 text-xs font-semibold hover:border-primary-500 transition-all flex items-center gap-2"
       >
         <Mail className="w-4 h-4 text-primary-600" />
-        <span>Contact</span>
+        <span>Email Deepanshu</span>
       </a>
       <button
         type="button"

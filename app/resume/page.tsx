@@ -57,15 +57,15 @@ export default function ResumePage() {
               <span>{profileData.location}</span>
             </span>
             <span>•</span>
-            <span className="flex items-center gap-1">
+            <a href={`mailto:${profileData.email}`} className="flex items-center gap-1 hover:text-primary-600 transition-colors">
               <Mail className="w-3.5 h-3.5 text-primary-600" />
               <span>{profileData.email}</span>
-            </span>
+            </a>
             <span>•</span>
-            <span className="flex items-center gap-1">
+            <a href={`tel:${profileData.phone}`} className="flex items-center gap-1 hover:text-primary-600 transition-colors">
               <Phone className="w-3.5 h-3.5 text-primary-600" />
               <span>{profileData.phone}</span>
-            </span>
+            </a>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { caseStudiesData } from "@/data/portfolioData";
 import { JsonLd } from "@/components/JsonLd";
@@ -240,6 +241,17 @@ export default function CaseStudyDetailPage({ params }: Props) {
         {/* Sidebar (4 cols) */}
         <div className="lg:col-span-4 space-y-6">
           <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio space-y-6 sticky top-28">
+            {cs.image && (
+              <div className="w-full h-44 rounded-xl overflow-hidden relative border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                <Image
+                  src={cs.image}
+                  alt={cs.title}
+                  width={600}
+                  height={320}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
             <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white pb-3 border-b border-gray-100 dark:border-gray-800">
               Case Study Summary
             </h3>
@@ -260,13 +272,13 @@ export default function CaseStudyDetailPage({ params }: Props) {
             </div>
 
             <div className="pt-4 border-t border-gray-100 dark:border-gray-800 space-y-3">
-              <Link
-                href="/contact"
+              <a
+                href="mailto:kainthola29@gmail.com?subject=Strategic%20Inquiry%20regarding%20Case%20Study%20%E2%80%94%20Deepanshu%20Kainthola"
                 className="w-full py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
               >
-                <span>Hire Marketing Strategist</span>
+                <span>Email: kainthola29@gmail.com</span>
                 <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

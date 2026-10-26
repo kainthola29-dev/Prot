@@ -430,6 +430,7 @@ export const caseStudiesData: CaseStudyItem[] = [
     organization: "Vision India Services",
     date: "Dec 20, 2025",
     heroGradient: "from-emerald-700 via-teal-800 to-slate-900",
+    image: "/images/projects/employ-india.svg",
     metrics: [
       { label: "Live Attendees", value: "850+" },
       { label: "Lead Pipeline", value: "Multi-Channel" },
@@ -470,6 +471,7 @@ export const caseStudiesData: CaseStudyItem[] = [
     organization: "Talent Foundation / SECI",
     date: "2024",
     heroGradient: "from-amber-700 via-orange-800 to-stone-900",
+    image: "/images/projects/niyukti-shakti.svg",
     metrics: [
       { label: "Women Trained", value: "121 Candidates" },
       { label: "Placed in Jobs", value: "~85 Placed" },
@@ -510,6 +512,7 @@ export const caseStudiesData: CaseStudyItem[] = [
     organization: "GreenCall",
     date: "2024",
     heroGradient: "from-teal-700 via-cyan-800 to-slate-900",
+    image: "/images/projects/greencall-seo.svg",
     metrics: [
       { label: "Organic Reach", value: "+120% Lift" },
       { label: "Target Sector", value: "HR Automation" },

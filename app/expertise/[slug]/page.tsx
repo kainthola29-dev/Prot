@@ -135,13 +135,13 @@ export default function ExpertiseDetailPage({ params }: Props) {
 
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center gap-4 pt-4">
-            <Link
-              href="/contact"
+            <a
+              href="mailto:kainthola29@gmail.com?subject=Strategic%20Discussion%20%E2%80%94%20Deepanshu%20Kainthola"
               className="px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-primary-600/30 hover:-translate-y-0.5 inline-flex items-center gap-2"
             >
               <span>Discuss This Capability</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
 
             <Link
               href="/case-studies"
@@ -344,13 +344,13 @@ export default function ExpertiseDetailPage({ params }: Props) {
           I bring 7.7 Years of practical execution, cross-brand orchestration, and strategic business frameworks to drive bottom-line results.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <Link
-            href="/contact"
+          <a
+            href="mailto:kainthola29@gmail.com?subject=Leadership%20Inquiry%20%E2%80%94%20Deepanshu%20Kainthola"
             className="px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition-all duration-300 shadow-md hover:-translate-y-0.5 inline-flex items-center gap-2"
           >
-            <span>Initiate Conversation</span>
+            <span>Email kainthola29@gmail.com</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
           <Link
             href="/resume"
             className="px-8 py-3.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"

@@ -125,46 +125,12 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              {/* Social and Skills Row */}
-              <div className="pt-6 border-t border-gray-200/80 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
-                <div className="space-y-2.5">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Connect On Social
-                  </p>
-                  <SocialLinks />
-                </div>
-
-                <div className="space-y-2.5">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Core Capabilities
-                  </p>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    <Link
-                      href="/expertise/digital-marketing-strategy"
-                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
-                    >
-                      Digital Strategy
-                    </Link>
-                    <Link
-                      href="/expertise/content-strategy-copywriting"
-                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
-                    >
-                      Content &amp; Copy
-                    </Link>
-                    <Link
-                      href="/expertise/employer-branding-comms"
-                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
-                    >
-                      Employer Brand
-                    </Link>
-                    <Link
-                      href="/expertise/video-media-production"
-                      className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#1F242C] border border-gray-200 dark:border-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 transition-colors text-center shadow-xs truncate"
-                    >
-                      Video Production
-                    </Link>
-                  </div>
-                </div>
+              {/* Social Row */}
+              <div className="pt-6 border-t border-gray-200/80 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                  Connect On Social:
+                </span>
+                <SocialLinks />
               </div>
 
             </div>
@@ -387,34 +353,56 @@ export default function HomePage() {
             <Link
               key={cs.id}
               href={`/case-studies/${cs.slug}`}
-              className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between block cursor-pointer"
+              className="group rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-5 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between block cursor-pointer"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider">
+              <div>
+                {/* Featured Thumbnail */}
+                <div className="w-full h-40 rounded-xl overflow-hidden relative mb-4 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                  {cs.image ? (
+                    <Image
+                      src={cs.image}
+                      alt={cs.title}
+                      width={800}
+                      height={400}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className={`w-full h-full bg-gradient-to-tr ${cs.heroGradient} p-4 flex items-end`}>
+                      <span className="text-xs font-bold text-white uppercase tracking-wider">{cs.organization}</span>
+                    </div>
+                  )}
+                  <div className="absolute top-2.5 left-2.5 z-10">
+                    <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
+                      {cs.organization}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider mb-2">
                   <span className="text-primary-600 dark:text-primary-400 truncate max-w-[65%]">{cs.category}</span>
                   <span className="text-gray-400 font-normal">{cs.date}</span>
                 </div>
 
-                <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors leading-snug line-clamp-2">
+                <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors leading-snug line-clamp-2 mb-1.5">
                   {cs.title}
                 </h3>
 
-                <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed mb-3">
                   {cs.subtitle || cs.sections.challenge}
                 </p>
 
                 {/* Sleek Inline Key Metrics */}
-                <div className="flex flex-wrap gap-2 pt-1">
+                <div className="flex flex-wrap gap-2">
                   {cs.metrics.slice(0, 2).map((m: any) => (
                     <div key={m.label} className="px-2.5 py-1 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 flex items-center gap-1.5">
                       <span className="text-xs font-bold text-primary-600 dark:text-primary-400">{m.value}</span>
-                      <span className="text-[10px] text-gray-500 truncate max-w-[90px]">{m.label}</span>
+                      <span className="text-[10px] text-gray-500 truncate max-w-[100px]">{m.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 mt-5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs font-semibold">
+              <div className="pt-3 mt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs font-semibold">
                 <span className="text-gray-500 text-[11px]">{cs.organization}</span>
                 <span className="text-primary-600 dark:text-primary-400 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                   <span>Read Study</span>
@@ -603,13 +591,13 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Link
-              href="/contact"
+            <a
+              href="mailto:kainthola29@gmail.com?subject=Senior%20Marketing%20Opportunity%20%E2%80%94%20Deepanshu%20Kainthola"
               className="px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-primary-600/40 hover:-translate-y-0.5 inline-flex items-center gap-2"
             >
-              <span>Get In Touch</span>
+              <span>Email: kainthola29@gmail.com</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
 
             <Link
               href="/resume"

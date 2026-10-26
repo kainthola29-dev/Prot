@@ -291,13 +291,13 @@ export default function ProjectDetailPage({ params }: Props) {
             </div>
 
             <div className="pt-4 border-t border-gray-100 dark:border-gray-800 space-y-3">
-              <Link
-                href="/contact"
+              <a
+                href="mailto:kainthola29@gmail.com?subject=Strategic%20Project%20Inquiry%20%E2%80%94%20Deepanshu%20Kainthola"
                 className="w-full py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
               >
-                <span>Hire For Your Team</span>
+                <span>Email: kainthola29@gmail.com</span>
                 <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              </a>
               <Link
                 href="/resume"
                 className="w-full py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"

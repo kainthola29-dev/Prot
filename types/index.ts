@@ -74,6 +74,7 @@ export interface CaseStudyItem {
   organization: string;
   date: string;
   heroGradient: string;
+  image?: string;
   metrics: { label: string; value: string }[];
   sections: {
     challenge: string;
