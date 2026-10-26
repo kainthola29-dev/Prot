@@ -1,14 +1,42 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { profileData, timelineData, skillsArchitecture, skillBars } from "@/data/portfolioData";
+import { 
+  profileData, 
+  timelineData, 
+  skillsArchitecture, 
+  educationData, 
+  certificationsData 
+} from "@/data/portfolioData";
 import { JsonLd } from "@/components/JsonLd";
-import { ArrowRight, CheckCircle2, Sparkles, Award, Briefcase, GraduationCap, Compass } from "lucide-react";
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  Sparkles, 
+  Award, 
+  Briefcase, 
+  GraduationCap, 
+  Compass, 
+  Target, 
+  TrendingUp, 
+  FileText, 
+  Video, 
+  Search, 
+  BarChart3, 
+  Download, 
+  Mail, 
+  MessageCircle,
+  Building2,
+  Quote,
+  ShieldCheck,
+  Zap,
+  Globe2
+} from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Deepanshu Kainthola — Career Journey & Strategic Marketing",
-  description: "Learn about Deepanshu Kainthola's 7.7 Years Exp. across video production, multi-brand digital marketing, and strategic MBA leadership.",
+  description: "Learn about Deepanshu Kainthola's 7.7 Years Exp. combining hands-on digital marketing execution with strategic MBA leadership across 6 enterprise brands.",
   openGraph: {
     title: "About Deepanshu Kainthola — Digital Marketing Manager",
     description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership.",
@@ -33,13 +61,51 @@ export default function AboutPage() {
     ],
   };
 
+  // Filter historical roles from future vision for clean presentation
+  const workHistory = timelineData.filter((item) => !item.isFuture && item.id !== "mba");
+  const futureVision = timelineData.find((item) => item.isFuture);
+
+  // Icon mapping for competency categories
+  const getCategoryIcon = (index: number) => {
+    switch (index) {
+      case 0:
+        return <TrendingUp className="w-5 h-5 text-primary-600 dark:text-primary-400" />;
+      case 1:
+        return <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
+      case 2:
+        return <Building2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
+      case 3:
+        return <Video className="w-5 h-5 text-rose-600 dark:text-rose-400" />;
+      case 4:
+        return <Search className="w-5 h-5 text-amber-600 dark:text-amber-400" />;
+      case 5:
+        return <BarChart3 className="w-5 h-5 text-violet-600 dark:text-violet-400" />;
+      default:
+        return <Sparkles className="w-5 h-5 text-primary-600" />;
+    }
+  };
+
+  // Primary tech tools strip
+  const toolsStack = [
+    "Google Analytics 4",
+    "Meta Business Suite",
+    "LinkedIn Campaign Manager",
+    "Adobe Premiere Pro",
+    "Adobe Photoshop",
+    "WordPress CMS",
+    "SEMrush / Ahrefs",
+    "Canva Pro",
+    "Zapier",
+    "Microsoft Excel (Advanced)"
+  ];
+
   return (
-    <div className="py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+    <div className="py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
       <JsonLd data={breadcrumbSchema} />
 
-      {/* HEADER & BIO GRID */}
+      {/* 1. HERO & BIO SECTION */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Photo & Experience Tag */}
+        {/* Left Column: Photo & Status */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-sm">
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary-600/20 to-teal-400/20 rounded-3xl blur-2xl -z-10" />
@@ -49,15 +115,18 @@ export default function AboutPage() {
                   src="/images/deepanshu.webp"
                   alt="Deepanshu Kainthola — Digital Marketing Manager"
                   fill
+                  priority
                   className="object-cover object-top"
                 />
               </div>
-              <div className="mt-4 p-3 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 flex items-center justify-between">
+
+              {/* Current Role Card */}
+              <div className="mt-4 p-3.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 flex items-center justify-between">
                 <div>
-                  <p className="text-xs uppercase font-bold text-gray-500">Current Role</p>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 block">Current Leadership</span>
                   <p className="text-sm font-bold text-gray-900 dark:text-white">Vision India Services</p>
                 </div>
-                <div className="px-2.5 py-1 rounded-md bg-primary-100 dark:bg-primary-950/80 text-primary-700 dark:text-primary-300 text-xs font-bold">
+                <div className="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 text-xs font-bold">
                   May 2025 – Present
                 </div>
               </div>
@@ -65,77 +134,130 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Right Column: Bio Narrative */}
+        {/* Right Column: Bio Narrative & High-Impact Stat Strip */}
         <div className="lg:col-span-7 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300 border border-primary-200/60 dark:border-primary-800/60">
             <Sparkles className="w-3.5 h-3.5 text-primary-600" />
-            <span>MY BACKGROUND &amp; PHILOSOPHY</span>
+            <span>EXECUTIVE BACKGROUND &amp; VISION</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight leading-tight">
             Connecting Content, Brand Narrative, and Measurable Business Growth
           </h1>
 
-          <div className="space-y-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+          {/* Executive Pull-Quote */}
+          <div className="p-4 rounded-xl bg-primary-50/70 dark:bg-primary-950/30 border-l-4 border-primary-600 text-sm italic text-gray-800 dark:text-gray-200">
+            &ldquo;Marketing execution without business literacy is just tactical delivery. I bridge creative production with commercial frameworks to turn brand visibility into bottom-line revenue.&rdquo;
+          </div>
+
+          <div className="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
             <p>
-              I am a marketing professional who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not start as a conventional corporate theorist; it began on the front lines of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
+              I am a marketing leader who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not begin as an ivory-tower corporate theorist; it began in the trenches of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
             </p>
             <p>
-              Beginning at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I mastered editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation subsequently evolved through high-impact content roles at Tatsat Chronicle, Denvax / Helios Educore, and as Video Producer at Meena Bazaar, before stepping into full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
+              Starting at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I developed ruthless discipline around editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation evolved through high-impact content roles at Tatsat Chronicle, Denvax / Helios Educore, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
             </p>
             <p>
-              Today, I oversee integrated digital marketing, corporate communication, SEO architecture, employer branding, and multi-channel campaigns across <strong>6 flagship corporate brands</strong>. To deepen my financial and commercial decision-making, I am pursuing my <strong>MBA at Jindal Global Business School (Cohort 13)</strong>.
+              Today, I oversee integrated digital marketing, corporate communications, SEO architecture, employer branding, and multi-channel campaigns across <strong>6 flagship corporate brands</strong>. To deepen my commercial decision-making and P&amp;L literacy, I am pursuing my <strong>MBA at Jindal Global Business School (Cohort 13)</strong>.
             </p>
           </div>
 
-          {/* Skill Bars */}
-          <div className="pt-6 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400">
-              Proficiency Benchmark
-            </h3>
-            <div className="space-y-3">
-              {skillBars.map((bar) => (
-                <div key={bar.name} className="space-y-1">
-                  <div className="flex justify-between text-xs font-semibold">
-                    <span className="text-gray-800 dark:text-gray-200">{bar.name}</span>
-                    <span className="text-primary-600 dark:text-primary-400">{bar.percentage}%</span>
-                  </div>
-                  <div className="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
-                    <div 
-                      className="h-full rounded-full bg-gradient-to-r from-primary-600 to-teal-400 transition-all duration-1000"
-                      style={{ width: `${bar.percentage}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+          {/* Executive At-A-Glance Stat Strip (Replaces dated percentage bars) */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+              <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">7.7</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Years Exp.</span>
+            </div>
+            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+              <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">6+</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Brands Managed</span>
+            </div>
+            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+              <span className="text-xl sm:text-2xl font-extrabold font-heading text-primary-600 dark:text-primary-400 block">MBA</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">JGBS Cohort 13</span>
+            </div>
+            <div className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-sm text-center">
+              <span className="text-xl sm:text-2xl font-extrabold font-heading text-emerald-600 dark:text-emerald-400 block">850+</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Webinar Attendees</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 9-STAGE CAREER JOURNEY TIMELINE */}
+      {/* 2. CORE OPERATING PHILOSOPHY (3 PILLARS) */}
+      <section className="space-y-10">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+            HOW I THINK &amp; LEAD
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
+            Core Operating Philosophy
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            Three guiding principles that govern every campaign, brand narrative, and strategic initiative I lead.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark space-y-4 hover:-translate-y-1 transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 flex items-center justify-center">
+              <Zap className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+              Tactile Execution Over Pure Theory
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Having spent years editing raw footage, running CMS portals, and crafting copy on deadline, I manage creative and marketing teams with practical empathy. I know what is feasible, how long it takes, and how to eliminate production bottlenecks.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark space-y-4 hover:-translate-y-1 transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <Target className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+              Commercial Value Over Vanity Metrics
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Likes and impressions mean nothing if they don&apos;t build pipeline, lower CAC, or elevate enterprise brand authority. My MBA grounding at Jindal Global Business School ensures every marketing rupee spent connects to business health.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark space-y-4 hover:-translate-y-1 transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <Globe2 className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+              Multi-Brand Agility &amp; Scalability
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Concurrently managing skilling, B2B SaaS, CSR, and employer branding requires modular, repeatable frameworks. I build centralized editorial engines and distribution systems that deliver consistent quality across diverse market segments.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. STRUCTURED CAREER PROGRESSION TIMELINE */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-            CAREER PROGRESSION
+            CHRONOLOGICAL MILESTONES
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
             The Professional Journey
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            A continuous progression from media production to digital campaigns and corporate marketing leadership.
+            A continuous progression from media publishing and documentary production to multi-brand enterprise marketing leadership.
           </p>
         </div>
 
         <div className="relative border-l-2 border-primary-200 dark:border-primary-900/60 ml-4 md:ml-32 space-y-10 pl-6 md:pl-10">
-          {timelineData.map((item) => (
+          {workHistory.map((item) => (
             <div key={item.id} className="relative group">
-              {/* Timeline marker */}
+              {/* Timeline Marker Dot */}
               <div className={`absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 bg-white dark:bg-[#16181C] flex items-center justify-center transition-transform group-hover:scale-125 ${
                 item.isCurrent
-                  ? "border-primary-500 bg-primary-500 shadow-md shadow-primary-500/50"
-                  : item.isFuture
-                  ? "border-amber-500 border-dashed"
+                  ? "border-emerald-500 bg-emerald-500 shadow-md shadow-emerald-500/50"
                   : "border-primary-400 dark:border-primary-600"
               }`}>
                 {item.isCurrent && (
@@ -146,9 +268,7 @@ export default function AboutPage() {
               {/* Timeline Card */}
               <div className={`rounded-2xl p-6 sm:p-8 transition-all duration-300 ${
                 item.isCurrent
-                  ? "bg-white dark:bg-[#212428] border-2 border-primary-500/80 shadow-inbio-hover"
-                  : item.isFuture
-                  ? "bg-gradient-to-r from-amber-500/5 to-teal-500/5 dark:bg-[#212428]/80 border-2 border-dashed border-amber-500/40"
+                  ? "bg-white dark:bg-[#212428] border-2 border-emerald-500/80 shadow-inbio-hover"
                   : "bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 shadow-inbio dark:shadow-inbio-dark"
               }`}>
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
@@ -157,13 +277,9 @@ export default function AboutPage() {
                       {item.organization}
                     </span>
                     {item.isCurrent && (
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-extrabold uppercase tracking-wider">
-                        Current Role
-                      </span>
-                    )}
-                    {item.isFuture && (
-                      <span className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 text-[10px] font-extrabold uppercase tracking-wider">
-                        Vision &amp; Aspiration
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span>Current Leadership Role</span>
                       </span>
                     )}
                   </div>
@@ -194,10 +310,145 @@ export default function AboutPage() {
               </div>
             </div>
           ))}
+
+          {/* Concluding Milestone: Executive Vision */}
+          {futureVision && (
+            <div className="relative group">
+              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 border-primary-500 bg-primary-500/20 flex items-center justify-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
+              </div>
+
+              <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-primary-900/40 via-[#1E242C] to-slate-900 border border-primary-500/30 text-white shadow-xl space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                      STRATEGIC HORIZON
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-300 border border-primary-500/30 text-[10px] font-bold uppercase">
+                      Target Mandate
+                    </span>
+                  </div>
+                  <span className="text-xs text-gray-400 font-semibold">{futureVision.period}</span>
+                </div>
+
+                <h3 className="text-xl font-bold font-heading text-white">
+                  {futureVision.role}
+                </h3>
+
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  {futureVision.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {futureVision.skills.map((s) => (
+                    <span key={s} className="px-2.5 py-1 rounded-lg bg-black/40 border border-white/10 text-xs font-medium text-emerald-300">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* SKILLS ARCHITECTURE GRID */}
+      {/* 4. ACADEMIC PEDIGREE & ACCREDITATIONS (Previously Missing) */}
+      <section className="space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+            CREDENTIALS &amp; RIGOR
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
+            Academic Pedigree &amp; Certifications
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            Formal business education combined with specialized credentials in creative design and digital inbound strategy.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left: Formal University Education (6 cols) */}
+          <div className="lg:col-span-6 space-y-5">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400 pb-1">
+              <GraduationCap className="w-4 h-4" />
+              <span>University Degrees</span>
+            </div>
+
+            <div className="space-y-4">
+              {educationData.map((edu) => (
+                <div
+                  key={edu.id}
+                  className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark space-y-2 hover:border-primary-500/40 transition-colors"
+                >
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
+                      {edu.period}
+                    </span>
+                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500">
+                      {edu.institution.split("(")[0].trim()}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                    {edu.degree}
+                  </h3>
+
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                    {edu.field} — <span className="text-gray-500 font-normal">{edu.institution}</span>
+                  </p>
+
+                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed pt-1">
+                    {edu.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Industry Certifications (6 cols) */}
+          <div className="lg:col-span-6 space-y-5">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 pb-1">
+              <Award className="w-4 h-4" />
+              <span>Industry Accreditations</span>
+            </div>
+
+            <div className="space-y-4">
+              {certificationsData.map((cert) => (
+                <div
+                  key={cert.id}
+                  className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark space-y-2 hover:border-emerald-500/40 transition-colors"
+                >
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                      {cert.issuer}
+                    </span>
+                    <span className="text-[11px] text-gray-400 font-medium">
+                      {cert.date}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                    {cert.name}
+                  </h3>
+
+                  <div className="pt-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1">
+                      Validated Competencies:
+                    </span>
+                    <p className="text-xs text-gray-600 dark:text-gray-300">
+                      {cert.skills}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5. SKILLS ARCHITECTURE & TECH STACK */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
@@ -211,53 +462,101 @@ export default function AboutPage() {
           </p>
         </div>
 
+        {/* 6 Competency Categories */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillsArchitecture.map((cat) => (
+          {skillsArchitecture.map((cat, idx) => (
             <div
               key={cat.title}
-              className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark"
+              className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 shadow-inbio dark:shadow-inbio-dark hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
-              <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white mb-4 pb-3 border-b border-gray-100 dark:border-gray-800">
-                {cat.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/70 dark:border-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div>
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-100 dark:border-gray-800">
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/60 dark:border-gray-800 flex items-center justify-center flex-shrink-0">
+                    {getCategoryIcon(idx)}
+                  </div>
+                  <h3 className="text-base font-bold font-heading text-gray-900 dark:text-white">
+                    {cat.title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2.5 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200/70 dark:border-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Tools & Technology Stack Strip */}
+        <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-8 shadow-inbio space-y-4">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500">
+            <ShieldCheck className="w-4 h-4 text-primary-600" />
+            <span>Core Tooling &amp; Marketing Technology Stack</span>
+          </div>
+          <div className="flex flex-wrap gap-2.5">
+            {toolsStack.map((tool) => (
+              <span
+                key={tool}
+                className="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 text-xs font-semibold text-gray-800 dark:text-gray-200 shadow-xs"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* CTA */}
-      <section className="text-center py-12 rounded-3xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-inbio p-8 space-y-4">
-        <h3 className="text-2xl font-bold font-heading text-gray-900 dark:text-white">
-          Explore My Projects &amp; Case Studies
-        </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-          See how these methodologies translated into verified results, lead pipelines, and audience engagement.
+      {/* 6. EXECUTIVE OUTREACH CTA (Matching Homepage & Contact standards) */}
+      <section className="rounded-3xl bg-gradient-to-r from-gray-900 via-[#1E242C] to-slate-900 text-white p-10 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden border border-gray-800">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          <span>Open for Senior Marketing Roles (₹18–25 LPA)</span>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white tracking-tight max-w-2xl mx-auto">
+          Looking for a Leader Who Combines Field Execution with Commercial Acumen?
+        </h2>
+
+        <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Whether you have an executive marketing opportunity, a multi-brand mandate, or a strategic consultation inquiry, let&apos;s connect directly.
         </p>
-        <div className="flex flex-wrap justify-center gap-4 pt-2">
-          <Link
-            href="/portfolio"
-            className="px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold text-xs uppercase tracking-wider transition-all"
+
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
+          <a
+            href="mailto:kainthola29@gmail.com?subject=Strategic%20Marketing%20Opportunity%20%E2%80%94%20Deepanshu%20Kainthola"
+            className="px-7 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-primary-600/40 inline-flex items-center gap-2"
           >
-            View Portfolio
-          </Link>
-          <Link
-            href="/case-studies"
-            className="px-6 py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-primary-500 font-semibold text-xs uppercase tracking-wider text-gray-800 dark:text-gray-200 transition-all"
+            <Mail className="w-4 h-4" />
+            <span>Email kainthola29@gmail.com</span>
+          </a>
+
+          <a
+            href="https://wa.me/919599396969?text=Hi%20Deepanshu,%20I%20reviewed%20your%20About%20page%20and%20would%20like%20to%20connect."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-7 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg inline-flex items-center gap-2"
           >
-            View Case Studies
+            <MessageCircle className="w-4 h-4" />
+            <span>Chat on WhatsApp</span>
+          </a>
+
+          <Link
+            href="/resume"
+            className="px-6 py-3.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 inline-flex items-center gap-2"
+          >
+            <span>View Resume</span>
+            <Download className="w-3.5 h-3.5" />
           </Link>
         </div>
       </section>
+
     </div>
   );
 }
