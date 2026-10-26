@@ -549,19 +549,27 @@ export const caseStudiesData: CaseStudyItem[] = [
 export const timelineData: TimelineItem[] = [
   {
     id: "sunday-headlines",
-    role: "Production Head & Website Manager",
+    role: "Head of Media Production",
     organization: "The Sunday Headlines",
-    period: "Nov 2016 – Nov 2018",
-    description: "Led end-to-end digital publishing, studio video production, and CMS portal management for a digital news and media platform. Built the critical operational foundation in digital content, deadline-driven execution, and CMS administration.",
-    skills: ["Production Head", "Website Management", "Digital Content", "Digital Publishing", "Video Production"]
+    period: "Nov 2016 – Nov 2018 · 2 yrs 1 mo",
+    description: "Led studio video production, digital news publishing, and CMS portal management for a digital news and media platform. Built the critical operational foundation in digital content, editorial deadlines, and multimedia broadcasting.",
+    skills: ["Head of Media Production", "Studio Video", "CMS Management", "Digital Publishing", "Video Production"]
+  },
+  {
+    id: "helios",
+    role: "Digital Content Manager",
+    organization: "Helios Educore Pvt. Ltd.",
+    period: "Jul 2020 – Feb 2021 · 8 mos",
+    description: "Managed educational digital content development, video production workflows, and digital marketing outreach across educational platforms.",
+    skills: ["Digital Content Manager", "Content Management", "Educational Media", "Digital Outreach", "Video Production"]
   },
   {
     id: "tatsat",
     role: "Digital Content Producer",
     organization: "Tatsat Chronicle",
-    period: "Mar 2021 – Oct 2022",
-    description: "Produced long-form interviews, issue-based documentaries, and multimedia storytelling focused on public narratives and social issues. Managed scripting, field coordination, interview planning, and editorial workflows for a premier social impact media brand.",
-    skills: ["Digital Content", "Long-form Documentary", "Multimedia Storytelling", "Editorial Workflows", "Social Impact"]
+    period: "Mar 2021 – Oct 2022 · 1 yr 8 mos",
+    description: "Produced long-form interviews, issue-based documentaries, and multimedia storytelling focused on public policy, social development, and grassroots narratives for premier impact media publication.",
+    skills: ["Digital Content Producer", "Long-form Documentary", "Multimedia Storytelling", "Editorial Workflows", "Social Impact"]
   },
   {
     id: "denvax",
@@ -569,15 +577,15 @@ export const timelineData: TimelineItem[] = [
     organization: "Denvax",
     period: "Oct 2022 – Mar 2023 · 6 mos",
     description: "Produced patient education video content, simplified complex medical communication, coordinated doctor interviews, and built patient trust across digital channels for cancer immunotherapy clinic.",
-    skills: ["Digital Content", "Healthcare Marketing", "Educational Video", "Brand Trust", "Patient Education"]
+    skills: ["Digital Content Producer", "Healthcare Marketing", "Educational Video", "Brand Trust", "Patient Education"]
   },
   {
     id: "meena-bazaar",
     role: "Video Producer",
     organization: "Meena Bazaar",
     period: "Feb 2024 – May 2025 · 1 yr 4 mos",
-    description: "Led branded content production, scripted and planned video shoots, supervised post-production, and worked with marketing and branding teams on seasonal launches and retail campaigns for iconic fashion house.",
-    skills: ["Video Production", "Creative Direction", "Scripting", "Retail Campaigns", "Post-Production", "Fashion Marketing"]
+    description: "Led branded video production, creative direction, scripted on-model shoots, supervised post-production, and worked with marketing and branding teams on seasonal launches and retail campaigns for iconic luxury fashion house.",
+    skills: ["Video Producer", "Creative Direction", "Scripting", "Retail Campaigns", "Post-Production", "Fashion Marketing"]
   },
   {
     id: "vispl",

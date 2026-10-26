@@ -315,7 +315,7 @@
       "period": "Oct 2022 – Mar 2023 · 6 mos",
       "description": "Produced patient education video content, simplified complex medical communication, coordinated doctor interviews, and built patient trust across digital channels for cancer immunotherapy clinic.",
       "skills": [
-        "Digital Content",
+        "Digital Content Producer",
         "Healthcare Marketing",
         "Educational Video",
         "Brand Trust",
@@ -326,10 +326,10 @@
       "id": "tatsat",
       "role": "Digital Content Producer",
       "organization": "Tatsat Chronicle",
-      "period": "Mar 2021 – Oct 2022",
-      "description": "Produced long-form interviews, issue-based documentaries, and multimedia storytelling focused on public narratives and social issues. Managed scripting, field coordination, interview planning, and editorial workflows for a premier social impact media brand.",
+      "period": "Mar 2021 – Oct 2022 · 1 yr 8 mos",
+      "description": "Produced long-form interviews, issue-based documentaries, and multimedia storytelling focused on public policy, social development, and grassroots narratives for premier impact media publication.",
       "skills": [
-        "Digital Content",
+        "Digital Content Producer",
         "Long-form Documentary",
         "Multimedia Storytelling",
         "Editorial Workflows",
@@ -337,11 +337,25 @@
       ]
     },
     {
+      "id": "helios",
+      "role": "Digital Content Manager",
+      "organization": "Helios Educore Pvt. Ltd.",
+      "period": "Jul 2020 – Feb 2021 · 8 mos",
+      "description": "Managed educational digital content development, video production workflows, and digital marketing outreach across educational platforms.",
+      "skills": [
+        "Digital Content Manager",
+        "Content Management",
+        "Educational Media",
+        "Digital Outreach",
+        "Video Production"
+      ]
+    },
+    {
       "id": "sunday-headlines",
-      "role": "Production Head & Website Manager",
+      "role": "Head of Media Production",
       "organization": "The Sunday Headlines",
-      "period": "Nov 2016 – Nov 2018",
-      "description": "Led end-to-end digital publishing, studio video production, and CMS portal management for a digital news and media platform. Built the critical operational foundation in digital content, deadline-driven execution, and CMS administration.",
+      "period": "Nov 2016 – Nov 2018 · 2 yrs 1 mo",
+      "description": "Led studio video production, digital news publishing, and CMS portal management for a digital news and media platform. Built the critical operational foundation in digital content, editorial deadlines, and multimedia broadcasting.",
       "skills": [
         "Production Head",
         "Website Management",

@@ -73,6 +73,7 @@ export default function AboutPage() {
     "meena-bazaar": "Iconic Indian Luxury Ethnic Fashion & Retail",
     "denvax": "Cellular Immunotherapy & Healthcare Communications",
     "tatsat": "Social Impact Journalism & Public Policy Media",
+    "helios": "Educational Media & Digital Publishing",
     "sunday-headlines": "Digital News Publishing & Video Broadcast",
   };
 
@@ -126,6 +127,7 @@ export default function AboutPage() {
     "Meena Bazaar",
     "Tatsat Chronicle",
     "Denvax",
+    "Helios Educore",
     "Bihar Talks",
     "The Sunday Headlines"
   ];
@@ -190,7 +192,7 @@ export default function AboutPage() {
                 I am a marketing leader who combines <strong>7.7 Years of hands-on execution with strategic business thinking</strong>. My journey did not begin as an ivory-tower corporate theorist; it began in the trenches of digital media publishing, video editing suites, CMS portals, and rapid-fire content distribution.
               </p>
               <p>
-                Starting at <em>The Sunday Headlines</em> (2016–2018) as Production Head &amp; Website Manager, I developed ruthless discipline around editorial deadlines, multimedia production, and organic reader engagement. That tactile foundation evolved through high-impact content roles at Tatsat Chronicle, Denvax, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
+                Starting at <em>The Sunday Headlines</em> (2016–2018) as Head of Media Production, I developed ruthless discipline around studio production and digital publishing. That foundation evolved through pivotal content and media leadership roles at Helios Educore, Tatsat Chronicle, Denvax, and as Video Producer at Meena Bazaar, before taking command of full-scope multi-brand marketing management at <strong>Vision India Services</strong>.
               </p>
               <p>
                 Today, I oversee integrated digital marketing, corporate communications, employer branding, video direction, and multi-channel campaigns across <strong>12+ corporate brands</strong>. To deepen my commercial decision-making and P&amp;L literacy, I am pursuing my <strong>MBA at Jindal Global Business School</strong>.
