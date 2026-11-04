@@ -391,24 +391,35 @@ export default function AdminPage() {
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                      Real-time Website Traffic
+                      Live Telemetry &amp; Google Analytics 4 Connected
                     </span>
                   </div>
                   <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white mt-1">
                     Audience &amp; Visitor Insights
                   </h2>
                   <p className="text-xs text-gray-500">
-                    Live telemetry tracking recruiter visits, portfolio impressions, and traffic acquisition channels.
+                    Measurement ID: <span className="font-mono font-semibold text-primary-600 dark:text-primary-400">G-LHK197EM8S</span> • Live telemetry tracking recruiter visits, portfolio impressions, and traffic acquisition channels.
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={loadAnalytics}
-                  className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5 cursor-pointer self-start sm:self-auto shadow-xs"
-                >
-                  <Activity className="w-3.5 h-3.5 text-primary-600" />
-                  <span>Refresh Telemetry</span>
-                </button>
+                <div className="flex items-center gap-2 self-start sm:self-auto">
+                  <a
+                    href="https://analytics.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all"
+                  >
+                    <span>Open Google Analytics</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <button
+                    type="button"
+                    onClick={loadAnalytics}
+                    className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  >
+                    <Activity className="w-3.5 h-3.5 text-primary-600" />
+                    <span>Refresh</span>
+                  </button>
+                </div>
               </div>
 
               {/* 4 Main KPI Cards */}
