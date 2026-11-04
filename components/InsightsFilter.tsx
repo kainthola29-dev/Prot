@@ -1,17 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArticleItem } from "@/types";
-import { Clock, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Clock, Calendar, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface InsightsFilterProps {
   articles: ArticleItem[];
 }
 
+const ITEMS_PER_PAGE = 4;
+
+// Helper to parse dates like "Sep 2026", "Oct 2024" for sorting newest first
+const MONTH_MAP: Record<string, number> = {
+  jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+};
+
+function parseDateScore(dateStr?: string): number {
+  if (!dateStr) return 0;
+  const parts = dateStr.trim().split(/\s+/);
+  if (parts.length === 2) {
+    const month = MONTH_MAP[parts[0].toLowerCase().slice(0, 3)] ?? 0;
+    const year = parseInt(parts[1], 10) || 2024;
+    return year * 100 + month;
+  }
+  return 0;
+}
+
 export function InsightsFilter({ articles }: InsightsFilterProps) {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     "All",
@@ -21,18 +42,44 @@ export function InsightsFilter({ articles }: InsightsFilterProps) {
     "AI & Leadership"
   ];
 
+  // Sort articles newest first
+  const sortedArticles = [...articles].sort(
+    (a, b) => parseDateScore(b.date) - parseDateScore(a.date)
+  );
+
   const filteredArticles = activeCategory === "All"
-    ? articles
-    : articles.filter((a) => a.category.toLowerCase() === activeCategory.toLowerCase());
+    ? sortedArticles
+    : sortedArticles.filter((a) => a.category.toLowerCase() === activeCategory.toLowerCase());
+
+  const totalPages = Math.max(1, Math.ceil(filteredArticles.length / ITEMS_PER_PAGE));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+
+  const startIndex = (safeCurrentPage - 1) * ITEMS_PER_PAGE;
+  const displayedArticles = filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, filteredArticles.length);
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+      if (containerRef.current) {
+        containerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
 
   return (
-    <div className="space-y-10">
+    <div ref={containerRef} className="space-y-10 scroll-mt-24">
       {/* Category Tabs */}
       <div className="flex flex-wrap items-center justify-center gap-2">
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setActiveCategory(cat)}
+            onClick={() => handleCategoryChange(cat)}
             className={`px-4 py-2 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 ${
               activeCategory === cat
                 ? "bg-primary-600 text-white shadow-md shadow-primary-600/20 font-semibold"
@@ -44,9 +91,9 @@ export function InsightsFilter({ articles }: InsightsFilterProps) {
         ))}
       </div>
 
-      {/* Articles Grid */}
+      {/* Articles Grid (Latest 4 per page) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        {filteredArticles.map((art) => (
+        {displayedArticles.map((art) => (
           <article
             key={art.id}
             className="group rounded-3xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"
@@ -119,6 +166,67 @@ export function InsightsFilter({ articles }: InsightsFilterProps) {
           </article>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {filteredArticles.length > 0 && (
+        <div className="pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+            Showing <span className="font-semibold text-gray-900 dark:text-white">{startIndex + 1}–{endIndex}</span> of{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">{filteredArticles.length}</span> articles
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Prev Button */}
+            <button
+              onClick={() => handlePageChange(safeCurrentPage - 1)}
+              disabled={safeCurrentPage === 1}
+              aria-label="Previous Page"
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 border ${
+                safeCurrentPage === 1
+                  ? "opacity-40 cursor-not-allowed border-gray-200 dark:border-gray-800 text-gray-400"
+                  : "bg-white dark:bg-[#212428] border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm"
+              }`}
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span>Previous</span>
+            </button>
+
+            {/* Page Numbers */}
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  aria-label={`Page ${pageNum}`}
+                  aria-current={safeCurrentPage === pageNum ? "page" : undefined}
+                  className={`w-9 h-9 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center transition-all duration-200 ${
+                    safeCurrentPage === pageNum
+                      ? "bg-primary-600 text-white shadow-md shadow-primary-600/30"
+                      : "bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              ))}
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={() => handlePageChange(safeCurrentPage + 1)}
+              disabled={safeCurrentPage === totalPages}
+              aria-label="Next Page"
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 border ${
+                safeCurrentPage === totalPages
+                  ? "opacity-40 cursor-not-allowed border-gray-200 dark:border-gray-800 text-gray-400"
+                  : "bg-white dark:bg-[#212428] border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm"
+              }`}
+            >
+              <span>Next</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

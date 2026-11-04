@@ -46,6 +46,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Deepanshu Kainthola", url: "https://deepanshu.kainthola.com" }],
   creator: "Deepanshu Kainthola",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/icon.svg" },
+    ],
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
   },
@@ -71,9 +81,6 @@ export const metadata: Metadata = {
     title: "Deepanshu Kainthola — Digital Marketing Manager",
     description: "Marketing professional with 7.7 Years Exp. execution & strategic leadership.",
     images: ["/images/deepanshu.webp"],
-  },
-  icons: {
-    icon: "/favicon.ico",
   },
 };
 
