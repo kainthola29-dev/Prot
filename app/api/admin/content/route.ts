@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 const dataFilePath = path.join(process.cwd(), "data", "content.json");
-const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || "admin123";
+const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || "Delta101";
 
 export async function GET() {
   try {

@@ -92,13 +92,13 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === "admin123" || passcode.trim().length > 0) {
+    if (passcode.trim() === "Delta101") {
       sessionStorage.setItem("admin_passcode", passcode);
       setIsAuthenticated(true);
       setAuthError("");
       loadContent();
     } else {
-      setAuthError("Please enter the admin passcode (default: admin123)");
+      setAuthError("Incorrect admin passcode. Please try again.");
     }
   };
 
@@ -181,7 +181,7 @@ export default function AdminPage() {
               type="password"
               value={passcode}
               onChange={(e) => setPasscode(e.target.value)}
-              placeholder="Enter passcode (Default: admin123)"
+              placeholder="Enter admin passcode"
               className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 text-center"
             />
 
