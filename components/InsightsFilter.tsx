@@ -104,7 +104,7 @@ export function InsightsFilter({ articles }: InsightsFilterProps) {
                 {art.image ? (
                   <Image
                     src={art.image}
-                    alt={art.title}
+                    alt={art.imageAlt || art.title}
                     width={800}
                     height={480}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

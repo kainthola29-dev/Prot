@@ -59,6 +59,7 @@ export interface ProjectItem {
   description: string;
   gradient?: string;
   image?: string;
+  imageAlt?: string;
   badge?: string;
   stats?: { label: string; value: string }[];
   videoUrl?: string;
@@ -86,6 +87,7 @@ export interface CaseStudyItem {
   date: string;
   heroGradient: string;
   image?: string;
+  imageAlt?: string;
   metrics: { label: string; value: string }[];
   sections: {
     challenge: string;
@@ -137,6 +139,7 @@ export interface ArticleItem {
   excerpt: string;
   gradient?: string;
   image?: string;
+  imageAlt?: string;
   quote?: string;
   toc?: { id: string; label: string }[];
   content?: string[];

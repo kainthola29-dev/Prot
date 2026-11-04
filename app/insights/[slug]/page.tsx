@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -37,7 +37,11 @@ export function generateMetadata({ params }: Props): Metadata {
   const art = content.articles.find((a: any) => a.slug === params.slug);
   if (!art) return { title: "Article Not Found" };
 
-  const imageUrl = art.image || "/images/deepanshu.webp";
+  const rawImage = art.image || "/images/deepanshu.webp";
+  const ogImageUrl = rawImage.startsWith("http")
+    ? rawImage
+    : `https://deepanshu.kainthola.com${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
+  const imageAlt = art.imageAlt || art.title;
 
   return {
     title: `${art.title} — Strategic Marketing Essay`,
@@ -50,12 +54,14 @@ export function generateMetadata({ params }: Props): Metadata {
       description: art.excerpt,
       type: "article",
       url: `https://deepanshu.kainthola.com/insights/${art.slug}`,
+      siteName: "Deepanshu Kainthola Portfolio",
       images: [
         {
-          url: imageUrl,
+          url: ogImageUrl,
+          secureUrl: ogImageUrl,
           width: 1200,
-          height: 630,
-          alt: art.title,
+          height: 675,
+          alt: imageAlt,
         },
       ],
     },
@@ -63,7 +69,7 @@ export function generateMetadata({ params }: Props): Metadata {
       card: "summary_large_image",
       title: art.title,
       description: art.excerpt,
-      images: [imageUrl],
+      images: [ogImageUrl],
     },
   };
 }
@@ -75,11 +81,18 @@ export default function ArticleDetailPage({ params }: Props) {
 
   const profile = content.profile;
 
+  const rawImage = art.image || "/images/deepanshu.webp";
+  const ogImageUrl = rawImage.startsWith("http")
+    ? rawImage
+    : `https://deepanshu.kainthola.com${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
+  const imageAlt = art.imageAlt || art.title;
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: art.title,
     description: art.excerpt,
+    image: [ogImageUrl],
     author: {
       "@type": "Person",
       name: profile.name,
@@ -138,7 +151,7 @@ export default function ArticleDetailPage({ params }: Props) {
           <div className="absolute inset-0 z-0 opacity-40">
             <Image
               src={art.image}
-              alt={art.title}
+              alt={imageAlt}
               fill
               className="object-cover"
             />
@@ -213,6 +226,20 @@ export default function ArticleDetailPage({ params }: Props) {
         <article className="lg:col-span-8 space-y-8">
           <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 sm:p-12 shadow-inbio space-y-8 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
             
+            {/* Featured Article Graphic */}
+            {art.image && (
+              <div className="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+                <Image
+                  src={art.image}
+                  alt={imageAlt}
+                  width={1200}
+                  height={675}
+                  priority
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            )}
+
             {/* Dynamic Sections (WordPress Style) */}
             {art.sections && art.sections.length > 0 ? (
               art.sections.map((sec: any, idx: number) => (

@@ -2022,7 +2022,8 @@
       "date": "Oct 2026",
       "excerpt": "Being busy is not the same as driving business growth. Why shipping 30 social carousels a month without an underlying hypothesis is just corporate comfort food.",
       "gradient": "from-blue-900 via-indigo-950 to-neutral-950",
-      "image": "/images/insights/activity-vs-strategy.svg",
+      "image": "/images/insights/activity-vs-strategy.webp",
+      "imageAlt": "Marketing activity versus strategy: many tasks without direction compared with focused, measurable business growth",
       "quote": "Strategy is not a to-do list with a marketing budget attached. It is an intentional, disciplined choice about where to play, how to win, and most critically, what not to do.",
       "toc": [
         {
