@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -46,6 +46,9 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `${project.title} — Case Study & Project Overview`,
     description: project.description,
+    alternates: {
+      canonical: `/portfolio/${project.slug}`,
+    },
     openGraph: {
       title: project.title,
       description: project.description,

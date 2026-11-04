@@ -24,6 +24,9 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deepanshu.kainthola.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Deepanshu Kainthola — Digital Marketing Manager & Marketing Strategist",
     template: "%s | Deepanshu Kainthola",
@@ -43,6 +46,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Deepanshu Kainthola", url: "https://deepanshu.kainthola.com" }],
   creator: "Deepanshu Kainthola",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -37,8 +37,11 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!service) return { title: "Expertise Not Found" };
 
   return {
-    title: `${service.title} — Expertise & Strategic Capabilities`,
+    title: `${service.title} - Expertise & Strategic Capabilities`,
     description: service.description,
+    alternates: {
+      canonical: `/expertise/${service.slug}`,
+    },
     openGraph: {
       title: `${service.title} | Deepanshu Kainthola`,
       description: service.description,
@@ -93,6 +96,9 @@ export default function ExpertiseDetailPage({ params }: Props) {
     },
     serviceType: service.category,
     description: service.description,
+    alternates: {
+      canonical: `/expertise/`,
+    },
   };
 
   return (

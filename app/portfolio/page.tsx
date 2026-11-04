@@ -7,6 +7,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Portfolio — Selected Marketing Campaigns & Projects",
   description: "Browse marketing campaigns, brand launches, SEO initiatives, and content strategies managed by Deepanshu Kainthola.",
+  alternates: {
+    canonical: "/portfolio",
+  },
 };
 
 export default function PortfolioPage() {

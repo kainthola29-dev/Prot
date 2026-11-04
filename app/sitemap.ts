@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { projectsData, caseStudiesData, articlesData } from "@/data/portfolioData";
+import { projectsData, caseStudiesData, articlesData, servicesData } from "@/data/portfolioData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://deepanshu.kainthola.com";
@@ -19,11 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
+  const expertiseRoutes = servicesData.map((service) => ({
+    url: `${baseUrl}/expertise/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   const projectRoutes = projectsData.map((project) => ({
     url: `${baseUrl}/portfolio/${project.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
   const caseStudyRoutes = caseStudiesData.map((cs) => ({
@@ -37,8 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/insights/${art.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 0.8,
+    priority: 0.85,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...caseStudyRoutes, ...articleRoutes];
+  return [...staticRoutes, ...expertiseRoutes, ...projectRoutes, ...caseStudyRoutes, ...articleRoutes];
 }

@@ -9,6 +9,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Resume & CV — Deepanshu Kainthola | Digital Marketing Manager",
   description: "Curriculum Vitae and professional history of Deepanshu Kainthola. 7.7 Years Exp. in digital marketing, employer branding, SEO, and content architecture.",
+  alternates: {
+    canonical: "/resume",
+  },
   openGraph: {
     title: "Deepanshu Kainthola — Resume & CV",
     description: "Digital Marketing Manager with 7.7 Years Exp. in digital campaigns, video production, employer branding, and corporate communication.",

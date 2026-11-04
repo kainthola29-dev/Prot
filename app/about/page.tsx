@@ -39,6 +39,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Deepanshu Kainthola — Career Journey & Strategic Marketing",
   description: "Learn about Deepanshu Kainthola's 7.7 Years Exp. combining hands-on digital marketing execution with strategic MBA leadership across 12+ enterprise brands.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About Deepanshu Kainthola — Digital Marketing Manager",
     description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership across 12+ brands.",

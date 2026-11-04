@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -42,6 +42,9 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `${art.title} — Strategic Marketing Essay`,
     description: art.excerpt,
+    alternates: {
+      canonical: `/insights/${art.slug}`,
+    },
     openGraph: {
       title: art.title,
       description: art.excerpt,

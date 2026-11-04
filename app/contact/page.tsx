@@ -20,6 +20,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Deepanshu Kainthola — Marketing Leadership Inquiries",
   description: "Get in touch directly with Deepanshu Kainthola via email (kainthola29@gmail.com) or phone/WhatsApp (+91-9599396969) for senior marketing leadership opportunities.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

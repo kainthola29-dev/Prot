@@ -9,6 +9,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Case Studies — Proven Results & Marketing Impact",
   description: "Detailed marketing case studies demonstrating multi-channel acquisition, digital webinars, employer branding, and quantifiable performance.",
+  alternates: {
+    canonical: "/case-studies",
+  },
 };
 
 export default function CaseStudiesPage() {

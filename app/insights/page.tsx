@@ -7,6 +7,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Insights & Field Notes — Strategy, Production Gear & Leadership",
   description: "Practical essays and field-tested gear reviews on marketing strategy, production tools, creative direction, and AI workflows by Deepanshu Kainthola.",
+  alternates: {
+    canonical: "/insights",
+  },
 };
 
 export default function InsightsPage() {

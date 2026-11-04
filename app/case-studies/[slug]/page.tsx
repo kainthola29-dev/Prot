@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -24,8 +24,11 @@ export function generateMetadata({ params }: Props): Metadata {
   const imageUrl = "/images/deepanshu.webp";
 
   return {
-    title: `${cs.title} — Detailed Case Study`,
+    title: `${cs.title} - Detailed Case Study`,
     description: cs.subtitle,
+    alternates: {
+      canonical: `/case-studies/${cs.slug}`,
+    },
     openGraph: {
       title: cs.title,
       description: cs.subtitle,
