@@ -1,17 +1,30 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { checkRateLimit, getClientIp } from "@/lib/security";
 
 const analyticsFilePath = path.join(process.cwd(), "data", "analytics.json");
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  // Cap tracking requests per IP to avoid telemetry spam or denial-of-service
+  const rateLimit = checkRateLimit(`track-${ip}`, 60, 60 * 1000);
+  if (!rateLimit.success) {
+    return NextResponse.json({ success: true, message: "Rate limited" });
+  }
+
   try {
     const body = await request.json();
-    const { path: pagePath, referrer, device, visitorId, isNewVisitor } = body;
+    const { path: pagePath, referrer, device, isNewVisitor } = body;
 
     if (!fs.existsSync(analyticsFilePath)) {
       return NextResponse.json({ success: true, message: "Ignored" });
     }
+
+    // Sanitize path input to prevent arbitrary long string storage
+    const normalizedPath = typeof pagePath === "string" 
+      ? pagePath.slice(0, 100).replace(/[<>'"]/g, "") 
+      : "/";
 
     const fileContent = fs.readFileSync(analyticsFilePath, "utf8");
     const data = JSON.parse(fileContent);
@@ -27,11 +40,10 @@ export async function POST(request: Request) {
     }
 
     // Update top pages
-    const normalizedPath = pagePath || "/";
     const existingPage = data.topPages?.find((p: any) => p.path === normalizedPath);
     if (existingPage) {
       existingPage.views += 1;
-    } else if (data.topPages) {
+    } else if (data.topPages && data.topPages.length < 50) {
       data.topPages.push({
         path: normalizedPath,
         views: 1,
@@ -44,7 +56,7 @@ export async function POST(request: Request) {
 
     // Update traffic sources
     let sourceCategory = "Direct / Resume Links";
-    if (referrer) {
+    if (referrer && typeof referrer === "string") {
       const lowerRef = referrer.toLowerCase();
       if (lowerRef.includes("linkedin")) sourceCategory = "LinkedIn";
       else if (lowerRef.includes("google")) sourceCategory = "Google Search";
@@ -62,7 +74,7 @@ export async function POST(request: Request) {
       id: `v-${Date.now()}`,
       path: normalizedPath,
       referrer: sourceCategory,
-      device: device || "Desktop",
+      device: typeof device === "string" && device === "Mobile" ? "Mobile" : "Desktop",
       timestamp: new Date().toISOString(),
       location: "India"
     };
@@ -77,8 +89,7 @@ export async function POST(request: Request) {
     fs.writeFileSync(analyticsFilePath, JSON.stringify(data, null, 2), "utf8");
 
     return NextResponse.json({ success: true, totalViews: data.totalPageViews });
-  } catch (err: unknown) {
-    const error = err as Error;
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch {
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }

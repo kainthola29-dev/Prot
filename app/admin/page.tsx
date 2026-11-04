@@ -133,6 +133,7 @@ export default function AdminPage() {
   const handleFileUpload = async (file: File): Promise<string | null> => {
     const data = new FormData();
     data.append("file", file);
+    data.append("passcode", passcode);
 
     try {
       const res = await fetch("/api/admin/upload", {
