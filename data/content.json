@@ -156,7 +156,16 @@
           "In ethnic fashion, truthful lighting that shows fabric movement and drape converts far better than heavy artificial filters.",
           "Preparing precise shot checklists before the model steps on set saves at least 40% of studio rental time."
         ]
-      }
+      },
+      "videos": [
+        {
+          "url": "https://www.youtube.com/shorts/EsjvKxnK7jE",
+          "title": "Campaign Reel",
+          "caption": "Trendy Ethnic Outfits Shared via AirDrop",
+          "aspectRatio": "9:16"
+        }
+      ],
+      "videoUrl": "https://www.youtube.com/shorts/EsjvKxnK7jE"
     },
     {
       "id": "denvax-healthcare-storytelling",
