@@ -1073,71 +1073,160 @@ export default function AdminPage() {
                             />
                           </div>
 
-                          {/* Video Reel Showcase & Image Alt */}
-                          <div className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-4">
-                            <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
-                              <Video className="w-4 h-4" />
-                              <span>Video Showcase Reel (Embedded Player)</span>
+                          {/* Multi-Video / Reel Showcase Manager */}
+                          <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 space-y-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-700 pb-3">
+                              <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
+                                <Video className="w-4 h-4" />
+                                <span>Campaign Videos &amp; Vertical Reels ({(() => {
+                                  const vids = proj.videos || (proj.videoUrl ? [{ url: proj.videoUrl, title: "Main Reel", aspectRatio: proj.videoAspect || "16:9" }] : []);
+                                  return vids.length;
+                                })()})</span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = [...formData.projects];
+                                  const currentVideos = proj.videos || (proj.videoUrl ? [{ url: proj.videoUrl, title: "Main Reel", aspectRatio: proj.videoAspect || "16:9" }] : []);
+                                  const nextVideos = [...currentVideos, {
+                                    url: "",
+                                    title: `Campaign Reel 0${currentVideos.length + 1}`,
+                                    caption: "",
+                                    aspectRatio: "16:9"
+                                  }];
+                                  updated[idx].videos = nextVideos;
+                                  updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="text-xs text-primary-600 hover:text-primary-700 font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-950/60 border border-primary-200 dark:border-primary-800"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Add Another Video / Reel</span>
+                              </button>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                              <div className="sm:col-span-2">
-                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
-                                  Video URL (YouTube Watch link, Shorts, Vimeo, or MP4)
-                                </label>
-                                <input
-                                  type="text"
-                                  placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..."
-                                  value={proj.mediaPlaceholders?.[0]?.videoUrl || proj.videoUrl || ""}
-                                  onChange={(e) => {
-                                    const updated = [...formData.projects];
-                                    const val = e.target.value;
-                                    updated[idx].videoUrl = val;
-                                    if (!updated[idx].mediaPlaceholders) updated[idx].mediaPlaceholders = [];
-                                    if (!updated[idx].mediaPlaceholders[0]) {
-                                      updated[idx].mediaPlaceholders[0] = {
-                                        type: "video",
-                                        title: `${proj.title} Showcase`,
-                                        aspectRatio: "16:9",
-                                        videoUrl: val
-                                      };
-                                    } else {
-                                      updated[idx].mediaPlaceholders[0].videoUrl = val;
-                                    }
-                                    setFormData({ ...formData, projects: updated });
-                                  }}
-                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
-                                />
-                              </div>
+                            {(() => {
+                              const vids = proj.videos || (proj.videoUrl ? [{ url: proj.videoUrl, title: "Main Reel", caption: proj.videoCaption || "", aspectRatio: proj.videoAspect || "16:9" }] : []);
 
-                              <div>
-                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
-                                  Aspect Ratio
-                                </label>
-                                <select
-                                  value={proj.mediaPlaceholders?.[0]?.aspectRatio || "16:9"}
-                                  onChange={(e) => {
-                                    const updated = [...formData.projects];
-                                    if (!updated[idx].mediaPlaceholders) updated[idx].mediaPlaceholders = [];
-                                    if (!updated[idx].mediaPlaceholders[0]) {
-                                      updated[idx].mediaPlaceholders[0] = {
-                                        type: "video",
-                                        title: `${proj.title} Showcase`,
-                                        aspectRatio: e.target.value,
-                                        videoUrl: proj.videoUrl || ""
-                                      };
-                                    } else {
-                                      updated[idx].mediaPlaceholders[0].aspectRatio = e.target.value;
-                                    }
-                                    setFormData({ ...formData, projects: updated });
-                                  }}
-                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
-                                >
-                                  <option value="16:9">16:9 Landscape (Standard Video)</option>
-                                  <option value="9:16">9:16 Vertical (Reel / Shorts)</option>
-                                </select>
-                              </div>
-                            </div>
+                              if (vids.length === 0) {
+                                return (
+                                  <div className="text-center py-4 text-xs text-gray-500">
+                                    No videos added yet. Click &quot;Add Another Video / Reel&quot; above to embed YouTube (horizontal or Shorts), Vimeo, or MP4 videos.
+                                  </div>
+                                );
+                              }
+
+                              return (
+                                <div className="space-y-4">
+                                  {vids.map((vid: any, vIdx: number) => (
+                                    <div key={vIdx} className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-3">
+                                      <div className="flex items-center justify-between pb-2 border-b border-gray-100 dark:border-gray-800">
+                                        <span className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
+                                          <span className="w-4 h-4 rounded-full bg-primary-600/30 text-primary-500 text-[10px] flex items-center justify-center font-bold">
+                                            {vIdx + 1}
+                                          </span>
+                                          <span>{vid.title || `Video / Reel 0${vIdx + 1}`}</span>
+                                        </span>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            const updated = [...formData.projects];
+                                            const nextVideos = vids.filter((_: any, i: number) => i !== vIdx);
+                                            updated[idx].videos = nextVideos;
+                                            updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                            setFormData({ ...formData, projects: updated });
+                                          }}
+                                          className="text-gray-400 hover:text-red-500 p-1"
+                                          title="Delete Video"
+                                        >
+                                          <Trash2 className="w-3.5 h-3.5" />
+                                        </button>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                                        <div className="sm:col-span-8">
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Video URL (YouTube Watch Link, Shorts, Vimeo, or MP4)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            placeholder="https://www.youtube.com/watch?v=... or https://youtube.com/shorts/..."
+                                            value={vid.url || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.projects];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], url: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                              setFormData({ ...formData, projects: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                          />
+                                        </div>
+                                        <div className="sm:col-span-4">
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Aspect Ratio
+                                          </label>
+                                          <select
+                                            value={vid.aspectRatio || "16:9"}
+                                            onChange={(e) => {
+                                              const updated = [...formData.projects];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], aspectRatio: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, projects: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          >
+                                            <option value="16:9">16:9 Landscape (Cinematic)</option>
+                                            <option value="9:16">9:16 Vertical (Reel / Shorts)</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div>
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Video Title / Headline (Optional)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            placeholder="e.g. Meena Bazaar Festive Bridal Film"
+                                            value={vid.title || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.projects];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], title: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, projects: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          />
+                                        </div>
+                                        <div>
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Video Caption / Description (Optional)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            placeholder="e.g. Multi-camera fashion shoot directed for Diwali campaign"
+                                            value={vid.caption || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.projects];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], caption: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, projects: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })()}
 
                             <div>
                               <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
@@ -1152,7 +1241,7 @@ export default function AdminPage() {
                                   updated[idx].imageAlt = e.target.value;
                                   setFormData({ ...formData, projects: updated });
                                 }}
-                                className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
                               />
                             </div>
                           </div>
@@ -1617,46 +1706,160 @@ export default function AdminPage() {
                             </div>
                           </div>
 
-                          {/* Row 5: Featured Video / Reel Controls */}
+                          {/* Row 5: Multi-Video / Reel Showcase Controls */}
                           <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 space-y-3">
-                            <span className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-1.5">
-                              <Video className="w-4 h-4 text-primary-600" />
-                              <span>Featured Video / Reel Showcase (Optional)</span>
-                            </span>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                              <div>
-                                <label className="block text-[11px] font-semibold text-gray-600 dark:text-gray-400 mb-1">
-                                  Video Embed URL (YouTube, Vimeo, MP4)
-                                </label>
-                                <input
-                                  type="text"
-                                  value={cs.videoUrl || ""}
-                                  onChange={(e) => {
-                                    const updated = [...formData.caseStudies];
-                                    updated[idx].videoUrl = e.target.value;
-                                    setFormData({ ...formData, caseStudies: updated });
-                                  }}
-                                  placeholder="https://www.youtube.com/watch?v=... or Vimeo"
-                                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-[11px] font-semibold text-gray-600 dark:text-gray-400 mb-1">
-                                  Video Caption / Description
-                                </label>
-                                <input
-                                  type="text"
-                                  value={cs.videoCaption || ""}
-                                  onChange={(e) => {
-                                    const updated = [...formData.caseStudies];
-                                    updated[idx].videoCaption = e.target.value;
-                                    setFormData({ ...formData, caseStudies: updated });
-                                  }}
-                                  placeholder="e.g. Campaign reel and creative overview"
-                                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
-                                />
-                              </div>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-700 pb-2">
+                              <span className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-1.5">
+                                <Video className="w-4 h-4 text-primary-600" />
+                                <span>Case Study Videos &amp; Deliverables ({(() => {
+                                  const vids = cs.videos || (cs.videoUrl ? [{ url: cs.videoUrl, title: "Main Feature", caption: cs.videoCaption || "", aspectRatio: "16:9" }] : []);
+                                  return vids.length;
+                                })()})</span>
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = [...formData.caseStudies];
+                                  const current = cs.videos || (cs.videoUrl ? [{ url: cs.videoUrl, title: "Main Feature", caption: cs.videoCaption || "", aspectRatio: "16:9" }] : []);
+                                  const nextVideos = [...current, {
+                                    url: "",
+                                    title: `Video 0${current.length + 1}`,
+                                    caption: "",
+                                    aspectRatio: "16:9"
+                                  }];
+                                  updated[idx].videos = nextVideos;
+                                  updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="text-xs text-primary-600 hover:text-primary-700 font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-950/60 border border-primary-200 dark:border-primary-800"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Add Another Video / Reel</span>
+                              </button>
                             </div>
+
+                            {(() => {
+                              const vids = cs.videos || (cs.videoUrl ? [{ url: cs.videoUrl, title: "Main Feature", caption: cs.videoCaption || "", aspectRatio: "16:9" }] : []);
+
+                              if (vids.length === 0) {
+                                return (
+                                  <div className="text-center py-3 text-xs text-gray-400">
+                                    No videos attached to this case study. Click &quot;Add Another Video / Reel&quot; above to embed YouTube or Vimeo deliverables.
+                                  </div>
+                                );
+                              }
+
+                              return (
+                                <div className="space-y-3">
+                                  {vids.map((vid: any, vIdx: number) => (
+                                    <div key={vIdx} className="p-3 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-2.5">
+                                      <div className="flex items-center justify-between pb-1.5 border-b border-gray-100 dark:border-gray-800">
+                                        <span className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
+                                          <span className="w-4 h-4 rounded-full bg-primary-600/30 text-primary-400 text-[10px] flex items-center justify-center font-bold">
+                                            {vIdx + 1}
+                                          </span>
+                                          <span>{vid.title || `Video 0${vIdx + 1}`}</span>
+                                        </span>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            const updated = [...formData.caseStudies];
+                                            const nextVideos = vids.filter((_: any, i: number) => i !== vIdx);
+                                            updated[idx].videos = nextVideos;
+                                            updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                            setFormData({ ...formData, caseStudies: updated });
+                                          }}
+                                          className="text-gray-400 hover:text-red-500 p-1"
+                                          title="Delete Video"
+                                        >
+                                          <Trash2 className="w-3.5 h-3.5" />
+                                        </button>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                                        <div className="sm:col-span-8">
+                                          <label className="block text-[10px] font-semibold text-gray-500 mb-1">
+                                            Video URL (YouTube, Vimeo, MP4)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            value={vid.url || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.caseStudies];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], url: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                              setFormData({ ...formData, caseStudies: updated });
+                                            }}
+                                            placeholder="https://www.youtube.com/watch?v=..."
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                          />
+                                        </div>
+                                        <div className="sm:col-span-4">
+                                          <label className="block text-[10px] font-semibold text-gray-500 mb-1">
+                                            Aspect Ratio
+                                          </label>
+                                          <select
+                                            value={vid.aspectRatio || "16:9"}
+                                            onChange={(e) => {
+                                              const updated = [...formData.caseStudies];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], aspectRatio: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, caseStudies: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          >
+                                            <option value="16:9">16:9 Landscape</option>
+                                            <option value="9:16">9:16 Vertical Reel</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div>
+                                          <label className="block text-[10px] font-semibold text-gray-500 mb-1">
+                                            Video Title (Optional)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            value={vid.title || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.caseStudies];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], title: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, caseStudies: updated });
+                                            }}
+                                            placeholder="e.g. Campaign Summary Film"
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          />
+                                        </div>
+                                        <div>
+                                          <label className="block text-[10px] font-semibold text-gray-500 mb-1">
+                                            Video Caption (Optional)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            value={vid.caption || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.caseStudies];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], caption: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, caseStudies: updated });
+                                            }}
+                                            placeholder="e.g. Campaign deliverables and live webinar recording"
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })()}
                           </div>
 
                           {/* Row 6: KPI Metrics */}
@@ -2272,48 +2475,160 @@ export default function AdminPage() {
                             />
                           </div>
 
-                          {/* Video Embed & Image Alt */}
-                          <div className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-4">
-                            <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
-                              <Video className="w-4 h-4" />
-                              <span>Featured Video Embed (Optional)</span>
+                          {/* Multi-Video / Reel Showcase Manager */}
+                          <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 space-y-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-700 pb-3">
+                              <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
+                                <Video className="w-4 h-4" />
+                                <span>Article Video Insights &amp; Walkthroughs ({(() => {
+                                  const vids = art.videos || (art.videoUrl ? [{ url: art.videoUrl, title: "Main Walkthrough", caption: art.videoCaption || "", aspectRatio: "16:9" }] : []);
+                                  return vids.length;
+                                })()})</span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = [...formData.articles];
+                                  const current = art.videos || (art.videoUrl ? [{ url: art.videoUrl, title: "Main Walkthrough", caption: art.videoCaption || "", aspectRatio: "16:9" }] : []);
+                                  const nextVideos = [...current, {
+                                    url: "",
+                                    title: `Video Insight 0${current.length + 1}`,
+                                    caption: "",
+                                    aspectRatio: "16:9"
+                                  }];
+                                  updated[idx].videos = nextVideos;
+                                  updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="text-xs text-primary-600 hover:text-primary-700 font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-950/60 border border-primary-200 dark:border-primary-800"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Add Another Video / Reel</span>
+                              </button>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              <div>
-                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
-                                  Video URL (YouTube, Vimeo, MP4)
-                                </label>
-                                <input
-                                  type="text"
-                                  placeholder="https://www.youtube.com/watch?v=..."
-                                  value={art.videoUrl || ""}
-                                  onChange={(e) => {
-                                    const updated = [...formData.articles];
-                                    updated[idx].videoUrl = e.target.value;
-                                    setFormData({ ...formData, articles: updated });
-                                  }}
-                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
-                                />
-                              </div>
+                            {(() => {
+                              const vids = art.videos || (art.videoUrl ? [{ url: art.videoUrl, title: "Main Walkthrough", caption: art.videoCaption || "", aspectRatio: "16:9" }] : []);
 
-                              <div>
-                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
-                                  Video Caption
-                                </label>
-                                <input
-                                  type="text"
-                                  placeholder="Brief note or timestamp summary..."
-                                  value={art.videoCaption || ""}
-                                  onChange={(e) => {
-                                    const updated = [...formData.articles];
-                                    updated[idx].videoCaption = e.target.value;
-                                    setFormData({ ...formData, articles: updated });
-                                  }}
-                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
-                                />
-                              </div>
-                            </div>
+                              if (vids.length === 0) {
+                                return (
+                                  <div className="text-center py-3 text-xs text-gray-500">
+                                    No videos attached to this article. Click &quot;Add Another Video / Reel&quot; above to embed YouTube breakdowns, reviews, or walkthroughs.
+                                  </div>
+                                );
+                              }
+
+                              return (
+                                <div className="space-y-3">
+                                  {vids.map((vid: any, vIdx: number) => (
+                                    <div key={vIdx} className="p-3.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-3">
+                                      <div className="flex items-center justify-between pb-2 border-b border-gray-100 dark:border-gray-800">
+                                        <span className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
+                                          <span className="w-4 h-4 rounded-full bg-primary-600/30 text-primary-500 text-[10px] flex items-center justify-center font-bold">
+                                            {vIdx + 1}
+                                          </span>
+                                          <span>{vid.title || `Video Insight 0${vIdx + 1}`}</span>
+                                        </span>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            const updated = [...formData.articles];
+                                            const nextVideos = vids.filter((_: any, i: number) => i !== vIdx);
+                                            updated[idx].videos = nextVideos;
+                                            updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                            setFormData({ ...formData, articles: updated });
+                                          }}
+                                          className="text-gray-400 hover:text-red-500 p-1"
+                                          title="Delete Video"
+                                        >
+                                          <Trash2 className="w-3.5 h-3.5" />
+                                        </button>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                                        <div className="sm:col-span-8">
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Video URL (YouTube, Vimeo, MP4)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            placeholder="https://www.youtube.com/watch?v=... or https://youtube.com/shorts/..."
+                                            value={vid.url || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.articles];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], url: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              updated[idx].videoUrl = nextVideos[0]?.url || "";
+                                              setFormData({ ...formData, articles: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                          />
+                                        </div>
+                                        <div className="sm:col-span-4">
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Aspect Ratio
+                                          </label>
+                                          <select
+                                            value={vid.aspectRatio || "16:9"}
+                                            onChange={(e) => {
+                                              const updated = [...formData.articles];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], aspectRatio: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, articles: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          >
+                                            <option value="16:9">16:9 Landscape (Standard Video)</option>
+                                            <option value="9:16">9:16 Vertical (Shorts / Reel)</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div>
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Video Title / Headline (Optional)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            placeholder="e.g. Field Test & Video Breakdown"
+                                            value={vid.title || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.articles];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], title: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, articles: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          />
+                                        </div>
+                                        <div>
+                                          <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">
+                                            Video Caption (Optional)
+                                          </label>
+                                          <input
+                                            type="text"
+                                            placeholder="e.g. Hands-on camera review and autofocus testing"
+                                            value={vid.caption || ""}
+                                            onChange={(e) => {
+                                              const updated = [...formData.articles];
+                                              const nextVideos = [...vids];
+                                              nextVideos[vIdx] = { ...nextVideos[vIdx], caption: e.target.value };
+                                              updated[idx].videos = nextVideos;
+                                              setFormData({ ...formData, articles: updated });
+                                            }}
+                                            className="w-full px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })()}
 
                             <div>
                               <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
@@ -2328,7 +2643,7 @@ export default function AdminPage() {
                                   updated[idx].imageAlt = e.target.value;
                                   setFormData({ ...formData, articles: updated });
                                 }}
-                                className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                className="w-full px-3 py-2 rounded-lg bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
                               />
                             </div>
                           </div>

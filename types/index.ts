@@ -40,6 +40,14 @@ export interface ProjectSection {
   content: string;
 }
 
+export interface VideoItem {
+  id?: string;
+  url: string;
+  title?: string;
+  caption?: string;
+  aspectRatio?: "16:9" | "9:16" | "4:3" | "1:1";
+}
+
 export interface ProjectMediaPlaceholder {
   type: "video" | "image";
   title: string;
@@ -63,6 +71,9 @@ export interface ProjectItem {
   badge?: string;
   stats?: { label: string; value: string }[];
   videoUrl?: string;
+  videoAspect?: "16:9" | "9:16";
+  videoCaption?: string;
+  videos?: VideoItem[];
   mediaPlaceholders?: ProjectMediaPlaceholder[];
   overview?: {
     context?: string;
@@ -90,6 +101,7 @@ export interface CaseStudyItem {
   imageAlt?: string;
   videoUrl?: string;
   videoCaption?: string;
+  videos?: VideoItem[];
   metrics: { label: string; value: string }[];
   sections: {
     challenge: string;
@@ -144,6 +156,7 @@ export interface ArticleItem {
   imageAlt?: string;
   videoUrl?: string;
   videoCaption?: string;
+  videos?: VideoItem[];
   quote?: string;
   toc?: { id: string; label: string }[];
   content?: string[];

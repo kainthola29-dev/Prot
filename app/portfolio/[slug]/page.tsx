@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { Metadata } from "next";
 import { formatVideoEmbedUrl } from "@/lib/utils";
+import { PlannedVideoShowcase } from "@/components/PlannedVideoShowcase";
 
 export const dynamicParams = true;
 
@@ -208,8 +209,18 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       )}
 
-      {/* Media & Video Production Showcase */}
-      <section className="space-y-6">
+      {/* Planned Media & Video Production Showcase */}
+      {(project.videos && project.videos.length > 0) || project.videoUrl ? (
+        <PlannedVideoShowcase
+          videos={project.videos}
+          legacyVideoUrl={project.videoUrl}
+          legacyVideoCaption={project.videoCaption}
+          legacyVideoAspect={project.videoAspect || "16:9"}
+          sectionTitle="Visual Showcase & Production Assets"
+          sectionSubtitle="High-definition media productions, campaign films, and vertical reels"
+        />
+      ) : (
+        <section className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-800 pb-4">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
@@ -344,7 +355,8 @@ export default function ProjectDetailPage({ params }: Props) {
             );
           })}
         </div>
-      </section>
+        </section>
+      )}
 
       {/* Main Two-Column Content: Strategy & Deep Dive */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">

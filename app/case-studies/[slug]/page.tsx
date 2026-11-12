@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ArrowLeft, ArrowRight, CheckCircle2, Calendar, Users, Award, ShieldCheck, Target, Lightbulb, Rocket, Play } from "lucide-react";
 import { Metadata } from "next";
 import { formatVideoEmbedUrl } from "@/lib/utils";
+import { PlannedVideoShowcase } from "@/components/PlannedVideoShowcase";
 
 export const dynamicParams = true;
 
@@ -136,28 +137,15 @@ export default function CaseStudyDetailPage({ params }: Props) {
         {/* Main Content (8 cols) */}
         <div className="lg:col-span-8 space-y-8">
           
-          {/* Featured Video / Reel Showcase */}
-          {formattedVideoUrl && (
-            <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-8 shadow-inbio space-y-4">
-              <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
-                <Play className="w-4 h-4" />
-                <span>Featured Video Showcase</span>
-              </div>
-              <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-lg border border-gray-200 dark:border-gray-800">
-                <iframe
-                  src={formattedVideoUrl}
-                  title={`${cs.title} Showcase Video`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full border-0"
-                />
-              </div>
-              {cs.videoCaption && (
-                <p className="text-xs text-gray-500 dark:text-gray-400 text-center italic">
-                  {cs.videoCaption}
-                </p>
-              )}
-            </div>
+          {/* Planned Video / Reel Showcase */}
+          {((cs.videos && cs.videos.length > 0) || cs.videoUrl) && (
+            <PlannedVideoShowcase
+              videos={cs.videos}
+              legacyVideoUrl={cs.videoUrl}
+              legacyVideoCaption={cs.videoCaption}
+              sectionTitle="Initiative Videos & Deliverables"
+              sectionSubtitle="Documentary records, campaign spots, and multi-channel video content"
+            />
           )}
 
           {/* 1. Challenge */}

@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { Metadata } from "next";
 import { formatVideoEmbedUrl } from "@/lib/utils";
+import { PlannedVideoShowcase } from "@/components/PlannedVideoShowcase";
 
 export const dynamicParams = true;
 
@@ -241,36 +242,16 @@ export default function ArticleDetailPage({ params }: Props) {
               </div>
             )}
 
-            {/* Featured Video Player Embed */}
-            {art.videoUrl && (() => {
-              const embedUrl = formatVideoEmbedUrl(art.videoUrl);
-              const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("vimeo.com");
-              return (
-                <div className="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-md bg-gray-950">
-                  <div className="relative w-full aspect-video">
-                    {isEmbed ? (
-                      <iframe
-                        src={embedUrl}
-                        title={art.title}
-                        className="w-full h-full border-0 absolute inset-0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <video controls className="w-full h-full object-cover">
-                        <source src={art.videoUrl} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    )}
-                  </div>
-                  {art.videoCaption && (
-                    <div className="p-3 bg-gray-900/90 border-t border-gray-800 text-xs text-gray-400 text-center font-medium">
-                      {art.videoCaption}
-                    </div>
-                  )}
-                </div>
-              );
-            })()}
+            {/* Planned Video & Media Showcase */}
+            {((art.videos && art.videos.length > 0) || art.videoUrl) && (
+              <PlannedVideoShowcase
+                videos={art.videos}
+                legacyVideoUrl={art.videoUrl}
+                legacyVideoCaption={art.videoCaption}
+                sectionTitle="Article Media & Video Insights"
+                sectionSubtitle="Accompanying video breakdowns, presentations, and visual walkthroughs"
+              />
+            )}
 
             {/* Dynamic Sections (WordPress Style) */}
             {art.sections && art.sections.length > 0 ? (
