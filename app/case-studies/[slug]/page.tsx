@@ -1,27 +1,38 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { caseStudiesData } from "@/data/portfolioData";
+import { getContent } from "@/lib/content";
 import { JsonLd } from "@/components/JsonLd";
-import { ArrowLeft, ArrowRight, CheckCircle2, Calendar, Users, Award, ShieldCheck, Target, Lightbulb, Rocket } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Calendar, Users, Award, ShieldCheck, Target, Lightbulb, Rocket, Play } from "lucide-react";
 import { Metadata } from "next";
+import { formatVideoEmbedUrl } from "@/lib/utils";
+
+export const dynamicParams = true;
 
 interface Props {
   params: { slug: string };
 }
 
 export function generateStaticParams() {
-  return caseStudiesData.map((cs) => ({
+  const content = getContent();
+  const list = content.caseStudies && content.caseStudies.length > 0 ? content.caseStudies : caseStudiesData;
+  return list.map((cs: any) => ({
     slug: cs.slug,
   }));
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const cs = caseStudiesData.find((c) => c.slug === params.slug);
+  const content = getContent();
+  const list = content.caseStudies && content.caseStudies.length > 0 ? content.caseStudies : caseStudiesData;
+  const cs = list.find((c: any) => c.slug === params.slug);
   if (!cs) return { title: "Case Study Not Found" };
 
-  const imageUrl = "/images/deepanshu.webp";
+  const rawImage = cs.image || "/images/deepanshu.webp";
+  const imageUrl = rawImage.startsWith("http")
+    ? rawImage
+    : `https://deepanshu.kainthola.com${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
 
   return {
     title: `${cs.title} - Detailed Case Study`,
@@ -53,8 +64,12 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default function CaseStudyDetailPage({ params }: Props) {
-  const cs = caseStudiesData.find((c) => c.slug === params.slug);
+  const content = getContent();
+  const list = content.caseStudies && content.caseStudies.length > 0 ? content.caseStudies : caseStudiesData;
+  const cs = list.find((c: any) => c.slug === params.slug);
   if (!cs) notFound();
+
+  const formattedVideoUrl = cs.videoUrl ? formatVideoEmbedUrl(cs.videoUrl) : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -121,6 +136,30 @@ export default function CaseStudyDetailPage({ params }: Props) {
         {/* Main Content (8 cols) */}
         <div className="lg:col-span-8 space-y-8">
           
+          {/* Featured Video / Reel Showcase */}
+          {formattedVideoUrl && (
+            <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-8 shadow-inbio space-y-4">
+              <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+                <Play className="w-4 h-4" />
+                <span>Featured Video Showcase</span>
+              </div>
+              <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-lg border border-gray-200 dark:border-gray-800">
+                <iframe
+                  src={formattedVideoUrl}
+                  title={`${cs.title} Showcase Video`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0"
+                />
+              </div>
+              {cs.videoCaption && (
+                <p className="text-xs text-gray-500 dark:text-gray-400 text-center italic">
+                  {cs.videoCaption}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* 1. Challenge */}
           <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio space-y-3">
             <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">

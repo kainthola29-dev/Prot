@@ -8,6 +8,7 @@ import {
   Save, 
   Eye, 
   Upload, 
+  Download,
   Plus, 
   Trash2, 
   CheckCircle2, 
@@ -29,14 +30,21 @@ import {
   TrendingUp,
   Users,
   Smartphone,
-  Globe
+  Globe,
+  Video,
+  Key,
+  Cloud,
+  RefreshCw,
+  X
 } from "lucide-react";
 
 export default function AdminPage() {
   const [passcode, setPasscode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState("");
-  const [activeTab, setActiveTab] = useState<"analytics" | "projects" | "insights" | "profile" | "stats" | "resume" | "services" | "testimonials">("analytics");
+  const [activeTab, setActiveTab] = useState<
+    "analytics" | "projects" | "caseStudies" | "insights" | "profile" | "stats" | "resume" | "services" | "testimonials" | "publishSettings"
+  >("analytics");
 
   const [loading, setLoading] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
@@ -44,9 +52,12 @@ export default function AdminPage() {
 
   const [formData, setFormData] = useState<any>(null);
   const [analyticsData, setAnalyticsData] = useState<any>(null);
+  const [githubToken, setGithubToken] = useState("");
+  const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
 
   // Expanded accordion states
   const [expandedProject, setExpandedProject] = useState<number | null>(0);
+  const [expandedCaseStudy, setExpandedCaseStudy] = useState<number | null>(0);
   const [expandedArticle, setExpandedArticle] = useState<number | null>(0);
 
   const loadAnalytics = async () => {
@@ -83,6 +94,9 @@ export default function AdminPage() {
 
   useEffect(() => {
     const savedPin = sessionStorage.getItem("admin_passcode");
+    const savedToken = localStorage.getItem("admin_gh_token");
+    if (savedToken) setGithubToken(savedToken);
+
     if (savedPin) {
       setPasscode(savedPin);
       setIsAuthenticated(true);
@@ -105,9 +119,15 @@ export default function AdminPage() {
   const handleSave = async () => {
     if (!formData) return;
     setSaveStatus("saving");
-    setStatusMessage("Saving updates to content.json...");
+    setStatusMessage("Saving updates...");
 
     try {
+      // First attempt GitHub sync if token is set
+      const token = githubToken.trim() || localStorage.getItem("admin_gh_token") || "";
+      if (token) {
+        return await handleGitHubPublish();
+      }
+
       const res = await fetch("/api/admin/content", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -117,11 +137,51 @@ export default function AdminPage() {
       const result = await res.json();
       if (res.ok && result.success) {
         setSaveStatus("success");
-        setStatusMessage("Website updated successfully! Changes are live.");
+        setStatusMessage("Website updated successfully! Changes are saved.");
         setTimeout(() => setSaveStatus("idle"), 4000);
       } else {
+        // If read-only filesystem on Vercel, open publish modal
+        setIsPublishModalOpen(true);
+        setSaveStatus("idle");
+      }
+    } catch (err: any) {
+      setIsPublishModalOpen(true);
+      setSaveStatus("idle");
+    }
+  };
+
+  const handleGitHubPublish = async () => {
+    if (!formData) return;
+    setSaveStatus("saving");
+    setStatusMessage("Pushing directly to GitHub repo (triggering Vercel deploy)...");
+
+    try {
+      const tokenToUse = githubToken.trim() || localStorage.getItem("admin_gh_token") || "";
+      const res = await fetch("/api/admin/github-sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          passcode,
+          data: formData,
+          githubToken: tokenToUse,
+        }),
+      });
+
+      const result = await res.json();
+      if (res.ok && result.success) {
+        if (tokenToUse) {
+          localStorage.setItem("admin_gh_token", tokenToUse);
+        }
+        setSaveStatus("success");
+        setStatusMessage(result.message || "Published to GitHub! Live in ~45 seconds.");
+        setIsPublishModalOpen(false);
+        setTimeout(() => setSaveStatus("idle"), 8000);
+      } else {
         setSaveStatus("error");
-        setStatusMessage(result.error || "Failed to save changes");
+        setStatusMessage(result.error || "Failed to publish to GitHub.");
+        if (result.isReadOnly) {
+          setIsPublishModalOpen(true);
+        }
       }
     } catch (err: any) {
       setSaveStatus("error");
@@ -129,27 +189,73 @@ export default function AdminPage() {
     }
   };
 
-  // Upload handler for photos & featured images
-  const handleFileUpload = async (file: File): Promise<string | null> => {
-    const data = new FormData();
-    data.append("file", file);
-    data.append("passcode", passcode);
+  const handleDownloadBackup = () => {
+    if (!formData) return;
+    const blob = new Blob([JSON.stringify(formData, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `portfolio-content-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
-    try {
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: data,
-      });
-      const result = await res.json();
-      if (res.ok && result.url) {
-        return result.url;
+  const handleImportBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const parsed = JSON.parse(event.target?.result as string);
+        if (parsed && typeof parsed === "object") {
+          setFormData(parsed);
+          setSaveStatus("success");
+          setStatusMessage("Backup imported into editor! Click Publish to apply live.");
+        }
+      } catch (err) {
+        alert("Invalid JSON backup file");
       }
-      alert(result.error || "Upload failed");
-      return null;
-    } catch (err) {
-      alert("Error uploading file");
-      return null;
-    }
+    };
+    reader.readAsText(file);
+  };
+
+  // Client-side instant WebP compression & image handler
+  const handleFileUpload = async (file: File): Promise<string | null> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.createElement("img");
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const maxDim = 1200;
+          let width = img.width;
+          let height = img.height;
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, width, height);
+            const dataUrl = canvas.toDataURL("image/webp", 0.82);
+            resolve(dataUrl);
+          } else {
+            resolve(e.target?.result as string);
+          }
+        };
+        img.onerror = () => resolve(e.target?.result as string);
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(file);
+    });
   };
 
   // Helper to generate slug from title
@@ -215,7 +321,7 @@ export default function AdminPage() {
     <div className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       
       {/* Top Header Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
         <div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -224,30 +330,62 @@ export default function AdminPage() {
             </span>
           </div>
           <h1 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mt-0.5">
-            Website Content &amp; Article Manager
+            Portfolio Content &amp; Media Studio
           </h1>
           <p className="text-xs text-gray-500">
-            Publish new projects, compose full blog essays, and customize media like WordPress.
+            Edit projects, articles, case studies, video reels, and publish changes like WordPress.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <Link
             href="/"
             target="_blank"
-            className="px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center gap-1.5"
+            className="px-3.5 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center gap-1.5"
+            title="Preview current live website"
           >
             <Eye className="w-3.5 h-3.5" />
-            <span>View Live Site</span>
+            <span>Live Site</span>
           </Link>
 
           <button
+            type="button"
+            onClick={handleDownloadBackup}
+            className="px-3.5 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center gap-1.5"
+            title="Download full JSON backup of all content"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Backup JSON</span>
+          </button>
+
+          <label className="px-3.5 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center gap-1.5 cursor-pointer">
+            <Upload className="w-3.5 h-3.5" />
+            <span>Import JSON</span>
+            <input
+              type="file"
+              accept=".json,application/json"
+              onChange={handleImportBackup}
+              className="hidden"
+            />
+          </label>
+
+          <button
+            type="button"
             onClick={handleSave}
             disabled={saveStatus === "saving"}
-            className="px-6 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center gap-2 hover:-translate-y-0.5 cursor-pointer disabled:opacity-70"
+            className="px-5 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center gap-2 hover:-translate-y-0.5 cursor-pointer disabled:opacity-70"
           >
-            <Save className="w-4 h-4" />
-            <span>{saveStatus === "saving" ? "Saving..." : "Save Changes"}</span>
+            {saveStatus === "saving" ? (
+              <>
+                <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                <span>Publishing...</span>
+              </>
+            ) : (
+              <>
+                <Cloud className="w-3.5 h-3.5" />
+                <span>Publish Live</span>
+              </>
+            )}
           </button>
         </div>
       </div>
@@ -255,13 +393,13 @@ export default function AdminPage() {
       {/* Save Notification Alert */}
       {saveStatus === "success" && (
         <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs font-semibold flex items-center gap-2 shadow-sm">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
           <span>{statusMessage}</span>
         </div>
       )}
       {saveStatus === "error" && (
         <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 text-xs font-semibold flex items-center gap-2 shadow-sm">
-          <AlertCircle className="w-4 h-4 text-red-600" />
+          <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
           <span>{statusMessage}</span>
         </div>
       )}
@@ -276,7 +414,7 @@ export default function AdminPage() {
               onClick={() => setActiveTab("analytics")}
               className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "analytics"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
@@ -291,33 +429,51 @@ export default function AdminPage() {
 
             <button
               onClick={() => setActiveTab("projects")}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "projects"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
-              <FolderKanban className="w-4 h-4" />
-              <span>Projects &amp; Case Studies</span>
+              <div className="flex items-center gap-3">
+                <FolderKanban className="w-4 h-4" />
+                <span>Projects ({formData?.projects?.length || 0})</span>
+              </div>
+            </button>
+
+            <button
+              onClick={() => setActiveTab("caseStudies")}
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                activeTab === "caseStudies"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <FileText className="w-4 h-4" />
+                <span>Case Studies ({formData?.caseStudies?.length || 0})</span>
+              </div>
             </button>
 
             <button
               onClick={() => setActiveTab("insights")}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "insights"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
-              <BookOpen className="w-4 h-4" />
-              <span>Blog Posts &amp; Insights</span>
+              <div className="flex items-center gap-3">
+                <BookOpen className="w-4 h-4" />
+                <span>Insights ({formData?.articles?.length || 0})</span>
+              </div>
             </button>
 
             <button
               onClick={() => setActiveTab("profile")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "profile"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
@@ -329,7 +485,7 @@ export default function AdminPage() {
               onClick={() => setActiveTab("stats")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "stats"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
@@ -341,7 +497,7 @@ export default function AdminPage() {
               onClick={() => setActiveTab("resume")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "resume"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
@@ -353,13 +509,39 @@ export default function AdminPage() {
               onClick={() => setActiveTab("services")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
                 activeTab === "services"
-                  ? "bg-primary-600 text-white shadow-sm"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
             >
               <Layers className="w-4 h-4" />
               <span>Services &amp; Capabilities</span>
             </button>
+
+            <button
+              onClick={() => setActiveTab("testimonials")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                activeTab === "testimonials"
+                  ? "bg-primary-600 text-white shadow-sm font-bold"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <Star className="w-4 h-4" />
+              <span>Testimonials ({formData?.testimonials?.length || 0})</span>
+            </button>
+
+            <div className="pt-2 border-t border-gray-100 dark:border-gray-800">
+              <button
+                onClick={() => setActiveTab("publishSettings")}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold transition-all text-left ${
+                  activeTab === "publishSettings"
+                    ? "bg-primary-600 text-white shadow-sm font-bold"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <Key className="w-4 h-4 text-emerald-500" />
+                <span>Live Publish &amp; GitHub Sync</span>
+              </button>
+            </div>
 
             <button
               onClick={() => setActiveTab("testimonials")}
@@ -880,6 +1062,90 @@ export default function AdminPage() {
                             />
                           </div>
 
+                          {/* Video Reel Showcase & Image Alt */}
+                          <div className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-4">
+                            <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
+                              <Video className="w-4 h-4" />
+                              <span>Video Showcase Reel (Embedded Player)</span>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                              <div className="sm:col-span-2">
+                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                  Video URL (YouTube Watch link, Shorts, Vimeo, or MP4)
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..."
+                                  value={proj.mediaPlaceholders?.[0]?.videoUrl || proj.videoUrl || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.projects];
+                                    const val = e.target.value;
+                                    updated[idx].videoUrl = val;
+                                    if (!updated[idx].mediaPlaceholders) updated[idx].mediaPlaceholders = [];
+                                    if (!updated[idx].mediaPlaceholders[0]) {
+                                      updated[idx].mediaPlaceholders[0] = {
+                                        type: "video",
+                                        title: `${proj.title} Showcase`,
+                                        aspectRatio: "16:9",
+                                        videoUrl: val
+                                      };
+                                    } else {
+                                      updated[idx].mediaPlaceholders[0].videoUrl = val;
+                                    }
+                                    setFormData({ ...formData, projects: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                />
+                              </div>
+
+                              <div>
+                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                  Aspect Ratio
+                                </label>
+                                <select
+                                  value={proj.mediaPlaceholders?.[0]?.aspectRatio || "16:9"}
+                                  onChange={(e) => {
+                                    const updated = [...formData.projects];
+                                    if (!updated[idx].mediaPlaceholders) updated[idx].mediaPlaceholders = [];
+                                    if (!updated[idx].mediaPlaceholders[0]) {
+                                      updated[idx].mediaPlaceholders[0] = {
+                                        type: "video",
+                                        title: `${proj.title} Showcase`,
+                                        aspectRatio: e.target.value,
+                                        videoUrl: proj.videoUrl || ""
+                                      };
+                                    } else {
+                                      updated[idx].mediaPlaceholders[0].aspectRatio = e.target.value;
+                                    }
+                                    setFormData({ ...formData, projects: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                >
+                                  <option value="16:9">16:9 Landscape (Standard Video)</option>
+                                  <option value="9:16">9:16 Vertical (Reel / Shorts)</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div>
+                              <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Cover Image Alt Text (SEO)
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Descriptive alt text for Google Image SEO..."
+                                value={proj.imageAlt || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.projects];
+                                  updated[idx].imageAlt = e.target.value;
+                                  setFormData({ ...formData, projects: updated });
+                                }}
+                                className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                          </div>
+
                           {/* ARTICLE-STYLE CASE STUDY SECTIONS */}
                           <div className="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-4">
                             <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
@@ -1017,6 +1283,691 @@ export default function AdminPage() {
                               />
                             </div>
 
+                          </div>
+
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: CASE STUDIES DEEP-DIVES */}
+          {activeTab === "caseStudies" && (
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm">
+                <div>
+                  <h2 className="text-lg font-bold font-heading text-gray-900 dark:text-white">
+                    In-Depth Case Studies &amp; Playbooks
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    Comprehensive strategic case studies with 7 deep-dive narrative sections, KPI metric highlights, and media embeds.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newId = `cs-${Date.now()}`;
+                    const newCS = {
+                      id: newId,
+                      slug: `case-study-${Date.now()}`,
+                      title: "New Strategic Growth Initiative",
+                      subtitle: "Brief executive summary detailing the commercial objective and strategic impact achieved.",
+                      category: "Digital Marketing",
+                      organization: "Vision India Services",
+                      date: "2026",
+                      heroGradient: "from-blue-600 to-indigo-900",
+                      image: "/images/projects/employ-india.webp",
+                      imageAlt: "New Case Study Cover Image",
+                      videoUrl: "",
+                      videoCaption: "",
+                      metrics: [
+                        { label: "Turnout / Growth", value: "10,000+" },
+                        { label: "Cost Per Lead", value: "₹24" },
+                        { label: "Conversion Rate", value: "34%" },
+                        { label: "Media Reach", value: "2.5M" },
+                      ],
+                      sections: {
+                        challenge: "Outline the key business problem or market challenge faced.",
+                        context: "Operating environment, target audience demographics, and competition.",
+                        strategy: [
+                          "Define key target segments and conversion funnels.",
+                          "Omnichannel content architecture and paid media distribution.",
+                        ],
+                        execution: [
+                          "Deployed landing pages and tracked performance.",
+                          "A/B tested creative hooks across Meta and Google Ads.",
+                        ],
+                        results: [
+                          "Delivered 100% of pipeline targets ahead of schedule.",
+                          "Reduced blended customer acquisition cost significantly.",
+                        ],
+                        lessons: [
+                          "Real-time creative iteration outperforms static media planning.",
+                          "Unified attribution data accelerates executive decision-making.",
+                        ],
+                        businessImpact: "Sustained commercial growth and brand equity created across all product lines.",
+                      },
+                    };
+                    const updated = [newCS, ...(formData.caseStudies || [])];
+                    setFormData({ ...formData, caseStudies: updated });
+                    setExpandedCaseStudy(0);
+                  }}
+                  className="px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New Case Study</span>
+                </button>
+              </div>
+
+              {/* Case Studies Accordion List */}
+              <div className="space-y-6">
+                {formData.caseStudies?.map((cs: any, idx: number) => {
+                  const isExpanded = expandedCaseStudy === idx;
+                  const sections = cs.sections || {};
+                  const metrics = cs.metrics || [];
+
+                  return (
+                    <div
+                      key={cs.id || idx}
+                      className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden transition-all"
+                    >
+                      {/* Case Study Header Strip */}
+                      <div className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gray-50/70 dark:bg-[#1A1D21]/70 border-b border-gray-100 dark:border-gray-800">
+                        <div className="flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={() => setExpandedCaseStudy(isExpanded ? null : idx)}
+                            className="p-1 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
+                          >
+                            {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                          </button>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-primary-50 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-800/60">
+                                {cs.category || "Case Study"}
+                              </span>
+                              <span className="text-xs text-gray-400">/{cs.slug}</span>
+                            </div>
+                            <h3 className="text-base font-bold text-gray-900 dark:text-white mt-0.5">
+                              {cs.title || "Untitled Case Study"}
+                            </h3>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 self-end sm:self-auto">
+                          <Link
+                            href={`/case-studies/${cs.slug}`}
+                            target="_blank"
+                            className="p-2 rounded-xl text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center gap-1.5 border border-gray-200 dark:border-gray-700"
+                            title="View live case study in new tab"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">View Live</span>
+                          </Link>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (confirm(`Are you sure you want to delete case study "${cs.title}"?`)) {
+                                const updated = formData.caseStudies.filter((_: any, i: number) => i !== idx);
+                                setFormData({ ...formData, caseStudies: updated });
+                              }
+                            }}
+                            className="p-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50 flex items-center gap-1 border border-red-200 dark:border-red-900/50"
+                            title="Delete Case Study"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Expandable Case Study Editor */}
+                      {isExpanded && (
+                        <div className="p-6 sm:p-8 space-y-6">
+                          {/* Row 1: Title & Slug */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Case Study Title
+                              </label>
+                              <input
+                                type="text"
+                                value={cs.title || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  updated[idx].title = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-medium"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                URL Slug (e.g. employ-india)
+                              </label>
+                              <input
+                                type="text"
+                                value={cs.slug || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  updated[idx].slug = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Row 2: Subtitle / Executive Summary */}
+                          <div>
+                            <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                              Subtitle / High-Level Executive Hook
+                            </label>
+                            <textarea
+                              rows={2}
+                              value={cs.subtitle || ""}
+                              onChange={(e) => {
+                                const updated = [...formData.caseStudies];
+                                updated[idx].subtitle = e.target.value;
+                                setFormData({ ...formData, caseStudies: updated });
+                              }}
+                              className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                            />
+                          </div>
+
+                          {/* Row 3: Meta details */}
+                          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Category
+                              </label>
+                              <input
+                                type="text"
+                                value={cs.category || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  updated[idx].category = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Entity / Client
+                              </label>
+                              <input
+                                type="text"
+                                value={cs.organization || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  updated[idx].organization = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Timeline / Date
+                              </label>
+                              <input
+                                type="text"
+                                value={cs.date || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  updated[idx].date = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Hero Gradient CSS
+                              </label>
+                              <input
+                                type="text"
+                                value={cs.heroGradient || "from-blue-600 to-indigo-900"}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  updated[idx].heroGradient = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                placeholder="from-blue-600 to-indigo-900"
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Row 4: Cover Image & Alt Text */}
+                          <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 space-y-3">
+                            <span className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-1.5">
+                              <Eye className="w-4 h-4 text-primary-600" />
+                              <span>Cover Image &amp; Social Preview</span>
+                            </span>
+                            <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                              <div className="sm:col-span-6">
+                                <label className="block text-[11px] font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                                  Image URL or Path
+                                </label>
+                                <input
+                                  type="text"
+                                  value={cs.image || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.caseStudies];
+                                    updated[idx].image = e.target.value;
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                              <div className="sm:col-span-4">
+                                <label className="block text-[11px] font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                                  SEO Alt Text
+                                </label>
+                                <input
+                                  type="text"
+                                  value={cs.imageAlt || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.caseStudies];
+                                    updated[idx].imageAlt = e.target.value;
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  placeholder="Descriptive image keywords for SEO"
+                                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                              <div className="sm:col-span-2 flex flex-col justify-end">
+                                <label className="w-full py-2 px-3 rounded-xl bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-xs font-semibold cursor-pointer text-center truncate flex items-center justify-center gap-1">
+                                  <Upload className="w-3.5 h-3.5" />
+                                  <span>Upload</span>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={async (e) => {
+                                      const file = e.target.files?.[0];
+                                      if (file) {
+                                        const url = await handleFileUpload(file);
+                                        if (url) {
+                                          const updated = [...formData.caseStudies];
+                                          updated[idx].image = url;
+                                          setFormData({ ...formData, caseStudies: updated });
+                                        }
+                                      }
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Row 5: Featured Video / Reel Controls */}
+                          <div className="p-4 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 space-y-3">
+                            <span className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-1.5">
+                              <Video className="w-4 h-4 text-primary-600" />
+                              <span>Featured Video / Reel Showcase (Optional)</span>
+                            </span>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-[11px] font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                                  Video Embed URL (YouTube, Vimeo, MP4)
+                                </label>
+                                <input
+                                  type="text"
+                                  value={cs.videoUrl || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.caseStudies];
+                                    updated[idx].videoUrl = e.target.value;
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  placeholder="https://www.youtube.com/watch?v=... or Vimeo"
+                                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-[11px] font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                                  Video Caption / Description
+                                </label>
+                                <input
+                                  type="text"
+                                  value={cs.videoCaption || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.caseStudies];
+                                    updated[idx].videoCaption = e.target.value;
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  placeholder="e.g. Campaign reel and creative overview"
+                                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Row 6: KPI Metrics */}
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                              <label className="text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                                KPI Metrics &amp; Quantifiable Highlights
+                              </label>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = [...formData.caseStudies];
+                                  if (!updated[idx].metrics) updated[idx].metrics = [];
+                                  updated[idx].metrics.push({ label: "Metric Label", value: "Value" });
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="text-xs text-primary-600 font-semibold hover:underline flex items-center gap-1"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Add Metric Card</span>
+                              </button>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                              {metrics.map((m: any, mIdx: number) => (
+                                <div
+                                  key={mIdx}
+                                  className="p-3 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 space-y-2 relative"
+                                >
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].metrics = updated[idx].metrics.filter((_: any, i: number) => i !== mIdx);
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                                  >
+                                    <Trash2 className="w-3 h-3" />
+                                  </button>
+                                  <div>
+                                    <label className="block text-[10px] uppercase font-bold text-gray-500 mb-0.5">Value</label>
+                                    <input
+                                      type="text"
+                                      value={m.value || ""}
+                                      onChange={(e) => {
+                                        const updated = [...formData.caseStudies];
+                                        updated[idx].metrics[mIdx].value = e.target.value;
+                                        setFormData({ ...formData, caseStudies: updated });
+                                      }}
+                                      className="w-full px-2 py-1 rounded bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs font-bold text-primary-600"
+                                    />
+                                  </div>
+                                  <div>
+                                    <label className="block text-[10px] uppercase font-bold text-gray-500 mb-0.5">Label</label>
+                                    <input
+                                      type="text"
+                                      value={m.label || ""}
+                                      onChange={(e) => {
+                                        const updated = [...formData.caseStudies];
+                                        updated[idx].metrics[mIdx].label = e.target.value;
+                                        setFormData({ ...formData, caseStudies: updated });
+                                      }}
+                                      className="w-full px-2 py-1 rounded bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
+                                    />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* 7 Narrative Sections */}
+                          <div className="space-y-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <h4 className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
+                              7 Deep-Dive Narrative Sections
+                            </h4>
+
+                            {/* Section 1: Challenge */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                01. The Business Challenge
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={sections.challenge || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  if (!updated[idx].sections) updated[idx].sections = {};
+                                  updated[idx].sections.challenge = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+
+                            {/* Section 2: Context */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                02. Market Context &amp; Audience Psychology
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={sections.context || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  if (!updated[idx].sections) updated[idx].sections = {};
+                                  updated[idx].sections.context = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
+
+                            {/* Section 3: Strategy (List) */}
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <label className="text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                                  03. The Strategic Framework (Bullet Points)
+                                </label>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const updated = [...formData.caseStudies];
+                                    if (!updated[idx].sections) updated[idx].sections = {};
+                                    if (!updated[idx].sections.strategy) updated[idx].sections.strategy = [];
+                                    updated[idx].sections.strategy.push("New strategic pillar...");
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  className="text-xs text-primary-600 font-semibold hover:underline flex items-center gap-1"
+                                >
+                                  <Plus className="w-3.5 h-3.5" />
+                                  <span>Add Strategy Point</span>
+                                </button>
+                              </div>
+                              {sections.strategy?.map((item: string, sIdx: number) => (
+                                <div key={sIdx} className="flex items-center gap-2">
+                                  <input
+                                    type="text"
+                                    value={item}
+                                    onChange={(e) => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.strategy[sIdx] = e.target.value;
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="flex-1 px-3.5 py-2 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.strategy = updated[idx].sections.strategy.filter((_: any, i: number) => i !== sIdx);
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="p-2 text-gray-400 hover:text-red-500"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Section 4: Execution (List) */}
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <label className="text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                                  04. Tactical Execution &amp; Deployment (Bullet Points)
+                                </label>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const updated = [...formData.caseStudies];
+                                    if (!updated[idx].sections) updated[idx].sections = {};
+                                    if (!updated[idx].sections.execution) updated[idx].sections.execution = [];
+                                    updated[idx].sections.execution.push("New execution milestone...");
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  className="text-xs text-primary-600 font-semibold hover:underline flex items-center gap-1"
+                                >
+                                  <Plus className="w-3.5 h-3.5" />
+                                  <span>Add Execution Point</span>
+                                </button>
+                              </div>
+                              {sections.execution?.map((item: string, eIdx: number) => (
+                                <div key={eIdx} className="flex items-center gap-2">
+                                  <input
+                                    type="text"
+                                    value={item}
+                                    onChange={(e) => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.execution[eIdx] = e.target.value;
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="flex-1 px-3.5 py-2 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.execution = updated[idx].sections.execution.filter((_: any, i: number) => i !== eIdx);
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="p-2 text-gray-400 hover:text-red-500"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Section 5: Results (List) */}
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <label className="text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                                  05. Measurable Business Results (Bullet Points)
+                                </label>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const updated = [...formData.caseStudies];
+                                    if (!updated[idx].sections) updated[idx].sections = {};
+                                    if (!updated[idx].sections.results) updated[idx].sections.results = [];
+                                    updated[idx].sections.results.push("Key quantifiable achievement...");
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  className="text-xs text-primary-600 font-semibold hover:underline flex items-center gap-1"
+                                >
+                                  <Plus className="w-3.5 h-3.5" />
+                                  <span>Add Result Point</span>
+                                </button>
+                              </div>
+                              {sections.results?.map((item: string, rIdx: number) => (
+                                <div key={rIdx} className="flex items-center gap-2">
+                                  <input
+                                    type="text"
+                                    value={item}
+                                    onChange={(e) => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.results[rIdx] = e.target.value;
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="flex-1 px-3.5 py-2 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.results = updated[idx].sections.results.filter((_: any, i: number) => i !== rIdx);
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="p-2 text-gray-400 hover:text-red-500"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Section 6: Lessons (List) */}
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <label className="text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                                  06. Operational &amp; Marketing Lessons (Bullet Points)
+                                </label>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const updated = [...formData.caseStudies];
+                                    if (!updated[idx].sections) updated[idx].sections = {};
+                                    if (!updated[idx].sections.lessons) updated[idx].sections.lessons = [];
+                                    updated[idx].sections.lessons.push("Key tactical takeaway...");
+                                    setFormData({ ...formData, caseStudies: updated });
+                                  }}
+                                  className="text-xs text-primary-600 font-semibold hover:underline flex items-center gap-1"
+                                >
+                                  <Plus className="w-3.5 h-3.5" />
+                                  <span>Add Lesson Point</span>
+                                </button>
+                              </div>
+                              {sections.lessons?.map((item: string, lIdx: number) => (
+                                <div key={lIdx} className="flex items-center gap-2">
+                                  <input
+                                    type="text"
+                                    value={item}
+                                    onChange={(e) => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.lessons[lIdx] = e.target.value;
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="flex-1 px-3.5 py-2 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const updated = [...formData.caseStudies];
+                                      updated[idx].sections.lessons = updated[idx].sections.lessons.filter((_: any, i: number) => i !== lIdx);
+                                      setFormData({ ...formData, caseStudies: updated });
+                                    }}
+                                    className="p-2 text-gray-400 hover:text-red-500"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Section 7: Long-Term Business Impact */}
+                            <div>
+                              <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                07. Long-Term Commercial Impact
+                              </label>
+                              <textarea
+                                rows={3}
+                                value={sections.businessImpact || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.caseStudies];
+                                  if (!updated[idx].sections) updated[idx].sections = {};
+                                  updated[idx].sections.businessImpact = e.target.value;
+                                  setFormData({ ...formData, caseStudies: updated });
+                                }}
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
                           </div>
 
                         </div>
@@ -1308,6 +2259,67 @@ export default function AdminPage() {
                               }}
                               className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 text-xs"
                             />
+                          </div>
+
+                          {/* Video Embed & Image Alt */}
+                          <div className="p-4 rounded-xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 space-y-4">
+                            <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-wider">
+                              <Video className="w-4 h-4" />
+                              <span>Featured Video Embed (Optional)</span>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              <div>
+                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                  Video URL (YouTube, Vimeo, MP4)
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="https://www.youtube.com/watch?v=..."
+                                  value={art.videoUrl || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.articles];
+                                    updated[idx].videoUrl = e.target.value;
+                                    setFormData({ ...formData, articles: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                                />
+                              </div>
+
+                              <div>
+                                <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                  Video Caption
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Brief note or timestamp summary..."
+                                  value={art.videoCaption || ""}
+                                  onChange={(e) => {
+                                    const updated = [...formData.articles];
+                                    updated[idx].videoCaption = e.target.value;
+                                    setFormData({ ...formData, articles: updated });
+                                  }}
+                                  className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                                />
+                              </div>
+                            </div>
+
+                            <div>
+                              <label className="block text-[11px] font-bold uppercase text-gray-700 dark:text-gray-300 mb-1">
+                                Cover Image Alt Text (SEO)
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Descriptive alt text for Google Image SEO..."
+                                value={art.imageAlt || ""}
+                                onChange={(e) => {
+                                  const updated = [...formData.articles];
+                                  updated[idx].imageAlt = e.target.value;
+                                  setFormData({ ...formData, articles: updated });
+                                }}
+                                className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs"
+                              />
+                            </div>
                           </div>
 
                           {/* Callout Quote */}
@@ -1974,7 +2986,219 @@ export default function AdminPage() {
             </div>
           )}
 
+          {/* TAB: PUBLISH SETTINGS & GITHUB SYNC */}
+          {activeTab === "publishSettings" && (
+            <div className="space-y-6">
+              <div className="p-6 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm space-y-2">
+                <div className="flex items-center gap-2 text-primary-600 font-bold uppercase tracking-wider text-xs">
+                  <Cloud className="w-4 h-4" />
+                  <span>Self-Sustaining CMS Publishing</span>
+                </div>
+                <h2 className="text-xl font-bold font-heading text-gray-900 dark:text-white">
+                  Publish to Live Production (Zero-Dependency)
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  You do not need to rely on Antigravity or local developer tools to update your portfolio.
+                  With GitHub Direct Publishing configured, every edit you make here is committed directly to your repository (
+                  <span className="font-mono text-primary-600">kainthola29-dev/Prot</span>
+                  ). Vercel automatically detects the commit and redeploys your live website worldwide in ~45 seconds.
+                </p>
+              </div>
+
+              {/* GitHub Token Config Card */}
+              <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm space-y-6">
+                <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
+                  <Key className="w-4 h-4 text-primary-600" />
+                  <span>GitHub Personal Access Token</span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50 space-y-2 text-xs text-blue-900 dark:text-blue-200">
+                  <div className="font-bold flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <span>How to set this up once in 60 seconds:</span>
+                  </div>
+                  <ol className="list-decimal list-inside space-y-1.5 pl-1 text-[11px] sm:text-xs">
+                    <li>
+                      Open GitHub Token Generator:{" "}
+                      <a
+                        href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio+CMS+Publishing"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline font-bold text-primary-600 dark:text-primary-400 inline-flex items-center gap-1"
+                      >
+                        <span>Generate Token (repo scope pre-selected)</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>Set expiration to <strong>No expiration</strong> (or 90 days), leave <strong>repo</strong> checked, and click the green <strong>Generate token</strong> button at the bottom.</li>
+                    <li>Copy your token (starts with <span className="font-mono">ghp_...</span>) and paste it into the field below.</li>
+                    <li>Click <strong>Save &amp; Test Live Publish</strong>. The token is safely stored only in your private browser storage.</li>
+                  </ol>
+                </div>
+
+                <div className="space-y-3">
+                  <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                    GitHub Personal Access Token
+                  </label>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="password"
+                      value={githubToken}
+                      onChange={(e) => {
+                        setGithubToken(e.target.value);
+                        localStorage.setItem("admin_gh_token", e.target.value.trim());
+                      }}
+                      placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                      className="flex-1 px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        localStorage.setItem("admin_gh_token", githubToken.trim());
+                        handleGitHubPublish();
+                      }}
+                      disabled={saveStatus === "saving"}
+                      className="px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md disabled:opacity-50"
+                    >
+                      {saveStatus === "saving" ? (
+                        <>
+                          <RefreshCw className="w-4 h-4 animate-spin" />
+                          <span>Publishing to Vercel...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Cloud className="w-4 h-4" />
+                          <span>Save &amp; Publish Live</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  {githubToken && (
+                    <p className="text-[11px] text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>Token is securely saved in your browser local storage.</span>
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Backup & Restore Card */}
+              <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-800 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
+                  <Download className="w-4 h-4 text-primary-600" />
+                  <span>Manual JSON Backup &amp; Disaster Recovery</span>
+                </div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  Always keep a personal backup copy of your entire portfolio content. You can download your current content file or restore an earlier backup at any time.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleDownloadBackup}
+                    className="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-gray-200 dark:border-gray-700"
+                  >
+                    <Download className="w-4 h-4 text-primary-600" />
+                    <span>Download content.json</span>
+                  </button>
+
+                  <label className="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-gray-200 dark:border-gray-700 cursor-pointer">
+                    <Upload className="w-4 h-4 text-primary-600" />
+                    <span>Restore from Backup (.json)</span>
+                    <input
+                      type="file"
+                      accept=".json"
+                      className="hidden"
+                      onChange={handleImportBackup}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          )}
+
         </div>
+
+        {/* MODAL: GITHUB TOKEN & LIVE PUBLISH */}
+        {isPublishModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+            <div className="w-full max-w-lg rounded-2xl bg-white dark:bg-[#212428] border border-gray-200 dark:border-gray-700 shadow-2xl p-6 sm:p-8 space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
+                <div className="flex items-center gap-2 text-primary-600 font-bold">
+                  <Cloud className="w-5 h-5" />
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                    Publish Live to Production
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsPublishModalOpen(false)}
+                  className="p-1 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                To commit changes directly to your live website on Vercel without server filesystem limitations, paste your GitHub Personal Access Token once below:
+              </p>
+
+              <div className="space-y-2">
+                <label className="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+                  GitHub Personal Access Token (starts with ghp_)
+                </label>
+                <input
+                  type="password"
+                  value={githubToken}
+                  onChange={(e) => {
+                    setGithubToken(e.target.value);
+                    localStorage.setItem("admin_gh_token", e.target.value.trim());
+                  }}
+                  placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-700 text-xs font-mono"
+                />
+                <div className="flex items-center justify-between text-[11px] text-gray-500 pt-1">
+                  <span>Don't have a token?</span>
+                  <a
+                    href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio+CMS+Publishing"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary-600 dark:text-primary-400 font-semibold underline flex items-center gap-1"
+                  >
+                    <span>Generate token on GitHub (1 click)</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                <button
+                  type="button"
+                  onClick={() => setIsPublishModalOpen(false)}
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!githubToken.trim()) {
+                      alert("Please enter a GitHub Personal Access Token first.");
+                      return;
+                    }
+                    localStorage.setItem("admin_gh_token", githubToken.trim());
+                    setIsPublishModalOpen(false);
+                    handleGitHubPublish();
+                  }}
+                  disabled={saveStatus === "saving"}
+                  className="px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md disabled:opacity-50"
+                >
+                  <Cloud className="w-4 h-4" />
+                  <span>Publish Live Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>

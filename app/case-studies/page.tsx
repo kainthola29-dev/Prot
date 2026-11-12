@@ -1,4 +1,5 @@
 import React from "react";
+import { getContent } from "@/lib/content";
 import { caseStudiesData } from "@/data/portfolioData";
 import { CaseStudiesList } from "@/components/CaseStudiesList";
 import { JsonLd } from "@/components/JsonLd";
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default function CaseStudiesPage() {
+  const content = getContent();
+  const caseStudies = content.caseStudies && content.caseStudies.length > 0 ? content.caseStudies : caseStudiesData;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -40,7 +44,7 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* Case Studies List with 3 per page and pagination */}
-      <CaseStudiesList caseStudies={caseStudiesData} />
+      <CaseStudiesList caseStudies={caseStudies} />
     </div>
   );
 }

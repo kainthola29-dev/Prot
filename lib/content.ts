@@ -51,7 +51,7 @@ export function getContent(): PortfolioContent {
         stats: (json.stats || statsData) as StatItem[],
         services: (json.services || servicesData) as ServiceItem[],
         projects: (json.projects || projectsData) as ProjectItem[],
-        caseStudies: caseStudiesData,
+        caseStudies: (json.caseStudies || caseStudiesData) as CaseStudyItem[],
         timeline: (json.timeline || timelineData) as TimelineItem[],
         articles: (json.articles || articlesData) as ArticleItem[],
         skillsArchitecture,

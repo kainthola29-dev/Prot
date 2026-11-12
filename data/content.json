@@ -2472,5 +2472,166 @@
       "avatar": "/images/testimonials/sidhi-goel.svg",
       "linkedin": "https://www.linkedin.com/in/deepanshu-kainthola/"
     }
+  ],
+  "caseStudies": [
+    {
+      "id": "employ-india-connect-webinar",
+      "slug": "employ-india-connect-webinar",
+      "title": "Employ India Connect Webinar",
+      "subtitle": "Orchestrating a High-Volume Digital Leadership Event from Ground Zero",
+      "category": "Campaign Strategy & Digital Event",
+      "organization": "Vision India Services",
+      "date": "Dec 20, 2025",
+      "heroGradient": "from-emerald-700 via-teal-800 to-slate-900",
+      "image": "/images/projects/employ-india.svg",
+      "metrics": [
+        {
+          "label": "Live Attendees",
+          "value": "850+"
+        },
+        {
+          "label": "Lead Pipeline",
+          "value": "Multi-Channel"
+        },
+        {
+          "label": "Keynote Speaker",
+          "value": "Sandeep Chatterjee"
+        },
+        {
+          "label": "Feedback Rating",
+          "value": "4.8 / 5.0"
+        }
+      ],
+      "sections": {
+        "challenge": "The corporate skilling and placement division required a high-credibility forum to engage both corporate HR leaders and ambitious professionals simultaneously, without resorting to expensive third-party webinar aggregation agencies.",
+        "context": "Digital attention spans are fragmented. Standard recruitment webinars suffer high drop-off rates and poor live attendance conversion (industry average live attendance sits below 28% of registered users).",
+        "strategy": [
+          "Secured marquee keynote presence with industry thought leader Sandeep Chatterjee to establish immediate authority.",
+          "Architected an omnichannel registration funnel combining targeted LinkedIn outreach, email drip sequences, and WhatsApp reminders.",
+          "Segmented promotional messaging: Strategic workforce agility for corporate HRs vs. Career growth frameworks for professionals."
+        ],
+        "execution": [
+          "Custom landing page built for rapid loading and instant calendar (.ics) injection.",
+          "7-day countdown content sprint on LinkedIn featuring short teaser video snippets.",
+          "Live interaction facilitation during the broadcast with curated Q&A moderation to sustain active viewer retention."
+        ],
+        "results": [
+          "Surpassed registration milestone with 850+ live participants joining across the broadcast.",
+          "Generated dozens of enterprise inbound inquiries for corporate staffing and skilling mandates.",
+          "Retained an unprecedented 78% average watch-time throughout the 60-minute session."
+        ],
+        "lessons": [
+          "Speaker credibility is the single largest lever for high live attendance conversion.",
+          "Automated WhatsApp reminders sent 15 minutes prior to broadcast boosted turn-up rate by 34%."
+        ],
+        "businessImpact": "Proved that internal digital marketing capabilities can outperform costly third-party event aggregators while building an owned, proprietary database of 850+ high-intent corporate and career leads."
+      }
+    },
+    {
+      "id": "seci-ranchi-women-skilling",
+      "slug": "seci-ranchi-women-skilling",
+      "title": "SECI Ranchi Women Skilling Impact Initiative",
+      "subtitle": "Documenting and Amplifying Grassroots Skilling and Sustainable Placement",
+      "category": "Impact Storytelling & CSR Comms",
+      "organization": "Talent Foundation / SECI",
+      "date": "2024",
+      "heroGradient": "from-amber-700 via-orange-800 to-stone-900",
+      "image": "/images/projects/niyukti-shakti.svg",
+      "metrics": [
+        {
+          "label": "Women Trained",
+          "value": "121 Candidates"
+        },
+        {
+          "label": "Placed in Jobs",
+          "value": "~85 Placed"
+        },
+        {
+          "label": "Batches Completed",
+          "value": "4 Batches"
+        },
+        {
+          "label": "Reporting Quality",
+          "value": "100% Verified"
+        }
+      ],
+      "sections": {
+        "challenge": "A transformative CSR project in Ranchi, Jharkhand, backed by Solar Energy Corporation of India (SECI), needed rigorous communication documentation and human-interest storytelling without overstating outcomes or publishing unverified claims.",
+        "context": "Grassroots skilling programs often face credibility challenges if metrics are vague or unsupported. The project required transparent documentation of 4 training batches, verified employment placements, and real trainee testimonials.",
+        "strategy": [
+          "Instituted a clear distinction between candidates trained (121) and confirmed placements (~85) to maintain absolute journalistic integrity.",
+          "Captured multi-angle video interviews with candidates, instructors, and hiring employers.",
+          "Packaged the narrative for dual audiences: Government/CSR stakeholders and the broader public via LinkedIn and impact portals."
+        ],
+        "execution": [
+          "Traveled to the Ranchi skill center to coordinate video interviews and photojournalism.",
+          "Designed comprehensive CSR progress reports and social media photo-stories.",
+          "Produced a documentary recap film screened during project review meetings."
+        ],
+        "results": [
+          "Successfully documented 121 female candidates trained across 4 rigorous batches, with ~85 placed into formal employment.",
+          "Earned praise from SECI project auditors for transparent, evidence-backed impact reporting.",
+          "Served as the benchmark communication blueprint for future public-private skilling partnerships."
+        ],
+        "lessons": [
+          "Credibility is enhanced, not diminished, by publishing precise, honest numbers rather than inflated marketing estimates.",
+          "Visual proof of female candidates operating computers and working on assembly lines carries unmatched narrative conviction."
+        ],
+        "businessImpact": "Established the organization as a gold standard in transparent CSR execution, leading directly to project renewals and expanded funding mandates for subsequent rural skill centers."
+      }
+    },
+    {
+      "id": "greencall-hrms-seo-strategy",
+      "slug": "greencall-hrms-seo-strategy",
+      "title": "GreenCall HRMS Organic Search Architecture",
+      "subtitle": "Targeting High-Intent B2B Compliance Queries to Build a Self-Sustaining Inbound Lead Pipeline",
+      "category": "Technical SEO & B2B Web",
+      "organization": "GreenCall",
+      "date": "2024",
+      "heroGradient": "from-teal-700 via-cyan-800 to-slate-900",
+      "image": "/images/projects/greencall-seo.svg",
+      "metrics": [
+        {
+          "label": "Organic Reach",
+          "value": "+120% Lift"
+        },
+        {
+          "label": "Target Sector",
+          "value": "HR Automation"
+        },
+        {
+          "label": "Core Keywords",
+          "value": "Top 5 Rankings"
+        },
+        {
+          "label": "Conversion Rate",
+          "value": "3.4%"
+        }
+      ],
+      "sections": {
+        "challenge": "Breaking through the noise in the crowded B2B HRMS market against well-funded incumbents with massive advertising budgets.",
+        "context": "Indian SMEs and HR leaders search for very specific regulatory and operational solutions: 'statutory PF compliance automation', 'geo-fenced mobile attendance', and 'payroll software for factories'.",
+        "strategy": [
+          "Pioneered a semantic keyword matrix addressing compliance pain points rather than generic software features.",
+          "Restructured website taxonomy to create distinct product landing pages for attendance, payroll, compliance, and asset management.",
+          "Implemented rigorous technical SEO: canonical tagging, structured JSON-LD schemas, and fast Core Web Vitals."
+        ],
+        "execution": [
+          "Rewrote all landing page copy with benefit-first H1s, scannable subheadings, and clear demo request forms.",
+          "Published comprehensive statutory compliance guides explaining EPF, ESI, and Professional Tax calculations.",
+          "Optimized internal linking structures to funnel organic blog traffic into high-converting product demo pages."
+        ],
+        "results": [
+          "Achieved first-page Google rankings for dozens of high-intent enterprise HR search queries.",
+          "Delivered a sustained 120% lift in non-paid organic impressions over 6 months.",
+          "Decreased reliance on paid search campaigns while maintaining a predictable weekly demo pipeline."
+        ],
+        "lessons": [
+          "High-intent informational queries convert at nearly double the rate of broad category searches.",
+          "Clear, unbloated copy that addresses HR managers' daily compliance anxiety wins the sale."
+        ],
+        "businessImpact": "Transformed an unindexed website into a self-sustaining inbound pipeline engine, saving significant marketing capital while demonstrating measurable SEO leadership."
+      }
+    }
   ]
 }
