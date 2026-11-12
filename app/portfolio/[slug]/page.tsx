@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +22,7 @@ import {
   MessageCircle
 } from "lucide-react";
 import { Metadata } from "next";
+import { formatVideoEmbedUrl } from "@/lib/utils";
 
 export const dynamicParams = true;
 
@@ -246,22 +247,24 @@ export default function ProjectDetailPage({ params }: Props) {
                       }} 
                     />
 
-                    {media.videoUrl ? (
-                      media.videoUrl.includes("youtube.com") || media.videoUrl.includes("youtu.be") || media.videoUrl.includes("vimeo.com") ? (
+                    {media.videoUrl ? (() => {
+                      const embedUrl = formatVideoEmbedUrl(media.videoUrl);
+                      const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("vimeo.com");
+                      return isEmbed ? (
                         <iframe
-                          src={media.videoUrl}
+                          src={embedUrl}
                           title={media.title}
                           className="w-full h-full border-0 absolute inset-0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                         />
                       ) : (
-                        <video controls className="w-full h-full object-cover">
+                        <video controls className="w-full h-full object-cover absolute inset-0">
                           <source src={media.videoUrl} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
-                      )
-                    ) : (
+                      );
+                    })() : (
                       /* Elegant Interactive Video Holder Slate */
                       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-md px-4 space-y-3">
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary-600/20 border border-primary-500/50 flex items-center justify-center text-primary-400 group-hover:scale-110 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300 shadow-lg shadow-primary-500/20 cursor-pointer">

@@ -88,6 +88,8 @@ export interface CaseStudyItem {
   heroGradient: string;
   image?: string;
   imageAlt?: string;
+  videoUrl?: string;
+  videoCaption?: string;
   metrics: { label: string; value: string }[];
   sections: {
     challenge: string;
@@ -140,6 +142,8 @@ export interface ArticleItem {
   gradient?: string;
   image?: string;
   imageAlt?: string;
+  videoUrl?: string;
+  videoCaption?: string;
   quote?: string;
   toc?: { id: string; label: string }[];
   content?: string[];
