@@ -159,12 +159,6 @@
       },
       "videos": [
         {
-          "url": "https://www.youtube.com/shorts/EsjvKxnK7jE",
-          "title": "Campaign Reel",
-          "caption": "Trendy Ethnic Outfits Shared via AirDrop",
-          "aspectRatio": "9:16"
-        },
-        {
           "url": "https://youtu.be/UKQ0q5KKp9Y?si=yJnnwPaEIndLhXUD",
           "title": "Summer Wedding Campaign",
           "caption": "Perfect Summer Wedding Lehengas to Turn Heads in 2025! | Meena Bazaar Indian Bride Shopping Guide",
@@ -175,9 +169,15 @@
           "title": "Store Walkthrough",
           "caption": "Ramphal Chowk, Dwarka | MEENA BAZAAR - Store Walkthrough",
           "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/shorts/EsjvKxnK7jE",
+          "title": "Campaign Reel",
+          "caption": "Trendy Ethnic Outfits Shared via AirDrop",
+          "aspectRatio": "9:16"
         }
       ],
-      "videoUrl": "https://www.youtube.com/shorts/EsjvKxnK7jE"
+      "videoUrl": "https://youtu.be/UKQ0q5KKp9Y?si=yJnnwPaEIndLhXUD"
     },
     {
       "id": "denvax-healthcare-storytelling",
