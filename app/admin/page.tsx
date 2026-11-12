@@ -93,6 +93,17 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
+    // Check if token was passed via URL parameter (e.g. /admin?token=ghp_...)
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const urlToken = params.get("token");
+      if (urlToken) {
+        localStorage.setItem("admin_gh_token", urlToken.trim());
+        setGithubToken(urlToken.trim());
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+
     const savedPin = sessionStorage.getItem("admin_passcode");
     const savedToken = localStorage.getItem("admin_gh_token");
     if (savedToken) setGithubToken(savedToken);
