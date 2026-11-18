@@ -68,10 +68,6 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
-    }
-
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
@@ -79,17 +75,32 @@ export async function POST(request: Request) {
     const rawBaseName = path.basename(file.name, ext);
     const safeBaseName = rawBaseName.replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 50);
     const filename = `${Date.now()}-${safeBaseName}${ext}`;
-    const filePath = path.join(uploadsDir, filename);
 
-    fs.writeFileSync(filePath, buffer);
+    // On serverless environments (like Vercel / AWS Lambda), the filesystem is read-only.
+    // Try writing to public/images/uploads, and gracefully fall back to base64 Data URL if read-only.
+    try {
+      if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      }
+      const filePath = path.join(uploadsDir, filename);
+      fs.writeFileSync(filePath, buffer);
 
-    const publicUrl = `/images/uploads/${filename}`;
-
-    return NextResponse.json({
-      success: true,
-      url: publicUrl,
-      filename,
-    });
+      const publicUrl = `/images/uploads/${filename}`;
+      return NextResponse.json({
+        success: true,
+        url: publicUrl,
+        filename,
+      });
+    } catch {
+      // Read-only filesystem fallback: return optimized data URL
+      const base64Data = buffer.toString("base64");
+      const dataUrl = `data:${file.type};base64,${base64Data}`;
+      return NextResponse.json({
+        success: true,
+        url: dataUrl,
+        filename,
+      });
+    }
   } catch (err: unknown) {
     const error = err as Error;
     return NextResponse.json({ error: error.message }, { status: 500 });

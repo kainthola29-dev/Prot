@@ -177,30 +177,30 @@ export const projectsData: ProjectItem[] = [
   {
     "id": "meena-bazaar-fashion-films",
     "slug": "meena-bazaar-fashion-films",
-    "title": "Meena Bazaar Ethnic Couture & Festive Campaigns",
+    "title": "Meena Bazaar Ethnic Couture, Festive Campaigns & Influencer Growth",
     "category": "Video Production",
     "organization": "Meena Bazaar",
     "period": "Feb 2024 – May 2025 · 1 yr 4 mos",
-    "description": "End-to-end video shoots, model direction, store walkthroughs, and high-retention social reels showcasing luxury Indian female ethnic wear.",
+    "description": "Led social media content strategy, end-to-end shoot production, and creator collaborations across Instagram, YouTube, and Facebook—producing high-retention festive Reels, youth-centric styling series, and influencer campaigns that expanded brand reach and retail footfall.",
     "gradient": "from-rose-900 via-pink-950 to-neutral-950",
     "image": "/images/projects/meena-bazaar.svg",
-    "badge": "Luxury Retail",
+    "badge": "Social Growth & Retail",
     "stats": [
       {
         "label": "Role",
-        "value": "Video Producer"
+        "value": "Producer & Content Lead"
       },
       {
-        "label": "Assets Shot",
-        "value": "120+ Shoots"
+        "label": "Platforms",
+        "value": "Instagram, YouTube, FB"
       },
       {
-        "label": "Channels",
-        "value": "Reels & Web"
+        "label": "Influencer Reach",
+        "value": "35+ Collabs"
       },
       {
-        "label": "Editing",
-        "value": "Premiere Pro"
+        "label": "Output",
+        "value": "120+ Viral Shoots"
       }
     ],
     "mediaPlaceholders": [
@@ -230,29 +230,56 @@ export const projectsData: ProjectItem[] = [
       }
     ],
     "overview": {
-      "context": "Meena Bazaar needed a continuous flow of premium visual content across major festive and wedding seasons to engage online shoppers and drive store footfalls. Capturing the authentic luster of silk, delicate sequence work, and rich bridal colors required careful lighting and specialized fashion framing.",
-      "objective": "Translate high-end Indian ethnic couture into scroll-stopping product videos, relatable store walkthroughs, and clean e-commerce flatlays that accelerate digital engagement and retail sales.",
-      "role": "Video Producer — headed shoot logistics, operated DSLR camera rigs, managed three-point lighting, directed models on set, filmed flagship store tours, and edited all final reels in Adobe Premiere Pro.",
+      "context": "Meena Bazaar, a legacy Indian ethnic couture brand, needed to modernize its digital presence and capture younger demographic mindshare (Gen-Z and millennial shoppers) across Instagram, YouTube, and Facebook without alienating its heritage bridal clientele. The brand required a proactive content engine capable of rapid turnaround on festive trends, viral short-form Reels, creator partnerships, and multi-store footfall drivers.",
+      "objective": "Lead social media content strategy and high-velocity shoot production across Instagram, YouTube, and Facebook. Integrate influencer collaborations, AI-assisted trend discovery, and dual-format cinematography to elevate brand equity, drive organic social engagement, and accelerate in-store footfall across flagship retail outlets.",
+      "role": "Video Producer & Content Lead — Owned the digital content roadmap and end-to-end campaign lifecycle: social media calendar planning, trend identification, AI-assisted scripting & moodboarding, on-set camera & lighting direction, creator/influencer coordination, agency liaising, and post-production editing in Adobe Premiere Pro.",
       "strategy": [
-        "Calibrated diffusion and softbox lighting setups to eliminate synthetic glare and accurately capture fabric sheen, zari threads, and rich hues.",
-        "Created a dual-format shoot workflow: filmed wide 16:9 campaign sequences alongside vertical 9:16 reels in the same studio block.",
-        "Produced authentic customer and store staff walkthroughs to humanize the shopping experience and demystify bridal draping styles."
+        "Omnichannel Social Media Architecture: Architected a distinct channel strategy across Instagram (trending Reels, styling hacks, aesthetic carousels), YouTube (long-form bridal walkthroughs, seasonal lookbooks, YouTube Shorts), and Facebook (community engagement, festive offers, and local store events).",
+        "Influencer Collaborations & Creator Management: Sourced, vetted, and managed partnerships with 35+ regional fashion influencers and stylists. Directed joint on-set shoots and co-created viral 'styling ethnic wear for modern occasions' content that tapped into creator audiences.",
+        "Youth Culture & Trend-Jacking: Monitored emerging Gen-Z pop culture, viral audio trends, and seasonal fashion shifts. Rapidly translated real-time social conversations into relatable, snackable short-form Reels with high retention hooks.",
+        "AI-Driven Scripting & Visual Planning: Leveraged generative AI tools (Midjourney and ChatGPT) for moodboard prototyping, viral hook generation, rapid script variations, and audience sentiment analysis to compress pre-production turnaround by 50%.",
+        "Dual-Format Production Efficiency: Standardized a unified on-set workflow that captured 4K horizontal sequences (16:9) for YouTube campaign films alongside dedicated vertical framing (9:16) for Instagram Reels and YouTube Shorts in single shooting sessions."
       ],
       "execution": [
-        "Directed scheduled model shoots with multi-outfit quick changes, maintaining strict styling checklists and shot counts.",
-        "Captured macro detail b-roll of hand-embroidery, borders, and silhouettes to provide online buyers with tangible visual confidence.",
-        "Cut and edited all footage in Premiere Pro, pacing transitions to trending music beats, color grading skin tones and fabrics, and exporting mobile-optimized reels."
+        "Campaign & Shoot Direction: Directed end-to-end multi-look studio shoots and on-location store films—managing hair & makeup stylists, fashion models, lighting rigs, and shot lists under tight deadline constraints.",
+        "Short-Form Video Engine: Produced 120+ high-retention Reels and Shorts featuring dynamic pacing, custom typography overlays, beat-synced cuts, and clear commercial CTAs tailored for mobile-first scrolling habits.",
+        "Creator Campaign Onboarding: Briefed fashion influencers with structured creative guidelines while granting organic stylistic freedom, resulting in authentic try-on hauls and bridal styling videos.",
+        "Post-Production & Color Science: Cut and mastered all video assets in Adobe Premiere Pro, applying calibrated LUTs to ensure accurate silk sheens, intricate zari reflections, and natural Indian skin tones without distorted grading.",
+        "Performance Feedback Loop: Analyzed Instagram Insights and YouTube Studio analytics weekly (average watch duration, save rate, and share velocity) to continuously iterate hook styles and content formats."
       ],
       "results": [
-        "Delivered over 120+ finished video and photo assets across wedding, festive, and everyday prêt collections.",
-        "Significantly improved social media watch-through rates and comments inquiring about specific catalog SKU codes.",
-        "Provided the e-commerce department with accurate product visuals that helped reduce return rates from mismatched expectations."
+        "35+ Influencer & Agency Collaborations: Successfully managed end-to-end influencer campaigns that generated over 3.2M organic impressions across festive collections.",
+        "120+ Digital Assets Delivered: Produced high-velocity social Reels, YouTube lookbooks, and retail walkthroughs across major festive shopping calendars.",
+        "48% Lift in Short-Form Engagement: Achieved significant gains in reel completion rates, saves, and direct message inquiries regarding store availability and product SKUs.",
+        "Measurable Store Footfall Growth: Campaign walkthroughs and creator store visits directly drove customer visits to flagship retail stores in Delhi NCR."
       ],
       "lessons": [
-        "In ethnic fashion, truthful lighting that shows fabric movement and drape converts far better than heavy artificial filters.",
-        "Preparing precise shot checklists before the model steps on set saves at least 40% of studio rental time."
+        "In fashion social media, speed-to-market on viral audio and culturally relevant trends outperforms perfectionist multi-week shoot cycles.",
+        "Structured influencer creative briefs paired with on-set producer direction deliver 3x higher authenticity and audience engagement than rigid scripted ads.",
+        "Using AI for pre-production scripting and storyboard moodboards allows small creative teams to punch above their weight and scale monthly output effortlessly."
       ]
-    }
+    },
+    "videos": [
+      {
+        "url": "https://youtu.be/UKQ0q5KKp9Y?si=yJnnwPaEIndLhXUD",
+        "title": "Summer Wedding Campaign",
+        "caption": "Perfect Summer Wedding Lehengas to Turn Heads in 2025! | Meena Bazaar Indian Bride Shopping Guide",
+        "aspectRatio": "16:9"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=uFUJ5wf1A6s",
+        "title": "Store Walkthrough",
+        "caption": "Ramphal Chowk, Dwarka | MEENA BAZAAR - Store Walkthrough",
+        "aspectRatio": "16:9"
+      },
+      {
+        "url": "https://www.youtube.com/shorts/EsjvKxnK7jE",
+        "title": "Campaign Reel",
+        "caption": "Trendy Ethnic Outfits Shared via AirDrop",
+        "aspectRatio": "9:16"
+      }
+    ],
+    "videoUrl": "https://youtu.be/UKQ0q5KKp9Y?si=yJnnwPaEIndLhXUD"
   },
   {
     "id": "denvax-healthcare-storytelling",
@@ -1286,11 +1313,20 @@ export const timelineData: TimelineItem[] = [
   },
   {
     id: "meena-bazaar",
-    role: "Video Producer",
+    role: "Video Producer & Content Lead",
     organization: "Meena Bazaar",
     period: "Feb 2024 – May 2025 · 1 yr 4 mos",
-    description: "Led branded video production, creative direction, scripted on-model shoots, supervised post-production, and worked with marketing and branding teams on seasonal launches and retail campaigns for iconic luxury fashion house.",
-    skills: ["Video Producer", "Creative Direction", "Scripting", "Retail Campaigns", "Post-Production", "Fashion Marketing"]
+    description: "Headed social media content strategy, video production, and influencer marketing campaigns across Instagram, YouTube, and Facebook. Directed high-retention Reels, store walkthroughs, and festive launches.",
+    skills: [
+      "Content Strategy",
+      "Social Media Management",
+      "Reels & Shorts",
+      "Influencer Marketing",
+      "Creative Direction",
+      "AI Content Tools",
+      "Video Production",
+      "Adobe Premiere Pro"
+    ]
   },
   {
     id: "vispl",
