@@ -82,10 +82,6 @@ export function Footer() {
             <Link href="/resume" className="hover:text-primary-400 transition-colors">
               Resume
             </Link>
-            <span>•</span>
-            <Link href="/admin" className="hover:text-primary-400 transition-colors">
-              Portal
-            </Link>
           </div>
         </div>
       </div>
