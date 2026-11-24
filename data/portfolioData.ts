@@ -658,7 +658,7 @@ export const projectsData: ProjectItem[] = [
       },
       {
         "label": "Documentaries",
-        "value": "10 Video Productions"
+        "value": "9 Video Productions"
       },
       {
         "label": "Social Media",
@@ -745,12 +745,6 @@ export const projectsData: ProjectItem[] = [
         "url": "https://youtu.be/H5PU746RkIw?si=p4DdxRtleq9J6QbG",
         "title": "H.E. Alex Ellis, British High Commissioner to India on India's Net-Zero Goal",
         "caption": "High-level bilateral dialogue with UK High Commissioner Alex Ellis regarding COP26 decarbonization, climate finance, and India's 2070 Net-Zero trajectory.",
-        "aspectRatio": "16:9"
-      },
-      {
-        "url": "https://www.youtube.com/watch?v=nBPKnfW82Ps",
-        "title": "Sohanjeet Randhawa, Volvo Group on Sustainable Mobility Solutions",
-        "caption": "Executive corporate interview on the transition to electric heavy commercial transport, alternative fuels, and decarbonizing supply chain logistics.",
         "aspectRatio": "16:9"
       },
       {
@@ -885,12 +879,6 @@ export const projectsData: ProjectItem[] = [
       }
     ],
     "photography": [
-      {
-        "src": "/images/projects/tatsat-chronicle-executive-reader.jpg",
-        "title": "Corporate Leadership Reading Tatsat Chronicle",
-        "caption": "Senior corporate executive reviewing Tatsat Chronicle Issue 1 cover feature 'Trials & Tribulations: Clinical Trials Industry & Big Pharma' at executive office desk in New Delhi.",
-        "tag": "Print Magazine Readership"
-      },
       {
         "src": "/images/projects/tatsat-chronicle-reader-portrait.jpg",
         "title": "Print Magazine Circulation & Patron Portrait",

@@ -71,7 +71,7 @@ export function TatsatChronicleShowcase({
                 Launched Tatsat Chronicle&apos;s Official Social Media &amp; Field Documentaries
               </h2>
               <p className="text-sm sm:text-base text-gray-300 max-w-3xl leading-relaxed">
-                As Digital Content Producer for India&apos;s pioneer social sector and CSR magazine, Deepanshu Kainthola launched Tatsat Chronicle&apos;s social media channels from scratch, authored over {printArticleCount} print investigative articles, interviewed European diplomats and corporate CEOs, directed 10 documentary videos, and captured field photography published in national editions.
+                As Digital Content Producer for India&apos;s pioneer social sector and CSR magazine, Deepanshu Kainthola launched Tatsat Chronicle&apos;s social media channels from scratch, authored over {printArticleCount} print investigative articles, interviewed European diplomats and corporate CEOs, directed 9 documentary videos, and captured field photography published in national editions.
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export function TatsatChronicleShowcase({
 
             <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1 backdrop-blur-sm">
               <div className="text-2xl sm:text-3xl font-extrabold font-heading text-emerald-400">
-                10
+                9
               </div>
               <div className="text-xs font-bold text-white uppercase tracking-wider">
                 Video Documentaries
@@ -110,7 +110,7 @@ export function TatsatChronicleShowcase({
 
             <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1 backdrop-blur-sm">
               <div className="text-2xl sm:text-3xl font-extrabold font-heading text-emerald-400">
-                7
+                6
               </div>
               <div className="text-xs font-bold text-white uppercase tracking-wider">
                 Field Photo Features
@@ -121,58 +121,60 @@ export function TatsatChronicleShowcase({
         </div>
       </section>
 
-      {/* Navigation Filter Pills */}
-      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-gray-100 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 max-w-2xl mx-auto">
-        <button
-          onClick={() => setActiveTab("videos")}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-            activeTab === "videos"
-              ? "bg-emerald-600 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-          }`}
-        >
-          <Film className="w-4 h-4" />
-          <span>10 Video Documentaries</span>
-        </button>
+      {/* Navigation Filter Pills (Balanced in a single line) */}
+      <div className="w-full max-w-4xl mx-auto overflow-x-auto no-scrollbar py-2">
+        <div className="flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2.5 p-1.5 rounded-2xl bg-gray-100 dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 w-fit min-w-max mx-auto shadow-sm">
+          <button
+            onClick={() => setActiveTab("videos")}
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap flex-shrink-0 transition-all ${
+              activeTab === "videos"
+                ? "bg-emerald-600 text-white shadow-md"
+                : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            }`}
+          >
+            <Film className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-300" />
+            <span>9 Video Documentaries</span>
+          </button>
 
-        <button
-          onClick={() => setActiveTab("articles")}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-            activeTab === "articles"
-              ? "bg-emerald-600 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-          }`}
-        >
-          <BookOpen className="w-4 h-4" />
-          <span>Print &amp; Web Bylines ({printArticleCount}+)</span>
-        </button>
+          <button
+            onClick={() => setActiveTab("articles")}
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap flex-shrink-0 transition-all ${
+              activeTab === "articles"
+                ? "bg-emerald-600 text-white shadow-md"
+                : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>Print &amp; Web Bylines ({printArticleCount}+)</span>
+          </button>
 
-        <button
-          onClick={() => setActiveTab("social")}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-            activeTab === "social"
-              ? "bg-emerald-600 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-          }`}
-        >
-          <Share2 className="w-4 h-4" />
-          <span>Social Media Launch</span>
-        </button>
+          <button
+            onClick={() => setActiveTab("social")}
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap flex-shrink-0 transition-all ${
+              activeTab === "social"
+                ? "bg-emerald-600 text-white shadow-md"
+                : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            }`}
+          >
+            <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>Social Media Launch</span>
+          </button>
 
-        <button
-          onClick={() => setActiveTab("photography")}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-            activeTab === "photography"
-              ? "bg-emerald-600 text-white shadow-md"
-              : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-          }`}
-        >
-          <Camera className="w-4 h-4" />
-          <span>Field Photography (7)</span>
-        </button>
+          <button
+            onClick={() => setActiveTab("photography")}
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap flex-shrink-0 transition-all ${
+              activeTab === "photography"
+                ? "bg-emerald-600 text-white shadow-md"
+                : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            }`}
+          >
+            <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>Field Photography (6)</span>
+          </button>
+        </div>
       </div>
 
-      {/* SECTION 1: 10 YOUTUBE DOCUMENTARIES & DIPLOMATIC INTERVIEWS */}
+      {/* SECTION 1: 9 YOUTUBE DOCUMENTARIES & DIPLOMATIC INTERVIEWS */}
       {(activeTab === "videos" || activeTab === "articles" || activeTab === "social" || activeTab === "photography") && (
         <section id="videos" className="space-y-8 rounded-3xl p-6 sm:p-10 bg-white dark:bg-[#1A1D21] border border-gray-200 dark:border-gray-800 shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 dark:border-gray-800 pb-6">
@@ -181,7 +183,7 @@ export function TatsatChronicleShowcase({
                 <span className="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                   Documentary Production
                 </span>
-                <span className="text-xs font-mono text-gray-400">10 Videos Recorded, Edited &amp; Uploaded</span>
+                <span className="text-xs font-mono text-gray-400">9 Videos Recorded, Edited &amp; Uploaded</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
                 High-Profile Diplomatic Interviews &amp; Field Documentaries
@@ -427,7 +429,7 @@ export function TatsatChronicleShowcase({
               <span className="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                 Editorial &amp; Field Photography
               </span>
-              <span className="text-xs font-mono text-gray-400">7 High-Resolution Published Photos</span>
+              <span className="text-xs font-mono text-gray-400">6 High-Resolution Published Photos</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-gray-900 dark:text-white tracking-tight">
               On-Ground Photography for Print Magazine &amp; Digital Editions

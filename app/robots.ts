@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api/", "/_next/"],
+        disallow: ["/admin", "/admin/", "/api/", "/_next/"],
       },
     ],
     sitemap: "https://deepanshu.kainthola.com/sitemap.xml",
