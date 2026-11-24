@@ -404,26 +404,82 @@
       "category": "Video Production",
       "organization": "Denvax",
       "period": "Oct 2022 – Mar 2023 · 6 mos",
-      "description": "Doctor interview series, patient recovery documentaries, and cancer immunotherapy educational media across digital channels.",
+      "description": "Led healthcare video production, social media management, and multi-channel public awareness campaigns—shooting and publishing doctor educational series, patient survivor documentaries, and producing public health ads displayed across Indian Railway stations and Metro networks.",
       "gradient": "from-teal-900 via-emerald-950 to-neutral-950",
       "image": "/images/projects/denvax.svg",
-      "badge": "Clinical Media",
+      "badge": "Clinical Media & Public Transit Ads",
       "stats": [
         {
           "label": "Role",
-          "value": "Content Producer"
+          "value": "Content Producer & Social Media"
         },
         {
           "label": "Focus",
-          "value": "Oncology & Trust"
+          "value": "Oncology & Healthcare Trust"
         },
         {
-          "label": "Channel",
-          "value": "YouTube & Web"
+          "label": "Channels",
+          "value": "YouTube, Social, Railway & Metro"
         },
         {
           "label": "Format",
-          "value": "Docu-Series"
+          "value": "Docu-Series & Transit Ads"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=_CZapl8vM3Q",
+          "title": "Esophagus & Larynx Cancer: Survivorship Story with Dr. Sharmin",
+          "caption": "Filmed in-clinic patient interview and survivor documentary with Dr. Sharmin. Captured the clinical timeline, symptom recovery, and cellular immunotherapy outcomes, then edited and published across digital channels.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=-jPM-fcaxpM",
+          "title": "Cervical Cancer Patient Survivorship Story: Clinical Care & Hope",
+          "caption": "Directed, filmed, and edited this survivor story with Dr. Sharmin. Focused on demystifying cervical cancer treatment options, handling sensitive patient dialogue, and producing hopeful clinical storytelling for social media.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=E4FLpgorm9c",
+          "title": "Immunotherapy for Brain Cancer: A Beacon of Hope (Hindi)",
+          "caption": "Shot and produced clinical educational brief in Hindi with Dr. Aditya Singh Bhati. Designed custom medical lower-thirds to simplify complex brain tumor immunotherapy mechanisms for Hindi-speaking families.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=3AO6MNPTQ60",
+          "title": "Oral Cancer Patient Shares His Survivorship Story",
+          "caption": "Patient survivorship profile filmed on dual-mic audio rig. Cut and color-graded footage in Premiere Pro, focusing on speech recovery and quality of life restoration post-immunotherapy.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=bztw3xt0fLQ",
+          "title": "Personalized Breast Cancer Treatment: Understanding Your Options",
+          "caption": "Comprehensive clinical explainer breaking down individualized breast cancer treatment pathways. Planned the shot sequence, operated camera, and optimized YouTube publishing metadata for patient search queries.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=MW3VmKhw_lI",
+          "title": "Hidden Aspects of Breast Cancer: Clinical & Emotional Care",
+          "caption": "Deep-dive oncologist discussion exploring overlooked symptoms, psychological well-being, and post-diagnosis care. Filmed, edited, and published across social platforms to raise awareness.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=iWjThd_wbco",
+          "title": "Stage 4 Metastatic Kidney Cancer: Survivorship & Clinical Care",
+          "caption": "Rigorous clinical documentation of Stage 4 metastatic kidney cancer recovery journey. Structured the patient dialogue with clinical rigor and sensitivity, producing high-trust documentary content for digital audiences.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=hj1ezv8q_y0",
+          "title": "Breast Cancer Awareness & Early Detection (Hindi)",
+          "caption": "Preventive healthcare awareness film in Hindi emphasizing regular screenings and early detection. Conceptualized the visual theme, shot the oncologist presentation, and managed omnichannel distribution.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Dmm2BF-5Cjw",
+          "title": "Palliative Care: Improving Survivorship & Quality of Life",
+          "caption": "In-depth clinical dialogue with Dr. Sharmin addressing palliative oncology, pain management, and holistic patient survivorship. Produced, sound-engineered, and published to Denvax YouTube and social channels.",
+          "aspectRatio": "16:9"
         }
       ],
       "mediaPlaceholders": [
@@ -454,25 +510,29 @@
       ],
       "overview": {
         "context": "Navigating cancer treatment options is an emotionally exhausting experience for patients and families. Denvax, a pioneer in dendritic cell-based cellular immunotherapy, needed clear, compassionate, and scientifically accurate video content to explain treatment mechanisms and restore hope.",
-        "objective": "Demystify complex cellular oncology concepts, coordinate authentic doctor dialogues, and document real patient recovery journeys without sensationalism or medical exaggeration.",
-        "role": "Digital Content Producer — planned medical interview scripts, operated camera and wireless lavalier microphones in clinic rooms, directed doctor interviews, and managed Denvax's official YouTube channel.",
+        "objective": "Demystify complex cellular oncology concepts, coordinate authentic doctor dialogues, document real patient recovery journeys without sensationalism, and expand awareness through social media and public transit advertising.",
+        "role": "Content Producer & Social Media Lead — shot in-clinic doctor interviews and patient survivor stories, managed end-to-end social media publishing, and produced high-impact video ads displayed at major Indian Railway stations and Metro networks.",
         "strategy": [
           "Structured physician interviews as reassuring, plain-language conversations answering the most common queries families bring to consultations.",
           "Designed clear visual illustrations explaining how a patient's own immune cells are trained in the laboratory to target tumor antigens.",
+          "Expanded reach beyond digital by scripting and producing public awareness advertisements for high-footfall Indian Railway and Metro station digital screens.",
           "Maintained strict ethical standards: every script and video claim was verified directly with senior medical practitioners."
         ],
         "execution": [
-          "Set up portable lighting and dual-mic audio kits in clinic consultation rooms between patient appointment windows.",
-          "Conducted respectful, gentle interviews with recovering patients and caregivers, letting them share their recovery timelines at their own comfort level.",
-          "Edited in Adobe Premiere Pro with subtitle tracks, medical lower-thirds, and empathetic background scores; optimized YouTube metadata for patient search queries."
+          "Set up portable lighting and dual-mic audio kits in clinic consultation rooms between patient appointment windows, filming doctor explainers and survivor documentaries.",
+          "Managed Denvax's social media platforms (YouTube, Facebook, Instagram) end-to-end—scripting, editing in Premiere Pro, color grading, subtitles, and community engagement.",
+          "Produced public health video advertisements displayed on digital screens across Indian Railway stations and Metro transit networks to raise nationwide cancer awareness.",
+          "Conducted respectful, gentle interviews with recovering patients and caregivers, letting them share their recovery timelines at their own comfort level."
         ],
         "results": [
           "Built steady organic subscriber growth and high average watch time on Denvax's official YouTube channel.",
+          "Generated broad public awareness through high-visibility Railway station and Metro transit digital ads across key commuter hubs.",
           "Families frequently reported feeling informed and calm after watching the doctor explanation videos before their first visit.",
           "Established Denvax's digital presence as an authoritative, transparent center for advanced cellular immunotherapy."
         ],
         "lessons": [
-          "Healthcare video production requires deep empathy and patience. A calm, well-lit interview with clear audio builds more patient trust than any advertising campaign."
+          "Healthcare video production requires deep empathy and patience. A calm, well-lit interview with clear audio builds more patient trust than any advertising campaign.",
+          "Combining digital social media storytelling with large-scale transit ads (Railway & Metro) bridges the gap between mass public awareness and targeted patient trust."
         ]
       }
     },

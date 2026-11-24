@@ -222,8 +222,8 @@ export default function ProjectDetailPage({ params }: Props) {
           legacyVideoUrl={project.videoUrl}
           legacyVideoCaption={project.videoCaption}
           legacyVideoAspect={project.videoAspect || "16:9"}
-          sectionTitle="Visual Showcase & Production Assets"
-          sectionSubtitle="High-definition media productions, campaign films, and vertical reels"
+          sectionTitle={project.videoSectionTitle || "Doctor Explainer Series & Patient Survivor Documentaries"}
+          sectionSubtitle={project.videoSectionSubtitle || "9 clinical video deliverables shot and published across digital channels and transit campaigns"}
         />
       ) : (
         <section className="space-y-6">

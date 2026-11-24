@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Play, Film, Smartphone, Sparkles, Video as VideoIcon } from "lucide-react";
+import { Play, Film, Smartphone, Sparkles, Video as VideoIcon, ExternalLink } from "lucide-react";
 import { formatVideoEmbedUrl } from "@/lib/utils";
 import { VideoItem } from "@/types";
 
@@ -12,6 +12,14 @@ interface Props {
   legacyVideoAspect?: "16:9" | "9:16";
   sectionTitle?: string;
   sectionSubtitle?: string;
+}
+
+function extractYouTubeId(url?: string): string | null {
+  if (!url) return null;
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?.*v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+  );
+  return match ? match[1] : null;
 }
 
 export function PlannedVideoShowcase({
@@ -42,24 +50,34 @@ export function PlannedVideoShowcase({
   }
 
   const renderPlayer = (v: VideoItem, customAspectClass?: string) => {
-    const embedUrl = formatVideoEmbedUrl(v.url);
-    const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("youtube-nocookie.com") || embedUrl.includes("vimeo.com");
+    const ytId = extractYouTubeId(v.url);
+    const embedUrl = ytId ? `https://www.youtube.com/embed/${ytId}` : formatVideoEmbedUrl(v.url);
+    const thumbnailUrl = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : null;
+    const isEmbed = Boolean(embedUrl);
     const aspectClass = customAspectClass || (v.aspectRatio === "9:16" ? "aspect-[9/16]" : "aspect-video");
 
     return (
-      <div className={`relative w-full ${aspectClass} bg-black overflow-hidden shadow-inner`}>
+      <div className={`relative w-full ${aspectClass} bg-black overflow-hidden shadow-inner flex items-center justify-center`}>
+        {thumbnailUrl && (
+          <img
+            src={thumbnailUrl}
+            alt={v.title || "Video Preview"}
+            className="w-full h-full object-cover absolute inset-0 opacity-40 blur-[1px] pointer-events-none"
+            loading="lazy"
+          />
+        )}
         {isEmbed ? (
           <iframe
             src={embedUrl}
             title={v.title || "Video Player"}
-            className="w-full h-full border-0 absolute inset-0"
+            className="w-full h-full border-0 absolute inset-0 z-10"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             referrerPolicy="strict-origin-when-cross-origin"
             loading="lazy"
           />
         ) : (
-          <video controls className="w-full h-full object-cover absolute inset-0">
+          <video controls className="w-full h-full object-cover absolute inset-0 z-10">
             <source src={v.url} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -87,7 +105,7 @@ export function PlannedVideoShowcase({
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <span className="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary-50 dark:bg-primary-950/80 text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-800">
-            {activeVideos.length} {activeVideos.length === 1 ? "Video" : "Videos"} Planned
+            {activeVideos.length} {activeVideos.length === 1 ? "Video" : "Videos"} Deliverables
           </span>
         </div>
       </div>
@@ -103,15 +121,15 @@ export function PlannedVideoShowcase({
               <div className="flex items-center justify-between text-xs text-gray-400 px-1">
                 <span className="flex items-center gap-1 font-semibold text-primary-400">
                   <Smartphone className="w-3.5 h-3.5" />
-                  <span>Vertical Reel · 9:16</span>
+                  <span>Vertical Short</span>
                 </span>
-                <span className="text-[10px] uppercase font-mono tracking-wider">Mobile View</span>
+                <span className="text-[10px] font-mono text-gray-500">9:16 Reel</span>
               </div>
-              <div className="rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+              <div className="rounded-2xl overflow-hidden border border-gray-800 shadow-md">
                 {renderPlayer(v, "aspect-[9/16]")}
               </div>
               {(v.title || v.caption) && (
-                <div className="px-1 text-center space-y-1">
+                <div className="px-1 text-center space-y-1 pt-1">
                   {v.title && <h3 className="text-sm font-bold text-white">{v.title}</h3>}
                   {v.caption && <p className="text-xs text-gray-400 leading-relaxed">{v.caption}</p>}
                 </div>
@@ -121,28 +139,22 @@ export function PlannedVideoShowcase({
         }
 
         return (
-          <div className="rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-[#0F1115] shadow-xl">
-            <div className="relative">
-              {renderPlayer(v, "aspect-video")}
-            </div>
-            <div className="p-4 sm:p-5 bg-gray-900/90 border-t border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div className="space-y-0.5">
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-950 text-primary-300 border border-primary-800">
-                    Featured Film
-                  </span>
-                  <span className="font-bold text-white text-sm">
-                    {v.title || "Main Video Production"}
-                  </span>
-                </div>
-                {v.caption && (
-                  <p className="text-gray-400 text-xs">{v.caption}</p>
-                )}
-              </div>
-              <span className="text-[11px] font-mono text-gray-500 self-end sm:self-auto">
-                16:9 High Definition
+          <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-[#0F1115] shadow-xl">
+            <div className="p-3 sm:p-4 bg-gray-900 border-b border-gray-800 flex items-center justify-between text-xs">
+              <span className="font-bold text-white flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-primary-400" />
+                <span>{v.title || "Featured Production Reel"}</span>
               </span>
+              <span className="text-[11px] font-mono text-gray-400">16:9 Full HD</span>
             </div>
+            <div className="relative">
+              {renderPlayer(v)}
+            </div>
+            {v.caption && (
+              <div className="p-3 sm:p-4 bg-gray-900/90 border-t border-gray-800 text-xs text-gray-400">
+                {v.caption}
+              </div>
+            )}
           </div>
         );
       })()}
@@ -221,76 +233,63 @@ export function PlannedVideoShowcase({
         );
       })()}
 
-      {/* CASE 3: 3 OR MORE VIDEOS (Planned Studio Gallery) */}
+      {/* CASE 3: 3 OR MORE VIDEOS (Balanced 3-in-a-row Grid) */}
       {activeVideos.length >= 3 && (
-        <div className="space-y-6">
-          {/* Main Premiere Reel (First Video) */}
-          <div className="rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-[#0F1115] shadow-xl">
-            <div className="p-3 sm:p-4 bg-gray-900 border-b border-gray-800 flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-600 text-white">
-                  Premiere Reel
-                </span>
-                <span className="font-bold text-white text-sm">
-                  {activeVideos[0].title || "Primary Campaign Showcase"}
-                </span>
-              </div>
-              <span className="text-[11px] font-mono text-gray-500">
-                {activeVideos[0].aspectRatio || "16:9"}
-              </span>
-            </div>
-            <div className="relative">
-              {renderPlayer(activeVideos[0])}
-            </div>
-            {activeVideos[0].caption && (
-              <div className="p-3 sm:p-4 bg-gray-900/90 border-t border-gray-800 text-xs text-gray-400">
-                {activeVideos[0].caption}
-              </div>
-            )}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          {activeVideos.map((v, i) => {
+            const isVert = v.aspectRatio === "9:16";
 
-          {/* Secondary Video Grid (Remaining Videos) */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 pt-2">
-              <VideoIcon className="w-3.5 h-3.5 text-primary-500" />
-              <span>Additional Campaign Reels &amp; Deliverables ({activeVideos.length - 1})</span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {activeVideos.slice(1).map((v, i) => {
-                const isVert = v.aspectRatio === "9:16";
-
-                return (
-                  <div
-                    key={i}
-                    className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-[#0F1115] shadow-md flex flex-col justify-between group hover:border-primary-500/50 transition-all"
-                  >
-                    <div className="p-3 bg-gray-900 border-b border-gray-800 flex items-center justify-between text-xs">
-                      <span className="font-bold text-white text-xs flex items-center gap-1.5 truncate">
-                        <span className="w-4 h-4 rounded-full bg-primary-600/40 text-primary-300 text-[10px] flex items-center justify-center font-bold flex-shrink-0">
-                          {i + 2}
-                        </span>
-                        <span className="truncate">{v.title || `Reel 0${i + 2}`}</span>
-                      </span>
-                      <span className="text-[10px] font-mono text-gray-500 flex-shrink-0">
-                        {v.aspectRatio || "16:9"}
-                      </span>
-                    </div>
-
-                    <div className="relative">
-                      {renderPlayer(v, isVert ? "aspect-[9/16]" : "aspect-video")}
-                    </div>
-
-                    {v.caption && (
-                      <div className="p-2.5 bg-gray-900/90 border-t border-gray-800 text-[11px] text-gray-400 text-center leading-relaxed">
-                        {v.caption}
-                      </div>
-                    )}
+            return (
+              <div
+                key={i}
+                className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-[#0F1115] shadow-lg flex flex-col justify-between group hover:border-primary-500/60 transition-all"
+              >
+                {/* Video Header Strip */}
+                <div className="p-3 bg-gray-900 border-b border-gray-800 flex items-center justify-between text-xs gap-2">
+                  <div className="flex items-center gap-1.5 truncate">
+                    <span className="w-5 h-5 rounded-full bg-primary-600/30 text-primary-300 text-[10px] flex items-center justify-center font-bold flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    <span className="font-bold text-white text-xs truncate">
+                      {v.title || `Video 0${i + 1}`}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
-          </div>
+                  <span className="text-[10px] font-mono text-gray-400 px-1.5 py-0.5 rounded bg-black/40 border border-gray-800 flex-shrink-0">
+                    {isVert ? "9:16 Short" : "YouTube (16:9)"}
+                  </span>
+                </div>
+
+                {/* Video Player */}
+                <div className="relative">
+                  {renderPlayer(v, isVert ? "aspect-[9/16]" : "aspect-video")}
+                </div>
+
+                {/* Video Caption & Link */}
+                <div className="p-3.5 bg-gray-900/95 border-t border-gray-800 space-y-2.5">
+                  {v.caption && (
+                    <p className="text-xs text-gray-300 leading-relaxed line-clamp-3">
+                      {v.caption}
+                    </p>
+                  )}
+
+                  <div className="pt-1 flex items-center justify-between gap-2 border-t border-gray-800/60 text-xs">
+                    <span className="text-[11px] font-medium text-gray-400 truncate">
+                      Watch Full HD
+                    </span>
+                    <a
+                      href={v.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-red-600/20 hover:bg-red-600 text-red-300 hover:text-white font-semibold text-[11px] transition-all flex-shrink-0"
+                    >
+                      <span>Open YouTube</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
     </section>

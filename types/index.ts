@@ -88,6 +88,8 @@ export interface ProjectItem {
   videoUrl?: string;
   videoAspect?: "16:9" | "9:16";
   videoCaption?: string;
+  videoSectionTitle?: string;
+  videoSectionSubtitle?: string;
   videos?: VideoItem[];
   campaignSections?: CampaignSection[];
   teamStructure?: TeamStructure;
