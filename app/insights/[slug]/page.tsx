@@ -313,20 +313,6 @@ export default function ArticleDetailPage({ params }: Props) {
         <article className="lg:col-span-8 space-y-8">
           <div className="rounded-2xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 sm:p-12 shadow-inbio space-y-8 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
             
-            {/* Featured Article Graphic */}
-            {art.image && (
-              <div className="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
-                <Image
-                  src={art.image}
-                  alt={imageAlt}
-                  width={1200}
-                  height={675}
-                  priority
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            )}
-
             {/* Planned Video & Media Showcase */}
             {((art.videos && art.videos.length > 0) || art.videoUrl) && (
               <PlannedVideoShowcase

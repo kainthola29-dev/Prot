@@ -10,7 +10,7 @@ interface InsightsFilterProps {
   articles: ArticleItem[];
 }
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 6;
 
 // Helper to parse dates like "Sep 2026", "Oct 2024" for sorting newest first
 const MONTH_MAP: Record<string, number> = {
@@ -91,28 +91,28 @@ export function InsightsFilter({ articles }: InsightsFilterProps) {
         ))}
       </div>
 
-      {/* Articles Grid (Latest 4 per page) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      {/* Articles Grid (3 per row) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {displayedArticles.map((art) => (
           <article
             key={art.id}
-            className="group rounded-3xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-8 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"
+            className="group rounded-3xl bg-white dark:bg-[#212428] border border-gray-100 dark:border-gray-800 p-6 sm:p-7 shadow-inbio dark:shadow-inbio-dark hover:shadow-inbio-hover transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              {/* Thumbnail Area */}
-              <div className="w-full h-52 rounded-2xl overflow-hidden relative mb-6 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-900">
+              {/* Thumbnail Area - Aspect 16:9, Whole image 100% visible */}
+              <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative mb-5 border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-950 flex items-center justify-center">
                 {art.image ? (
                   <Image
                     src={art.image}
                     alt={art.imageAlt || art.title}
-                    width={800}
-                    height={480}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className={`w-full h-full bg-gradient-to-tr ${art.gradient || "from-gray-900 to-black"} p-6 flex flex-col justify-between text-white relative overflow-hidden shadow-inner`}>
+                  <div className={`w-full h-full bg-gradient-to-tr ${art.gradient || "from-gray-900 to-black"} p-5 flex flex-col justify-between text-white relative overflow-hidden shadow-inner`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/40 backdrop-blur-md">
+                      <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md">
                         {art.category}
                       </span>
                       <span className="text-xs font-medium text-gray-200 flex items-center gap-1.5">
@@ -125,26 +125,26 @@ export function InsightsFilter({ articles }: InsightsFilterProps) {
                     </div>
                   </div>
                 )}
-                <div className="absolute top-3 left-3 z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20">
-                    {art.category}
-                  </span>
-                </div>
-                <div className="absolute top-3 right-3 z-10">
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-black/60 text-gray-200 backdrop-blur-md flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    <span>{art.readTime}</span>
-                  </span>
-                </div>
               </div>
 
-              <h2 className="text-2xl font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors leading-snug mb-3">
+              {/* Category & Read Time Tags (Cleanly placed below image so nothing covers the graphic) */}
+              <div className="flex items-center justify-between gap-2 mb-3">
+                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-primary-50 dark:bg-primary-950/60 text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-800/60">
+                  {art.category}
+                </span>
+                <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5 text-primary-500" />
+                  <span>{art.readTime}</span>
+                </span>
+              </div>
+
+              <h2 className="text-lg sm:text-xl font-bold font-heading text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors leading-snug mb-3 line-clamp-2">
                 <Link href={`/insights/${art.slug}`}>
                   {art.title}
                 </Link>
               </h2>
 
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 line-clamp-3">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 line-clamp-3">
                 {art.excerpt}
               </p>
             </div>
