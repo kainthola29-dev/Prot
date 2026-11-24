@@ -45,7 +45,7 @@ export function generateMetadata({ params }: Props): Metadata {
     : `https://deepanshu.kainthola.com${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
   const imageAlt = art.imageAlt || art.title;
 
-  const pageTitle = art.category === "Production Gear & Studio Lab"
+  const pageTitle = art.title.length > 55
     ? `${art.title} | Deepanshu Kainthola`
     : `${art.title} — Strategic Insights | Deepanshu Kainthola`;
 
@@ -205,6 +205,42 @@ export default function ArticleDetailPage({ params }: Props) {
     ],
   };
 
+  const faqSection = art.sections?.find(
+    (s: any) =>
+      s.id?.toLowerCase().includes("faq") ||
+      s.id?.toLowerCase().includes("questions") ||
+      s.heading?.toLowerCase().includes("questions")
+  );
+
+  const faqEntities = faqSection
+    ? faqSection.paragraphs
+        ?.filter((p: string) => p.includes("**Q:"))
+        .map((p: string) => {
+          const match = p.match(/\*\*Q:\s*([^*?]+\??)\*\*\s*(.*)/);
+          if (match) {
+            return {
+              "@type": "Question",
+              name: match[1].trim(),
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: match[2].trim(),
+              },
+            };
+          }
+          return null;
+        })
+        .filter(Boolean)
+    : [];
+
+  const faqSchema =
+    faqEntities && faqEntities.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqEntities,
+        }
+      : null;
+
   // Generate TOC from sections or fallback
   const toc = art.sections?.map((s: any, idx: number) => ({
     id: s.id || `section-${idx + 1}`,
@@ -220,6 +256,7 @@ export default function ArticleDetailPage({ params }: Props) {
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       {reviewSchema && <JsonLd data={reviewSchema} />}
+      {faqSchema && <JsonLd data={faqSchema} />}
 
       {/* Back Link */}
       <div>
