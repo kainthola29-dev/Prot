@@ -72,6 +72,37 @@ export interface TeamStructure {
   breakdown: { role: string; count: number; description?: string }[];
 }
 
+export interface ArticleByline {
+  title: string;
+  url: string;
+  category?: string;
+  date?: string;
+  description?: string;
+}
+
+export interface SocialPostItem {
+  url: string;
+  title: string;
+  caption?: string;
+  date?: string;
+}
+
+export interface SocialCampaign {
+  id?: string;
+  title: string;
+  badge?: string;
+  description: string;
+  posts: SocialPostItem[];
+}
+
+export interface PhotoItem {
+  src: string;
+  title: string;
+  caption: string;
+  aspectRatio?: string;
+  tag?: string;
+}
+
 export interface ProjectItem {
   id: string;
   slug: string;
@@ -95,6 +126,10 @@ export interface ProjectItem {
   campaignSections?: CampaignSection[];
   teamStructure?: TeamStructure;
   mediaPlaceholders?: ProjectMediaPlaceholder[];
+  bylines?: ArticleByline[];
+  printArticleCount?: number;
+  socialCampaigns?: SocialCampaign[];
+  photography?: PhotoItem[];
   overview?: {
     context?: string;
     objective?: string;

@@ -541,43 +541,301 @@
     {
       "id": "tatsat-impact-documentaries",
       "slug": "tatsat-impact-documentaries",
-      "title": "Tatsat Chronicle Social & Corporate CSR Media",
-      "category": "Social Impact & CSR",
+      "title": "Tatsat Chronicle Social Sector Media, Print Journalism & Documentaries",
+      "category": "Social Impact & Journalism",
       "organization": "Tatsat Chronicle",
       "period": "Mar 2021 – Oct 2022 · 1 yr 8 mos",
-      "description": "On-ground documentary reporting, environmental features, and social sector storytelling for India's leading CSR and development magazine.",
-      "gradient": "from-green-900 via-slate-900 to-neutral-950",
-      "image": "/images/projects/tatsat.svg",
-      "badge": "Social Journalism",
+      "description": "Launched the official social media channels for Tatsat Chronicle from scratch, authored 45+ investigative articles in the monthly print magazine, conducted high-profile diplomatic & CEO interviews, recorded, edited & uploaded 10 video documentaries, and captured published field photography.",
+      "gradient": "from-emerald-950 via-slate-900 to-neutral-950",
+      "image": "/images/projects/tatsat-chronicle.jpg",
+      "imageAlt": "Tatsat Chronicle national print magazine held by readers and diplomats, multimedia journalism and documentary production by Deepanshu Kainthola",
+      "badge": "Social Media Launch & 45 Print Articles",
       "stats": [
         {
-          "label": "Role",
-          "value": "Digital Producer"
+          "label": "Direct Role",
+          "value": "Digital Producer & Content Lead"
         },
         {
-          "label": "Focus",
-          "value": "CSR & Ecology"
+          "label": "Print Bylines",
+          "value": "45+ Articles in Print"
         },
         {
-          "label": "Medium",
-          "value": "Print & Video"
+          "label": "Documentaries",
+          "value": "10 Video Productions"
         },
         {
-          "label": "Reach",
-          "value": "National NGO/CSR"
+          "label": "Social Media",
+          "value": "Launched 100% From Scratch"
+        }
+      ],
+      "printArticleCount": 45,
+      "bylines": [
+        {
+          "title": "Adani Group Spends Rs 16 Crores in CSR During FY 2020-21",
+          "url": "https://tatsatchronicle.com/adani-group-spends-rs-16-crores-in-csr-during-fy-2020-21/",
+          "category": "Corporate CSR Audit",
+          "description": "Comprehensive investigative audit analyzing Adani Group's statutory corporate social responsibility allocations across healthcare, education, and rural development in FY 2020-21."
+        },
+        {
+          "title": "KVIC Files Applications in 40 Countries to Protect Brand Khadi",
+          "url": "https://tatsatchronicle.com/kvic-files-applications-in-40-countries-to-protect-brand-khadi/",
+          "category": "Global Intellectual Property",
+          "description": "Exclusive report on Khadi and Village Industries Commission filing global trademark applications to prevent deceptive commercial exploitation of India's heritage fabric."
+        },
+        {
+          "title": "Nominations for Padma Awards Open Till Sept 15",
+          "url": "https://tatsatchronicle.com/nominations-for-padma-awards-open-till-sept-15/",
+          "category": "National Honors & Civics",
+          "description": "In-depth policy briefing on the democratized online nomination process for Padma Vibhushan, Padma Bhushan, and Padma Shri honoring unsung grassroots heroes."
+        },
+        {
+          "title": "Forest Produce Worth Over ₹800 Crore Procured This FY: Tribal Affairs Minister",
+          "url": "https://tatsatchronicle.com/forest-produce-worth-over-%e2%82%b9-800-crore-procured-this-fy-tribal-affairs-minister/",
+          "category": "Tribal Economy & Livelihoods",
+          "description": "Ground report tracking government MSP procurement of Minor Forest Produce (MFP) providing vital livelihood security to indigenous tribal forest gatherers."
+        },
+        {
+          "title": "NTPC to Set Up Solar Park at Rann of Kutch",
+          "url": "https://tatsatchronicle.com/ntpc-to-set-up-solar-park-at-rann-of-kutch/",
+          "category": "Renewable Energy & ESG",
+          "description": "Analysis of India's largest public power utility constructing a massive 4.75 GW renewable energy solar park in the Khavda region of Gujarat."
+        },
+        {
+          "title": "Rejuvenation Projects Approved for 6 Polluted Rivers in Uttarakhand",
+          "url": "https://tatsatchronicle.com/rejuvenation-projects-approved-for-6-polluted-rivers-in-uttarakhand/",
+          "category": "River Ecology & Conservation",
+          "description": "Investigative coverage of Central Pollution Control Board (CPCB) river rejuvenation blueprints to treat domestic sewage and restore fragile Himalayan riverbeds."
+        },
+        {
+          "title": "PMAY-U Launches Short Film Contest on Housing Transformation",
+          "url": "https://tatsatchronicle.com/pmay-u-launches-short-film-contest/",
+          "category": "Urban Development & Media",
+          "description": "National coverage of the Ministry of Housing and Urban Affairs inviting visual storytellers to document dignifying slum-redevelopment and pucca housing stories."
+        },
+        {
+          "title": "Infosys Tops CRISIL's Ranking as the Most ESG-Focused Company",
+          "url": "https://tatsatchronicle.com/infosys-tops-crisils-ranking-as-the-most-esg-focused-company/",
+          "category": "ESG Benchmarking",
+          "description": "Detailed breakdown of CRISIL's groundbreaking ESG assessment evaluating 225 companies, highlighting Infosys's carbon-neutral operations and board governance."
+        },
+        {
+          "title": "21,349 Companies Spent Rs 21,231 Crore on CSR in 2019-20",
+          "url": "https://tatsatchronicle.com/21349-companies-spent-rs-21231-crore-spent-on-csr-in-2019-20/",
+          "category": "Macro CSR Analytics",
+          "description": "Authoritative macro-statistical study of India's corporate CSR register under Section 135 of the Companies Act, mapping fund flows across states and thematic causes."
+        },
+        {
+          "title": "SBI Spends Over Rs 144 Cr on CSR in 2020-21",
+          "url": "https://tatsatchronicle.com/sbi-spends-over-rs-144-cr-on-csr-in-2020-21/",
+          "category": "Banking & Public Sector CSR",
+          "description": "Scrutiny of State Bank of India's public welfare expenditures targeting pandemic relief, oxygen plant setups, rural healthcare, and skill development."
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=iF_v3U0aPHo",
+          "title": "Official Launch Teaser | Tatsat Chronicle Magazine",
+          "caption": "Recorded, cut, sound-designed, and launched this dynamic digital teaser announcing the premiere print and digital editions of Tatsat Chronicle to India's social sector.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=WyJM9I0pJFQ",
+          "title": "H.E. Freddy Svane (Ambassador of Denmark to India) on Climate Change & SDGs",
+          "caption": "Filmed, directed, and edited this exclusive diplomatic interview with Denmark's Ambassador Freddy Svane on the Indo-Danish Green Strategic Partnership and renewable energy.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://youtu.be/H5PU746RkIw?si=p4DdxRtleq9J6QbG",
+          "title": "H.E. Alex Ellis, British High Commissioner to India on India's Net-Zero Goal",
+          "caption": "High-level bilateral dialogue with UK High Commissioner Alex Ellis regarding COP26 decarbonization, climate finance, and India's 2070 Net-Zero trajectory.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=nBPKnfW82Ps",
+          "title": "Sohanjeet Randhawa, Volvo Group on Sustainable Mobility Solutions",
+          "caption": "Executive corporate interview on the transition to electric heavy commercial transport, alternative fuels, and decarbonizing supply chain logistics.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=r5LpzDiS7us",
+          "title": "Former IPS & Social Activist Amod Kanth on Juvenile Justice Act & Prayas",
+          "caption": "In-depth discourse with legendary activist Amod Kanth examining juvenile rehabilitation, legal protections for street children, and reforming institutional childcare.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=bQ5qvfIs3fk",
+          "title": "Peter Rimmele, Konrad-Adenauer-Stiftung on SDGs & Pandemic Resilience",
+          "caption": "International policy interview with KAS India Resident Representative exploring multilateral cooperation, grassroots pandemic recovery, and sustainable growth.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=MiJkZiMZm0U",
+          "title": "Friendship Hospital in Bangladesh Wins RIBA World's Best New Building Award",
+          "caption": "Architectural documentary feature analyzing Kashef Chowdhury's climate-resilient water-harvesting healthcare facility built in cyclonic floodplains.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://youtu.be/eKZydOttXXw?si=O_5Kce-fjTzzDZon",
+          "title": "Nitin Gupta, CEO, Attero Recycling on India's EPR Regime & E-Waste",
+          "caption": "Circular economy report investigating lithium-ion battery extraction, Extended Producer Responsibility (EPR) policy enforcement, and urban mining.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Rn91Ae40EEQ",
+          "title": "Workshop on Birds for Children with Multiple Disabilities | Saksham",
+          "caption": "On-location field documentary documenting specialized sensory bird identification workshops conducted for visually impaired and multi-disabled schoolchildren.",
+          "aspectRatio": "16:9"
+        },
+        {
+          "url": "https://youtu.be/HngfMrnMx3g?si=XMOMXNcV42ziItRq",
+          "title": "Ashay Bhave, Founder of Thaely: Plastic Bags Turned Into Recycled Sneakers",
+          "caption": "Youth sustainability entrepreneur profile showcasing how discarded shopping bags and plastic bottles are upcycled into ethically certified footwear.",
+          "aspectRatio": "16:9"
+        }
+      ],
+      "socialCampaigns": [
+        {
+          "title": "World Water Week Campaign: Freshwater Scarcity & Conservation",
+          "badge": "World Water Week",
+          "description": "Deepanshu launched this multi-part editorial social campaign examining India's groundwater crisis, rainwater harvesting models, and community lake rejuvenation.",
+          "posts": [
+            {
+              "url": "https://www.instagram.com/tatsatchronicle/p/CS_PZZYBaXr/",
+              "title": "World Water Week 01: The Global Freshwater Deficit & India's Groundwater Stress"
+            },
+            {
+              "url": "https://www.instagram.com/tatsatchronicle/p/CS_yTAwpPab/",
+              "title": "World Water Week 02: Traditional Check Dams & Rainwater Harvesting Frameworks"
+            },
+            {
+              "url": "https://www.instagram.com/tatsatchronicle/p/CTB2SdIMnpT/",
+              "title": "World Water Week 03: Corporate CSR Interventions in Watershed Management"
+            },
+            {
+              "url": "https://www.instagram.com/tatsatchronicle/p/CTEMoNRDmJn/",
+              "title": "World Water Week 04: SDG 6 Clean Water & Sanitation Milestones"
+            }
+          ]
+        },
+        {
+          "title": "Bharat Nutrition Week: Malnutrition & Grassroots Food Security",
+          "badge": "Bharat Nutrition Week",
+          "description": "Multi-graphic social series highlighting maternal nutrition, combating childhood stunting, and promoting indigenous grain cultivation.",
+          "posts": [
+            {
+              "url": "https://www.instagram.com/tatsatchronicle/p/CTRfnv2o1FO/",
+              "title": "Bharat Nutrition Week 01: Bridging Nutritional Inequities in Rural Districts"
+            },
+            {
+              "url": "https://www.instagram.com/p/CTTthuzo40v/",
+              "title": "Bharat Nutrition Week 02: Indigenous Superfoods, Millets & Community Poshan"
+            },
+            {
+              "url": "https://www.instagram.com/p/CTWUeO4MuS6/",
+              "title": "Bharat Nutrition Week 03: Fortified Mid-Day Meals & School Child Health"
+            },
+            {
+              "url": "https://www.instagram.com/p/CTY5n0EnIKw/",
+              "title": "Bharat Nutrition Week 04: Community Kitchens & Localized Dietary Interventions"
+            }
+          ]
+        },
+        {
+          "title": "Daily & Breaking CSR News Updates: Social Governance Alerts",
+          "badge": "Daily CSR News",
+          "description": "Fast-turnaround social news updates keeping sustainability officers and development leaders informed on policy shifts and corporate philanthropy.",
+          "posts": [
+            {
+              "url": "https://www.instagram.com/p/CS_MXqgDvzf/",
+              "title": "CSR Update: Statutory Spending Disclosures & Ministry Mandates"
+            },
+            {
+              "url": "https://www.instagram.com/p/CSRLsUkhFM4/",
+              "title": "ESG Policy Alert: Environmental Compliance & Green Bond Allocations"
+            },
+            {
+              "url": "https://www.instagram.com/p/CSBaoJND8-z/",
+              "title": "Grassroots Dispatch: Clean Energy Adoption in Off-Grid Hamlets"
+            },
+            {
+              "url": "https://www.instagram.com/p/CR5o90VHqwe/",
+              "title": "Legislative Alert: NGO Regulatory Norms & Foreign Contribution Updates"
+            }
+          ]
+        },
+        {
+          "title": "International Observance & Awareness Creatives: Designed by Deepanshu",
+          "badge": "Awareness Days",
+          "description": "Creative visual campaigns conceptualized and designed by Deepanshu to spark national conversations on gender equity, human rights, and community media.",
+          "posts": [
+            {
+              "url": "https://www.instagram.com/p/Ca1e383NwZV/",
+              "title": "International Women's Day: Grassroots Changemakers Breaking Bias in CSR"
+            },
+            {
+              "url": "https://www.instagram.com/p/CU4JhTpMGHm/",
+              "title": "International Day of the Girl Child: Digital Literacy & Educational Equality"
+            },
+            {
+              "url": "https://www.instagram.com/p/CZ6sbZSJPYH/",
+              "title": "World Radio Day: Celebrating Community Radio as India's Democratic Voice"
+            },
+            {
+              "url": "https://www.instagram.com/p/CXTOzGkufex/",
+              "title": "International Human Rights Day: Social Dignity & Universal Justice"
+            }
+          ]
+        }
+      ],
+      "photography": [
+        {
+          "src": "/images/projects/tatsat-chronicle-executive-reader.jpg",
+          "title": "Corporate Leadership Reading Tatsat Chronicle",
+          "caption": "Senior corporate executive reviewing Tatsat Chronicle Issue 1 cover feature 'Trials & Tribulations: Clinical Trials Industry & Big Pharma' at executive office desk in New Delhi.",
+          "tag": "Print Magazine Readership"
+        },
+        {
+          "src": "/images/projects/tatsat-chronicle-reader-portrait.jpg",
+          "title": "Print Magazine Circulation & Patron Portrait",
+          "caption": "Reader and social sector patron holding the inaugural print edition of Tatsat Chronicle, highlighting comprehensive coverage of social development in India.",
+          "tag": "Magazine Circulation"
+        },
+        {
+          "src": "/images/projects/tatsat-chronicle-dignitary-office.jpg",
+          "title": "Senior Dignitary Reviewing Tatsat Chronicle",
+          "caption": "Prominent legal and public sector dignitary reviewing the print edition of Tatsat Chronicle in his chamber alongside the Indian national flag.",
+          "tag": "Public Sector Readership"
+        },
+        {
+          "src": "/images/projects/tatsat-chronicle-konrad-adenauer-stiftung.jpg",
+          "title": "Konrad-Adenauer-Stiftung Country Director with Magazine",
+          "caption": "Dr. Adrian Haack, Country Representative of German political foundation Konrad-Adenauer-Stiftung (KAS) India, holding the Tatsat Chronicle print edition.",
+          "tag": "Diplomatic Readership"
+        },
+        {
+          "src": "/images/projects/tatsat-chronicle-disinformation-edition.jpg",
+          "title": "Special Edition: Disinformation Tsunami",
+          "caption": "Reader studying Tatsat Chronicle's special investigative print volume exploring the infodemic, digital misinformation, and social cohesion.",
+          "tag": "Special Investigative Issue"
+        },
+        {
+          "src": "/images/projects/tatsat-chronicle-saksham-workshop-manuals.jpg",
+          "title": "Saksham Disability Assistive Learning Study Manuals",
+          "caption": "On-ground documentation of specialized 'Limiting Limitations' computer training manuals designed for visually impaired and multi-disabled students at Saksham.",
+          "tag": "Field CSR Documentation"
+        },
+        {
+          "src": "/images/projects/tatsat-chronicle-saksham-visually-impaired-students.jpg",
+          "title": "Right to Write: Typing Competition for Visually Impaired Students",
+          "caption": "Award ceremony of the 'Right to Write' typing competition for visually impaired children organized by Saksham with medals, assistive software, and educators.",
+          "tag": "Grassroots Workshop Documentation"
         }
       ],
       "mediaPlaceholders": [
         {
           "type": "video",
-          "title": "Grassroots Water Conservation & Lake Rejuvenation Mini-Doc",
-          "caption": "16:9 Video Slot — Embed ground-level environmental reporting documentary or MP4.",
-          "aspectRatio": "16:9"
-        },
-        {
-          "type": "video",
-          "title": "Corporate CSR Leadership Roundtable & ESG Dialogue",
-          "caption": "16:9 Video Slot — Embed sustainability leader discussions and corporate panels.",
+          "title": "Official Launch Teaser | Tatsat Chronicle Magazine",
+          "caption": "16:9 Video Deliverable — Recorded and edited by Deepanshu Kainthola.",
           "aspectRatio": "16:9"
         },
         {
@@ -585,35 +843,34 @@
           "title": "Field Reporting Stills: Capturing Rural Changemakers",
           "caption": "Production photographs of ground-level interviews, village workshops, and camera rigs.",
           "aspectRatio": "16:9"
-        },
-        {
-          "type": "image",
-          "title": "Magazine Editorial Spread vs. Digital Video Formats",
-          "caption": "Visual showing how print investigative reporting was repurposed into interactive digital carousels.",
-          "aspectRatio": "16:9"
         }
       ],
       "overview": {
-        "context": "Tatsat Chronicle covers India's social sector, ESG investments, and corporate CSR projects. As a pioneer magazine in this space, it needed engaging digital video content to accompany its in-depth print editions and reach online audiences on LinkedIn and Twitter/X.",
-        "objective": "Produce authentic field video features, cover sustainability roundtables, and build a consistent multimedia presence that engages corporate CSR heads and NGO leaders.",
-        "role": "Digital Content Producer — supervised digital content creation, directed on-location field video shoots, interviewed grassroots leaders, and coordinated digital media marketing.",
+        "context": "Tatsat Chronicle was founded as India's premier print and digital publication dedicated to corporate social responsibility (CSR), environmental sustainability (ESG), social justice, and grassroots governance. Launching both a physical magazine and an omnichannel digital presence required building social media channels from scratch, conducting authoritative investigative journalism, and producing broadcast-grade documentary features.",
+        "objective": "Launch Tatsat Chronicle's official social media pages, establish high-trust investigative reporting on corporate CSR spending, interview international diplomats and corporate executives, produce engaging video documentaries, and capture published on-location photography.",
+        "role": "Digital Content Producer & Content Lead — launched Tatsat Chronicle's official social media handles from ground zero, authored 45+ articles in the print magazine, reported 10 major digital investigative stories on tatsatchronicle.com, recorded, edited & uploaded 10 video documentaries on YouTube, and photographed print/web publication features.",
         "strategy": [
-          "Traveled directly to project sites to show real on-ground challenges rather than accepting staged corporate promotional handouts.",
-          "Repurposed 4,000-word investigative magazine articles into punchy, 2-minute video briefs with key data callouts.",
-          "Connected corporate ESG goals with measurable ground outcomes: liters of water saved, saplings nurtured, and rural livelihoods created."
+          "Launched Tatsat Chronicle's social media platforms from scratch with cohesive branding, dynamic video snippets, and data-driven infographics.",
+          "Authored over 45 investigative articles and policy critiques published in national print editions, distributed to corporate CSR heads, government ministries, and international NGOs.",
+          "Conducted high-profile diplomatic video interviews with European ambassadors (Denmark, UK) and international foundations (Konrad-Adenauer-Stiftung).",
+          "Structured themed social campaigns around global and national observances, including World Water Week, Bharat Nutrition Week, and International Human Rights Day.",
+          "Captured published documentary photography illustrating magazine readership across diplomatic missions and documenting grassroots disability interventions."
         ],
         "execution": [
-          "Operated cameras and directional shotgun mics in demanding field conditions including village farm fields and riverbanks.",
-          "Assembled narrative documentaries in Adobe Premiere Pro, combining field b-roll, expert soundbites, and animated data infographics.",
-          "Managed weekly social media publishing schedules, crafting informative copy and engaging relevant development stakeholders."
+          "Handled end-to-end production of 10 video documentaries: multi-camera filming, directional shotgun audio, Premiere Pro editing, color grading, and YouTube SEO optimization.",
+          "Conducted rigorous data auditing of statutory CSR disclosures, tracking expenditures of conglomerates like Adani, SBI, Infosys, and NTPC.",
+          "Designed striking graphic creatives for social observance days (Women's Day, Girl Child Day, World Radio Day) that achieved high organic engagement.",
+          "Documented grassroots development on the ground, photographing assistive education initiatives for visually impaired youth at Saksham."
         ],
         "results": [
-          "Produced multiple video series on water management, rural education, and healthcare that earned widespread acclaim across the CSR community.",
-          "Grew Tatsat Chronicle's digital readership among foundation directors, sustainability officers, and academic researchers.",
-          "Strengthened the magazine's authority as the definitive multimedia bridge between corporate funders and grassroots implementers."
+          "Launched and scaled Tatsat Chronicle's social media community into a recognized hub for CSR and sustainability discussions in India.",
+          "Published 45+ print articles across monthly editions, establishing Deepanshu Kainthola as an authoritative byline in social sector journalism.",
+          "Delivered 10 broadcast-quality video interviews and features with ambassadors, corporate leaders, and social changemakers.",
+          "Achieved widespread readership across corporate boardrooms, foreign embassies, and leading Indian NGOs."
         ],
         "lessons": [
-          "The best social sector stories focus on the perseverance of local community members rather than just the corporate funding logo."
+          "Rigorous corporate CSR data analysis and humanized field storytelling together create the most compelling, trusted journalism.",
+          "Social media launches for serious B2B and policy magazines require consistent visual polish, rapid news cycle alignment, and authentic on-ground multimedia."
         ]
       }
     },

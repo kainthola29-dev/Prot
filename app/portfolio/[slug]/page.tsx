@@ -25,6 +25,7 @@ import { Metadata } from "next";
 import { formatVideoEmbedUrl } from "@/lib/utils";
 import { PlannedVideoShowcase } from "@/components/PlannedVideoShowcase";
 import { CampaignSectionsShowcase } from "@/components/CampaignSectionsShowcase";
+import { TatsatChronicleShowcase } from "@/components/TatsatChronicleShowcase";
 
 export const dynamicParams = true;
 
@@ -44,6 +45,15 @@ export function generateMetadata({ params }: Props): Metadata {
   const project = content.projects.find((p: any) => p.slug === params.slug);
   if (!project) return { title: "Project Not Found" };
 
+  const isTatsat = params.slug === "tatsat-impact-documentaries";
+  const metaTitle = isTatsat
+    ? "Tatsat Chronicle by Deepanshu Kainthola — Social Media Launch, 45 Print Articles & Documentaries"
+    : `${project.title} — Case Study & Project Overview`;
+
+  const metaDesc = isTatsat
+    ? "Deepanshu Kainthola launched the official social media channels for Tatsat Chronicle from scratch, authored 45+ print magazine articles, interviewed European diplomats, and directed 10 video documentaries."
+    : project.description;
+
   const rawImage = project.image || "/images/deepanshu.webp";
   const imageUrl = rawImage.startsWith("http") 
     ? rawImage 
@@ -51,14 +61,26 @@ export function generateMetadata({ params }: Props): Metadata {
   const imageAlt = project.imageAlt || `${project.title} — Case Study & Project Overview`;
 
   return {
-    title: `${project.title} — Case Study & Project Overview`,
-    description: project.description,
+    title: metaTitle,
+    description: metaDesc,
+    keywords: isTatsat ? [
+      "Tatsat Chronicle",
+      "Deepanshu Kainthola",
+      "Tatsat Chronicle Deepanshu Kainthola",
+      "Deepanshu Kainthola Tatsat Chronicle",
+      "Tatsat Chronicle social media launch",
+      "Tatsat Chronicle print magazine",
+      "CSR Journalism India",
+      "ESG Documentaries India",
+      "Freddy Svane Tatsat Chronicle",
+      "Alex Ellis Tatsat Chronicle"
+    ] : undefined,
     alternates: {
       canonical: `/portfolio/${project.slug}`,
     },
     openGraph: {
-      title: project.title,
-      description: project.description,
+      title: metaTitle,
+      description: metaDesc,
       type: "website",
       url: `https://deepanshu.kainthola.com/portfolio/${project.slug}`,
       images: [
@@ -72,8 +94,8 @@ export function generateMetadata({ params }: Props): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: project.title,
-      description: project.description,
+      title: metaTitle,
+      description: metaDesc,
       images: [
         {
           url: imageUrl,
@@ -115,6 +137,36 @@ export default function ProjectDetailPage({ params }: Props) {
       "name": "Deepanshu Kainthola",
       "url": "https://deepanshu.kainthola.com"
     }
+  } : null;
+
+  const tatsatSchema = project.slug === "tatsat-impact-documentaries" ? {
+    "@context": "https://schema.org",
+    "@type": "Periodical",
+    "name": "Tatsat Chronicle",
+    "headline": "Tatsat Chronicle Social Sector Media, Print Journalism & Documentaries by Deepanshu Kainthola",
+    "url": "https://deepanshu.kainthola.com/portfolio/tatsat-impact-documentaries",
+    "description": project.description,
+    "author": {
+      "@type": "Person",
+      "name": "Deepanshu Kainthola",
+      "url": "https://deepanshu.kainthola.com",
+      "jobTitle": "Digital Content Producer & Content Lead"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tatsat Chronicle",
+      "url": "https://tatsatchronicle.com"
+    },
+    "keywords": [
+      "Tatsat Chronicle",
+      "Deepanshu Kainthola",
+      "Tatsat Chronicle Deepanshu Kainthola",
+      "Deepanshu Kainthola Tatsat Chronicle",
+      "Tatsat Chronicle Social Media Launch",
+      "Tatsat Chronicle Print Magazine",
+      "CSR Journalism India",
+      "ESG Documentary Reporting"
+    ]
   } : null;
 
   const overview = project.overview || {
@@ -163,6 +215,7 @@ export default function ProjectDetailPage({ params }: Props) {
     <div className="py-10 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <JsonLd data={breadcrumbSchema} />
       {imageSchema && <JsonLd data={imageSchema} />}
+      {tatsatSchema && <JsonLd data={tatsatSchema} />}
 
       {/* Back Link */}
       <div>
@@ -238,8 +291,16 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       )}
 
-      {/* Campaign Sections or Planned Media Showcase */}
-      {project.campaignSections && project.campaignSections.length > 0 ? (
+      {/* Specialized Tatsat Showcase or Campaign Sections or Planned Media Showcase */}
+      {project.slug === "tatsat-impact-documentaries" && project.videos && project.bylines ? (
+        <TatsatChronicleShowcase
+          videos={project.videos}
+          bylines={project.bylines}
+          printArticleCount={project.printArticleCount || 45}
+          socialCampaigns={project.socialCampaigns || []}
+          photography={project.photography || []}
+        />
+      ) : project.campaignSections && project.campaignSections.length > 0 ? (
         <CampaignSectionsShowcase
           sections={project.campaignSections}
           teamStructure={project.teamStructure}
