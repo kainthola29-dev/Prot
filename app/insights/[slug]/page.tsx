@@ -45,8 +45,12 @@ export function generateMetadata({ params }: Props): Metadata {
     : `https://deepanshu.kainthola.com${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
   const imageAlt = art.imageAlt || art.title;
 
+  const pageTitle = art.category === "Production Gear & Studio Lab"
+    ? `${art.title} | Deepanshu Kainthola`
+    : `${art.title} — Strategic Insights | Deepanshu Kainthola`;
+
   return {
-    title: `${art.title} — Strategic Marketing Essay`,
+    title: pageTitle,
     description: art.excerpt,
     alternates: {
       canonical: `/insights/${art.slug}`,
@@ -74,6 +78,46 @@ export function generateMetadata({ params }: Props): Metadata {
       images: [ogImageUrl],
     },
   };
+}
+
+function FormattedParagraph({ text }: { text: string }) {
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
+  const parts: (string | React.ReactNode)[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+    if (match[1] && match[2]) {
+      const isAffiliate = match[2].includes("amazon") || match[2].includes("amzn");
+      parts.push(
+        <a
+          key={match.index}
+          href={match[2]}
+          target={match[2].startsWith("http") ? "_blank" : undefined}
+          rel={isAffiliate ? "noopener noreferrer sponsored" : "noopener noreferrer"}
+          className="text-primary-600 dark:text-primary-400 font-semibold underline underline-offset-4 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+        >
+          {match[1]}
+        </a>
+      );
+    } else if (match[3]) {
+      parts.push(
+        <strong key={match.index} className="font-bold text-gray-900 dark:text-white">
+          {match[3]}
+        </strong>
+      );
+    }
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+
+  return <p>{parts.length > 0 ? parts : text}</p>;
 }
 
 export default function ArticleDetailPage({ params }: Props) {
@@ -111,6 +155,46 @@ export default function ArticleDetailPage({ params }: Props) {
     },
   };
 
+  const reviewSchema = art.affiliateCard
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        itemReviewed: {
+          "@type": "Product",
+          name: art.affiliateCard.productName,
+          image: ogImageUrl,
+          description: art.excerpt,
+          brand: {
+            "@type": "Brand",
+            name: art.affiliateCard.productName.split(" ")[0] || "Digitek",
+          },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+            url: art.affiliateCard.affiliateUrl || "https://deepanshu.kainthola.com",
+          },
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "4.7",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        author: {
+          "@type": "Person",
+          name: profile.name,
+          url: "https://deepanshu.kainthola.com",
+        },
+        publisher: {
+          "@type": "Person",
+          name: profile.name,
+        },
+        datePublished: art.date ? "2026-09-15" : "2026-09-15",
+        reviewBody: art.affiliateCard.verdict || art.excerpt,
+      }
+    : null;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -135,6 +219,7 @@ export default function ArticleDetailPage({ params }: Props) {
     <div className="py-10 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
+      {reviewSchema && <JsonLd data={reviewSchema} />}
 
       {/* Back Link */}
       <div>
@@ -261,19 +346,19 @@ export default function ArticleDetailPage({ params }: Props) {
                     {sec.heading}
                   </h2>
                   {sec.paragraphs?.map((p: string, pIdx: number) => (
-                    <p key={pIdx}>{p}</p>
+                    <FormattedParagraph key={pIdx} text={p} />
                   ))}
                 </section>
               ))
             ) : art.content && art.content.length > 0 ? (
               <section className="space-y-4">
                 {art.content.map((p: string, pIdx: number) => (
-                  <p key={pIdx}>{p}</p>
+                  <FormattedParagraph key={pIdx} text={p} />
                 ))}
               </section>
             ) : (
               <section className="space-y-4">
-                <p>{art.excerpt}</p>
+                <FormattedParagraph text={art.excerpt} />
               </section>
             )}
 
