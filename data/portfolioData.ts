@@ -2079,7 +2079,7 @@ export const articlesData: ArticleItem[] = [
     "category": "Production Gear & Studio Lab",
     "readTime": "8 min read",
     "date": "May 2024",
-    "excerpt": "An honest, hands-on comparison of the Sony a6300 vs a6000 by video producer Deepanshu Kainthola. Head-to-head tests on 4K video, mic inputs, autofocus, overheating, and whether the a6000 is still worth ₹28,329.",
+    "excerpt": "An honest, hands-on comparison of the Sony a6300 vs a6000 by video producer Deepanshu Kainthola. Head-to-head tests on 4K video, mic inputs, autofocus, overheating, and whether the a6000 is still worth buying.",
     "gradient": "from-rose-950 via-slate-900 to-neutral-950",
     "image": "/images/insights/sony-a6300-vs-a6000-field-review.webp",
     "imageAlt": "Sony a6300 vs a6000 field review – side by side camera comparison, 4K video test and budget filmmaking guide by Deepanshu Kainthola.",
@@ -2111,7 +2111,7 @@ export const articlesData: ArticleItem[] = [
       },
       {
         "id": "who-should-buy-which",
-        "label": "7. Buying Guide: Is the a6000 Still Worth ₹28,329?"
+        "label": "7. Buying Guide: Is the a6000 Still Worth Buying?"
       },
       {
         "id": "frequently-asked-questions",
@@ -2131,7 +2131,7 @@ export const articlesData: ArticleItem[] = [
           "**• Picture Profiles**: a6300 offers **S-Log2, S-Log3, and Cine gamma curves** for color grading. The a6000 only has standard photo Creative Styles.",
           "**• High Frame Rate (Slow Motion)**: a6300 records **1080p at 120fps** for buttery smooth 5x slow motion. The a6000 tops out at 60fps (2.5x slow motion).",
           "**• Body Build**: a6300 features a **magnesium alloy chassis with dust and moisture sealing**. The a6000 is made of lightweight composite plastic with no weather sealing.",
-          "**• Price & Value**: Right now, the [Sony a6000 is available on Amazon India for around INR 28,329](https://link.amazon/B0cr5nlRK), making it one of the absolute cheapest ways to get a 24-megapixel interchangeable lens mirrorless camera."
+          "**• Price & Value**: In the pre-owned and refurbished market, the Sony a6000 typically trades between ₹25,000 and ₹28,000, making it one of the absolute cheapest ways to get a 24-megapixel interchangeable lens mirrorless camera."
         ]
       },
       {
@@ -2187,10 +2187,10 @@ export const articlesData: ArticleItem[] = [
       },
       {
         "id": "who-should-buy-which",
-        "heading": "Buying Guide: Is the a6000 Still Worth ₹28,329 in 2026?",
+        "heading": "Buying Guide: Is the a6000 Still Worth Buying in 2026?",
         "paragraphs": [
-          "With both cameras widely available in new and refurbished markets, which one makes sense for your hard-earned money?",
-          "**Buy the Sony a6000 if**: You are a student, hobbyist, or beginner content creator on a tight budget. At [its current price of around INR 28,329 on Amazon India](https://link.amazon/B0cr5nlRK), you get a genuine 24.3-megapixel APS-C sensor that blows any smartphone camera away in depth of field, dynamic range, and low-light detail. If your primary goal is YouTube 1080p video, Instagram Reels, and photography, the a6000 is the best-value entry ticket into mirrorless photography.",
+          "With both cameras widely available in used and refurbished markets, which one makes sense for your hard-earned money?",
+          "**Buy the Sony a6000 if**: You are a student, hobbyist, or beginner content creator on a tight budget. At its typical pre-owned price of around ₹25,000 to ₹28,000, you get a genuine 24.3-megapixel APS-C sensor that blows any smartphone camera away in depth of field, dynamic range, and low-light detail. If your primary goal is YouTube 1080p video, Instagram Reels, and photography, the a6000 is the best-value entry ticket into mirrorless photography.",
           "**Buy the Sony a6300 if**: You do client commercial work, corporate documentaries, or event videography where you strictly need **4K resolution, an on-camera 3.5mm microphone jack, S-Log picture profiles for color grading, and weather-sealed magnesium durability**.",
           "**Pro Tip on Lenses**: Whichever body you choose, don't judge the camera by the 16-50mm kit lens alone. Pairing either body with an affordable fast prime—like a Sigma 30mm f/1.4 or 16mm f/1.4—will give you that creamy background blur (bokeh) and broadcast-quality look immediately."
         ]
@@ -2202,37 +2202,17 @@ export const articlesData: ArticleItem[] = [
           "**Q: Does the Sony a6000 have a microphone jack?** No. The a6000 does not have a 3.5mm microphone input jack. To record professional audio with the a6000, you can record sound into an external recorder (like a Zoom H1n or wireless mic transmitter) and sync audio in your video editor, or use a Sony Multi-Interface hot-shoe microphone.",
           "**Q: Does the Sony a6300 shoot 4K video?** Yes. The a6300 shoots 4K UHD video at 24fps and 30fps with full 6K sensor oversampling and zero pixel binning, delivering exceptional detail and sharpness.",
           "**Q: Which camera is better for photography: a6000 or a6300?** Both cameras share a 24-megapixel APS-C sensor and shoot 11 frames per second continuous burst. For everyday photos, image quality is almost identical. However, the a6300 has a copper-wired sensor with slightly better high-ISO noise control and 425 autofocus points for faster tracking.",
-          "**Q: What is the current price of the Sony a6000 in India?** As of today, the [Sony a6000 is priced around INR 28,329 on Amazon India](https://link.amazon/B0cr5nlRK), making it one of the most accessible mirrorless cameras available."
+          "**Q: What is the typical price of the Sony a6000 in India?** Because the a6000 is discontinued from official retail production, it typically sells between ₹24,000 and ₹28,000 in India's pre-owned and refurbished camera market, making it one of the most accessible mirrorless cameras available."
         ]
       }
     ],
     "takeaways": [
       "Sony a6300 offers superior 4K video (oversampled from 6K), a 3.5mm mic jack, 425 AF points, and S-Log2/3 profiles.",
-      "Sony a6000 at INR 28,329 is unbeatable value for 1080p YouTube creators and 24MP photography beginners.",
+      "Sony a6000 in the pre-owned market is unbeatable value for 1080p YouTube creators and 24MP photography beginners.",
       "The a6000 runs cooler in 1080p than the a6300 in 4K, making it a reliable static B-camera for long interviews.",
       "Audio on the a6000 can be easily handled by recording externally on a wireless mic and auto-syncing in editing.",
       "Always tilt the LCD screen away and use a dummy battery on the a6300 to eliminate 4K overheating."
-    ],
-    "affiliateCard": {
-      "productName": "Sony Alpha a6000 Mirrorless Camera (with 16-50mm Lens)",
-      "badge": "Best Budget Mirrorless Camera in India",
-      "verdict": "If you want a lightweight, reliable 24MP camera for YouTube 1080p videos, street photography, and client interviews on a strict budget, the Sony a6000 at INR 28,329 is unbeatable value. If you need 4K with 6K oversampling, a dedicated 3.5mm mic port, and S-Log color profiles, upgrade to the a6300.",
-      "priceRange": "INR 28,329 (Current Amazon Price)",
-      "pros": [
-        "Unbeatable value at INR 28,329 for a 24.3MP APS-C sensor",
-        "179-point hybrid autofocus with 11fps burst shooting for fast action",
-        "Runs cool without 4K overheating bugs during long 1080p interview takes",
-        "Extremely compact and lightweight (344g) for travel and vlogging",
-        "Full access to hundreds of Sony E-mount lenses (Sony, Sigma, Tamron)"
-      ],
-      "cons": [
-        "No 3.5mm microphone jack (requires external audio recorder or Sony multi-interface mic)",
-        "No 4K video recording (1080p Full HD max at 60fps)",
-        "Small NP-FW50 battery requires carrying 2-3 spares for a full day of shooting"
-      ],
-      "affiliateUrl": "https://link.amazon/B0cr5nlRK",
-      "buttonText": "Check Current Price on Amazon India (INR 28,329)"
-    }
+    ]
   },
   {
     "id": "digitek-dcl-150wbc-continuous-light-review",
