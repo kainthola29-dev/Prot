@@ -83,6 +83,7 @@ export interface ProjectItem {
   gradient?: string;
   image?: string;
   imageAlt?: string;
+  hideHeroImage?: boolean;
   badge?: string;
   stats?: { label: string; value: string }[];
   videoUrl?: string;

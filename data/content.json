@@ -406,7 +406,9 @@
       "period": "Oct 2022 – Mar 2023 · 6 mos",
       "description": "Led healthcare video production, social media management, and multi-channel public awareness campaigns—shooting and publishing doctor educational series, patient survivor documentaries, and producing public health ads displayed across Indian Railway stations and Metro networks.",
       "gradient": "from-teal-900 via-emerald-950 to-neutral-950",
-      "image": "/images/projects/denvax.svg",
+      "image": "/images/projects/the-denvax-clinic-cancer-immunotherapy.webp",
+      "imageAlt": "The Denvax Clinic — Center for Cancer Immunotherapy, flagship clinic in New Delhi. Healthcare video production and media campaigns by Deepanshu Kainthola",
+      "hideHeroImage": true,
       "badge": "Clinical Media & Public Transit Ads",
       "stats": [
         {

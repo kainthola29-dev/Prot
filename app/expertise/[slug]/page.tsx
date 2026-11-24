@@ -304,7 +304,7 @@ export default function ExpertiseDetailPage({ params }: Props) {
                   {project.image ? (
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={project.imageAlt || project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />

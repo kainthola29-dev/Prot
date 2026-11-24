@@ -277,7 +277,7 @@ export default function HomePage() {
                     {project.image ? (
                       <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={project.imageAlt || project.title}
                         width={800}
                         height={480}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

@@ -44,7 +44,11 @@ export function generateMetadata({ params }: Props): Metadata {
   const project = content.projects.find((p: any) => p.slug === params.slug);
   if (!project) return { title: "Project Not Found" };
 
-  const imageUrl = project.image || "/images/deepanshu.webp";
+  const rawImage = project.image || "/images/deepanshu.webp";
+  const imageUrl = rawImage.startsWith("http") 
+    ? rawImage 
+    : `https://deepanshu.kainthola.com${rawImage}`;
+  const imageAlt = project.imageAlt || `${project.title} — Case Study & Project Overview`;
 
   return {
     title: `${project.title} — Case Study & Project Overview`,
@@ -62,7 +66,7 @@ export function generateMetadata({ params }: Props): Metadata {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: project.title,
+          alt: imageAlt,
         },
       ],
     },
@@ -70,7 +74,12 @@ export function generateMetadata({ params }: Props): Metadata {
       card: "summary_large_image",
       title: project.title,
       description: project.description,
-      images: [imageUrl],
+      images: [
+        {
+          url: imageUrl,
+          alt: imageAlt,
+        }
+      ],
     },
   };
 }
@@ -89,6 +98,24 @@ export default function ProjectDetailPage({ params }: Props) {
       { "@type": "ListItem", position: 3, name: project.title, item: `https://deepanshu.kainthola.com/portfolio/${project.slug}` },
     ],
   };
+
+  const imageSchema = project.image ? {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": project.image.startsWith("http") 
+      ? project.image 
+      : `https://deepanshu.kainthola.com${project.image}`,
+    "url": `https://deepanshu.kainthola.com/portfolio/${project.slug}`,
+    "name": project.imageAlt || project.title,
+    "description": project.description,
+    "caption": project.imageAlt || project.title,
+    "representativeOfPage": true,
+    "author": {
+      "@type": "Person",
+      "name": "Deepanshu Kainthola",
+      "url": "https://deepanshu.kainthola.com"
+    }
+  } : null;
 
   const overview = project.overview || {
     context: project.description,
@@ -135,6 +162,7 @@ export default function ProjectDetailPage({ params }: Props) {
   return (
     <div className="py-10 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <JsonLd data={breadcrumbSchema} />
+      {imageSchema && <JsonLd data={imageSchema} />}
 
       {/* Back Link */}
       <div>
@@ -149,11 +177,11 @@ export default function ProjectDetailPage({ params }: Props) {
 
       {/* Project Hero Banner */}
       <div className="rounded-3xl overflow-hidden relative shadow-2xl border border-gray-100 dark:border-gray-800 bg-gray-950">
-        {project.image && (
+        {project.image && !project.hideHeroImage && (
           <div className="absolute inset-0 z-0 opacity-40">
             <Image
               src={project.image}
-              alt={project.title}
+              alt={project.imageAlt || project.title}
               fill
               className="object-cover"
             />
