@@ -57,6 +57,21 @@ export interface ProjectMediaPlaceholder {
   videoUrl?: string;
 }
 
+export interface CampaignSection {
+  id: string;
+  title: string;
+  badge?: string;
+  agenda: string;
+  myRole: string;
+  videos: VideoItem[];
+}
+
+export interface TeamStructure {
+  totalMembers: string;
+  leadershipNote: string;
+  breakdown: { role: string; count: number; description?: string }[];
+}
+
 export interface ProjectItem {
   id: string;
   slug: string;
@@ -74,6 +89,8 @@ export interface ProjectItem {
   videoAspect?: "16:9" | "9:16";
   videoCaption?: string;
   videos?: VideoItem[];
+  campaignSections?: CampaignSection[];
+  teamStructure?: TeamStructure;
   mediaPlaceholders?: ProjectMediaPlaceholder[];
   overview?: {
     context?: string;

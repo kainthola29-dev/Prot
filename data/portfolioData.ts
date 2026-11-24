@@ -259,26 +259,233 @@ export const projectsData: ProjectItem[] = [
         "Using AI for pre-production scripting and storyboard moodboards allows small creative teams to punch above their weight and scale monthly output effortlessly."
       ]
     },
-    "videos": [
+    "campaignSections": [
       {
-        "url": "https://youtu.be/UKQ0q5KKp9Y?si=yJnnwPaEIndLhXUD",
-        "title": "Summer Wedding Campaign",
-        "caption": "Perfect Summer Wedding Lehengas to Turn Heads in 2025! | Meena Bazaar Indian Bride Shopping Guide",
-        "aspectRatio": "16:9"
+        "id": "eid-ka-tohfa",
+        "title": "1st Campaign: Eid ka Tohfa",
+        "badge": "Festive Launch Campaign",
+        "agenda": "Drive festive awareness, luxury ethnic gifting demand, and retail sales for Meena Bazaar's signature Eid collection—highlighting festive shararas, intricately embroidered anarkalis, and rich silk suit sets.",
+        "myRole": "I helped plan, shoot, edit, and publish all the content for Eid ka Tohfa. These videos serve as final proof of planning and on-ground execution: managing on-set lighting and camera operation, directing model styling, pacing edits to festive music in Premiere Pro, color-grading intricate thread work, and executing cross-platform social publishing.",
+        "videos": [
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DGshkUdz1Qj/",
+            "title": "Eid ka Tohfa: Festive Sharara & Suit Edit",
+            "caption": "High-retention festive Reel showcasing embroidery details, fabric flow, and Eid styling options.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DG5e7xJTkbG/",
+            "title": "Festive Craftsmanship & Detail Reel",
+            "caption": "Close-up detailing and silhouette movement highlighting handcrafted zari and sequence craft.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DHEKy34zw6m/",
+            "title": "Eid Celebration Outfit Reveal",
+            "caption": "Dynamic reveal format tailored for festive gifting conversations and customer SKU inquiries.",
+            "aspectRatio": "9:16"
+          }
+        ]
       },
       {
-        "url": "https://www.youtube.com/watch?v=uFUJ5wf1A6s",
-        "title": "Store Walkthrough",
-        "caption": "Ramphal Chowk, Dwarka | MEENA BAZAAR - Store Walkthrough",
-        "aspectRatio": "16:9"
+        "id": "bride-to-be",
+        "title": "2nd Campaign: Bride to be?",
+        "badge": "Signature Bridal Series",
+        "agenda": "Position Meena Bazaar as the premier shopping destination for modern Indian brides. Demystify bridal lehengas, bridal trousseau planning, fabric selections, and styling combinations for summer and winter wedding seasons.",
+        "myRole": "I helped plan, shoot, edit, and publish all the content for the Bride to be? series. Developed shot blueprints, directed multi-camera setups, supervised model outfit changes, color-graded bridal lehenga fabrics in Premiere Pro, and managed YouTube long-form and social distribution as proof of structured execution.",
+        "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=fcuovxaRqCo",
+            "title": "Summer Wedding Lehengas to Turn Heads",
+            "caption": "Full-length YouTube bridal guide: Curated wedding looks, fabric weights, and color palettes for modern summer brides.",
+            "aspectRatio": "16:9"
+          },
+          {
+            "url": "https://youtu.be/Wk4g7fZTh0g?si=nZiMdQMqLZK4ZXGn",
+            "title": "Bridal Trousseau & Heritage Silk Guide",
+            "caption": "In-depth styling breakdown demystifying trousseau essentials, drape techniques, and heirloom silks.",
+            "aspectRatio": "16:9"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=pSn29oJUAbI",
+            "title": "Wedding Day Reveal & Luxury Draping",
+            "caption": "High-impact bridal showcase emphasizing royal silhouettes, dupatta draping, and jewelry coordination.",
+            "aspectRatio": "16:9"
+          }
+        ]
       },
       {
-        "url": "https://www.youtube.com/shorts/EsjvKxnK7jE",
-        "title": "Campaign Reel",
-        "caption": "Trendy Ethnic Outfits Shared via AirDrop",
-        "aspectRatio": "9:16"
+        "id": "saree-secrets",
+        "title": "3rd Campaign: Saree Secrets",
+        "badge": "Viral Educational Masterclass",
+        "agenda": "Educate younger demographic shoppers (Gen-Z and millennials) on saree draping mechanics, pleating tricks, and pallu styling to eliminate buying friction and generate viral organic saves/shares.",
+        "myRole": "I helped plan, shoot, edit, and publish Saree Secrets. Planned the educational hook, directed on-camera draping demonstration, cut dynamic zoom-ins and caption overlays for seamless mobile retention in Premiere Pro, and managed social release as proof of concept-to-conversion execution.",
+        "videos": [
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DAc4P1BScF2/",
+            "title": "Saree Secrets: Flawless Pleats & Drape Mastery",
+            "caption": "Viral educational Reel breaking down step-by-step saree pleating and pallu tucks for effortless styling.",
+            "aspectRatio": "9:16"
+          }
+        ]
+      },
+      {
+        "id": "influencer-shoots",
+        "title": "Influencer Shoots: Planned & Executed",
+        "badge": "Creator Marketing & Co-Creation",
+        "agenda": "Leverage credible regional fashion influencers and stylists to demonstrate authentic styling versatility, expand brand reach to younger demographics, and drive footfalls into retail stores.",
+        "myRole": "After the marketing team shortlisted prospective creators, I finalized the influencers for the shoots. I personally briefed them on what we needed, aligned aesthetic expectations, directed the shoots, and published all of this co-created content on social media.",
+        "videos": [
+          {
+            "url": "https://www.instagram.com/priyanka.singh_04/reel/DHLtUDeS0oG/",
+            "title": "Priyanka Singh: Festive Glamour Collaboration",
+            "caption": "High-engagement creator Reel featuring statement festive attire, styled for contemporary celebrations.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DHTbP3mzgiO/",
+            "title": "Creator Series: Modern Drapes for Evening Events",
+            "caption": "Stylist collaboration emphasizing modern silhouettes and cocktail saree draping.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/29_gsm/reel/C9pP8sTPff7/",
+            "title": "Creator Collab: Summer Pastel Saree Styling",
+            "caption": "Summer ethnic styling haul showcasing breathable pastels and minimalist accessories.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/C8ZXhECvs2v/",
+            "title": "Royal Georgette & Zari Creator Edit",
+            "caption": "Luxury fabric feature highlighting movement, drape, and metallic embellishments.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/C5GQsiVIBxf/",
+            "title": "Contemporary Festive Fusion Lookbook",
+            "caption": "Creator collaboration merging traditional craftsmanship with modern party silhouettes.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/C4qDehVs2gj/",
+            "title": "Wedding Guest Couture Creator Reel",
+            "caption": "Practical styling guide for wedding attendees, curated with vibrant color palettes.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/C4igjebyyYa/",
+            "title": "Bridal Season Must-Haves Creator Haul",
+            "caption": "Influencer try-on haul highlighting versatile pieces across price points.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/C4ah6pWsEmg/",
+            "title": "Handcrafted Velvet & Silk Creator Review",
+            "caption": "Winter wedding review showcasing rich royal textures, intricate embroidery, and regal warmth.",
+            "aspectRatio": "9:16"
+          }
+        ]
+      },
+      {
+        "id": "creative-videos",
+        "title": "Creative Brand Films & Trend Concepts",
+        "badge": "High-Concept Viral Storytelling",
+        "agenda": "Produce thumb-stopping, algorithm-optimized creative videos utilizing trend-jacking, fast-paced editing, AirDrop concepts, and relatable audio hooks that capture Gen-Z and millennial pop culture.",
+        "myRole": "Creative videos were ideated, shot, and edited by me too. Built rapid transitions, synchronized audio cuts, created humorous and aspirational scenarios, and published directly to Instagram and YouTube Shorts.",
+        "videos": [
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DFIIo3Iz3eD/",
+            "title": "Creative Concept Reel: Instant Fashion Transition",
+            "caption": "High-velocity beat-matched outfit transition tapping into viral audio formats.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DEkI_BuTAb0/",
+            "title": "Festive Countdown Styling Hook",
+            "caption": "Fast-paced storytelling format designed for maximum retention and repeat watch-throughs.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DBoLaZnTvXM/",
+            "title": "The Modern Desi Wardrobe Dilemma",
+            "caption": "Relatable cultural humor exploring wedding-season outfit decisions and styling choices.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.instagram.com/meenabazaar/reel/DBRDoP8O6ed/",
+            "title": "Trending Audio Festive Switch",
+            "caption": "Viral sound trend-jack highlighting diverse ethnic looks across festive occasions.",
+            "aspectRatio": "9:16"
+          },
+          {
+            "url": "https://www.youtube.com/shorts/EsjvKxnK7jE",
+            "title": "AirDrop Trend: Outfits Shared via AirDrop",
+            "caption": "YouTube Short leveraging the viral AirDrop visual concept to showcase trending catalog looks.",
+            "aspectRatio": "9:16"
+          }
+        ]
+      },
+      {
+        "id": "store-walkthroughs",
+        "title": "Retail Store Walkthroughs & Flagship Tours",
+        "badge": "Retail Ambiance & Footfall Drivers",
+        "agenda": "Humanize the shopping experience and demystify physical retail spaces. Provide virtual store tours to prospective shoppers to drive direct footfall into flagship Meena Bazaar outlets.",
+        "myRole": "I shot all the store walkthroughs myself and edited and published them. Handled gimbal camera maneuvers through retail floors, framed collection sections, curated upbeat audio, and published to YouTube.",
+        "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=uFUJ5wf1A6s",
+            "title": "Ramphal Chowk, Dwarka Flagship Walkthrough",
+            "caption": "Comprehensive flagship store tour covering bridal lounges, pret sections, and styling consultations.",
+            "aspectRatio": "16:9"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=EXiCdShPE4E",
+            "title": "Exclusive Store Experience & Bridal Lounge Tour",
+            "caption": "Immersive walkthrough highlighting premium collections, customer service, and store layout.",
+            "aspectRatio": "16:9"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=kIKBR9bRFAw",
+            "title": "Festive Store Launch & Collection Walkthrough",
+            "caption": "On-the-ground store coverage capturing opening day ambiance, customer footfall, and curated displays.",
+            "aspectRatio": "16:9"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=tTysGSG0IZw",
+            "title": "Retail Floor Showcase & Customer Journey Tour",
+            "caption": "Dynamic retail walkthrough showcasing collection zones, saree galleries, and bridal trial suites.",
+            "aspectRatio": "16:9"
+          }
+        ]
       }
     ],
+    "teamStructure": {
+      "totalMembers": "8 Cross-Functional Specialists",
+      "leadershipNote": "Led an 8-member creative production and distribution unit (2 Cameramen, 2 Social Media Managers, 3 Interns, 1 Video Editor) overseeing daily shoot calendars, talent briefings, equipment logistics, editing queues, and omnichannel publishing across Instagram, YouTube, and Facebook.",
+      "breakdown": [
+        {
+          "role": "Cameramen",
+          "count": 2,
+          "description": "Studio multi-cam & field shooting"
+        },
+        {
+          "role": "Social Media Managers",
+          "count": 2,
+          "description": "Scheduling, copy & community"
+        },
+        {
+          "role": "Production Interns",
+          "count": 3,
+          "description": "Shoot coordination & styling logistics"
+        },
+        {
+          "role": "Video Editor",
+          "count": 1,
+          "description": "Rough cuts & asset indexing"
+        }
+      ]
+    },
+    "videos": [],
     "videoUrl": "https://youtu.be/UKQ0q5KKp9Y?si=yJnnwPaEIndLhXUD"
   },
   {

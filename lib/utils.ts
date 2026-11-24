@@ -18,5 +18,21 @@ export function formatVideoEmbedUrl(url?: string): string {
   if (vimeoMatch && vimeoMatch[1]) {
     return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
   }
+  const igMatch = trimmed.match(
+    /(?:instagram\.com\/(?:[a-zA-Z0-9_.]+\/)?(?:reel|p)\/)([a-zA-Z0-9_-]+)/
+  );
+  if (igMatch && igMatch[1]) {
+    return `https://www.instagram.com/reel/${igMatch[1]}/embed/`;
+  }
   return trimmed;
+}
+
+export function isInstagramUrl(url?: string): boolean {
+  if (!url) return false;
+  return /instagram\.com\/(?:[a-zA-Z0-9_.]+\/)?(?:reel|p)\//.test(url);
+}
+
+export function isYouTubeUrl(url?: string): boolean {
+  if (!url) return false;
+  return /(?:youtube\.com|youtu\.be)/.test(url);
 }

@@ -24,6 +24,7 @@ import {
 import { Metadata } from "next";
 import { formatVideoEmbedUrl } from "@/lib/utils";
 import { PlannedVideoShowcase } from "@/components/PlannedVideoShowcase";
+import { CampaignSectionsShowcase } from "@/components/CampaignSectionsShowcase";
 
 export const dynamicParams = true;
 
@@ -209,8 +210,13 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       )}
 
-      {/* Planned Media & Video Production Showcase */}
-      {(project.videos && project.videos.length > 0) || project.videoUrl ? (
+      {/* Campaign Sections or Planned Media Showcase */}
+      {project.campaignSections && project.campaignSections.length > 0 ? (
+        <CampaignSectionsShowcase
+          sections={project.campaignSections}
+          teamStructure={project.teamStructure}
+        />
+      ) : (project.videos && project.videos.length > 0) || project.videoUrl ? (
         <PlannedVideoShowcase
           videos={project.videos}
           legacyVideoUrl={project.videoUrl}
