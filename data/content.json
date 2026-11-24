@@ -220,15 +220,21 @@
         },
         {
           "id": "saree-secrets",
-          "title": "3rd Campaign: Saree Secrets",
-          "badge": "Viral Educational Masterclass",
-          "agenda": "Educate younger demographic shoppers (Gen-Z and millennials) on saree draping mechanics, pleating tricks, and pallu styling to eliminate buying friction and generate viral organic saves/shares.",
-          "myRole": "I helped plan, shoot, edit, and publish Saree Secrets. Planned the educational hook, directed on-camera draping demonstration, cut dynamic zoom-ins and caption overlays for seamless mobile retention in Premiere Pro, and managed social release as proof of concept-to-conversion execution.",
+          "title": "3rd Campaign: Saree Secrets (Live Mall Activation)",
+          "badge": "Offline Experiential & Viral Masterclass",
+          "agenda": "An offline on-ground campaign executed at Mall of India, Noida, where we brought 10 models who draped Meena Bazaar sarees in diverse regional and modern styles live in front of a public crowd—demystifying saree draping, pleating tricks, and pallu styling to eliminate buying friction and drive viral organic reach.",
+          "myRole": "I helped plan, shoot, edit, and publish the Saree Secrets campaign. Captured the high-energy live audience engagement during the Mall of India activation with 10 models, planned the educational hooks, cut dynamic multi-angle close-ups and motion graphics in Premiere Pro, and published across social platforms as proof of end-to-end planning and execution.",
           "videos": [
             {
               "url": "https://www.instagram.com/meenabazaar/reel/DAc4P1BScF2/",
               "title": "Saree Secrets: Flawless Pleats & Drape Mastery",
               "caption": "Viral educational Reel breaking down step-by-step saree pleating and pallu tucks for effortless styling.",
+              "aspectRatio": "9:16"
+            },
+            {
+              "url": "https://www.youtube.com/shorts/byY7kgpMJb8",
+              "title": "Live Saree Draping Activation: Mall of India",
+              "caption": "Live on-ground demonstration at Mall of India, Noida: 10 models showcasing diverse regional and modern saree drape styles in front of a live public crowd.",
               "aspectRatio": "9:16"
             }
           ]
