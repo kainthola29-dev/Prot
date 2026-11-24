@@ -266,14 +266,16 @@ export default function ProjectDetailPage({ params }: Props) {
 
                     {media.videoUrl ? (() => {
                       const embedUrl = formatVideoEmbedUrl(media.videoUrl);
-                      const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("vimeo.com");
+                      const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("youtube-nocookie.com") || embedUrl.includes("vimeo.com");
                       return isEmbed ? (
                         <iframe
                           src={embedUrl}
                           title={media.title}
                           className="w-full h-full border-0 absolute inset-0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           allowFullScreen
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          loading="lazy"
                         />
                       ) : (
                         <video controls className="w-full h-full object-cover absolute inset-0">

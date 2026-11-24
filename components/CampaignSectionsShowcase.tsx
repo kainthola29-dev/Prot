@@ -198,6 +198,14 @@ function getSectionGridClass(sectionId: string, count: number): string {
   return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch";
 }
 
+function extractYouTubeId(url?: string): string | null {
+  if (!url) return null;
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?.*v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+  );
+  return match ? match[1] : null;
+}
+
 function extractInstagramHandle(url: string): string {
   const match = url.match(/instagram\.com\/([a-zA-Z0-9_.]+)\/(?:reel|p)\//);
   if (match && match[1]) {
@@ -215,7 +223,10 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
     return <InstagramReelCard video={video} index={index} />;
   }
 
-  const embedUrl = formatVideoEmbedUrl(video.url);
+  const ytId = extractYouTubeId(video.url);
+  const embedUrl = ytId ? `https://www.youtube.com/embed/${ytId}` : formatVideoEmbedUrl(video.url);
+  const thumbnailUrl = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : null;
+
   const playerContainerClass = isVertical 
     ? "aspect-[9/16] min-h-[460px] sm:min-h-[500px]" 
     : "aspect-video min-h-[220px]";
@@ -239,16 +250,26 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
 
       {/* Embed Player */}
       <div className={`relative w-full ${playerContainerClass} bg-black flex items-center justify-center overflow-hidden`}>
+        {thumbnailUrl && (
+          <img
+            src={thumbnailUrl}
+            alt={video.title || "Video Preview"}
+            className="w-full h-full object-cover absolute inset-0 opacity-40 blur-[1px] pointer-events-none"
+            loading="lazy"
+          />
+        )}
         {embedUrl ? (
           <iframe
             src={embedUrl}
             title={video.title || "Video Player"}
-            className="w-full h-full border-0 absolute inset-0"
+            className="w-full h-full border-0 absolute inset-0 z-10"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            loading="lazy"
           />
         ) : (
-          <div className="text-gray-500 text-xs text-center p-4">
+          <div className="relative z-10 text-gray-400 text-xs text-center p-4">
             Video link unavailable
           </div>
         )}

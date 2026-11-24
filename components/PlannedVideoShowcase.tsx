@@ -43,7 +43,7 @@ export function PlannedVideoShowcase({
 
   const renderPlayer = (v: VideoItem, customAspectClass?: string) => {
     const embedUrl = formatVideoEmbedUrl(v.url);
-    const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("vimeo.com");
+    const isEmbed = embedUrl.includes("youtube.com") || embedUrl.includes("youtube-nocookie.com") || embedUrl.includes("vimeo.com");
     const aspectClass = customAspectClass || (v.aspectRatio === "9:16" ? "aspect-[9/16]" : "aspect-video");
 
     return (
@@ -53,8 +53,10 @@ export function PlannedVideoShowcase({
             src={embedUrl}
             title={v.title || "Video Player"}
             className="w-full h-full border-0 absolute inset-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            loading="lazy"
           />
         ) : (
           <video controls className="w-full h-full object-cover absolute inset-0">
