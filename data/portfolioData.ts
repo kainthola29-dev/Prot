@@ -2569,8 +2569,8 @@ export const articlesData: ArticleItem[] = [
     "date": "Jan 2025",
     "excerpt": "Why the default iPhone camera app ruins commercial video, and how pairing the iPhone 16 with the free Blackmagic Camera app and an external SSD gives you broadcast-quality footage. Real on-set challenges, gear rigging, and how I fixed indoor light flickering.",
     "gradient": "from-indigo-950 via-slate-900 to-neutral-950",
-    "image": "/images/insights/iphone-blackmagic-review.svg",
-    "imageAlt": "Shooting commercial video on iPhone 16 with Blackmagic Camera app, Apple Log, and Samsung T7 SSD by Deepanshu Kainthola",
+    "image": "/images/insights/iphone-16-blackmagic-camera-app-mobile-filmmaking-rig.webp",
+    "imageAlt": "iPhone 16 commercial video setup with Blackmagic Camera app, dual-handle aluminum cage, Rode wireless mic, and external SSD for Apple Log recording by Deepanshu Kainthola",
     "quote": "The default iPhone camera app is designed for tourists taking family snapshots. The free Blackmagic Camera app turns the exact same iPhone sensor into a legitimate cinema camera by stripping away artificial digital processing and giving you complete manual control.",
     "toc": [
       {
