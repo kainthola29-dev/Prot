@@ -79,6 +79,7 @@ export function generateMetadata({ params }: Props): Metadata {
       canonical: `/portfolio/${project.slug}`,
     },
     openGraph: {
+      siteName: "Deepanshu Kainthola",
       title: metaTitle,
       description: metaDesc,
       type: "website",

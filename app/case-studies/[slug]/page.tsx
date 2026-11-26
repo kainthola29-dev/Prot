@@ -42,6 +42,7 @@ export function generateMetadata({ params }: Props): Metadata {
       canonical: `/case-studies/${cs.slug}`,
     },
     openGraph: {
+      siteName: "Deepanshu Kainthola",
       title: cs.title,
       description: cs.subtitle,
       type: "website",

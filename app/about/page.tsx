@@ -43,6 +43,7 @@ export const metadata: Metadata = {
     canonical: "/about",
   },
   openGraph: {
+    siteName: "Deepanshu Kainthola",
     title: "About Deepanshu Kainthola — Digital Marketing Manager",
     description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership across 12+ brands.",
     type: "profile",

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: "/resume",
   },
   openGraph: {
+    siteName: "Deepanshu Kainthola",
     title: "Deepanshu Kainthola — Resume & CV",
     description: "Digital Marketing Manager with 7.7 Years Exp. in digital campaigns, video production, employer branding, and corporate communication.",
     type: "profile",

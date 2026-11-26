@@ -45,9 +45,7 @@ export function generateMetadata({ params }: Props): Metadata {
     : `https://deepanshu.kainthola.com${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
   const imageAlt = art.imageAlt || art.title;
 
-  const pageTitle = art.title.length > 55
-    ? `${art.title} | Deepanshu Kainthola`
-    : `${art.title} — Strategic Insights | Deepanshu Kainthola`;
+  const pageTitle = art.title;
 
   return {
     title: pageTitle,
