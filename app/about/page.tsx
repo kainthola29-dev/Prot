@@ -44,15 +44,15 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: "Deepanshu Kainthola",
-    title: "About Deepanshu Kainthola — Digital Marketing Manager",
-    description: "7.7 Years Exp. combining practical marketing execution with strategic business leadership across 12+ brands.",
+    title: "About Deepanshu Kainthola — Marketing Specialist",
+    description: "7.7 Years Exp. combining retail store openings, on-ground GTM rollouts, and video production with strategic business leadership across 12+ brands.",
     type: "profile",
     images: ["/images/deepanshu.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "About Deepanshu Kainthola",
-    description: "7.7 Years Exp. in digital marketing and brand strategy.",
+    description: "7.7 Years Exp. in GTM rollouts, retail marketing, and multi-brand strategy.",
     images: ["/images/deepanshu.webp"],
   },
 };

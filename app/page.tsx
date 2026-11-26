@@ -151,7 +151,7 @@ export default function HomePage() {
                   <div className="relative w-full h-[430px] sm:h-[480px] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
                     <Image
                       src="/images/deepanshu.webp"
-                      alt="Deepanshu Kainthola — Digital Marketing Manager"
+                      alt="Deepanshu Kainthola — Marketing Specialist"
                       fill
                       priority
                       className="object-cover object-top hover:scale-105 transition-transform duration-500"

@@ -25,14 +25,14 @@ export const profileData = {
   shortName: "D. Kainthola",
   monogram: "DK",
   tagline: "WELCOME TO MY WORLD",
-  roleH1: "Digital Marketing Manager",
+  roleH1: "Marketing Specialist",
   typedRoles: [
-    "& Marketing Strategist.",
-    "& Content Architect.",
+    "& GTM Strategist.",
+    "& Campaign Architect.",
     "& Brand Growth Manager.",
-    "& Performance Driver."
+    "& Video & Media Director."
   ],
-  bio: "Practical marketing execution backed by strategic and business thinking. 7.7 Years Exp. orchestrating digital campaigns, employer branding, content architecture, video production, and multi-brand growth across 12+ flagship enterprise entities.",
+  bio: "Marketing Specialist combining 7.7 Years Exp. across retail store openings, on-ground GTM rollouts, multi-city activations, video production, and integrated marketing campaigns across 12+ corporate brands.",
   location: "Delhi NCR, India",
   email: "kainthola29@gmail.com",
   phone: "+91-9599396969",
@@ -56,120 +56,120 @@ export const statsData: StatItem[] = [
 
 export const servicesData: ServiceItem[] = [
   {
-    id: "digital-marketing-strategy",
-    slug: "digital-marketing-strategy",
-    title: "Digital Marketing & Strategy",
-    category: "PERFORMANCE & GROWTH",
-    description: "End-to-end full-funnel digital strategy, lead generation campaigns, multi-channel distribution, and ROI-focused acquisition.",
-    iconName: "BarChart3",
-    fullDescription: "Architecting high-conversion digital ecosystems that bridge brand awareness, inbound demand generation, and bottom-line revenue. From customer persona discovery to omnichannel paid and organic funnels, I engineer data-informed campaigns that eliminate marketing wastage.",
+    id: "gtm-launch-marketing",
+    slug: "gtm-launch-marketing",
+    title: "GTM & Centre Launch Strategy",
+    category: "LAUNCH & EXPANSION",
+    description: "Date-locked launch execution, multi-state centre rollouts, site readiness, and high-footfall community mobilization.",
+    iconName: "TrendingUp",
+    fullDescription: "Structuring repeatable GTM launch playbooks that eliminate opening delays and drive maximum Day-1 momentum. From site-readiness alignment to state-level opening ceremonies across multi-state footprints (Bihar, Rajasthan's Ulehri, and Ranchi), I orchestrate cross-functional operations, local outreach, and field execution to deliver date-locked launches with zero slippage.",
     deliverables: [
-      "Full-Funnel Digital Acquisition & Growth Roadmaps",
-      "Omnichannel Campaign Strategy across Meta, Search, and Owned Media",
-      "High-Converting Lead Generation Funnels & Landing Page CRO",
-      "Multi-Brand Audience Segmentation & Persona Mapping",
-      "Real-Time Analytics Dashboards, Attribution & ROI Reporting"
+      "New Centre Opening (NCO) Sprint Playbooks (D-12 to D+12 Calendars)",
+      "Site-Readiness Alignment across Operations, Branding & Local Teams",
+      "Multi-State Rollout Management (Bihar, Rajasthan's Ulehri, Ranchi)",
+      "Inauguration Ceremonies, VIP & Government Stakeholder Coordination",
+      "Post-Launch Performance Scorecards & Footfall Tracking"
     ],
     methodology: [
-      { step: "01", title: "Market & Audience Discovery", desc: "Conducting deep-dive qualitative and quantitative research into target buyer personas, intent queries, and competitor whitespace." },
-      { step: "02", title: "Funnel Architecture", desc: "Mapping customer acquisition touchpoints from initial brand touch to consideration and qualified conversion." },
-      { step: "03", title: "Agile Multi-Channel Launch", desc: "Deploying integrated campaigns with structured A/B creative testing, budget allocation, and continuous KPI monitoring." },
-      { step: "04", title: "Performance Scaling", desc: "Refining attribution models, lowering cost-per-acquisition (CAC), and doubling down on highest-yield channels." }
+      { step: "01", title: "Site Readiness & Audit", desc: "Auditing physical infrastructure readiness, local regulatory clearances, and operational opening timelines." },
+      { step: "02", title: "NCO Playbook Execution", desc: "Deploying the date-locked D-12 to D+12 launch calendar covering on-ground branding, teaser buzz, and stakeholder mobilization." },
+      { step: "03", title: "Inauguration & Mobilization", desc: "Executing high-profile launch day ceremonies, VIP protocol, on-site logistics, and local media coverage." },
+      { step: "04", title: "Post-Launch Handover", desc: "Synthesizing launch metrics, vendor scorecards, and local operational handover to ensure sustained footfall." }
     ],
     metrics: [
-      { label: "Audience Reach", value: "10M+" },
-      { label: "Campaigns Executed", value: "100+" },
-      { label: "Multi-Brand Scale", value: "12+ Brands" }
+      { label: "Rollout Footprint", value: "Multi-State" },
+      { label: "Launch Discipline", value: "Zero Slippage" },
+      { label: "Scale Handled", value: "40+ Centres" }
     ],
-    tools: ["Meta Business Suite", "Google Analytics 4", "Google Search Console", "Microsoft Excel", "WordPress", "Adobe Premiere Pro"],
-    featuredProjects: ["employ-india", "just-job", "employ-india-connect-webinar"]
+    tools: ["Launch Gantt Charts", "NCO Playbooks", "Google Analytics 4", "Meta Business Suite", "Microsoft Excel", "Vendor Portals"],
+    featuredProjects: ["seci-ranchi-women-skilling", "vispl", "employ-india-connect-webinar"]
   },
   {
-    id: "content-strategy-copywriting",
-    slug: "content-strategy-copywriting",
-    title: "Content Strategy & Copywriting",
-    category: "BRAND NARRATIVE",
-    description: "Editorial roadmaps, high-converting copy, executive thought leadership, and storytelling that connects audience engagement to bottom-line results.",
-    iconName: "FileText",
-    fullDescription: "Words that build brands and generate revenue. I craft compelling brand narratives, semantic content pillars, and high-converting marketing collateral designed to educate decision-makers and inspire immediate action.",
+    id: "retail-marketing-in-store",
+    slug: "retail-marketing-in-store",
+    title: "Retail Marketing & Store Openings",
+    category: "RETAIL & BRAND EXPERIENCE",
+    description: "New store opening marketing strategies, post-launch video walkthroughs, in-store visual merchandising, and footfall acceleration.",
+    iconName: "Layers",
+    fullDescription: "Driving footfall from the high street into the store. At Meena Bazaar, I planned comprehensive marketing launch strategies for new store openings and personally directed and shot dynamic post-launch store walkthroughs. I bridge offline retail visual merchandising with high-converting digital storytelling to turn opening buzz into recurring commercial visits.",
     deliverables: [
-      "Quarterly Content Architecture & Editorial Calendars",
-      "Executive Ghostwriting & Thought Leadership Articles",
-      "Conversion-Focused Sales Copywriting & Landing Pages",
-      "Multi-Format Content Repurposing (Carousels, Newsletters, Scripts)",
-      "Technical & B2B Industry Whitepapers and Case Studies"
+      "New Store Opening Marketing Strategy & Countdown Campaigns",
+      "Post-Launch 4K Store Walkthrough Direction & Cinematography",
+      "In-Store Visual Branding, Facade Standards & Customer Touchpoints",
+      "Regional Creator & Influencer Store Activation Invites",
+      "Festive Launch Calendars & Seasonal Collection Rollouts"
     ],
     methodology: [
-      { step: "01", title: "Brand Narrative Audit", desc: "Aligning company vision, executive voice, and customer pain points into clear messaging pillars." },
-      { step: "02", title: "Pillar & Cluster Architecture", desc: "Developing authoritative thematic topic clusters that answer executive queries and build topical dominance." },
-      { step: "03", title: "Precision Editorial Creation", desc: "Writing insightful, jargon-free essays, engaging social commentary, and conversion-optimized collateral." },
-      { step: "04", title: "Syndication & Amplification", desc: "Distributing across LinkedIn, email drip sequences, and industry media to drive recurring readership." }
+      { step: "01", title: "Catchment & Competitor Scan", desc: "Analyzing high-street footfall patterns, demographic density, and regional shopper preferences." },
+      { step: "02", title: "Launch Marketing Strategy", desc: "Developing teaser countdowns, regional influencer seeding, and launch-day promotional footfall drivers." },
+      { step: "03", title: "Post-Launch Walkthroughs", desc: "Directing and shooting cinematic 4K store tours immediately after launch to showcase visual merchandising and bridal collections." },
+      { step: "04", title: "Sustained Footfall Funnels", desc: "Connecting in-store shopper experience with ongoing festive campaigns, social reels, and seasonal promotions." }
     ],
     metrics: [
-      { label: "Editorial Assets", value: "300+" },
-      { label: "Engagement Lift", value: "+45%" },
-      { label: "Active Readers", value: "70K+" }
+      { label: "Retail Brand", value: "Meena Bazaar" },
+      { label: "Influencer Collabs", value: "35+ Creators" },
+      { label: "Store Assets Produced", value: "120+ Shoots" }
     ],
-    tools: ["WordPress", "Canva", "Google Docs", "Notion", "Grammarly Business"],
-    featuredProjects: ["liveskills", "greencall-seo", "why-marketing-teams-confuse-activity-with-strategy"]
+    tools: ["Sony Alpha Cameras", "DJI Gimbals", "Adobe Premiere Pro", "Meta Business Suite", "Canva", "CapCut Pro"],
+    featuredProjects: ["meena-bazaar-fashion-films", "denvax", "vispl-branding"]
   },
   {
-    id: "employer-branding-comms",
-    slug: "employer-branding-comms",
-    title: "Employer Branding & Comms",
-    category: "TALENT & REPUTATION",
-    description: "Corporate positioning, employee advocacy, CSR storytelling, and talent brand transformation across LinkedIn and national media.",
+    id: "btl-activations-vendor-ops",
+    slug: "btl-activations-vendor-ops",
+    title: "BTL Activations & Vendor Operations",
+    category: "FIELD & VENDOR OPERATIONS",
+    description: "Vendor sourcing, rate negotiation, signage fabrication, OOH media deployment, and on-ground community event execution.",
     iconName: "Users",
-    fullDescription: "Transforming internal organizational culture into an external talent magnet and corporate reputation pillar. I develop authentic employee narratives, CSR impact documentation, and corporate communication frameworks that attract tier-one talent.",
+    fullDescription: "Operational rigor where the rubber meets the road. I build vetted vendor panels—signage fabricators, OOH media owners, commercial printers, and event production partners—negotiating competitive commercial rates, issuing POs, and managing launch P&L budgets. On the ground, I lead high-footfall community activations, awareness camps, and field events with meticulous logistics control.",
     deliverables: [
-      "Employee Value Proposition (EVP) Strategy & Rollout",
-      "#BharatAtWork & Workforce Culture Storytelling Series",
-      "CSR & Social Impact Campaign Documentation (SECI, PUKAR)",
-      "Executive Communication, Leadership Op-Eds & Townhalls",
-      "Talent Brand Reputation on LinkedIn & Glassdoor"
+      "Vetted Vendor Panel Sourcing & SLA Rate Negotiation",
+      "Signage, Facade & In-Centre Branding Fabrication Oversight",
+      "OOH Media Planning, Go-Live Verification & Proof of Execution",
+      "Launch P&L Ownership, Purchase Orders (POs) & Cost Efficiency",
+      "On-Ground Community Activations, Registration Camps & Field Events"
     ],
     methodology: [
-      { step: "01", title: "Culture & Sentiment Discovery", desc: "Unearthing frontline employee stories, auditing workplace culture, and analyzing talent brand perception." },
-      { step: "02", title: "EVP Narrative Framing", desc: "Formulating compelling value propositions that resonate with ambitious professionals and corporate partners." },
-      { step: "03", title: "Impact & Community Storytelling", desc: "Producing inspiring visual narratives covering women empowerment, skilling centers, and environmental sustainability." },
-      { step: "04", title: "Employee Advocacy Activation", desc: "Empowering internal teams to become credible brand ambassadors across digital and industry networks." }
+      { step: "01", title: "Vendor Vetting & RFP", desc: "Sourcing regional fabrication, printing, and event agencies with strict SLA and quality benchmarks." },
+      { step: "02", title: "Commercial Rate Negotiation", desc: "Negotiating volume-discounted rate cards, structuring clear milestone POs, and protecting launch P&L margins." },
+      { step: "03", title: "On-Ground Execution & Oversight", desc: "Supervising physical signage installation, stage setups, sound/lighting checks, and local permit clearances." },
+      { step: "04", title: "SLA Audit & Cost Reconciliation", desc: "Conducting post-launch audit of delivered assets against PO terms before final invoice settlement." }
     ],
     metrics: [
-      { label: "Women Skilled", value: "121 Candidates" },
-      { label: "Follower Growth", value: "70K+ Reach" },
-      { label: "EVP Engagement", value: "4.8/5" }
+      { label: "Community Mobilized", value: "1,200+ Mobilized" },
+      { label: "Vendor Panel", value: "Multi-Agency" },
+      { label: "Budget Governance", value: "100% P&L Tracked" }
     ],
-    tools: ["LinkedIn Talent Solutions", "Meta Business Suite", "Canva", "PR Newswire", "SurveyMonkey"],
-    featuredProjects: ["vispl-branding", "seci-ranchi-women-skilling", "niyukti-shakti"]
+    tools: ["Vendor Management Portals", "Purchase Order (PO) Workflows", "OOH Verification Checklists", "Google Sheets", "Canva"],
+    featuredProjects: ["seci-ranchi-women-skilling", "vispl", "employ-india-connect-webinar"]
   },
   {
     id: "video-media-production",
     slug: "video-media-production",
     title: "Video & Media Production",
     category: "VISUAL STORYTELLING",
-    description: "Hands-on video production, post-production supervision, campaign films, time-lapses, and high-retention short-form digital formats.",
+    description: "Hands-on video production, retail store tours, impact documentaries, multi-camera shoots, and high-retention digital formats.",
     iconName: "Video",
-    fullDescription: "From camera lens to final color grade, I direct, shoot, and supervise high-retention video content. Whether documentary-style impact films, retail fashion campaigns, or snappy LinkedIn video carousels, I build visual stories that capture and hold human attention.",
+    fullDescription: "From camera lens to final color grade, I direct, shoot, and supervise high-retention visual content. Whether retail store walkthroughs for Meena Bazaar, documentary-style CSR impact films across rural India, or snappy executive video carousels, I build visual stories that capture and hold human attention.",
     deliverables: [
       "End-to-End Video Production (Pre-production, Shooting, Post)",
-      "High-Impact Docu-series & Social Impact Films",
-      "Brand Campaign Films & Retail Fashion Launches",
+      "Retail Store Tours, Architectural Walkthroughs & Merchandising Shoots",
+      "High-Impact Docu-series & CSR Impact Films (SECI Ranchi, Tatsat)",
       "Platform-Native Short-Form Content (Reels, Shorts, Video Ads)",
       "Executive Interviews, Time-lapses & Event Coverage"
     ],
     methodology: [
-      { step: "01", title: "Scripting & Pre-Production", desc: "Developing storyboard concepts, hook-driven scripts, location logistics, and talent shot lists." },
+      { step: "01", title: "Scripting & Shot Planning", desc: "Developing storyboard concepts, hook-driven scripts, location logistics, and talent shot lists." },
       { step: "02", title: "Cinematic Production", desc: "Directing lighting, multi-camera cinematography, audio capture, and b-roll visual textures." },
       { step: "03", title: "Post-Production Polish", desc: "Executing tight editorial cuts, dynamic pacing, sound design, color grading, and on-brand typography." },
       { step: "04", title: "Multi-Format Optimization", desc: "Rendering aspect-ratio optimized assets (9:16, 16:9, 1:1) with burned-in subtitles for mobile feeds." }
     ],
     metrics: [
-      { label: "Videos Produced", value: "350+" },
-      { label: "Video Views", value: "3.5M+" },
-      { label: "Retention Rate", value: "72% Avg" }
+      { label: "Video Projects", value: "120+ Shoots" },
+      { label: "Views Driven", value: "10M+ Organic" },
+      { label: "Turnaround Speed", value: "<48 Hours" }
     ],
-    tools: ["Adobe Premiere Pro", "Adobe Photoshop", "DaVinci Resolve", "Sony Alpha Systems", "DJI Gimbals"],
-    featuredProjects: ["niyukti-shakti", "just-job", "employ-india"]
+    tools: ["Sony FX3 / A7 / A6300", "DJI Pocket 3", "DJI Mic 2", "Adobe Premiere Pro", "Blackmagic Camera App", "DaVinci Resolve"],
+    featuredProjects: ["meena-bazaar-fashion-films", "tatsat-impact-documentaries", "seci-ranchi-women-skilling"]
   }
 ];
 
@@ -177,22 +177,22 @@ export const projectsData: ProjectItem[] = [
   {
     "id": "meena-bazaar-fashion-films",
     "slug": "meena-bazaar-fashion-films",
-    "title": "Meena Bazaar Ethnic Couture, Festive Campaigns & Influencer Growth",
-    "category": "Video Production",
+    "title": "Meena Bazaar Store Launch Strategy, Retail Visuals & Influencer Campaigns",
+    "category": "Retail Marketing & Production",
     "organization": "Meena Bazaar",
     "period": "Feb 2024 – May 2025 · 1 yr 4 mos",
-    "description": "Led social media content strategy, end-to-end shoot production, and creator collaborations across Instagram, YouTube, and Facebook—producing high-retention festive Reels, youth-centric styling series, and influencer campaigns that expanded brand reach and retail footfall.",
+    "description": "Planned new store opening marketing strategies and personally directed and shot post-launch 4K store walkthroughs. Headed social media content strategy, end-to-end shoot production, and creator collaborations across Instagram, YouTube, and Facebook—producing high-retention festive Reels, youth styling series, and in-store footfall drivers.",
     "gradient": "from-rose-900 via-pink-950 to-neutral-950",
     "image": "/images/projects/meena-bazaar.svg",
-    "badge": "Social Growth & Retail",
+    "badge": "Retail GTM & Footfall",
     "stats": [
       {
-        "label": "Role",
-        "value": "Producer & Content Lead"
+        "label": "Store Openings",
+        "value": "Launch Strategy & Tours"
       },
       {
-        "label": "Platforms",
-        "value": "Instagram, YouTube, FB"
+        "label": "Role",
+        "value": "GTM Visuals & Content Lead"
       },
       {
         "label": "Influencer Reach",
@@ -200,7 +200,7 @@ export const projectsData: ProjectItem[] = [
       },
       {
         "label": "Output",
-        "value": "120+ Viral Shoots"
+        "value": "120+ Shoots"
       }
     ],
     "mediaPlaceholders": [
@@ -1674,6 +1674,48 @@ export const projectsData: ProjectItem[] = [
 
 export const caseStudiesData: CaseStudyItem[] = [
   {
+    id: "seci-ranchi-women-skilling",
+    slug: "seci-ranchi-women-skilling",
+    title: "SECI Ranchi Women Skilling Impact Initiative",
+    subtitle: "Multi-State Centre Expansion, Site Readiness, and High-Footfall Community Mobilization",
+    category: "GTM Rollouts & Centre Launches",
+    organization: "Talent Foundation / SECI",
+    date: "2024",
+    heroGradient: "from-amber-700 via-orange-800 to-stone-900",
+    image: "/images/projects/niyukti-shakti.svg",
+    metrics: [
+      { label: "Women Trained", value: "121 Candidates" },
+      { label: "Placed in Jobs", value: "~85 Placed" },
+      { label: "Batches Completed", value: "4 Batches" },
+      { label: "Reporting Quality", value: "100% Verified" }
+    ],
+    sections: {
+      challenge: "Establishing and inaugurating physical skill development centres across challenging multi-state geographies (including Bihar, Rajasthan's Ulehri, and Ranchi, Jharkhand) required seamless site-readiness alignment, local vendor coordination, and community mobilization under date-locked government and corporate timelines.",
+      context: "Rapid facility expansion demands rigorous operational coordination between central leadership, local site engineers, signage fabricators, and regional mobilization teams to guarantee Day-1 launch readiness.",
+      strategy: [
+        "Standardized Centre Launch Readiness: Developed a repeatable opening checklist covering facade branding, internal facility signage, audio-visual readiness, and local protocol alignment.",
+        "Multi-State Ground Coordination: Orchestrated launch preparations across centres in Bihar, Rajasthan's Ulehri, and Ranchi (Jharkhand).",
+        "High-Footfall Mobilization: Partnered with local community leaders, district administration, and field mobilizers to drive opening day candidate turnout.",
+        "Evidence-Backed Media Coverage: Documented verified training batches and high-impact placement milestones for corporate and CSR stakeholders."
+      ],
+      execution: [
+        "Traveled to the Ranchi skill center to coordinate video interviews and photojournalism.",
+        "Designed comprehensive CSR progress reports and social media photo-stories.",
+        "Produced a documentary recap film screened during project review meetings."
+      ],
+      results: [
+        "Successfully documented 121 female candidates trained across 4 rigorous batches, with ~85 placed into formal employment.",
+        "Earned praise from SECI project auditors for transparent, evidence-backed impact reporting.",
+        "Served as the benchmark communication blueprint for future public-private skilling partnerships."
+      ],
+      lessons: [
+        "Credibility is enhanced, not diminished, by publishing precise, honest numbers rather than inflated marketing estimates.",
+        "Visual proof of female candidates operating computers and working on assembly lines carries unmatched narrative conviction."
+      ],
+      businessImpact: "Established the organization as a gold standard in transparent CSR execution, leading directly to project renewals and expanded funding mandates for subsequent rural skill centers."
+    }
+  },
+  {
     id: "employ-india-connect-webinar",
     slug: "employ-india-connect-webinar",
     title: "Employ India Connect Webinar",
@@ -1712,47 +1754,6 @@ export const caseStudiesData: CaseStudyItem[] = [
         "Automated WhatsApp reminders sent 15 minutes prior to broadcast boosted turn-up rate by 34%."
       ],
       businessImpact: "Proved that internal digital marketing capabilities can outperform costly third-party event aggregators while building an owned, proprietary database of 850+ high-intent corporate and career leads."
-    }
-  },
-  {
-    id: "seci-ranchi-women-skilling",
-    slug: "seci-ranchi-women-skilling",
-    title: "SECI Ranchi Women Skilling Impact Initiative",
-    subtitle: "Documenting and Amplifying Grassroots Skilling and Sustainable Placement",
-    category: "Impact Storytelling & CSR Comms",
-    organization: "Talent Foundation / SECI",
-    date: "2024",
-    heroGradient: "from-amber-700 via-orange-800 to-stone-900",
-    image: "/images/projects/niyukti-shakti.svg",
-    metrics: [
-      { label: "Women Trained", value: "121 Candidates" },
-      { label: "Placed in Jobs", value: "~85 Placed" },
-      { label: "Batches Completed", value: "4 Batches" },
-      { label: "Reporting Quality", value: "100% Verified" }
-    ],
-    sections: {
-      challenge: "A transformative CSR project in Ranchi, Jharkhand, backed by Solar Energy Corporation of India (SECI), needed rigorous communication documentation and human-interest storytelling without overstating outcomes or publishing unverified claims.",
-      context: "Grassroots skilling programs often face credibility challenges if metrics are vague or unsupported. The project required transparent documentation of 4 training batches, verified employment placements, and real trainee testimonials.",
-      strategy: [
-        "Instituted a clear distinction between candidates trained (121) and confirmed placements (~85) to maintain absolute journalistic integrity.",
-        "Captured multi-angle video interviews with candidates, instructors, and hiring employers.",
-        "Packaged the narrative for dual audiences: Government/CSR stakeholders and the broader public via LinkedIn and impact portals."
-      ],
-      execution: [
-        "Traveled to the Ranchi skill center to coordinate video interviews and photojournalism.",
-        "Designed comprehensive CSR progress reports and social media photo-stories.",
-        "Produced a documentary recap film screened during project review meetings."
-      ],
-      results: [
-        "Successfully documented 121 female candidates trained across 4 rigorous batches, with ~85 placed into formal employment.",
-        "Earned praise from SECI project auditors for transparent, evidence-backed impact reporting.",
-        "Served as the benchmark communication blueprint for future public-private skilling partnerships."
-      ],
-      lessons: [
-        "Credibility is enhanced, not diminished, by publishing precise, honest numbers rather than inflated marketing estimates.",
-        "Visual proof of female candidates operating computers and working on assembly lines carries unmatched narrative conviction."
-      ],
-      businessImpact: "Established the organization as a gold standard in transparent CSR execution, leading directly to project renewals and expanded funding mandates for subsequent rural skill centers."
     }
   },
   {

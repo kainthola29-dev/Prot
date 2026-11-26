@@ -7,22 +7,22 @@ import { Briefcase, GraduationCap, Award, Sparkles, CheckCircle2, ShieldCheck, M
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Resume & CV — Deepanshu Kainthola | Digital Marketing Manager",
-  description: "Curriculum Vitae and professional history of Deepanshu Kainthola. 7.7 Years Exp. in digital marketing, employer branding, SEO, and content architecture.",
+  title: "Resume & CV — Deepanshu Kainthola | Marketing Specialist",
+  description: "Curriculum Vitae and professional history of Deepanshu Kainthola. 7.7 Years Exp. in retail store openings, on-ground GTM rollouts, video production, and multi-brand marketing.",
   alternates: {
     canonical: "/resume",
   },
   openGraph: {
     siteName: "Deepanshu Kainthola",
     title: "Deepanshu Kainthola — Resume & CV",
-    description: "Digital Marketing Manager with 7.7 Years Exp. in digital campaigns, video production, employer branding, and corporate communication.",
+    description: "Marketing Specialist with 7.7 Years Exp. in retail store openings, on-ground GTM rollouts, video production, and corporate communication.",
     type: "profile",
     images: ["/images/deepanshu.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Deepanshu Kainthola — Resume & CV",
-    description: "Digital Marketing Manager with 7.7 Years Exp. in digital marketing and multi-brand strategy.",
+    description: "Marketing Specialist with 7.7 Years Exp. in GTM rollouts, retail marketing, and multi-brand strategy.",
     images: ["/images/deepanshu.webp"],
   },
 };
