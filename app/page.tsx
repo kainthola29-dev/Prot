@@ -61,7 +61,11 @@ export default function HomePage() {
         "@type": "WebSite",
         "@id": "https://deepanshu.kainthola.com/#website",
         url: "https://deepanshu.kainthola.com",
-        name: "Deepanshu Kainthola — Digital Marketing Manager",
+        name: "Deepanshu Kainthola",
+        alternateName: [
+          "Deepanshu Kainthola Portfolio",
+          "deepanshu.kainthola.com"
+        ],
         description: profileData.bio,
         author: { "@id": "https://deepanshu.kainthola.com/#person" }
       }

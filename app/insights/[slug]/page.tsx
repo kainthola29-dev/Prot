@@ -60,7 +60,7 @@ export function generateMetadata({ params }: Props): Metadata {
       description: art.excerpt,
       type: "article",
       url: `https://deepanshu.kainthola.com/insights/${art.slug}`,
-      siteName: "Deepanshu Kainthola Portfolio",
+      siteName: "Deepanshu Kainthola",
       images: [
         {
           url: ogImageUrl,

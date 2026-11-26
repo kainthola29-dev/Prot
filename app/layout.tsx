@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { JsonLd } from "@/components/JsonLd";
 import { profileData } from "@/data/portfolioData";
 
 const montserrat = Montserrat({
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
     title: "Deepanshu Kainthola — Digital Marketing Manager & Marketing Strategist",
     description:
       "7.7 Years Exp. driving digital campaigns, content architecture, SEO, and employer branding across 12+ corporate brands.",
-    siteName: "Deepanshu Kainthola Portfolio",
+    siteName: "Deepanshu Kainthola",
     images: [
       {
         url: "/images/deepanshu.webp",
@@ -89,6 +90,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://deepanshu.kainthola.com/#website",
+    name: "Deepanshu Kainthola",
+    alternateName: [
+      "Deepanshu Kainthola Portfolio",
+      "deepanshu.kainthola.com"
+    ],
+    url: "https://deepanshu.kainthola.com",
+  };
+
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
@@ -113,6 +126,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${montserrat.variable} ${poppins.variable} antialiased min-h-screen flex flex-col bg-[#F3F4F6] dark:bg-[#16181C] text-[#374151] dark:text-[#C4CFDE] transition-colors duration-300`}>
+        <JsonLd data={websiteSchema} />
         <AnalyticsTracker />
         <Navbar />
         <main className="flex-grow pt-20">
